@@ -74,6 +74,9 @@
                                                     <state key="selected" image="SaveGlow"/>
                                                     <state key="highlighted" image="SaveGlow"/>
                                                     <state key="focused" image="SaveGlow"/>
+                                                    <connections>
+                                                        <action selector="saveTouched:" destination="gTV-IL-0wX" eventType="touchUpInside" id="3e0-tx-Omt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

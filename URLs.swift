@@ -9,6 +9,14 @@
 import UIKit
 import Unbox
 
+enum PhotoSize {
+    case Full
+    case Raw
+    case Regular
+    case Small
+    case Thumb
+}
+
 class URLs: NSObject, Unboxable {
     
     let full: NSURL

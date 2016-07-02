@@ -8,15 +8,19 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 
-    let collectionView: UICollectionView
-    let viewController: UIViewController
-    var fetchedPhotos = [Photo]()
-    var currentPage = 1
+    private let collectionView: UICollectionView
+    private let viewController: PhotosController
+    private var fetchedPhotos = [Photo]()
+    private var currentPage = 1
+    private var blurredCell: PhotoCellCollectionViewCell?
     
-    init(collectionView: UICollectionView, viewController: UIViewController) {
+    var onDownloadPhoto: PhotoSaveCallback?
+    
+    init(collectionView: UICollectionView, viewController: PhotosController) {
         self.collectionView = collectionView
         self.viewController = viewController
         super.init()
@@ -57,27 +61,58 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         guard !fetchedPhotos.isEmpty else { return cell }
         let photo = fetchedPhotos[indexPath.row]
         photoCell.prepareForVisibility(photo)
+        photoCell.onBlurFinish = { [weak self] cell in
+            guard let strongSelf = self else { return }
+            if let currentBlurredCell = strongSelf.blurredCell where currentBlurredCell != cell {
+                currentBlurredCell.clearBlurWithCallback(.None)
+            }
+            strongSelf.blurredCell = cell
+        }
+        
+        photoCell.onSaveTouch = { [weak self] photo in
+            self?.downloadPhotoIfAvailable(photo)
+        }
+        
         return cell
     }
     
-//    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//        let reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(PhotoDetailsSupplementaryViewKind, withReuseIdentifier: "PhotoDetails", forIndexPath: indexPath) as! PhotoDetailsSupplementaryView
-//        reusableView.prepareForVisibility(fetchedPhotos[indexPath.row])
-//        return reusableView
-//    }
-    
     private func retrievePhotosWithCompletion(completion: ((Bool) -> ())?) {
-        
-//        let image = UIImage(imageLiteral: "test.jpeg")
-//        let url = NSURL()
-//        let urls = URLs(full: url, raw: url, regular: url, small: url, thumb: url)
-//        let user = User(id: "1", name: "tonis bambonis", portfolioURL: .None, username: "woahboi")
-//        let photo = Photo(id: "1", urls: urls, likes: 1, user: user, categories: .None, color: "#dddd", height: image.size.height, width: image.size.width)
-//        handlePhotosRetrieval([photo, photo], error: .None, completion: completion)
         UnsplashPhotos.defaultInstance.getPhotos({ [weak self] (photos, error) in
             self?.handlePhotosRetrieval(photos, error: error, completion: completion)
             }, page: currentPage)
-        
+    }
+    
+    private func downloadPhotoIfAvailable(photo: Photo) {
+        viewController.askForPhotosAccess(
+            success: { [weak self] in
+                self?.downloadPhoto(photo)
+            },
+            failure: {
+                print("shit though")
+            }
+        )
+    }
+    
+    private func downloadPhoto(photo: Photo) {
+        UnsplashPhotos.defaultInstance.addImageToQueueForDownload(photo,
+            progressHandler: { (bytesRead, totalBytesRead, totalExpectedBytesToRead) in
+            
+            }, completion: { response in
+                switch response.result {
+                case .Success(let image):
+                    print("downloaded \(image)")
+                    //callback(image: image, error: .None)
+                case .Failure(let error):
+                    print("failed \(error)")
+                    //callback(image: .None, error: error)
+                }
+            }
+        )
+    }
+    
+    func clearCellBlur() {
+        blurredCell?.clearBlurWithCallback(.None)
+        blurredCell = .None
     }
 
     private func handlePhotosRetrieval(photos: [Photo]?, error: NSError?, completion: ((Bool) -> ())?) {

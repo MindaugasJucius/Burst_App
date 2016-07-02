@@ -12,7 +12,8 @@ import AlamofireImage
 import SwiftyJSON
 import Unbox
 
-typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> Void
+typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> ()
+typealias EmptyCallback = () -> ()
 
 class UnsplashPhotos: NSObject {
     
@@ -67,6 +68,10 @@ class UnsplashPhotos: NSObject {
                 callback(image: .None, error: error)
             }
         }
+    }
+    
+    func addImageToQueueForDownload(photo: Photo, progressHandler: ImageDownloader.ProgressHandler, completion: ImageDownloader.CompletionHandler) {
+        ImageDownloader.defaultInstance.downloadImage(URLRequest: NSURLRequest(URL: photo.urls.full), filter: .None, progress: progressHandler, completion: completion)
     }
     
 }

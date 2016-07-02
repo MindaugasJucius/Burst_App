@@ -12,6 +12,16 @@ let UnsplashPhotosAll = "https://api.unsplash.com/photos/"
 let UnsplashCuratedPhotos = "https://api.unsplash.com/photos/curated"
 
 
+// MARK: - MessageConstants
+
+// MARK: - GenericMessages
+
+let Cancel = "Cancel"
+let SettingsApp = "Settings"
+
+let PhotoAccess = "Photo access"
+let PhotoAccessSettings = "Allow photo access in Settings to download this image"
+
 // MARK: - key constants
 
 let UnsplashClientID = "client_id"
