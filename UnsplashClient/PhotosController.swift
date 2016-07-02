@@ -17,24 +17,25 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delaysContentTouches = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(add(_:)))
         collectionView.infiniteScrollIndicatorStyle = .White
         dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
         let layout = PhotosWaterfallLayout()
         layout.itemRenderDirection = .RightToLeft
         layout.minimumColumnSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
-        //collectionView.collectionViewLayout = layout
-        
-        if let layout = collectionView.collectionViewLayout as? PhotosLayout {
-            layout.delegate = self
-        }
-        
+        collectionView.collectionViewLayout = layout
         collectionView.dataSource = dataSource
         collectionView.delegate = self
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    @objc private func add(any: AnyObject) {
+        print("whatsup")
     }
     
 }

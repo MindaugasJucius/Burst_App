@@ -34,4 +34,17 @@ class Photo: NSObject, Unboxable {
         self.fullSize = CGSizeMake(width, height)
     }
     
+    init(id: String, urls: URLs, likes: NSInteger, user: User, categories: [PhotoCategory]?, color: String, height: CGFloat, width: CGFloat) {
+        self.id = id
+        self.urls = urls
+        self.likes = likes
+        self.uploader = user
+        self.categories = categories
+        let hexString: String = color
+        self.color = UIColor.colorWithHexString(hexString)
+        let height: CGFloat = height
+        let width: CGFloat = width
+        self.fullSize = CGSizeMake(width, height)
+    }
+    
 }

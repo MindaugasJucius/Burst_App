@@ -21,4 +21,11 @@ class User: NSObject, Unboxable {
         self.portfolioURL = unboxer.unbox("portfolio_url")
         self.username = unboxer.unbox("username")
     }
+    
+    init(id: String, name: String, portfolioURL: String?, username: String) {
+        self.id = id
+        self.name = name
+        self.portfolioURL = portfolioURL
+        self.username = username
+    }
 }

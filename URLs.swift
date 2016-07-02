@@ -25,4 +25,11 @@ class URLs: NSObject, Unboxable {
         self.thumb = unboxer.unbox("thumb")
     }
     
+    init(full: NSURL, raw: NSURL, regular: NSURL, small: NSURL, thumb: NSURL) {
+        self.full = full
+        self.raw = raw
+        self.regular = regular
+        self.small = small
+        self.thumb = thumb
+    }
 }

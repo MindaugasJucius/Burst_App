@@ -37,6 +37,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         let bundle = NSBundle.mainBundle()
         let cellNib = UINib.init(nibName: "PhotoCellCollectionViewCell", bundle: bundle)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "PhotoCell")
+        collectionView.registerNib(UINib.init(nibName: "CollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "RandomCell")
         let supplementaryNib = UINib.init(nibName: "PhotoDetailsSupplementaryView", bundle: bundle)
         collectionView.registerNib(supplementaryNib, forSupplementaryViewOfKind: PhotoDetailsSupplementaryViewKind, withReuseIdentifier: "PhotoDetails")
     }
@@ -55,7 +56,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         guard let photoCell = cell as? PhotoCellCollectionViewCell else { return cell }
         guard !fetchedPhotos.isEmpty else { return cell }
         let photo = fetchedPhotos[indexPath.row]
-        photoCell.updateImage(photo.thumbImage)
+        photoCell.prepareForVisibility(photo)
         return cell
     }
     
@@ -66,9 +67,17 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 //    }
     
     private func retrievePhotosWithCompletion(completion: ((Bool) -> ())?) {
+        
+//        let image = UIImage(imageLiteral: "test.jpeg")
+//        let url = NSURL()
+//        let urls = URLs(full: url, raw: url, regular: url, small: url, thumb: url)
+//        let user = User(id: "1", name: "tonis bambonis", portfolioURL: .None, username: "woahboi")
+//        let photo = Photo(id: "1", urls: urls, likes: 1, user: user, categories: .None, color: "#dddd", height: image.size.height, width: image.size.width)
+//        handlePhotosRetrieval([photo, photo], error: .None, completion: completion)
         UnsplashPhotos.defaultInstance.getPhotos({ [weak self] (photos, error) in
             self?.handlePhotosRetrieval(photos, error: error, completion: completion)
             }, page: currentPage)
+        
     }
 
     private func handlePhotosRetrieval(photos: [Photo]?, error: NSError?, completion: ((Bool) -> ())?) {

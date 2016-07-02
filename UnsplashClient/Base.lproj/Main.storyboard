@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Photos Controller-->
+        <!--Stuff-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PhotosController" customModule="UnsplashClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lgp-M8-0hF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewLayout key="collectionViewLayout" id="pfl-5k-WVF" customClass="PhotosLayout" customModule="UnsplashClient" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="pfl-5k-WVF"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ObW-65-1EY">
                                         <rect key="frame" x="0.0" y="64" width="50" height="50"/>
@@ -42,7 +42,7 @@
                             <constraint firstItem="Lgp-M8-0hF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ka4-QL-T7J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aQ2-uW-qxG"/>
+                    <navigationItem key="navigationItem" title="Stuff" id="F48-JD-6jJ"/>
                     <connections>
                         <outlet property="collectionView" destination="Lgp-M8-0hF" id="HCd-ap-BdA"/>
                     </connections>
