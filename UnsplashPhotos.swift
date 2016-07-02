@@ -14,12 +14,15 @@ import Unbox
 
 typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> ()
 typealias EmptyCallback = () -> ()
+typealias ProgressCallback = (progress: Float) -> ()
+typealias PhotoDownloadCallback = (response: Response<UIImage, NSError>, photo: Photo) -> ()
 
 class UnsplashPhotos: NSObject {
     
     static let defaultInstance = UnsplashPhotos()
     
     private let networkGroup = dispatch_group_create()
+    private let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .FIFO, maximumActiveDownloads: 1)
 
     func getPhotos(completionHandler: PhotosCallback, page: Int) -> [Photo]? {
         guard let appID = AppConstants.appConstDict[UnsplashClientID] else { return .None }
@@ -70,8 +73,16 @@ class UnsplashPhotos: NSObject {
         }
     }
     
-    func addImageToQueueForDownload(photo: Photo, progressHandler: ImageDownloader.ProgressHandler, completion: ImageDownloader.CompletionHandler) {
-        ImageDownloader.defaultInstance.downloadImage(URLRequest: NSURLRequest(URL: photo.urls.full), filter: .None, progress: progressHandler, completion: completion)
+    func addImageToQueueForDownload(photo: Photo, progressHandler: ProgressCallback, completion: PhotoDownloadCallback) {
+        imageDownloader.downloadImage(URLRequest: NSURLRequest(URL: photo.urls.full), filter: .None,
+            progress: { (bytesRead, totalBytesRead, totalExpectedBytesToRead) in
+                let progress = Float(totalBytesRead) / Float(totalExpectedBytesToRead)
+                progressHandler(progress: progress)
+            },
+            completion: { response in
+                completion(response: response, photo: photo)
+            }
+        )
     }
     
 }

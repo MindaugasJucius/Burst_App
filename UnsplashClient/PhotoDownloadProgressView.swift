@@ -8,16 +8,50 @@
 
 import UIKit
 
+private let InitialCount = 0
+
 class PhotoDownloadProgressView: UIView {
 
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var leftLabel: UILabel!
     @IBOutlet private weak var rightLabel: UILabel!
 
+    private var itemCount = InitialCount
+    private var currentItem = InitialCount
+    
+    var updatedState = false
     
     override func awakeFromNib() {
-        leftLabel.text = "0"
-        rightLabel.text = "0"
+        progressView.progressTintColor = .whiteColor()
+        leftLabel.text = String(1)
+        rightLabel.text = String(itemCount)
+    }
+    
+    func addDownloadItem() {
+        itemCount += 1
+        rightLabel.text = String(itemCount)
+    }
+    
+    func addCurrentItem() {
+        currentItem += 1
+        leftLabel.text = String(currentItem)
+        updatedState = true
+    }
+    
+    func setProgress(progress: Float) {
+        progressView.setProgress(progress, animated: true)
+    }
+    
+    func resetStateWithCount(hide: EmptyCallback){
+        progressView.progress = 0
+        updatedState = false
+        if currentItem == itemCount {
+            currentItem = InitialCount
+            itemCount = InitialCount
+            leftLabel.text = String(currentItem)
+            rightLabel.text = String(itemCount)
+            hide()
+        }
     }
    
     static func createFromNib() -> PhotoDownloadProgressView? {

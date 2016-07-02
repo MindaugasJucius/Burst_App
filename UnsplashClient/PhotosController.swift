@@ -20,6 +20,8 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
     private var progressWindow: UIWindow?
     private var progressView: PhotoDownloadProgressView?
     
+    private var progressViewPresented = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delaysContentTouches = false
@@ -33,10 +35,9 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         progressWindow = UIWindow(frame: frame)
         progressWindow?.windowLevel = UIWindowLevelStatusBar
         progressWindow?.backgroundColor = .clearColor()
-        progressWindow?.makeKeyAndVisible()
         
         progressView = PhotoDownloadProgressView.createFromNib()
-        //progressView?.frame = frame
+        progressView?.frame = CGRectMake(0, -height, width, height)
         
         
         let layout = PhotosWaterfallLayout()
@@ -51,23 +52,37 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         addTapGesture()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        presentProgressView()
-    }
-    
-    private func presentProgressView() {
+    private func presentProgressViewWithCallback(presented: EmptyCallback) {
         guard let window = progressWindow else { return }
         guard let view = progressView else { return }
-        var progressWindowFrame = window.frame
-        progressWindowFrame.origin.y -= progressWindowFrame.height
-        progressView?.frame = progressWindowFrame
+        progressWindow?.makeKeyAndVisible()
         window.addSubview(view)
-        UIView.animateWithDuration(1, delay: 0, options: .CurveEaseOut,
+        UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseOut,
             animations: {
                 view.frame = window.frame
             },
-            completion: .None)
+            completion: { finished in
+                if finished {
+                    presented()
+                }
+            }
+        )
+    }
+    
+    private func hideProgressView() {
+        guard let window = progressWindow else { return }
+        guard let view = progressView else { return }
+        UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseIn,
+            animations: {
+                view.frame.origin.y -= view.frame.height
+            },
+            completion: { [weak self] finished in
+                if finished {
+                    self?.progressViewPresented = false
+                    window.hidden = true
+                }
+            }
+        )
     }
     
     @objc private func tap(gesture: UITapGestureRecognizer) {
@@ -109,6 +124,60 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         }
     }
     
+    func downloadPhoto(photo: Photo) {
+        guard progressViewPresented else {
+            presentProgressViewWithCallback { [weak self] in
+                self?.progressViewPresented = true
+                self?.addPhotoToDownloadQueue(photo)
+            }
+            return
+        }
+        addPhotoToDownloadQueue(photo)
+    }
+    
+    private func addPhotoToDownloadQueue(photo: Photo) {
+        guard let progressView = progressView else { return }
+        progressView.addDownloadItem()
+        UnsplashPhotos.defaultInstance.addImageToQueueForDownload(photo,
+            progressHandler: { (progress) in
+                if !progressView.updatedState {
+                    progressView.addCurrentItem()
+                }
+                progressView.setProgress(progress)
+            },
+            completion: { [weak self] response, photo in
+                switch response.result {
+                case .Success(let image):
+                    self?.addPhotoToCameraRoll(image)
+                    self?.progressView?.resetStateWithCount {
+                        self?.hideProgressView()
+                    }
+                case .Failure(let error):
+                    self?.presentErrorDownloadingPhotos(error)
+                }
+            }
+        )
+    }
+    
+    private func addPhotoToCameraRoll(image: UIImage) {
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+            PHAssetChangeRequest.creationRequestForAssetFromImage(image)
+            }, completionHandler: { [weak self] success, error in
+                if let error = error {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self?.presentErrorDownloadingPhotos(error)
+                    }
+                }
+                print("saved")
+            }
+        )
+    }
+    
+    private func presentErrorDownloadingPhotos(error: NSError) {
+        let alertController = UIAlertController(title: Error, message: error.localizedDescription, preferredStyle: .Alert)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     private func alertForPhotoAccessSettings() -> UIAlertController {
         let alertController = UIAlertController(title: PhotoAccess, message: PhotoAccessSettings, preferredStyle: .Alert)
         let settingsAction = UIAlertAction(title: SettingsApp, style: .Default) { (alertAction) in
@@ -120,6 +189,10 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         let cancelAction = UIAlertAction(title: Cancel, style: .Cancel, handler: .None)
         alertController.addAction(cancelAction)
         return alertController
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
 }

@@ -94,20 +94,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
     }
     
     private func downloadPhoto(photo: Photo) {
-        UnsplashPhotos.defaultInstance.addImageToQueueForDownload(photo,
-            progressHandler: { (bytesRead, totalBytesRead, totalExpectedBytesToRead) in
-            
-            }, completion: { response in
-                switch response.result {
-                case .Success(let image):
-                    print("downloaded \(image)")
-                    //callback(image: image, error: .None)
-                case .Failure(let error):
-                    print("failed \(error)")
-                    //callback(image: .None, error: error)
-                }
-            }
-        )
+        viewController.downloadPhoto(photo)
     }
     
     func clearCellBlur() {
@@ -117,7 +104,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 
     private func handlePhotosRetrieval(photos: [Photo]?, error: NSError?, completion: ((Bool) -> ())?) {
         guard let photos = photos else {
-            let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: Error, message: error?.localizedDescription, preferredStyle: .Alert)
             viewController.presentViewController(alertController, animated: true, completion: nil)
             collectionView.finishInfiniteScroll()
             return

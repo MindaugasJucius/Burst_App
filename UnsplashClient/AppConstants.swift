@@ -17,6 +17,8 @@ let UnsplashCuratedPhotos = "https://api.unsplash.com/photos/curated"
 // MARK: - GenericMessages
 
 let Cancel = "Cancel"
+let Error = "Error"
+
 let SettingsApp = "Settings"
 
 let PhotoAccess = "Photo access"
