@@ -3,7 +3,7 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target 'UnsplashClient' do
+target ‘Burst’ do
 	pod 'Alamofire', '~> 3.4'
 	pod 'SwiftyJSON'
 	pod "Unbox"
@@ -12,7 +12,7 @@ target 'UnsplashClient' do
 	pod 'CHTCollectionViewWaterfallLayout'
 end
 
-target 'UnsplashClientTests' do
+target ‘BurstTests' do
 
 end
 

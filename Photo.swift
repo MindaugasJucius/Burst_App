@@ -1,6 +1,6 @@
 //
 //  Photo.swift
-//  UnsplashClient
+//  Burst
 //
 //  Created by Mindaugas Jucius on 20/06/16.
 //  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.

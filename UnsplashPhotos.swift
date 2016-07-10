@@ -1,6 +1,6 @@
 //
 //  UnsplashPhotos.swift
-//  UnsplashClient
+//  Burst
 //
 //  Created by Mindaugas Jucius on 21/06/16.
 //  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
@@ -25,8 +25,8 @@ class UnsplashPhotos: NSObject {
     private let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .FIFO, maximumActiveDownloads: 1)
 
     func getPhotos(completionHandler: PhotosCallback, page: Int) -> [Photo]? {
-        guard let appID = AppConstants.appConstDict[UnsplashClientID] else { return .None }
-        Alamofire.request(.GET, UnsplashPhotosAll, parameters: [UnsplashClientID : appID, "page": String(page)]).responseJSON { [weak self] response in
+        guard let appID = AppConstants.appConstDict[BurstID] else { return .None }
+        Alamofire.request(.GET, UnsplashPhotosAll, parameters: [BurstID : appID, "page": String(page)]).responseJSON { [weak self] response in
             switch response.result {
             case .Success(let value):
                 guard let photosJSON = value as? NSArray else { return }
