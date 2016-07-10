@@ -39,5 +39,6 @@ class URLs: NSObject, Unboxable {
         self.regular = regular
         self.small = small
         self.thumb = thumb
+        super.init()
     }
 }

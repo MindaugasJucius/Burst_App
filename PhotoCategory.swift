@@ -32,6 +32,7 @@ class PhotoCategory: NSObject, Unboxable {
         self.links = unboxer.unbox("links")
         self.photoCount = unboxer.unbox("photo_count")
         self.categoryTitle = unboxer.unbox("title")
+        super.init()
     }
     
 }

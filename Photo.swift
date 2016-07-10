@@ -45,6 +45,7 @@ class Photo: NSObject, Unboxable {
         let height: CGFloat = height
         let width: CGFloat = width
         self.fullSize = CGSizeMake(width, height)
+        super.init()
     }
     
 }

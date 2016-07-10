@@ -27,5 +27,6 @@ class User: NSObject, Unboxable {
         self.name = name
         self.portfolioURL = portfolioURL
         self.username = username
+        super.init()
     }
 }
