@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Container View Controller-->
+        <!--BURST-->
         <scene sceneID="1El-Yd-o2r">
             <objects>
                 <viewController id="kOv-Vl-gJu" customClass="ContainerViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="r02-sz-60A"/>
+                    <navigationItem key="navigationItem" title="BURST" id="r02-sz-60A"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfA-0N-nWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,7 +27,6 @@
         <!--Stuff-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="PhotosController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -66,13 +65,14 @@
                         <outlet property="collectionView" destination="Lgp-M8-0hF" id="HCd-ap-BdA"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1611" y="796"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BCa-nR-aD3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pJ4-Nx-gEf" customClass="NavigationController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pJ4-Nx-gEf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kcl-MX-6mv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

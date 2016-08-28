@@ -24,13 +24,13 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.titleView = NSBundle.mainBundle().loadNibNamed("TitleView", owner: nil, options: nil).last as? UIView
-        //navigationItem.title = "BURST"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(rightBarButtonTapped))
+        //navigationItem.titleView = NSBundle.mainBundle().loadNibNamed("TitleView", owner: nil, options: nil).last as? UIView
+        navigationItem.title = "BURST"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(rightBarButtonTapped))
         collectionView.delaysContentTouches = false
-        collectionView.infiniteScrollIndicatorStyle = .White
+        collectionView.infiniteScrollIndicatorStyle = .Gray
         dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
-        
+        collectionView.backgroundColor = UIColor.whiteColor()
         let height = UIApplication.sharedApplication().statusBarFrame.height
         let width = UIScreen.mainScreen().bounds.width
         let frame = CGRectMake(0, 0, width, height)
@@ -52,7 +52,8 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
-        automaticallyAdjustsScrollViewInsets = false
+        //automaticallyAdjustsScrollViewInsets = false
+        collectionView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         addTapGesture()
     }
     
