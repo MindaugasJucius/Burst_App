@@ -88,7 +88,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
                 self?.downloadPhoto(photo)
             },
             failure: {
-                print("shit though")
+                print("The impossible happened")
             }
         )
     }

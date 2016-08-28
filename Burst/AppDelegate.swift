@@ -16,11 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UINavigationBar.appearance().barTintColor = .blackColor()
-        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()//UIColor.colorWithHexString("00D7FF")
+        UINavigationBar.appearance().translucent = true
         UINavigationBar.appearance().titleTextAttributes =
             [NSForegroundColorAttributeName : UIColor.whiteColor(),
-             NSFontAttributeName : UIFont(name: "Avenir Next", size: 18)!]
+             NSFontAttributeName : UIFont(name: "Avenir Next", size: 23)!]
+        
         return true
     }
 

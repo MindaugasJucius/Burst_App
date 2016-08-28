@@ -24,8 +24,9 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.titleView = NSBundle.mainBundle().loadNibNamed("TitleView", owner: nil, options: nil).last as? UIView
+//        navigationItem.titleView = NSBundle.mainBundle().loadNibNamed("TitleView", owner: nil, options: nil).last as? UIView
+        //navigationItem.title = "BURST"
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(rightBarButtonTapped))
         collectionView.delaysContentTouches = false
         collectionView.infiniteScrollIndicatorStyle = .White
         dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
@@ -51,7 +52,12 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
+        automaticallyAdjustsScrollViewInsets = false
         addTapGesture()
+    }
+    
+    @objc func rightBarButtonTapped(){
+        
     }
     
     private func presentProgressViewWithCallback(presented: EmptyCallback) {

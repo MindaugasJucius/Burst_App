@@ -1,13 +1,13 @@
 PODS:
   - Alamofire (3.4.1)
-  - AlamofireImage (2.4.0):
+  - AlamofireImage (2.4.1):
     - Alamofire (~> 3.3)
   - CHTCollectionViewWaterfallLayout (0.9.4):
     - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.4)
   - CHTCollectionViewWaterfallLayout/ObjC (0.9.4)
   - SwiftyJSON (2.3.2)
-  - UIScrollView-InfiniteScroll (0.8.0)
-  - Unbox (1.7)
+  - UIScrollView-InfiniteScroll (0.9.1)
+  - Unbox (1.9)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
@@ -19,10 +19,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
+  AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
   CHTCollectionViewWaterfallLayout: db74be9135826d285f45ff163fd090e57c99fc50
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  UIScrollView-InfiniteScroll: afd22fc0e230436a27c5b8b44c0857cb5bd3716a
-  Unbox: 576f1470399f84c411ced0a8ce4c4caaeb8acf1d
+  UIScrollView-InfiniteScroll: 14e204c50ca4040467e1cbfa141dad7a18919b56
+  Unbox: a6f56a1682b5fd2ba6aea96d7b1ec17599db4f05
 
 COCOAPODS: 0.39.0
