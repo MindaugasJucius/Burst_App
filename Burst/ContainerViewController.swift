@@ -15,6 +15,7 @@ class ContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
+        navigationItem.title = "BURST"
         // Do any additional setup after loading the view.
     }
     

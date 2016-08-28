@@ -24,8 +24,6 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationItem.titleView = NSBundle.mainBundle().loadNibNamed("TitleView", owner: nil, options: nil).last as? UIView
-        navigationItem.title = "BURST"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(rightBarButtonTapped))
         collectionView.delaysContentTouches = false
         collectionView.infiniteScrollIndicatorStyle = .Gray
@@ -52,7 +50,6 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
-        //automaticallyAdjustsScrollViewInsets = false
         collectionView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         addTapGesture()
     }
