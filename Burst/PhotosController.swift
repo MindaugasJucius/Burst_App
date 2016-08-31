@@ -24,7 +24,6 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(rightBarButtonTapped))
         collectionView.delaysContentTouches = false
         collectionView.infiniteScrollIndicatorStyle = .Gray
         dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
@@ -49,13 +48,10 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         collectionView.collectionViewLayout = layout
         collectionView.dataSource = dataSource
         collectionView.delegate = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         addTapGesture()
-    }
-    
-    @objc func rightBarButtonTapped(){
-        
     }
     
     private func presentProgressViewWithCallback(presented: EmptyCallback) {
@@ -73,6 +69,10 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
                 }
             }
         )
+    }
+    
+    @objc func rightBarButtonTapped(){
+        
     }
     
     private func hideProgressView() {

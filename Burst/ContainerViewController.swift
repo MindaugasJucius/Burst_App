@@ -14,9 +14,9 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
         navigationItem.title = "BURST"
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.translucent = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -26,24 +26,13 @@ class ContainerViewController: UIViewController {
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.view.frame = view.bounds
-        controller.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         controller.didMoveToParentViewController(self)
+        navigationController?.viewControllers = [controller]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
