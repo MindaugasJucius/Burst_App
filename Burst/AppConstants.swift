@@ -14,15 +14,19 @@ let UnsplashCuratedPhotos = "https://api.unsplash.com/photos/curated"
 
 // MARK: - MessageConstants
 
-// MARK: - GenericMessages
+// MARK: - Title
+let APPName = "BURST"
 
+// MARK: - GenericMessages
 let Cancel = "Cancel"
 let Error = "Error"
+let Ok = "Ok"
 
 let SettingsApp = "Settings"
 
 let PhotoAccess = "Photo access"
-let PhotoAccessSettings = "Allow photo access in Settings to download this image"
+let PhotoAccessSettings = "Allow Burst to access Photos in Settings to save this image"
+let PhotoAccessPopup = "Allow Burst to access Photos to save this image"
 
 // MARK: - key constants
 

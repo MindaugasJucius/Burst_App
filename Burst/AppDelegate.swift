@@ -14,12 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UINavigationBar.appearance().titleTextAttributes =
-            [NSForegroundColorAttributeName : UIColor.whiteColor(),
-             NSFontAttributeName : AppAppearance.navigationBarFont()]
-        UINavigationBar.appearance().barTintColor = AppAppearance.lightBlueAppColor()
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        let mainTabBarController = MainTabBarViewController()
+        window?.rootViewController = mainTabBarController
+        updateNavigationBarAppearance()
+        updateTabBarAppearance()
         return true
     }
 
@@ -44,7 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    // MARK: - Private state handlers
+    
+    private func updateTabBarAppearance() {
+        UITabBar.appearance().backgroundColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = AppAppearance.lightBlueAppColor()
+    }
 
+    private func updateNavigationBarAppearance() {
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UINavigationBar.appearance().titleTextAttributes =
+            [NSForegroundColorAttributeName : UIColor.whiteColor(),
+             NSFontAttributeName : AppAppearance.navigationBarFont()]
+        UINavigationBar.appearance().barTintColor = AppAppearance.lightBlueAppColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+    }
 
 }
 

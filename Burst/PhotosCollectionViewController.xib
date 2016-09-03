@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotosController" customModule="Burst" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotosCollectionViewController" customModule="Burst" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="TiE-7R-3nI" id="d2o-Sd-vOP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="4QJ-K7-F7X"/>

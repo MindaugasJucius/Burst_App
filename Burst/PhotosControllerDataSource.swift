@@ -13,14 +13,14 @@ import Photos
 class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 
     private let collectionView: UICollectionView
-    private let viewController: PhotosController
+    private let viewController: PhotosCollectionViewController
     private var fetchedPhotos = [Photo]()
     private var currentPage = 1
     private var blurredCell: PhotoCellCollectionViewCell?
     
     var onDownloadPhoto: PhotoSaveCallback?
     
-    init(collectionView: UICollectionView, viewController: PhotosController) {
+    init(collectionView: UICollectionView, viewController: PhotosCollectionViewController) {
         self.collectionView = collectionView
         self.viewController = viewController
         super.init()
@@ -70,7 +70,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         }
         
         photoCell.onSaveTouch = { [weak self] photo in
-            self?.downloadPhotoIfAvailable(photo)
+            self?.downloadPhoto(photo)
         }
         
         return cell
@@ -80,17 +80,6 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         UnsplashPhotos.defaultInstance.getPhotos({ [weak self] (photos, error) in
             self?.handlePhotosRetrieval(photos, error: error, completion: completion)
             }, page: currentPage)
-    }
-    
-    private func downloadPhotoIfAvailable(photo: Photo) {
-        viewController.askForPhotosAccess(
-            success: { [weak self] in
-                self?.downloadPhoto(photo)
-            },
-            failure: {
-                print("The impossible happened")
-            }
-        )
     }
     
     private func downloadPhoto(photo: Photo) {
@@ -104,8 +93,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 
     private func handlePhotosRetrieval(photos: [Photo]?, error: NSError?, completion: ((Bool) -> ())?) {
         guard let photos = photos else {
-            let alertController = UIAlertController(title: Error, message: error?.localizedDescription, preferredStyle: .Alert)
-            viewController.presentViewController(alertController, animated: true, completion: nil)
+            AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(onController: viewController, withError: error)
             collectionView.finishInfiniteScroll()
             return
         }

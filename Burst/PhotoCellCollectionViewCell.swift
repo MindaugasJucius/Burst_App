@@ -49,7 +49,6 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
         imageView.image = photo.thumbImage
         authorLabel.text = photo.uploader.name.uppercaseString
         guard let category = photo.categories?.first?.categoryTitle else {
-            categoryTitle.text = "None".uppercaseString
             return
         }
         categoryTitle.text = category.uppercaseString

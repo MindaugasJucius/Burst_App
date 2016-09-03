@@ -10,6 +10,20 @@ import UIKit
 
 private let InitialCount = 0
 
+enum PresentationState: Int {
+    case presented
+    case hidden
+    
+    mutating func toggle() {
+        switch self {
+        case .presented:
+            self = hidden
+        case .hidden:
+            self = presented
+        }
+    }
+}
+
 class PhotoDownloadProgressView: UIView {
 
     @IBOutlet private weak var progressView: UIProgressView!
@@ -23,6 +37,9 @@ class PhotoDownloadProgressView: UIView {
     
     override func awakeFromNib() {
         progressView.progressTintColor = .whiteColor()
+        progressView.trackTintColor = AppAppearance.darkBlueAppColor()
+        backgroundColor = AppAppearance.lightBlueAppColor()
+        progressView.progress = 0
         leftLabel.text = String(1)
         rightLabel.text = String(itemCount)
     }
