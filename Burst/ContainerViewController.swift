@@ -17,9 +17,9 @@ class ContainerViewController: UIViewController {
     private var contentViewController: UIViewController?
     private var progressWindow: UIWindow?
     private var progressView: PhotoDownloadProgressView?
+    private var photoSavingHelper: PhotoSavingHelper?
     
     private var progressViewPresented = false
-    private var photosToSave: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class ContainerViewController: UIViewController {
         let controller = PhotosCollectionViewController(nibName: "PhotosCollectionViewController", bundle: nil)
         contentViewController = controller
         controller.delegate = self
+        photoSavingHelper = PhotoSavingHelper(controller: controller)
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.view.frame = view.bounds
@@ -116,44 +117,11 @@ class ContainerViewController: UIViewController {
     }
     
     private func save(imageToSave image: UIImage) {
-        photosToSave.append(image)
-        let success = { [weak self] in
-            guard let strongSelf = self else {
-                return
-            }
-            strongSelf.photosToSave.forEach({ image in
-                    strongSelf.addPhotoToCameraRoll(image)
-                }
-            )
-        }
-        
-        let cancelled: EmptyCallback = { [weak self] in
-            self?.photosToSave = []
-        }
-        
-        PhotoAccessHelper.sharedInstance.askForPhotosAccessIfNecessary(
-            withAskingController: self.contentViewController,
-            whenAuthorized: success,
-            whenAuthorizationCancelled: cancelled
-        )
-    }
-    
-    private func addPhotoToCameraRoll(image: UIImage) {
-        guard let index = photosToSave.indexOf(image) else {
+        guard let saveHelper = photoSavingHelper else {
             return
         }
-        photosToSave.removeAtIndex(index)
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                PHAssetChangeRequest.creationRequestForAssetFromImage(image)
-            },
-            completionHandler: { [weak self] success, error in
-                if let error = error {
-                    self?.presentError(error)
-                }
-            }
-        )
+        saveHelper.save(imageToSave: image)
     }
-    
 }
 
 extension ContainerViewController: ContainerAlerts {
