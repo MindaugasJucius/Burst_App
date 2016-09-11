@@ -63,20 +63,6 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
     
 }
 
-extension PhotosCollectionViewController: PhotosLayoutDelegate {
-
-    func itemCount() -> Int {
-        guard let dataSource = dataSource else { return Int.min }
-        return dataSource.itemCount()
-    }
-    
-    func heightForPhotoAtIndexPath(photoIndexPath indexPath: NSIndexPath) -> CGFloat {
-        guard let dataSource = dataSource else { return CGFloat.min }
-        return dataSource.itemSizeAtIndexPath(photoIndexPath: indexPath)
-    }
-    
-}
-
 //extension PhotosCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {
 //
 //    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
