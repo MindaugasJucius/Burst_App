@@ -16,14 +16,9 @@ class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let height = UIApplication.sharedApplication().statusBarFrame.height + navigationBar.frame.height
         let width = UIScreen.mainScreen().bounds.width
-        let progressView = UIProgressView()
-        progressView.progressViewStyle = .Bar
-        progressView.progressTintColor = AppAppearance.lightBlueAppColor()
-        progressView.trackTintColor = .whiteColor()
-        progressView.progress = 0.5
-        progressView.frame =  CGRect(x: 0, y: height - progressView.frame.height, width: width, height: 0)
+        let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: width, height: 0))
+        let progressView = StatusBarProgressView(frame: frame, progress: 0.5)
         view.addSubview(progressView)
     }
 

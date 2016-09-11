@@ -25,7 +25,7 @@
 		033DC8331D27D32F006E7BED /* UIButton+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC8321D27D32F006E7BED /* UIButton+Blur.swift */; };
 		033DC8351D28483D006E7BED /* PhotoDownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */; };
 		033DC8371D284853006E7BED /* PhotoDownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */; };
-		0344F2331D7F2FE400700DE1 /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2321D7F2FE400700DE1 /* DownloadProgressView.swift */; };
+		0344F2331D7F2FE400700DE1 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */; };
 		0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2381D7F339C00700DE1 /* NavigationController.swift */; };
 		036F6A441D22FCF6002FE799 /* UIColor+Darkness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036F6A431D22FCF6002FE799 /* UIColor+Darkness.swift */; };
 		03841B281D26D635007813FE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03841B261D26D635007813FE /* CollectionViewCell.swift */; };
@@ -100,7 +100,7 @@
 		033DC8321D27D32F006E7BED /* UIButton+Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Blur.swift"; sourceTree = "<group>"; };
 		033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloadProgressView.swift; sourceTree = "<group>"; };
 		033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDownloadProgressView.xib; sourceTree = "<group>"; };
-		0344F2321D7F2FE400700DE1 /* DownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
+		0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		0344F2381D7F339C00700DE1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		036F6A431D22FCF6002FE799 /* UIColor+Darkness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Darkness.swift"; sourceTree = "<group>"; };
 		03841B261D26D635007813FE /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 			children = (
 				033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */,
 				033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */,
-				0344F2321D7F2FE400700DE1 /* DownloadProgressView.swift */,
+				0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */,
 			);
 			name = CommonViews;
 			sourceTree = "<group>";
@@ -481,7 +481,7 @@
 				033DC8351D28483D006E7BED /* PhotoDownloadProgressView.swift in Sources */,
 				030F6D581D19C19B003D3B8C /* AppConstants.swift in Sources */,
 				030DDDC61D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift in Sources */,
-				0344F2331D7F2FE400700DE1 /* DownloadProgressView.swift in Sources */,
+				0344F2331D7F2FE400700DE1 /* StatusBarProgressView.swift in Sources */,
 				03345E561D69F4FC008CEF89 /* PhotosTableViewController.swift in Sources */,
 				030DDDCB1D1EB60100E2B2D4 /* User.swift in Sources */,
 				0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */,
