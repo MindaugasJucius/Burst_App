@@ -5,7 +5,7 @@ class AppAppearance: NSObject {
     // MARK: - Text
     
     static func navigationBarFont() -> UIFont {
-        return UIFont(name: "AvenirNext-Bold", size: 20)!
+        return UIFont(name: "AvenirNext-Bold", size: 24)!
     }
     
     // MARK: - Colors

@@ -15,10 +15,7 @@ final class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [containerTab(), cameraTab(), settingsTab()]
-//        tabBar.items?.forEach({ [weak self] tabBar in
-//                tabBar.imageInsets = self?.imageInsets
-//            }
-//        )
+        tabBar.translucent = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +24,7 @@ final class MainTabBarViewController: UITabBarController {
     
     private func containerTab() -> UINavigationController {
         let controller = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
-        let containerNavigationController = UINavigationController(rootViewController: controller)
+        let containerNavigationController = NavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "GalleryDisabled"),

@@ -9,7 +9,6 @@
 #ifndef Burst_Bridging_Header_h
 #define Burst_Bridging_Header_h
 
-#import <UIScrollView_InfiniteScroll/UIScrollView+InfiniteScroll.h>
-#import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
+@import UIScrollView_InfiniteScroll;
 
 #endif /* Burst_Bridging_Header_h */

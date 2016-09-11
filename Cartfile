@@ -1,0 +1,4 @@
+github "Alamofire/Alamofire" ~> 3.4
+github "johnsundell/unbox"
+github "Alamofire/AlamofireImage" ~> 2.0
+github "pronebird/UIScrollView-InfiniteScroll"

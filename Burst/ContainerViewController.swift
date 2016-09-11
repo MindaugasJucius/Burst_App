@@ -23,9 +23,6 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = APPName
-        navigationController?.navigationBar.translucent = false
-        
         let height = UIApplication.sharedApplication().statusBarFrame.height
         let width = UIScreen.mainScreen().bounds.width
         let frame = CGRectMake(0, 0, width, height)
@@ -67,7 +64,6 @@ class ContainerViewController: UIViewController {
                 }
                 switch response.result {
                 case .Success(let image):
-                    print(response.response?.statusCode)
                     strongSelf.save(imageToSave: image)
                     strongSelf.progressView?.resetStateWithCount {
                         strongSelf.hideProgressView()

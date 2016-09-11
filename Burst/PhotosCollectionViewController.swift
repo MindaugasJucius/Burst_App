@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CHTCollectionViewWaterfallLayout
 
 class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate {
 
@@ -25,12 +24,12 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
         dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
         collectionView.backgroundColor = UIColor.whiteColor()
         
-        let layout = CHTCollectionViewWaterfallLayout()
-        layout.itemRenderDirection = .RightToLeft
-        layout.minimumColumnSpacing = 1.0
-        layout.minimumInteritemSpacing = 1.0
+        //let layout = PhotosLayout()
+//        layout.itemRenderDirection = .RightToLeft
+//        layout.minimumColumnSpacing = 1.0
+//        layout.minimumInteritemSpacing = 1.0
         
-        collectionView.collectionViewLayout = layout
+        //collectionView.collectionViewLayout = layout
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.showsVerticalScrollIndicator = false
@@ -78,14 +77,14 @@ extension PhotosCollectionViewController: PhotosLayoutDelegate {
     
 }
 
-extension PhotosCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {
-
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-        guard let dataSource = dataSource else { return CGSizeZero }
-        let imageSize = dataSource.collectionViewItemSizeAtIndexPath(indexPath)
-        
-        return CGSizeMake(imageSize.width, imageSize.height)
-    }
-
-}
+//extension PhotosCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {
+//
+//    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+//        guard let dataSource = dataSource else { return CGSizeZero }
+//        let imageSize = dataSource.collectionViewItemSizeAtIndexPath(indexPath)
+//        
+//        return CGSizeMake(imageSize.width, imageSize.height)
+//    }
+//
+//}
 

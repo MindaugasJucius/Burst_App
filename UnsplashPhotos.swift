@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import AlamofireImage
-import SwiftyJSON
 import Unbox
 
 typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> ()

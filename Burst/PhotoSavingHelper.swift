@@ -22,7 +22,7 @@ class PhotoSavingHelper: NSObject {
                 return
             }
             strongSelf.photosToSave.forEach({ image in
-                strongSelf.addPhotoToAlbum(image)
+                    strongSelf.addPhotoToAlbum(image)
                 }
             )
         }
