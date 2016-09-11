@@ -19,10 +19,6 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TiE-7R-3nI">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <collectionViewLayout key="collectionViewLayout" id="gBs-zo-0vr"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="EHL-yp-YUh"/>
-                        <outlet property="delegate" destination="-1" id="NY2-Ms-JVi"/>
-                    </connections>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

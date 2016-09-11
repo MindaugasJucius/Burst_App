@@ -21,7 +21,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         collectionView.delaysContentTouches = false
         collectionView.infiniteScrollIndicatorStyle = .Gray
-        dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
+        //dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
         collectionView.backgroundColor = UIColor.whiteColor()
         
         //let layout = PhotosLayout()
@@ -30,10 +30,10 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
 //        layout.minimumInteritemSpacing = 1.0
         
         //collectionView.collectionViewLayout = layout
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
+        //collectionView.dataSource = dataSource
+        //collectionView.delegate = self
+        //collectionView.showsVerticalScrollIndicator = false
+        //collectionView.showsHorizontalScrollIndicator = false
         
         addTapGesture()
     }
