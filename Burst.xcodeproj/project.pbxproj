@@ -45,6 +45,7 @@
 		03E3DE3E1D85C2A80018294E /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE341D85BB550018294E /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03E3DE3F1D85C2A80018294E /* UIScrollView_InfiniteScroll.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE351D85BB550018294E /* UIScrollView_InfiniteScroll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03E3DE401D85C2A90018294E /* Unbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE361D85BB550018294E /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03E3DE421D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */; };
 		03E750071D1868FB002A47CF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E750061D1868FB002A47CF /* Photo.swift */; };
 		03E750091D1876E0002A47CF /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E750081D1876E0002A47CF /* URLs.swift */; };
 		03EE238F1D6B5B2D00B2F791 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */; };
@@ -119,6 +120,7 @@
 		03E3DE341D85BB550018294E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		03E3DE351D85BB550018294E /* UIScrollView_InfiniteScroll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIScrollView_InfiniteScroll.framework; path = Carthage/Build/iOS/UIScrollView_InfiniteScroll.framework; sourceTree = "<group>"; };
 		03E3DE361D85BB550018294E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
+		03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		03E750061D1868FB002A47CF /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		03E750081D1876E0002A47CF /* URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				03C7D2251D18588E0040A875 /* PhotosCollectionViewController.swift */,
 				030DDDC51D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift */,
 				03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */,
+				03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */,
 			);
 			name = PhotosCollectionViewController;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				030DDDCB1D1EB60100E2B2D4 /* User.swift in Sources */,
 				0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */,
 				030DDDC21D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift in Sources */,
+				03E3DE421D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				0304BD731D7B1965001723D0 /* PhotoAccessHelper.swift in Sources */,
 				036F6A441D22FCF6002FE799 /* UIColor+Darkness.swift in Sources */,
 				0335062E1D7743780093C0BD /* AppAppearance.swift in Sources */,

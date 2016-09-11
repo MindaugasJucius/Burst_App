@@ -21,19 +21,18 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         collectionView.delaysContentTouches = false
         collectionView.infiniteScrollIndicatorStyle = .Gray
-        //dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
+        dataSource = PhotosControllerDataSource(collectionView: collectionView, viewController: self)
         collectionView.backgroundColor = UIColor.whiteColor()
         
-        //let layout = PhotosLayout()
-//        layout.itemRenderDirection = .RightToLeft
-//        layout.minimumColumnSpacing = 1.0
-//        layout.minimumInteritemSpacing = 1.0
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.minimumColumnSpacing = 1.0
+        layout.minimumInteritemSpacing = 1.0
         
-        //collectionView.collectionViewLayout = layout
-        //collectionView.dataSource = dataSource
-        //collectionView.delegate = self
-        //collectionView.showsVerticalScrollIndicator = false
-        //collectionView.showsHorizontalScrollIndicator = false
+        collectionView.collectionViewLayout = layout
+        collectionView.dataSource = dataSource
+        collectionView.delegate = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         
         addTapGesture()
     }
@@ -63,14 +62,14 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
     
 }
 
-//extension PhotosCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {
-//
-//    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-//        guard let dataSource = dataSource else { return CGSizeZero }
-//        let imageSize = dataSource.collectionViewItemSizeAtIndexPath(indexPath)
-//        
-//        return CGSizeMake(imageSize.width, imageSize.height)
-//    }
-//
-//}
+extension PhotosCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        guard let dataSource = dataSource else { return CGSizeZero }
+        let imageSize = dataSource.collectionViewItemSizeAtIndexPath(indexPath)
+        
+        return CGSizeMake(imageSize.width, imageSize.height)
+    }
+
+}
 

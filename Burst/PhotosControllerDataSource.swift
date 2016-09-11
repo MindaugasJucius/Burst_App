@@ -42,8 +42,6 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         let cellNib = UINib.init(nibName: "PhotoCellCollectionViewCell", bundle: bundle)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "PhotoCell")
         collectionView.registerNib(UINib.init(nibName: "CollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "RandomCell")
-        let supplementaryNib = UINib.init(nibName: "PhotoDetailsSupplementaryView", bundle: bundle)
-        collectionView.registerNib(supplementaryNib, forSupplementaryViewOfKind: PhotoDetailsSupplementaryViewKind, withReuseIdentifier: "PhotoDetails")
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
