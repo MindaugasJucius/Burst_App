@@ -51,11 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func updateNavigationBarAppearance() {
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         UINavigationBar.appearance().titleTextAttributes =
-            [NSForegroundColorAttributeName : AppAppearance.lightBlueAppColor(),
+            [NSForegroundColorAttributeName : UIColor.whiteColor(),
              NSFontAttributeName : AppAppearance.navigationBarFont()]
-        //UINavigationBar.appearance().barTintColor = .whiteColor()
-        UINavigationBar.appearance().tintColor = .whiteColor()
+        UINavigationBar.appearance().barTintColor = AppAppearance.lightBlueAppColor()
+        UINavigationBar.appearance().tintColor = AppAppearance.lightBlueAppColor()
         UINavigationBar.appearance().setBackgroundImage(
                                                         UIImage(),
                                                         forBarPosition: .Any,
