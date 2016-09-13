@@ -130,7 +130,6 @@
 		03E3DE331D85BB550018294E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		03E3DE341D85BB550018294E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		03E3DE351D85BB550018294E /* UIScrollView_InfiniteScroll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIScrollView_InfiniteScroll.framework; path = Carthage/Build/iOS/UIScrollView_InfiniteScroll.framework; sourceTree = "<group>"; };
-		03E3DE361D85BB550018294E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 		03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosCollectionViewController.xib; sourceTree = "<group>"; };
@@ -306,7 +305,6 @@
 				03E3DE331D85BB550018294E /* Alamofire.framework */,
 				03E3DE341D85BB550018294E /* AlamofireImage.framework */,
 				03E3DE351D85BB550018294E /* UIScrollView_InfiniteScroll.framework */,
-				03E3DE361D85BB550018294E /* Unbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
