@@ -1,16 +1,6 @@
-//
-//  UIColor+Hex.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 26/06/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
+public extension UIColor {
 
-import UIKit
-
-extension UIColor {
-
-    static func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
+    public static func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
         
         // Convert hex string to an integer
         let hexint = Int(self.intFromHexString(hexString))
@@ -24,7 +14,7 @@ extension UIColor {
         return color
     }
     
-    private static func intFromHexString(hexStr: String) -> UInt32 {
+    public static func intFromHexString(hexStr: String) -> UInt32 {
         var hexInt: UInt32 = 0
         // Create scanner
         let scanner: NSScanner = NSScanner(string: hexStr)

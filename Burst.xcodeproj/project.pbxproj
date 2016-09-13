@@ -12,22 +12,16 @@
 		030DDDC21D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDDC01D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift */; };
 		030DDDC31D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030DDDC11D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib */; };
 		030DDDC61D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDDC51D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift */; };
-		030DDDCB1D1EB60100E2B2D4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDDCA1D1EB60100E2B2D4 /* User.swift */; };
-		030DDDCD1D1EB8D600E2B2D4 /* PhotoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDDCC1D1EB8D600E2B2D4 /* PhotoCategory.swift */; };
 		030F6D581D19C19B003D3B8C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F6D571D19C19B003D3B8C /* AppConstants.swift */; };
-		030F6D5B1D19C2DD003D3B8C /* UnsplashPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F6D5A1D19C2DD003D3B8C /* UnsplashPhotos.swift */; };
-		03208A811D201591006CA523 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03208A801D201591006CA523 /* UIColor+Hex.swift */; };
 		03345E561D69F4FC008CEF89 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03345E541D69F4FC008CEF89 /* PhotosTableViewController.swift */; };
 		03345E571D69F4FC008CEF89 /* PhotosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03345E551D69F4FC008CEF89 /* PhotosTableViewController.xib */; };
 		0335062E1D7743780093C0BD /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0335062D1D7743780093C0BD /* AppAppearance.swift */; };
 		033506311D7747530093C0BD /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033506301D7747530093C0BD /* MainTabBarViewController.swift */; };
 		033506331D7748F60093C0BD /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033506321D7748F60093C0BD /* ContainerViewController.xib */; };
-		033DC8331D27D32F006E7BED /* UIButton+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC8321D27D32F006E7BED /* UIButton+Blur.swift */; };
 		033DC8351D28483D006E7BED /* PhotoDownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */; };
 		033DC8371D284853006E7BED /* PhotoDownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */; };
 		0344F2331D7F2FE400700DE1 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */; };
 		0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2381D7F339C00700DE1 /* NavigationController.swift */; };
-		036F6A441D22FCF6002FE799 /* UIColor+Darkness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036F6A431D22FCF6002FE799 /* UIColor+Darkness.swift */; };
 		03841B281D26D635007813FE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03841B261D26D635007813FE /* CollectionViewCell.swift */; };
 		03841B291D26D635007813FE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03841B271D26D635007813FE /* CollectionViewCell.xib */; };
 		03A47A141D7B276500FB1843 /* PhotoSavingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A47A131D7B276500FB1843 /* PhotoSavingHelper.swift */; };
@@ -39,13 +33,13 @@
 		03C7D2391D18588E0040A875 /* BurstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2381D18588E0040A875 /* BurstTests.swift */; };
 		03DC3A371D88678900D18A48 /* BurstAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A341D88676E00D18A48 /* BurstAPI.framework */; };
 		03DC3A381D88678E00D18A48 /* BurstAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A341D88676E00D18A48 /* BurstAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03DC3A5B1D88728800D18A48 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A581D88728800D18A48 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03DC3A5C1D88728800D18A48 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A591D88728800D18A48 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03DC3A5D1D88728900D18A48 /* UIScrollView_InfiniteScroll.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A5A1D88728800D18A48 /* UIScrollView_InfiniteScroll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03E3DE371D85BB550018294E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE331D85BB550018294E /* Alamofire.framework */; };
 		03E3DE381D85BB550018294E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE341D85BB550018294E /* AlamofireImage.framework */; };
 		03E3DE391D85BB550018294E /* UIScrollView_InfiniteScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE351D85BB550018294E /* UIScrollView_InfiniteScroll.framework */; };
-		03E3DE3A1D85BB550018294E /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E3DE361D85BB550018294E /* Unbox.framework */; };
 		03E3DE421D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */; };
-		03E750071D1868FB002A47CF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E750061D1868FB002A47CF /* Photo.swift */; };
-		03E750091D1876E0002A47CF /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E750081D1876E0002A47CF /* URLs.swift */; };
 		03EE238F1D6B5B2D00B2F791 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */; };
 		03EE23911D6B5C5800B2F791 /* PhotosCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */; };
 		03FE51E11D294C4000AE5DCC /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FE51E01D294C4000AE5DCC /* TitleView.xib */; };
@@ -89,6 +83,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03DC3A5B1D88728800D18A48 /* Alamofire.framework in Embed Frameworks */,
+				03DC3A5C1D88728800D18A48 /* AlamofireImage.framework in Embed Frameworks */,
+				03DC3A5D1D88728900D18A48 /* UIScrollView_InfiniteScroll.framework in Embed Frameworks */,
 				03DC3A381D88678E00D18A48 /* BurstAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -103,22 +100,16 @@
 		030DDDC11D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCellCollectionViewCell.xib; sourceTree = "<group>"; };
 		030DDDC51D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosControllerDataSource.swift; sourceTree = "<group>"; };
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
-		030DDDCA1D1EB60100E2B2D4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		030DDDCC1D1EB8D600E2B2D4 /* PhotoCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCategory.swift; sourceTree = "<group>"; };
 		030F6D571D19C19B003D3B8C /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		030F6D5A1D19C2DD003D3B8C /* UnsplashPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhotos.swift; sourceTree = "<group>"; };
-		03208A801D201591006CA523 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		03345E541D69F4FC008CEF89 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
 		03345E551D69F4FC008CEF89 /* PhotosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosTableViewController.xib; sourceTree = "<group>"; };
 		0335062D1D7743780093C0BD /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		033506301D7747530093C0BD /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		033506321D7748F60093C0BD /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
-		033DC8321D27D32F006E7BED /* UIButton+Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Blur.swift"; sourceTree = "<group>"; };
 		033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloadProgressView.swift; sourceTree = "<group>"; };
 		033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDownloadProgressView.xib; sourceTree = "<group>"; };
 		0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		0344F2381D7F339C00700DE1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		036F6A431D22FCF6002FE799 /* UIColor+Darkness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Darkness.swift"; sourceTree = "<group>"; };
 		03841B261D26D635007813FE /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		03841B271D26D635007813FE /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		03A47A131D7B276500FB1843 /* PhotoSavingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSavingHelper.swift; sourceTree = "<group>"; };
@@ -133,13 +124,14 @@
 		03C7D2381D18588E0040A875 /* BurstTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurstTests.swift; sourceTree = "<group>"; };
 		03C7D23A1D18588E0040A875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03DC3A2E1D88676E00D18A48 /* BurstAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BurstAPI.xcodeproj; path = BurstAPI/BurstAPI.xcodeproj; sourceTree = "<group>"; };
+		03DC3A581D88728800D18A48 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		03DC3A591D88728800D18A48 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		03DC3A5A1D88728800D18A48 /* UIScrollView_InfiniteScroll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIScrollView_InfiniteScroll.framework; path = Carthage/Build/iOS/UIScrollView_InfiniteScroll.framework; sourceTree = "<group>"; };
 		03E3DE331D85BB550018294E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		03E3DE341D85BB550018294E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		03E3DE351D85BB550018294E /* UIScrollView_InfiniteScroll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIScrollView_InfiniteScroll.framework; path = Carthage/Build/iOS/UIScrollView_InfiniteScroll.framework; sourceTree = "<group>"; };
 		03E3DE361D85BB550018294E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 		03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
-		03E750061D1868FB002A47CF /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		03E750081D1876E0002A47CF /* URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosCollectionViewController.xib; sourceTree = "<group>"; };
 		03FE51E01D294C4000AE5DCC /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
@@ -154,7 +146,6 @@
 				03E3DE381D85BB550018294E /* AlamofireImage.framework in Frameworks */,
 				03E3DE391D85BB550018294E /* UIScrollView_InfiniteScroll.framework in Frameworks */,
 				03DC3A371D88678900D18A48 /* BurstAPI.framework in Frameworks */,
-				03E3DE3A1D85BB550018294E /* Unbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,26 +180,6 @@
 				03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */,
 			);
 			name = PhotosCollectionViewController;
-			sourceTree = "<group>";
-		};
-		030F6D591D19C2C9003D3B8C /* APICalls */ = {
-			isa = PBXGroup;
-			children = (
-				030F6D5A1D19C2DD003D3B8C /* UnsplashPhotos.swift */,
-			);
-			name = APICalls;
-			sourceTree = "<group>";
-		};
-		03208A821D2015AE006CA523 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				03208A801D201591006CA523 /* UIColor+Hex.swift */,
-				036F6A431D22FCF6002FE799 /* UIColor+Darkness.swift */,
-				033DC8321D27D32F006E7BED /* UIButton+Blur.swift */,
-				0335062D1D7743780093C0BD /* AppAppearance.swift */,
-				030F6D571D19C19B003D3B8C /* AppConstants.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		03345E511D69F476008CEF89 /* PhotosTableViewController */ = {
@@ -270,8 +241,10 @@
 		03C7D2171D18588E0040A875 = {
 			isa = PBXGroup;
 			children = (
+				03DC3A581D88728800D18A48 /* Alamofire.framework */,
+				03DC3A591D88728800D18A48 /* AlamofireImage.framework */,
+				03DC3A5A1D88728800D18A48 /* UIScrollView_InfiniteScroll.framework */,
 				030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */,
-				03E750041D1868D5002A47CF /* UnsplashAPI */,
 				03C7D2221D18588E0040A875 /* Burst */,
 				03C7D2371D18588E0040A875 /* BurstTests */,
 				03C7D2211D18588E0040A875 /* Products */,
@@ -294,7 +267,8 @@
 				0304BD6F1D7AF86B001723D0 /* Helpers */,
 				03345E591D69F8F5008CEF89 /* View Controllers */,
 				03345E581D69F642008CEF89 /* CommonViews */,
-				03208A821D2015AE006CA523 /* Extensions */,
+				0335062D1D7743780093C0BD /* AppAppearance.swift */,
+				030F6D571D19C19B003D3B8C /* AppConstants.swift */,
 				03C7D2231D18588E0040A875 /* AppDelegate.swift */,
 				03C7D2271D18588E0040A875 /* Main.storyboard */,
 				03C7D22A1D18588E0040A875 /* Assets.xcassets */,
@@ -325,26 +299,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		03E750041D1868D5002A47CF /* UnsplashAPI */ = {
-			isa = PBXGroup;
-			children = (
-				030F6D591D19C2C9003D3B8C /* APICalls */,
-				03E750051D1868E6002A47CF /* Entities */,
-			);
-			name = UnsplashAPI;
-			sourceTree = "<group>";
-		};
-		03E750051D1868E6002A47CF /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				03E750061D1868FB002A47CF /* Photo.swift */,
-				03E750081D1876E0002A47CF /* URLs.swift */,
-				030DDDCA1D1EB60100E2B2D4 /* User.swift */,
-				030DDDCC1D1EB8D600E2B2D4 /* PhotoCategory.swift */,
-			);
-			name = Entities;
-			sourceTree = "<group>";
-		};
 		0587710ADC647A5E3943AC69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,11 +318,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03C7D23D1D18588E0040A875 /* Build configuration list for PBXNativeTarget "Burst" */;
 			buildPhases = (
+				03E3DE311D85B8250018294E /* Copy carthage frameworks */,
 				03C7D21C1D18588E0040A875 /* Sources */,
 				03C7D21D1D18588E0040A875 /* Frameworks */,
 				03C7D21E1D18588E0040A875 /* Resources */,
 				03F9D2571D85B0550074C01A /* Embed Frameworks */,
-				03E3DE311D85B8250018294E /* Copy carthage frameworks */,
 			);
 			buildRules = (
 			);
@@ -509,17 +463,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030F6D5B1D19C2DD003D3B8C /* UnsplashPhotos.swift in Sources */,
-				03E750071D1868FB002A47CF /* Photo.swift in Sources */,
 				03EE238F1D6B5B2D00B2F791 /* ContainerViewController.swift in Sources */,
 				033506311D7747530093C0BD /* MainTabBarViewController.swift in Sources */,
 				03A47A141D7B276500FB1843 /* PhotoSavingHelper.swift in Sources */,
-				030DDDCD1D1EB8D600E2B2D4 /* PhotoCategory.swift in Sources */,
 				03C7D2261D18588E0040A875 /* PhotosCollectionViewController.swift in Sources */,
 				03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */,
-				033DC8331D27D32F006E7BED /* UIButton+Blur.swift in Sources */,
-				03E750091D1876E0002A47CF /* URLs.swift in Sources */,
-				03208A811D201591006CA523 /* UIColor+Hex.swift in Sources */,
 				0304BD711D7AF87F001723D0 /* AlertControllerPresenterHelper.swift in Sources */,
 				03841B281D26D635007813FE /* CollectionViewCell.swift in Sources */,
 				033DC8351D28483D006E7BED /* PhotoDownloadProgressView.swift in Sources */,
@@ -527,12 +475,10 @@
 				030DDDC61D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift in Sources */,
 				0344F2331D7F2FE400700DE1 /* StatusBarProgressView.swift in Sources */,
 				03345E561D69F4FC008CEF89 /* PhotosTableViewController.swift in Sources */,
-				030DDDCB1D1EB60100E2B2D4 /* User.swift in Sources */,
 				0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */,
 				030DDDC21D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift in Sources */,
 				03E3DE421D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				0304BD731D7B1965001723D0 /* PhotoAccessHelper.swift in Sources */,
-				036F6A441D22FCF6002FE799 /* UIColor+Darkness.swift in Sources */,
 				0335062E1D7743780093C0BD /* AppAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

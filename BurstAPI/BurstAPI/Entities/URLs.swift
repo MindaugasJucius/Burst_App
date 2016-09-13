@@ -1,15 +1,7 @@
-//
-//  URLs.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 20/06/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
 import UIKit
 import Unbox
 
-enum PhotoSize {
+public enum PhotoSize {
     case Full
     case Raw
     case Regular
@@ -17,15 +9,15 @@ enum PhotoSize {
     case Thumb
 }
 
-class URLs: NSObject, Unboxable {
+public class URLs: NSObject, Unboxable {
     
-    let full: NSURL
-    let raw: NSURL
-    let regular: NSURL
-    let small: NSURL
-    let thumb: NSURL
+    public let full: NSURL
+    public let raw: NSURL
+    public let regular: NSURL
+    public let small: NSURL
+    public let thumb: NSURL
     
-    required init(unboxer: Unboxer) {
+    required public init(unboxer: Unboxer) {
         self.full = unboxer.unbox("full")
         self.raw = unboxer.unbox("raw")
         self.regular = unboxer.unbox("regular")
@@ -33,7 +25,7 @@ class URLs: NSObject, Unboxable {
         self.thumb = unboxer.unbox("thumb")
     }
     
-    init(full: NSURL, raw: NSURL, regular: NSURL, small: NSURL, thumb: NSURL) {
+    public init(full: NSURL, raw: NSURL, regular: NSURL, small: NSURL, thumb: NSURL) {
         self.full = full
         self.raw = raw
         self.regular = regular

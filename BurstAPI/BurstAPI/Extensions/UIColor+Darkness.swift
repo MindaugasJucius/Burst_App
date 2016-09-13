@@ -1,16 +1,6 @@
-//
-//  UIColor+Darkness.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 28/06/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
+public extension UIColor {
 
-import UIKit
-
-extension UIColor {
-
-    func isLight() -> Bool
+    public func isLight() -> Bool
     {
         let components = CGColorGetComponents(self.CGColor)
         let componentFirstColor = components[0]

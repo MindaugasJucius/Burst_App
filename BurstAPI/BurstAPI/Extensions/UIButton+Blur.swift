@@ -1,14 +1,6 @@
-//
-//  UIButton+Blur.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 02/07/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
-extension UIButton {
+public extension UIButton {
     
-    func buttonImageAddGlow() {
+    public func buttonImageAddGlow() {
         let color = UIColor.whiteColor()
         guard let imageViewLayer = self.imageView?.layer else { return }
         imageViewLayer.shadowColor = color.CGColor

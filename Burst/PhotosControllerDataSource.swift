@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Photos
+import BurstAPI
 
 class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 

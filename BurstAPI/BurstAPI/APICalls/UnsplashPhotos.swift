@@ -11,19 +11,19 @@ import Alamofire
 import AlamofireImage
 import Unbox
 
-typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> ()
-typealias EmptyCallback = () -> ()
-typealias ProgressCallback = (progress: Float) -> ()
-typealias PhotoDownloadCallback = (response: Response<UIImage, NSError>, photo: Photo) -> ()
+public typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> ()
+public typealias EmptyCallback = () -> ()
+public typealias ProgressCallback = (progress: Float) -> ()
+public typealias PhotoDownloadCallback = (response: Response<UIImage, NSError>, photo: Photo) -> ()
 
-class UnsplashPhotos: NSObject {
+public class UnsplashPhotos: NSObject {
     
-    static let defaultInstance = UnsplashPhotos()
+    public static let defaultInstance = UnsplashPhotos()
     
     private let networkGroup = dispatch_group_create()
     private let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .FIFO, maximumActiveDownloads: 1)
 
-    func getPhotos(completionHandler: PhotosCallback, page: Int) -> [Photo]? {
+    public func getPhotos(completionHandler: PhotosCallback, page: Int) -> [Photo]? {
         guard let appID = AppConstants.appConstDict[BurstID] else { return .None }
         Alamofire.request(.GET, UnsplashPhotosAll, parameters: [BurstID : appID, "page": String(page)]).responseJSON { [weak self] response in
             switch response.result {
@@ -72,7 +72,7 @@ class UnsplashPhotos: NSObject {
         }
     }
     
-    func addImageToQueueForDownload(photo: Photo, progressHandler: ProgressCallback, completion: PhotoDownloadCallback) {
+    public func addImageToQueueForDownload(photo: Photo, progressHandler: ProgressCallback, completion: PhotoDownloadCallback) {
         imageDownloader.downloadImage(URLRequest: NSURLRequest(URL: photo.urls.full), filter: .None,
             progress: { (bytesRead, totalBytesRead, totalExpectedBytesToRead) in
                 let progress = Float(totalBytesRead) / Float(totalExpectedBytesToRead)

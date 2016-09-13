@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BurstAPI
 
 typealias AfterBlur = (cell: PhotoCellCollectionViewCell) -> ()
 typealias PhotoSaveCallback = (photoToDownload: Photo) -> ()

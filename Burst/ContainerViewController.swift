@@ -1,5 +1,6 @@
 import UIKit
 import Photos
+import BurstAPI
 
 // progress viewa isvis i sita nukelt
 // arba padaryt kad ant celiu rodytu progresa

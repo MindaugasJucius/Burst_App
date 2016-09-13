@@ -1,27 +1,19 @@
-//
-//  Photo.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 20/06/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
 import UIKit
 import Unbox
 
-class Photo: NSObject, Unboxable {
+public class Photo: NSObject, Unboxable {
 
-    let id: String
-    let likes: NSInteger
-    let urls: URLs
-    let uploader: User
-    let fullSize: CGSize
-    let categories: [PhotoCategory]?
-    let color: UIColor
+    public let id: String
+    public let likes: NSInteger
+    public let urls: URLs
+    public let uploader: User
+    public let fullSize: CGSize
+    public let categories: [PhotoCategory]?
+    public let color: UIColor
      
-    var thumbImage: UIImage?
+    public var thumbImage: UIImage?
     
-    required init(unboxer: Unboxer) {
+    required public init(unboxer: Unboxer) {
         self.id = unboxer.unbox("id")
         self.urls = unboxer.unbox("urls")
         self.likes = unboxer.unbox("likes")
@@ -34,7 +26,7 @@ class Photo: NSObject, Unboxable {
         self.fullSize = CGSizeMake(width, height)
     }
     
-    init(id: String, urls: URLs, likes: NSInteger, user: User, categories: [PhotoCategory]?, color: String, height: CGFloat, width: CGFloat) {
+    public init(id: String, urls: URLs, likes: NSInteger, user: User, categories: [PhotoCategory]?, color: String, height: CGFloat, width: CGFloat) {
         self.id = id
         self.urls = urls
         self.likes = likes

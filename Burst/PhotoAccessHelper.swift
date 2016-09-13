@@ -1,5 +1,6 @@
 import UIKit
 import Photos
+import BurstAPI
 
 private struct AlertProperties {
     let message: String
