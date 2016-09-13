@@ -230,6 +230,7 @@
 				TargetAttributes = {
 					03DC3A031D8860B300D18A48 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					03DC3A0D1D8860B300D18A48 = {
 						CreatedOnToolsVersion = 7.3;
@@ -414,6 +415,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -432,6 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = min.BurstAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

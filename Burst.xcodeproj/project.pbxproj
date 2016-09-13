@@ -7,26 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0304BD711D7AF87F001723D0 /* AlertControllerPresenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304BD701D7AF87F001723D0 /* AlertControllerPresenterHelper.swift */; };
-		0304BD731D7B1965001723D0 /* PhotoAccessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304BD721D7B1965001723D0 /* PhotoAccessHelper.swift */; };
-		030DDDC21D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDDC01D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift */; };
-		030DDDC31D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030DDDC11D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib */; };
-		030DDDC61D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDDC51D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift */; };
-		030F6D581D19C19B003D3B8C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F6D571D19C19B003D3B8C /* AppConstants.swift */; };
-		03345E561D69F4FC008CEF89 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03345E541D69F4FC008CEF89 /* PhotosTableViewController.swift */; };
-		03345E571D69F4FC008CEF89 /* PhotosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03345E551D69F4FC008CEF89 /* PhotosTableViewController.xib */; };
-		0335062E1D7743780093C0BD /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0335062D1D7743780093C0BD /* AppAppearance.swift */; };
-		033506311D7747530093C0BD /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033506301D7747530093C0BD /* MainTabBarViewController.swift */; };
-		033506331D7748F60093C0BD /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033506321D7748F60093C0BD /* ContainerViewController.xib */; };
-		033DC8351D28483D006E7BED /* PhotoDownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */; };
-		033DC8371D284853006E7BED /* PhotoDownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */; };
-		0344F2331D7F2FE400700DE1 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */; };
-		0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344F2381D7F339C00700DE1 /* NavigationController.swift */; };
-		03841B281D26D635007813FE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03841B261D26D635007813FE /* CollectionViewCell.swift */; };
-		03841B291D26D635007813FE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03841B271D26D635007813FE /* CollectionViewCell.xib */; };
-		03A47A141D7B276500FB1843 /* PhotoSavingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A47A131D7B276500FB1843 /* PhotoSavingHelper.swift */; };
 		03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2231D18588E0040A875 /* AppDelegate.swift */; };
-		03C7D2261D18588E0040A875 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2251D18588E0040A875 /* PhotosCollectionViewController.swift */; };
 		03C7D2291D18588E0040A875 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D2271D18588E0040A875 /* Main.storyboard */; };
 		03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22A1D18588E0040A875 /* Assets.xcassets */; };
 		03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */; };
@@ -39,10 +20,27 @@
 		03DC3A6D1D88758800D18A48 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A581D88728800D18A48 /* Alamofire.framework */; };
 		03DC3A6E1D88758800D18A48 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A591D88728800D18A48 /* AlamofireImage.framework */; };
 		03DC3A6F1D88758800D18A48 /* UIScrollView_InfiniteScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DC3A5A1D88728800D18A48 /* UIScrollView_InfiniteScroll.framework */; };
-		03E3DE421D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */; };
-		03EE238F1D6B5B2D00B2F791 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */; };
-		03EE23911D6B5C5800B2F791 /* PhotosCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */; };
-		03FE51E11D294C4000AE5DCC /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FE51E01D294C4000AE5DCC /* TitleView.xib */; };
+		03DC3A7D1D88781E00D18A48 /* AlertControllerPresenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A781D88781E00D18A48 /* AlertControllerPresenterHelper.swift */; };
+		03DC3A7E1D88781E00D18A48 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A791D88781E00D18A48 /* AppAppearance.swift */; };
+		03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A7A1D88781E00D18A48 /* AppConstants.swift */; };
+		03DC3A801D88781E00D18A48 /* PhotoAccessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A7B1D88781E00D18A48 /* PhotoAccessHelper.swift */; };
+		03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A7C1D88781E00D18A48 /* PhotoSavingHelper.swift */; };
+		03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A931D88782F00D18A48 /* ContainerViewController.swift */; };
+		03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3A941D88782F00D18A48 /* ContainerViewController.xib */; };
+		03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */; };
+		03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A961D88782F00D18A48 /* NavigationController.swift */; };
+		03DC3AA61D88782F00D18A48 /* PhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A991D88782F00D18A48 /* PhotoCellCollectionViewCell.swift */; };
+		03DC3AA71D88782F00D18A48 /* PhotoCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3A9A1D88782F00D18A48 /* PhotoCellCollectionViewCell.xib */; };
+		03DC3AA81D88782F00D18A48 /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A9B1D88782F00D18A48 /* CHTCollectionViewWaterfallLayout.swift */; };
+		03DC3AA91D88782F00D18A48 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A9C1D88782F00D18A48 /* PhotosCollectionViewController.swift */; };
+		03DC3AAA1D88782F00D18A48 /* PhotosCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3A9D1D88782F00D18A48 /* PhotosCollectionViewController.xib */; };
+		03DC3AAB1D88782F00D18A48 /* PhotosControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A9E1D88782F00D18A48 /* PhotosControllerDataSource.swift */; };
+		03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */; };
+		03DC3AAD1D88782F00D18A48 /* PhotosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */; };
+		03DC3AB31D8878F100D18A48 /* PhotoDownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AAF1D8878F100D18A48 /* PhotoDownloadProgressView.swift */; };
+		03DC3AB41D8878F100D18A48 /* PhotoDownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */; };
+		03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */; };
+		03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB21D8878F100D18A48 /* TitleView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,28 +92,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0304BD701D7AF87F001723D0 /* AlertControllerPresenterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerPresenterHelper.swift; sourceTree = "<group>"; };
-		0304BD721D7B1965001723D0 /* PhotoAccessHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAccessHelper.swift; sourceTree = "<group>"; };
-		030DDDC01D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
-		030DDDC11D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCellCollectionViewCell.xib; sourceTree = "<group>"; };
-		030DDDC51D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosControllerDataSource.swift; sourceTree = "<group>"; };
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
-		030F6D571D19C19B003D3B8C /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		03345E541D69F4FC008CEF89 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
-		03345E551D69F4FC008CEF89 /* PhotosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosTableViewController.xib; sourceTree = "<group>"; };
-		0335062D1D7743780093C0BD /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
-		033506301D7747530093C0BD /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		033506321D7748F60093C0BD /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
-		033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloadProgressView.swift; sourceTree = "<group>"; };
-		033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDownloadProgressView.xib; sourceTree = "<group>"; };
-		0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
-		0344F2381D7F339C00700DE1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		03841B261D26D635007813FE /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		03841B271D26D635007813FE /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
-		03A47A131D7B276500FB1843 /* PhotoSavingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSavingHelper.swift; sourceTree = "<group>"; };
 		03C7D2201D18588E0040A875 /* Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C7D2231D18588E0040A875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03C7D2251D18588E0040A875 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		03C7D2281D18588E0040A875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03C7D22A1D18588E0040A875 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03C7D22D1D18588E0040A875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -127,10 +106,27 @@
 		03DC3A581D88728800D18A48 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		03DC3A591D88728800D18A48 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		03DC3A5A1D88728800D18A48 /* UIScrollView_InfiniteScroll.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIScrollView_InfiniteScroll.framework; path = Carthage/Build/iOS/UIScrollView_InfiniteScroll.framework; sourceTree = "<group>"; };
-		03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
-		03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosCollectionViewController.xib; sourceTree = "<group>"; };
-		03FE51E01D294C4000AE5DCC /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
+		03DC3A781D88781E00D18A48 /* AlertControllerPresenterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerPresenterHelper.swift; sourceTree = "<group>"; };
+		03DC3A791D88781E00D18A48 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		03DC3A7A1D88781E00D18A48 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		03DC3A7B1D88781E00D18A48 /* PhotoAccessHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAccessHelper.swift; sourceTree = "<group>"; };
+		03DC3A7C1D88781E00D18A48 /* PhotoSavingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSavingHelper.swift; sourceTree = "<group>"; };
+		03DC3A931D88782F00D18A48 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		03DC3A941D88782F00D18A48 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
+		03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		03DC3A961D88782F00D18A48 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		03DC3A991D88782F00D18A48 /* PhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		03DC3A9A1D88782F00D18A48 /* PhotoCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCellCollectionViewCell.xib; sourceTree = "<group>"; };
+		03DC3A9B1D88782F00D18A48 /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		03DC3A9C1D88782F00D18A48 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		03DC3A9D1D88782F00D18A48 /* PhotosCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosCollectionViewController.xib; sourceTree = "<group>"; };
+		03DC3A9E1D88782F00D18A48 /* PhotosControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosControllerDataSource.swift; sourceTree = "<group>"; };
+		03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
+		03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosTableViewController.xib; sourceTree = "<group>"; };
+		03DC3AAF1D8878F100D18A48 /* PhotoDownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloadProgressView.swift; sourceTree = "<group>"; };
+		03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDownloadProgressView.xib; sourceTree = "<group>"; };
+		03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
+		03DC3AB21D8878F100D18A48 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,85 +151,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0304BD6F1D7AF86B001723D0 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				0304BD701D7AF87F001723D0 /* AlertControllerPresenterHelper.swift */,
-				0304BD721D7B1965001723D0 /* PhotoAccessHelper.swift */,
-				03A47A131D7B276500FB1843 /* PhotoSavingHelper.swift */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		030DDDC41D1C3F7A00E2B2D4 /* PhotosCollectionViewController */ = {
-			isa = PBXGroup;
-			children = (
-				033DC8311D27BA36006E7BED /* Views */,
-				033DC8301D27B9EB006E7BED /* Cells */,
-				03C7D2251D18588E0040A875 /* PhotosCollectionViewController.swift */,
-				030DDDC51D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift */,
-				03EE23901D6B5C5800B2F791 /* PhotosCollectionViewController.xib */,
-				03E3DE411D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift */,
-			);
-			name = PhotosCollectionViewController;
-			sourceTree = "<group>";
-		};
-		03345E511D69F476008CEF89 /* PhotosTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				03345E541D69F4FC008CEF89 /* PhotosTableViewController.swift */,
-				03345E551D69F4FC008CEF89 /* PhotosTableViewController.xib */,
-			);
-			name = PhotosTableViewController;
-			sourceTree = "<group>";
-		};
-		03345E581D69F642008CEF89 /* CommonViews */ = {
-			isa = PBXGroup;
-			children = (
-				033DC8341D28483D006E7BED /* PhotoDownloadProgressView.swift */,
-				033DC8361D284853006E7BED /* PhotoDownloadProgressView.xib */,
-				0344F2321D7F2FE400700DE1 /* StatusBarProgressView.swift */,
-			);
-			name = CommonViews;
-			sourceTree = "<group>";
-		};
-		03345E591D69F8F5008CEF89 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0335062F1D77472D0093C0BD /* CommonControllers */,
-				030DDDC41D1C3F7A00E2B2D4 /* PhotosCollectionViewController */,
-				03345E511D69F476008CEF89 /* PhotosTableViewController */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		0335062F1D77472D0093C0BD /* CommonControllers */ = {
-			isa = PBXGroup;
-			children = (
-				03EE238E1D6B5B2D00B2F791 /* ContainerViewController.swift */,
-				033506301D7747530093C0BD /* MainTabBarViewController.swift */,
-				033506321D7748F60093C0BD /* ContainerViewController.xib */,
-				0344F2381D7F339C00700DE1 /* NavigationController.swift */,
-			);
-			name = CommonControllers;
-			sourceTree = "<group>";
-		};
-		033DC8301D27B9EB006E7BED /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				030DDDC01D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift */,
-				030DDDC11D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		033DC8311D27BA36006E7BED /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		03C7D2171D18588E0040A875 = {
 			isa = PBXGroup;
 			children = (
@@ -257,19 +174,14 @@
 		03C7D2221D18588E0040A875 /* Burst */ = {
 			isa = PBXGroup;
 			children = (
-				0304BD6F1D7AF86B001723D0 /* Helpers */,
-				03345E591D69F8F5008CEF89 /* View Controllers */,
-				03345E581D69F642008CEF89 /* CommonViews */,
-				0335062D1D7743780093C0BD /* AppAppearance.swift */,
-				030F6D571D19C19B003D3B8C /* AppConstants.swift */,
+				03DC3AAE1D8878F100D18A48 /* Common Views */,
+				03DC3A911D88782F00D18A48 /* View Controllers */,
+				03DC3A771D88781E00D18A48 /* Helpers */,
 				03C7D2231D18588E0040A875 /* AppDelegate.swift */,
 				03C7D2271D18588E0040A875 /* Main.storyboard */,
 				03C7D22A1D18588E0040A875 /* Assets.xcassets */,
 				03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */,
 				03C7D22F1D18588E0040A875 /* Info.plist */,
-				03841B261D26D635007813FE /* CollectionViewCell.swift */,
-				03841B271D26D635007813FE /* CollectionViewCell.xib */,
-				03FE51E01D294C4000AE5DCC /* TitleView.xib */,
 			);
 			path = Burst;
 			sourceTree = "<group>";
@@ -290,6 +202,80 @@
 				03DC3A361D88676E00D18A48 /* BurstAPITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		03DC3A771D88781E00D18A48 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3A781D88781E00D18A48 /* AlertControllerPresenterHelper.swift */,
+				03DC3A791D88781E00D18A48 /* AppAppearance.swift */,
+				03DC3A7A1D88781E00D18A48 /* AppConstants.swift */,
+				03DC3A7B1D88781E00D18A48 /* PhotoAccessHelper.swift */,
+				03DC3A7C1D88781E00D18A48 /* PhotoSavingHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		03DC3A911D88782F00D18A48 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3A921D88782F00D18A48 /* Common Controllers */,
+				03DC3A971D88782F00D18A48 /* Photos CollectionView Controller */,
+				03DC3A9F1D88782F00D18A48 /* Photos TableView Controller */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		03DC3A921D88782F00D18A48 /* Common Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3A931D88782F00D18A48 /* ContainerViewController.swift */,
+				03DC3A941D88782F00D18A48 /* ContainerViewController.xib */,
+				03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */,
+				03DC3A961D88782F00D18A48 /* NavigationController.swift */,
+			);
+			path = "Common Controllers";
+			sourceTree = "<group>";
+		};
+		03DC3A971D88782F00D18A48 /* Photos CollectionView Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3A981D88782F00D18A48 /* Cells */,
+				03DC3A9B1D88782F00D18A48 /* CHTCollectionViewWaterfallLayout.swift */,
+				03DC3A9C1D88782F00D18A48 /* PhotosCollectionViewController.swift */,
+				03DC3A9D1D88782F00D18A48 /* PhotosCollectionViewController.xib */,
+				03DC3A9E1D88782F00D18A48 /* PhotosControllerDataSource.swift */,
+			);
+			path = "Photos CollectionView Controller";
+			sourceTree = "<group>";
+		};
+		03DC3A981D88782F00D18A48 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3A991D88782F00D18A48 /* PhotoCellCollectionViewCell.swift */,
+				03DC3A9A1D88782F00D18A48 /* PhotoCellCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		03DC3A9F1D88782F00D18A48 /* Photos TableView Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */,
+				03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */,
+			);
+			path = "Photos TableView Controller";
+			sourceTree = "<group>";
+		};
+		03DC3AAE1D8878F100D18A48 /* Common Views */ = {
+			isa = PBXGroup;
+			children = (
+				03DC3AAF1D8878F100D18A48 /* PhotoDownloadProgressView.swift */,
+				03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */,
+				03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */,
+				03DC3AB21D8878F100D18A48 /* TitleView.xib */,
+			);
+			path = "Common Views";
 			sourceTree = "<group>";
 		};
 		0587710ADC647A5E3943AC69 /* Frameworks */ = {
@@ -357,6 +343,7 @@
 					03C7D21F1D18588E0040A875 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = N823MDJ67R;
+						LastSwiftMigration = 0800;
 					};
 					03C7D2331D18588E0040A875 = {
 						CreatedOnToolsVersion = 7.3;
@@ -411,16 +398,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				033DC8371D284853006E7BED /* PhotoDownloadProgressView.xib in Resources */,
+				03DC3AB41D8878F100D18A48 /* PhotoDownloadProgressView.xib in Resources */,
+				03DC3AA71D88782F00D18A48 /* PhotoCellCollectionViewCell.xib in Resources */,
 				03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */,
-				03841B291D26D635007813FE /* CollectionViewCell.xib in Resources */,
-				03345E571D69F4FC008CEF89 /* PhotosTableViewController.xib in Resources */,
-				033506331D7748F60093C0BD /* ContainerViewController.xib in Resources */,
-				03FE51E11D294C4000AE5DCC /* TitleView.xib in Resources */,
-				030DDDC31D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.xib in Resources */,
+				03DC3AAD1D88782F00D18A48 /* PhotosTableViewController.xib in Resources */,
+				03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
 				03C7D2291D18588E0040A875 /* Main.storyboard in Resources */,
-				03EE23911D6B5C5800B2F791 /* PhotosCollectionViewController.xib in Resources */,
+				03DC3AAA1D88782F00D18A48 /* PhotosCollectionViewController.xib in Resources */,
+				03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,23 +441,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03EE238F1D6B5B2D00B2F791 /* ContainerViewController.swift in Sources */,
-				033506311D7747530093C0BD /* MainTabBarViewController.swift in Sources */,
-				03A47A141D7B276500FB1843 /* PhotoSavingHelper.swift in Sources */,
-				03C7D2261D18588E0040A875 /* PhotosCollectionViewController.swift in Sources */,
+				03DC3A7E1D88781E00D18A48 /* AppAppearance.swift in Sources */,
 				03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */,
-				0304BD711D7AF87F001723D0 /* AlertControllerPresenterHelper.swift in Sources */,
-				03841B281D26D635007813FE /* CollectionViewCell.swift in Sources */,
-				033DC8351D28483D006E7BED /* PhotoDownloadProgressView.swift in Sources */,
-				030F6D581D19C19B003D3B8C /* AppConstants.swift in Sources */,
-				030DDDC61D1C3FDF00E2B2D4 /* PhotosControllerDataSource.swift in Sources */,
-				0344F2331D7F2FE400700DE1 /* StatusBarProgressView.swift in Sources */,
-				03345E561D69F4FC008CEF89 /* PhotosTableViewController.swift in Sources */,
-				0344F2391D7F339C00700DE1 /* NavigationController.swift in Sources */,
-				030DDDC21D1C3E7F00E2B2D4 /* PhotoCellCollectionViewCell.swift in Sources */,
-				03E3DE421D85C4590018294E /* CHTCollectionViewWaterfallLayout.swift in Sources */,
-				0304BD731D7B1965001723D0 /* PhotoAccessHelper.swift in Sources */,
-				0335062E1D7743780093C0BD /* AppAppearance.swift in Sources */,
+				03DC3A801D88781E00D18A48 /* PhotoAccessHelper.swift in Sources */,
+				03DC3AA61D88782F00D18A48 /* PhotoCellCollectionViewCell.swift in Sources */,
+				03DC3AA91D88782F00D18A48 /* PhotosCollectionViewController.swift in Sources */,
+				03DC3A7D1D88781E00D18A48 /* AlertControllerPresenterHelper.swift in Sources */,
+				03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */,
+				03DC3AA81D88782F00D18A48 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
+				03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */,
+				03DC3AB31D8878F100D18A48 /* PhotoDownloadProgressView.swift in Sources */,
+				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
+				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
+				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
+				03DC3AAB1D88782F00D18A48 /* PhotosControllerDataSource.swift in Sources */,
+				03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */,
+				03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = min.Burst;
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -638,6 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = min.Burst;
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
