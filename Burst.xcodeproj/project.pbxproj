@@ -37,8 +37,6 @@
 		03DC3AAB1D88782F00D18A48 /* PhotosControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A9E1D88782F00D18A48 /* PhotosControllerDataSource.swift */; };
 		03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */; };
 		03DC3AAD1D88782F00D18A48 /* PhotosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */; };
-		03DC3AB31D8878F100D18A48 /* PhotoDownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AAF1D8878F100D18A48 /* PhotoDownloadProgressView.swift */; };
-		03DC3AB41D8878F100D18A48 /* PhotoDownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */; };
 		03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */; };
 		03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB21D8878F100D18A48 /* TitleView.xib */; };
 		03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EF71DA13550002BDF0A /* Unbox.framework */; };
@@ -119,8 +117,6 @@
 		03DC3A9E1D88782F00D18A48 /* PhotosControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosControllerDataSource.swift; sourceTree = "<group>"; };
 		03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
 		03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosTableViewController.xib; sourceTree = "<group>"; };
-		03DC3AAF1D8878F100D18A48 /* PhotoDownloadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloadProgressView.swift; sourceTree = "<group>"; };
-		03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDownloadProgressView.xib; sourceTree = "<group>"; };
 		03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		03DC3AB21D8878F100D18A48 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		03EE3EF71DA13550002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
@@ -269,8 +265,6 @@
 		03DC3AAE1D8878F100D18A48 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
-				03DC3AAF1D8878F100D18A48 /* PhotoDownloadProgressView.swift */,
-				03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */,
 				03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */,
 				03DC3AB21D8878F100D18A48 /* TitleView.xib */,
 			);
@@ -392,7 +386,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03DC3AB41D8878F100D18A48 /* PhotoDownloadProgressView.xib in Resources */,
 				03DC3AA71D88782F00D18A48 /* PhotoCellCollectionViewCell.xib in Resources */,
 				03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */,
 				03DC3AAD1D88782F00D18A48 /* PhotosTableViewController.xib in Resources */,
@@ -444,7 +437,6 @@
 				03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */,
 				03DC3AA81D88782F00D18A48 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */,
-				03DC3AB31D8878F100D18A48 /* PhotoDownloadProgressView.swift in Sources */,
 				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
 				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
