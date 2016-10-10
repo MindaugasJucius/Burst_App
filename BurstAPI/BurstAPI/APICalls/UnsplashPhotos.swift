@@ -1,11 +1,3 @@
-//
-//  UnsplashPhotos.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 21/06/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
 import UIKit
 import Alamofire
 import AlamofireImage

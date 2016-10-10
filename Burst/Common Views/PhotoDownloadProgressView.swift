@@ -66,7 +66,7 @@ class PhotoDownloadProgressView: UIView {
    
     static func createFromNib() -> PhotoDownloadProgressView? {
         guard let nibName = nibName() else { return nil }
-        guard let view = NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil).last as? PhotoDownloadProgressView else { return nil }
+        guard let view = NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil)!.last as? PhotoDownloadProgressView else { return nil }
         return view
     }
     

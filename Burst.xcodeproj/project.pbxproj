@@ -41,6 +41,8 @@
 		03DC3AB41D8878F100D18A48 /* PhotoDownloadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */; };
 		03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */; };
 		03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB21D8878F100D18A48 /* TitleView.xib */; };
+		03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EF71DA13550002BDF0A /* Unbox.framework */; };
+		03EE3EFB1DA13B3A002BDF0A /* Unbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +60,6 @@
 			remoteGlobalIDString = 03DC3A041D8860B300D18A48;
 			remoteInfo = BurstAPI;
 		};
-		03DC3A351D88676E00D18A48 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03DC3A2E1D88676E00D18A48 /* BurstAPI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03DC3A0E1D8860B300D18A48;
-			remoteInfo = BurstAPITests;
-		};
 		03DC3A391D88679700D18A48 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03DC3A2E1D88676E00D18A48 /* BurstAPI.xcodeproj */;
@@ -81,6 +76,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03EE3EFB1DA13B3A002BDF0A /* Unbox.framework in Embed Frameworks */,
 				03DC3A381D88678E00D18A48 /* BurstAPI.framework in Embed Frameworks */,
 				03DC3A6A1D88756000D18A48 /* Alamofire.framework in Embed Frameworks */,
 				03DC3A6B1D88756000D18A48 /* AlamofireImage.framework in Embed Frameworks */,
@@ -127,6 +123,8 @@
 		03DC3AB01D8878F100D18A48 /* PhotoDownloadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDownloadProgressView.xib; sourceTree = "<group>"; };
 		03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		03DC3AB21D8878F100D18A48 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
+		03EE3EF71DA13550002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
+		03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */,
 				03DC3A371D88678900D18A48 /* BurstAPI.framework in Frameworks */,
 				03DC3A6D1D88758800D18A48 /* Alamofire.framework in Frameworks */,
 				03DC3A6E1D88758800D18A48 /* AlamofireImage.framework in Frameworks */,
@@ -154,6 +153,7 @@
 		03C7D2171D18588E0040A875 = {
 			isa = PBXGroup;
 			children = (
+				03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */,
 				030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */,
 				03C7D2221D18588E0040A875 /* Burst */,
 				03C7D2371D18588E0040A875 /* BurstTests */,
@@ -199,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				03DC3A341D88676E00D18A48 /* BurstAPI.framework */,
-				03DC3A361D88676E00D18A48 /* BurstAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +280,7 @@
 		0587710ADC647A5E3943AC69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03EE3EF71DA13550002BDF0A /* Unbox.framework */,
 				03DC3A581D88728800D18A48 /* Alamofire.framework */,
 				03DC3A591D88728800D18A48 /* AlamofireImage.framework */,
 				03DC3A5A1D88728800D18A48 /* UIScrollView_InfiniteScroll.framework */,
@@ -347,6 +347,7 @@
 					};
 					03C7D2331D18588E0040A875 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 03C7D21F1D18588E0040A875;
 					};
 				};
@@ -382,13 +383,6 @@
 			fileType = wrapper.framework;
 			path = BurstAPI.framework;
 			remoteRef = 03DC3A331D88676E00D18A48 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03DC3A361D88676E00D18A48 /* BurstAPITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = BurstAPITests.xctest;
-			remoteRef = 03DC3A351D88676E00D18A48 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -636,6 +630,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = min.BurstTests;
 				PRODUCT_NAME = Burst;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Burst.app/Burst";
 			};
 			name = Debug;
@@ -648,6 +643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = min.BurstTests;
 				PRODUCT_NAME = Burst;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Burst.app/Burst";
 			};
 			name = Release;

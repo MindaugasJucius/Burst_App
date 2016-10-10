@@ -16,6 +16,8 @@ class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //hidesBarsOnSwipe = true
+        
         let width = UIScreen.mainScreen().bounds.width
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: width, height: 0))
         let progressView = StatusBarProgressView(frame: frame, progress: 0.5)
