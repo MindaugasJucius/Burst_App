@@ -24,10 +24,10 @@ class StatusBarProgressView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addProgressView(withFrame frame: CGRect, andProgress progress: Float = 0) {
+    fileprivate func addProgressView(withFrame frame: CGRect, andProgress progress: Float = 0) {
         let progressView = UIProgressView()
-        progressView.progressViewStyle = .Bar
-        progressView.progressTintColor = .whiteColor()
+        progressView.progressViewStyle = .bar
+        progressView.progressTintColor = .white()
         progressView.trackTintColor = AppAppearance.lightBlueAppColor()
         progressView.progress = progress
         progressView.frame =  frame

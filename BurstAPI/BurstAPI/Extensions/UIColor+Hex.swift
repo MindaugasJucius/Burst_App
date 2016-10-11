@@ -1,6 +1,6 @@
 public extension UIColor {
 
-    public static func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
+    public static func colorWithHexString(_ hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
         
         // Convert hex string to an integer
         let hexint = Int(self.intFromHexString(hexString))
@@ -14,14 +14,14 @@ public extension UIColor {
         return color
     }
     
-    public static func intFromHexString(hexStr: String) -> UInt32 {
+    public static func intFromHexString(_ hexStr: String) -> UInt32 {
         var hexInt: UInt32 = 0
         // Create scanner
-        let scanner: NSScanner = NSScanner(string: hexStr)
+        let scanner: Scanner = Scanner(string: hexStr)
         // Tell scanner to skip the # character
-        scanner.charactersToBeSkipped = NSCharacterSet(charactersInString: "#")
+        scanner.charactersToBeSkipped = CharacterSet(charactersIn: "#")
         // Scan hex value
-        scanner.scanHexInt(&hexInt)
+        scanner.scanHexInt32(&hexInt)
         return hexInt
     }
     

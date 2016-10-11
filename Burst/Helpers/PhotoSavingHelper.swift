@@ -6,11 +6,11 @@ private let AlbumPredicate = "title = %@"
 
 class PhotoSavingHelper: NSObject {
 
-    private let controller: UIViewController
+    fileprivate let controller: UIViewController
     
-    private var photosToSave: [UIImage] = []
-    private var assetCollection: PHAssetCollection?
-    private var collection: PHAssetCollection?
+    fileprivate var photosToSave: [UIImage] = []
+    fileprivate var assetCollection: PHAssetCollection?
+    fileprivate var collection: PHAssetCollection?
     
     init(controller: UIViewController) {
         self.controller = controller
@@ -39,11 +39,11 @@ class PhotoSavingHelper: NSObject {
         )
     }
     
-    private func addPhotoToAlbum(image: UIImage) {
-        guard let index = photosToSave.indexOf(image) else {
+    fileprivate func addPhotoToAlbum(_ image: UIImage) {
+        guard let index = photosToSave.index(of: image) else {
             return
         }
-        photosToSave.removeAtIndex(index)
+        photosToSave.remove(at: index)
         createAlbumIfNeeded(withSuccess: { [weak self] in
                 self?.createPhoto(fromImage: image)
             },
@@ -54,35 +54,35 @@ class PhotoSavingHelper: NSObject {
         
     }
     
-    private func createPhoto(fromImage image: UIImage) {
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ [weak self] in
+    fileprivate func createPhoto(fromImage image: UIImage) {
+        PHPhotoLibrary.shared().performChanges({ [weak self] in
                 guard let album = self?.assetCollection else {
                     return
                 }
-                let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
+                let assetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
                 let assetPlaceholder = assetRequest.placeholderForCreatedAsset
                 guard let placeholder = assetPlaceholder else {
                     return
                 }
-                let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: album)
+                let albumChangeRequest = PHAssetCollectionChangeRequest(for: album)
                 albumChangeRequest?.addAssets([placeholder])
             },
             completionHandler: { [weak self] success, error in
                 if let error = error {
-                    self?.presentError(error)
+                    self?.presentError(error as NSError?)
                 }
             }
         )
     }
     
-    private func createAlbumIfNeeded(withSuccess created: EmptyCallback, andFailure failure: EmptyCallback) {
+    fileprivate func createAlbumIfNeeded(withSuccess created: EmptyCallback, andFailure failure: EmptyCallback) {
         //Get PHFetch Options
         let fetchOptions = PHFetchOptions()
         var assetCollectionPlaceholder: PHObjectPlaceholder = PHObjectPlaceholder()
         
         fetchOptions.predicate = NSPredicate(format: AlbumPredicate, APPName)
-        let collection : PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album,
-            subtype: .Any,
+        let collection : PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .album,
+            subtype: .any,
             options: fetchOptions
         )
         
@@ -94,18 +94,18 @@ class PhotoSavingHelper: NSObject {
         }
         
         //If not found - Then create a new album
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                let createAlbumRequest : PHAssetCollectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(APPName)
+        PHPhotoLibrary.shared().performChanges({
+                let createAlbumRequest : PHAssetCollectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: APPName)
                 assetCollectionPlaceholder = createAlbumRequest.placeholderForCreatedAssetCollection
             },
             completionHandler: { [weak self] success, error in
                 guard success else {
-                    self?.presentError(error)
+                    self?.presentError(error as NSError?)
                     failure()
                     return
                 }
-                let collectionFetchResult = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers(
-                    [assetCollectionPlaceholder.localIdentifier],
+                let collectionFetchResult = PHAssetCollection.fetchAssetCollections(
+                    withLocalIdentifiers: [assetCollectionPlaceholder.localIdentifier],
                     options: nil
                 )
                 self?.assetCollection = collectionFetchResult.firstObject as? PHAssetCollection
@@ -114,7 +114,7 @@ class PhotoSavingHelper: NSObject {
         )
     }
     
-    private func presentError(error: NSError?) {
+    fileprivate func presentError(_ error: NSError?) {
         AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
             onController: controller,
             withError: error

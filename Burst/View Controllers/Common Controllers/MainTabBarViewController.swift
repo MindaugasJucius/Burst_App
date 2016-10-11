@@ -10,19 +10,19 @@ import UIKit
 
 final class MainTabBarViewController: UITabBarController {
 
-    private let imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+    fileprivate let imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [containerTab(), cameraTab(), settingsTab()]
-        tabBar.translucent = false
+        tabBar.isTranslucent = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    private func containerTab() -> UINavigationController {
+    fileprivate func containerTab() -> UINavigationController {
         let controller = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
         let containerNavigationController = NavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
@@ -34,7 +34,7 @@ final class MainTabBarViewController: UITabBarController {
         return containerNavigationController
     }
     
-    private func cameraTab() -> UINavigationController {
+    fileprivate func cameraTab() -> UINavigationController {
         let controller = UIViewController()
         let containerNavigationController = UINavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
@@ -46,7 +46,7 @@ final class MainTabBarViewController: UITabBarController {
         return containerNavigationController
     }
     
-    private func settingsTab() -> UINavigationController {
+    fileprivate func settingsTab() -> UINavigationController {
         let controller = UIViewController()
         let containerNavigationController = UINavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem  = UITabBarItem(

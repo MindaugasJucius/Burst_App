@@ -1,9 +1,9 @@
 import Unbox
 
-public class PhotoCategoryLinks: NSObject, Unboxable {
+open class PhotoCategoryLinks: NSObject, Unboxable {
     
-    public let photos: NSURL
-    public let linkToSelf: NSURL //wtf is this?
+    open let photos: URL
+    open let linkToSelf: URL //wtf is this?
     
     required public init(unboxer: Unboxer) {
         self.photos = unboxer.unbox("photos")
@@ -12,12 +12,12 @@ public class PhotoCategoryLinks: NSObject, Unboxable {
 
 }
 
-public class PhotoCategory: NSObject, Unboxable {
+open class PhotoCategory: NSObject, Unboxable {
     
-    public let id: Int
-    public let photoCount: Int
-    public let categoryTitle: String
-    public let links: PhotoCategoryLinks
+    open let id: Int
+    open let photoCount: Int
+    open let categoryTitle: String
+    open let links: PhotoCategoryLinks
     
     required public init(unboxer: Unboxer) {
         self.id = unboxer.unbox("id")

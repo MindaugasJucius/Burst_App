@@ -13,12 +13,12 @@ private enum AlertState {
     
     var alertProperties: AlertProperties {
         switch self {
-        case settings:
+        case .settings:
             return AlertProperties(
                 message: PhotoAccessSettings,
                 okButtonTitle: SettingsApp
             )
-        case popup:
+        case .popup:
             return AlertProperties(
                 message: PhotoAccessPopup,
                 okButtonTitle: Ok
@@ -36,8 +36,8 @@ class PhotoAccessHelper: NSObject {
         let status = PHPhotoLibrary.authorizationStatus()
         
         let settingsOkHandler = {
-            if let appSettings = NSURL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.sharedApplication().openURL(appSettings)
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.openURL(appSettings)
             }
         }
         
@@ -50,19 +50,19 @@ class PhotoAccessHelper: NSObject {
         }
         
         switch status {
-        case .Authorized:
+        case .authorized:
             authorized?()
-        case .Denied, .Restricted:
+        case .denied, .restricted:
             presentAlertForPhotoAccess(forState: .settings, onController: controller, withOkHandler: settingsOkHandler, withCancelHandler: cancelled)
-        case .NotDetermined:
+        case .notDetermined:
             presentAlertForPhotoAccess(forState: .popup, onController: controller, withOkHandler: popupOkHandler, withCancelHandler: cancelled)
         }
     }
     
-    private func requestPhotoAuthorization(withSuccess success: EmptyCallback?, andFailure failure: EmptyCallback) {
+    fileprivate func requestPhotoAuthorization(withSuccess success: EmptyCallback?, andFailure failure: EmptyCallback) {
         PHPhotoLibrary.requestAuthorization({ status in
                 switch status {
-                case .Authorized:
+                case .authorized:
                     success?()
                 default:
                     failure()
@@ -71,7 +71,7 @@ class PhotoAccessHelper: NSObject {
         )
     }
     
-    private func presentAlertForPhotoAccess(forState state: AlertState, onController controller: UIViewController?, withOkHandler okHandler: EmptyCallback?, withCancelHandler cancelHandler: EmptyCallback?) {
+    fileprivate func presentAlertForPhotoAccess(forState state: AlertState, onController controller: UIViewController?, withOkHandler okHandler: EmptyCallback?, withCancelHandler cancelHandler: EmptyCallback?) {
         AlertControllerPresenterHelper.sharedInstance.presentAlert(
             withMessage: state.alertProperties.message,
             andTitle: PhotoAccess,

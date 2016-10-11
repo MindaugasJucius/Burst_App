@@ -9,19 +9,19 @@
 import UIKit
 import BurstAPI
 
-typealias AfterBlur = (cell: PhotoCellCollectionViewCell) -> ()
-typealias PhotoSaveCallback = (photoToDownload: Photo) -> ()
+typealias AfterBlur = (_ cell: PhotoCellCollectionViewCell) -> ()
+typealias PhotoSaveCallback = (_ photoToDownload: Photo) -> ()
 
 class PhotoCellCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var categoryTitle: UILabel!
-    @IBOutlet private weak var authorLabel: UILabel!
-    @IBOutlet private weak var shareButton: UIButton!
-    @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var blurView: UIView!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var categoryTitle: UILabel!
+    @IBOutlet fileprivate weak var authorLabel: UILabel!
+    @IBOutlet fileprivate weak var shareButton: UIButton!
+    @IBOutlet fileprivate weak var saveButton: UIButton!
+    @IBOutlet fileprivate weak var blurView: UIView!
     
-    private var longPressRecognizer: UILongPressGestureRecognizer!
+    fileprivate var longPressRecognizer: UILongPressGestureRecognizer!
     
     var onBlurFinish: AfterBlur?
     var onBlurBegin: EmptyCallback?
@@ -34,18 +34,18 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         blurView.alpha = 0
-        blurView.hidden = true
-        imageView.contentMode = .TopLeft
+        blurView.isHidden = true
+        imageView.contentMode = .topLeft
         addLongPressGesture()
     }
     
     override func prepareForReuse() {
-        imageView.image = .None
-        blurView.hidden = true
+        imageView.image = .none
+        blurView.isHidden = true
         blurView.alpha = 0
     }
 
-    func prepareForVisibility(photo: Photo){
+    func prepareForVisibility(_ photo: Photo){
         cellPhoto = photo
         imageView.image = photo.thumbImage
         authorLabel.text = photo.uploader.name.uppercaseString
@@ -57,16 +57,16 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private
     
-    @objc private func longPressedWithGesture(gesture: UILongPressGestureRecognizer) {
+    @objc fileprivate func longPressedWithGesture(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
-        case .Began:
+        case .began:
             blur()
         default:
             break
         }
     }
     
-    private func addLongPressGesture() {
+    fileprivate func addLongPressGesture() {
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressedWithGesture(_:)))
         gesture.minimumPressDuration = 0.2
         addGestureRecognizer(gesture)
@@ -75,7 +75,7 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Button actions
     
-    @IBAction func saveTouched(sender: UIButton) {
+    @IBAction func saveTouched(_ sender: UIButton) {
         guard let photo = cellPhoto else { return }
         onSaveTouch?(photoToDownload: photo)
     }
@@ -84,23 +84,23 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
     
     func blur() {
         removeGestureRecognizer(longPressRecognizer)
-        blurView.hidden = false
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: { [weak self] in
+        blurView.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
             self?.blurView.alpha = 1
         }) { [weak self] (finished) in
             guard let strongSelf = self else { return }
-            strongSelf.onBlurFinish?(cell: strongSelf)
+            strongSelf.onBlurFinish?(strongSelf)
         }
     }
     
-    func clearBlurWithCallback(onClearFinish: EmptyCallback?) {
-        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseIn, animations: { [weak self] in
+    func clearBlurWithCallback(_ onClearFinish: EmptyCallback?) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: { [weak self] in
             self?.blurView.alpha = 0
         }) { [weak self] (finished) in
             guard let strongSelf = self else { return }
             if finished {
                 strongSelf.addLongPressGesture()
-                strongSelf.blurView.hidden = true
+                strongSelf.blurView.isHidden = true
                 onClearFinish?()
             }
         }

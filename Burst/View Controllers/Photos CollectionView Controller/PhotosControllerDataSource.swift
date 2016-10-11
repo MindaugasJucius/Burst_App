@@ -13,11 +13,11 @@ import BurstAPI
 
 class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 
-    private let collectionView: UICollectionView
-    private let viewController: PhotosCollectionViewController
-    private var fetchedPhotos = [Photo]()
-    private var currentPage = 1
-    private var blurredCell: PhotoCellCollectionViewCell?
+    fileprivate let collectionView: UICollectionView
+    fileprivate let viewController: PhotosCollectionViewController
+    fileprivate var fetchedPhotos = [Photo]()
+    fileprivate var currentPage = 1
+    fileprivate var blurredCell: PhotoCellCollectionViewCell?
     
     var onDownloadPhoto: PhotoSaveCallback?
     
@@ -26,7 +26,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         self.viewController = viewController
         super.init()
         
-        collectionView.addInfiniteScrollWithHandler { [weak self] collectionView in
+        collectionView.addInfiniteScroll { [weak self] collectionView in
             self?.retrievePhotosWithCompletion({ finished in
                 collectionView.finishInfiniteScroll()
                 collectionView.collectionViewLayout.invalidateLayout()
@@ -38,31 +38,31 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         }
     }
     
-    private func registerCollectionViewItems() {
-        let bundle = NSBundle.mainBundle()
+    fileprivate func registerCollectionViewItems() {
+        let bundle = Bundle.main
         let cellNib = UINib.init(nibName: "PhotoCellCollectionViewCell", bundle: bundle)
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "PhotoCell")
-        collectionView.registerNib(UINib.init(nibName: "CollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "RandomCell")
+        collectionView.register(cellNib, forCellWithReuseIdentifier: "PhotoCell")
+        collectionView.register(UINib.init(nibName: "CollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "RandomCell")
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard !fetchedPhotos.isEmpty else { return 0 }
         return fetchedPhotos.count
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath)
         guard let photoCell = cell as? PhotoCellCollectionViewCell else { return cell }
         guard !fetchedPhotos.isEmpty else { return cell }
         let photo = fetchedPhotos[indexPath.row]
         photoCell.prepareForVisibility(photo)
         photoCell.onBlurFinish = { [weak self] cell in
             guard let strongSelf = self else { return }
-            if let currentBlurredCell = strongSelf.blurredCell where currentBlurredCell != cell {
+            if let currentBlurredCell = strongSelf.blurredCell , currentBlurredCell != cell {
                 currentBlurredCell.clearBlurWithCallback(.None)
             }
             strongSelf.blurredCell = cell
@@ -75,29 +75,29 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
     
-    private func retrievePhotosWithCompletion(completion: ((Bool) -> ())?) {
+    fileprivate func retrievePhotosWithCompletion(_ completion: ((Bool) -> ())?) {
         UnsplashPhotos.defaultInstance.getPhotos({ [weak self] (photos, error) in
             self?.handlePhotosRetrieval(photos, error: error, completion: completion)
             }, page: currentPage)
     }
     
-    private func downloadPhoto(photo: Photo) {
+    fileprivate func downloadPhoto(_ photo: Photo) {
         viewController.downloadPhoto(photo)
     }
     
     func clearCellBlur() {
         blurredCell?.clearBlurWithCallback(.None)
-        blurredCell = .None
+        blurredCell = .none
     }
 
-    private func handlePhotosRetrieval(photos: [Photo]?, error: NSError?, completion: ((Bool) -> ())?) {
+    fileprivate func handlePhotosRetrieval(_ photos: [Photo]?, error: NSError?, completion: ((Bool) -> ())?) {
         guard let photos = photos else {
             AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(onController: viewController, withError: error)
             collectionView.finishInfiniteScroll()
             return
         }
         
-        var indexPaths = [NSIndexPath]()
+        var indexPaths = [IndexPath]()
         let index = self.fetchedPhotos.count
         
         // create index paths for affected items
@@ -110,7 +110,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         //fetchedPhotos = photos
         
         collectionView.performBatchUpdates({ [weak self] in
-            self?.collectionView.insertItemsAtIndexPaths(indexPaths)
+            self?.collectionView.insertItems(at: indexPaths)
             }, completion: completion)
         currentPage = currentPage + 1
     }
@@ -119,13 +119,13 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
 
 extension PhotosControllerDataSource {
     
-    func collectionViewItemSizeAtIndexPath(indexPath: NSIndexPath) -> CGSize {
-        guard !fetchedPhotos.isEmpty else { return CGSizeZero }
-        guard let image = fetchedPhotos[indexPath.item].thumbImage else { return CGSizeZero }
-        return CGSizeMake(image.size.width, image.size.height)
+    func collectionViewItemSizeAtIndexPath(_ indexPath: IndexPath) -> CGSize {
+        guard !fetchedPhotos.isEmpty else { return CGSize.zero }
+        guard let image = fetchedPhotos[indexPath.item].thumbImage else { return CGSize.zero }
+        return CGSize(width: image.size.width, height: image.size.height)
     }
     
-    func itemSizeAtIndexPath(photoIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func itemSizeAtIndexPath(photoIndexPath indexPath: IndexPath) -> CGFloat {
         guard !fetchedPhotos.isEmpty else { return 0 }
         guard let image = fetchedPhotos[indexPath.item].thumbImage else { return 0 }
         return image.size.height

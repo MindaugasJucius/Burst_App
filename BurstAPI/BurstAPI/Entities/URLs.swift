@@ -2,20 +2,20 @@ import UIKit
 import Unbox
 
 public enum PhotoSize {
-    case Full
-    case Raw
-    case Regular
-    case Small
-    case Thumb
+    case full
+    case raw
+    case regular
+    case small
+    case thumb
 }
 
-public class URLs: NSObject, Unboxable {
+open class URLs: NSObject, Unboxable {
     
-    public let full: NSURL
-    public let raw: NSURL
-    public let regular: NSURL
-    public let small: NSURL
-    public let thumb: NSURL
+    open let full: URL
+    open let raw: URL
+    open let regular: URL
+    open let small: URL
+    open let thumb: URL
     
     required public init(unboxer: Unboxer) {
         self.full = unboxer.unbox("full")
@@ -25,7 +25,7 @@ public class URLs: NSObject, Unboxable {
         self.thumb = unboxer.unbox("thumb")
     }
     
-    public init(full: NSURL, raw: NSURL, regular: NSURL, small: NSURL, thumb: NSURL) {
+    public init(full: URL, raw: URL, regular: URL, small: URL, thumb: URL) {
         self.full = full
         self.raw = raw
         self.regular = regular

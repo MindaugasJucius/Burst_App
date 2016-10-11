@@ -10,7 +10,7 @@ class AlertControllerPresenterHelper: NSObject {
         let errorAlertController = UIAlertController(
             title: Error,
             message: error?.localizedDescription ?? Error,
-            preferredStyle: .Alert
+            preferredStyle: .alert
         )
         presentIfPossible(
             presentingController: controller,
@@ -24,26 +24,26 @@ class AlertControllerPresenterHelper: NSObject {
         withOkMessage okMessage: String = Ok,
         withOkHandler okHandler: ActionHandlerCallback?,
         withCancelHandler cancelHandler: ActionHandlerCallback?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(okAction(andTitle: okMessage, withHandler: okHandler))
         alertController.addAction(cancelAction(withHandler: cancelHandler))
         presentIfPossible(presentingController: controller, controllerToPresent: alertController)
     }
     
-    private func cancelAction(withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
-        return UIAlertAction(title: Cancel, style: .Cancel, handler: handler)
+    fileprivate func cancelAction(withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
+        return UIAlertAction(title: Cancel, style: .cancel, handler: handler)
     }
     
-    private func okAction(andTitle title: String, withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
-        return UIAlertAction(title: title, style: .Default, handler: handler)
+    fileprivate func okAction(andTitle title: String, withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
+        return UIAlertAction(title: title, style: .default, handler: handler)
     }
     
-    private func presentIfPossible(presentingController controller: UIViewController?, controllerToPresent: UIViewController) {
-        guard let controller = controller where controller.presentedViewController == nil else {
+    fileprivate func presentIfPossible(presentingController controller: UIViewController?, controllerToPresent: UIViewController) {
+        guard let controller = controller , controller.presentedViewController == nil else {
             return
         }
-        dispatch_async(dispatch_get_main_queue(), {
-                controller.presentViewController(
+        DispatchQueue.main.async(execute: {
+                controller.present(
                     controllerToPresent,
                     animated: true,
                     completion: nil

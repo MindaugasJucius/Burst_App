@@ -6,7 +6,7 @@ import BurstAPI
 // arba padaryt kad ant celiu rodytu progresa
 protocol ContainerControllerDelegate: class {
     func photoPermissionsGranted() -> Bool
-    func downloadPhoto(photo: Photo) //grazini success ir tada ta cele pakeicia savo busena ;]
+    func downloadPhoto(_ photo: Photo) //grazini success ir tada ta cele pakeicia savo busena ;]
 }
 
 extension ContainerControllerDelegate where Self: UIViewController { }
@@ -15,12 +15,12 @@ protocol ContainerAlerts { }
 
 class ContainerViewController: UIViewController {
 
-    private var contentViewController: UIViewController?
-    private var photoSavingHelper: PhotoSavingHelper?
+    fileprivate var contentViewController: UIViewController?
+    fileprivate var photoSavingHelper: PhotoSavingHelper?
     
-    private var progressViewPresented = false
+    fileprivate var progressViewPresented = false
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //settingsStoreGetPreferredVC
         let controller = PhotosCollectionViewController(nibName: "PhotosCollectionViewController", bundle: nil)
         contentViewController = controller
@@ -29,11 +29,11 @@ class ContainerViewController: UIViewController {
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.view.frame = view.bounds
-        controller.didMoveToParentViewController(self)
+        controller.didMove(toParentViewController: self)
         navigationController?.viewControllers = [controller]
     }
     
-    private func addPhotoToDownloadQueue(photo: Photo) {
+    fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
         UnsplashPhotos.defaultInstance.addImageToQueueForDownload(photo,
             progressHandler: { (progress) in
 
@@ -52,7 +52,7 @@ class ContainerViewController: UIViewController {
         )
     }
     
-    private func save(imageToSave image: UIImage) {
+    fileprivate func save(imageToSave image: UIImage) {
         guard let saveHelper = photoSavingHelper else {
             return
         }
@@ -62,7 +62,7 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController: ContainerAlerts {
     
-    private func presentError(error: NSError) {
+    fileprivate func presentError(_ error: NSError) {
         AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
             onController: self.contentViewController,
             withError: error
@@ -73,10 +73,10 @@ extension ContainerViewController: ContainerAlerts {
 extension ContainerViewController: ContainerControllerDelegate {
 
     func photoPermissionsGranted() -> Bool {
-        return PHPhotoLibrary.authorizationStatus() == .Authorized
+        return PHPhotoLibrary.authorizationStatus() == .authorized
     }
     
-    func downloadPhoto(photo: Photo) {
+    func downloadPhoto(_ photo: Photo) {
         addPhotoToDownloadQueue(photo)
     }
     

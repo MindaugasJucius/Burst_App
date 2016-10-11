@@ -3,69 +3,70 @@ import Alamofire
 import AlamofireImage
 import Unbox
 
-public typealias PhotosCallback = (photos: [Photo]?, error: NSError?) -> ()
+public typealias PhotosCallback = (_ photos: [Photo]?, _ error: NSError?) -> ()
 public typealias EmptyCallback = () -> ()
-public typealias ProgressCallback = (progress: Float) -> ()
-public typealias PhotoDownloadCallback = (response: Response<UIImage, NSError>, photo: Photo) -> ()
+public typealias ProgressCallback = (_ progress: Float) -> ()
+public typealias PhotoDownloadCallback = (_ response: Response<UIImage, Error>, _ photo: Photo) -> ()
 
-public class UnsplashPhotos: NSObject {
+open class UnsplashPhotos: NSObject {
     
-    public static let defaultInstance = UnsplashPhotos()
+    open static let defaultInstance = UnsplashPhotos()
     
-    private let networkGroup = dispatch_group_create()
-    private let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .FIFO, maximumActiveDownloads: 1)
+    fileprivate let networkGroup = DispatchGroup()
+    fileprivate let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .fifo, maximumActiveDownloads: 1)
 
-    public func getPhotos(completionHandler: PhotosCallback, page: Int) -> [Photo]? {
-        guard let appID = AppConstants.appConstDict[BurstID] else { return .None }
-        Alamofire.request(.GET, UnsplashPhotosAll, parameters: [BurstID : appID, "page": String(page)]).responseJSON { [weak self] response in
+    open func getPhotos(_ completionHandler: @escaping PhotosCallback, page: Int) -> [Photo]? {
+        guard let appID = AppConstants.appConstDict[BurstID] else { return .none }
+        Alamofire.request(UnsplashPhotosAll, method: .get, parameters: [BurstID : appID, "page": String(page)]).responseJSON { [weak self] response in
             switch response.result {
-            case .Success(let value):
+            case .success(let value):
                 guard let photosJSON = value as? NSArray else { return }
                 guard let strongSelf = self else { return }
                 strongSelf.parsePhotoEntities(photosJSON, completionCallback: completionHandler)
-            case .Failure(let error):
-                completionHandler(photos: .None, error: error as NSError)
+            case .failure(let error):
+                completionHandler(.none, error as NSError)
             }
         }
-        return .None
+        return .none
     }
     
-    private func parsePhotoEntities(photosJSON: NSArray, completionCallback: PhotosCallback) {
+    fileprivate func parsePhotoEntities(_ photosJSON: NSArray, completionCallback: @escaping PhotosCallback) {
         do {
             var photos = [Photo]()
             try photosJSON.forEach({ (photoJSON) in
                 guard let photo = photoJSON as? UnboxableDictionary else { return }
-                let parsedPhoto: Photo = try Unbox(photo)
-                dispatch_group_enter(networkGroup)
-                getPhotoImage(parsedPhoto.urls.small, callback: { [weak self] (image, error) in
+                let parsedPhoto: Photo = try unbox(dictionary: photo)
+                networkGroup.enter()
+                getPhotoImage(parsedPhoto.urls.small as URL, callback: { [weak self] (image, error) in
                     guard let strongSelf = self else { return }
                     guard let image = image else { return }
                     parsedPhoto.thumbImage = image
                     photos.append(parsedPhoto)
-                    dispatch_group_leave(strongSelf.networkGroup)
+                    strongSelf.networkGroup.leave()
                 })
             })
-            dispatch_group_notify(networkGroup, dispatch_get_main_queue(), {
-                completionCallback(photos: photos, error: .None)
+            networkGroup.notify(queue: DispatchQueue.main, execute: {
+                completionCallback(photos, .none)
             })
         } catch let error {
-            completionCallback(photos: .None, error: error as NSError)
+            completionCallback(.none, error as NSError)
         }
     }
     
-    private func getPhotoImage(urlRequest: NSURL, callback: (image: UIImage?, error: NSError?) -> ()) {
-        ImageDownloader.defaultInstance.downloadImage(URLRequest: NSURLRequest(URL: urlRequest)) { response in
+    fileprivate func getPhotoImage(_ urlRequest: URL, callback: @escaping (_ image: UIImage?, _ error: Error?) -> ()) {
+        let request = URLRequest(url: urlRequest)
+        ImageDownloader.default.download(request) { response in
             switch response.result {
-            case .Success(let image):
-                callback(image: image, error: .None)
-            case .Failure(let error):
-                callback(image: .None, error: error)
+            case .success(let image):
+                callback(image, .none)
+            case .failure(let error):
+                callback(.none, error)
             }
         }
     }
     
-    public func addImageToQueueForDownload(photo: Photo, progressHandler: ProgressCallback, completion: PhotoDownloadCallback) {
-        imageDownloader.downloadImage(URLRequest: NSURLRequest(URL: photo.urls.full), filter: .None,
+    open func addImageToQueueForDownload(_ photo: Photo, progressHandler: @escaping ProgressCallback, completion: PhotoDownloadCallback) {
+        imageDownloader.downloadImage(URLRequest: URLRequest(url: photo.urls.full), filter: .none,
             progress: { (bytesRead, totalBytesRead, totalExpectedBytesToRead) in
                 let progress = Float(totalBytesRead) / Float(totalExpectedBytesToRead)
                 progressHandler(progress: progress)

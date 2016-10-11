@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; };
+		03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2231D18588E0040A875 /* AppDelegate.swift */; };
 		03C7D2291D18588E0040A875 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D2271D18588E0040A875 /* Main.storyboard */; };
 		03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22A1D18588E0040A875 /* Assets.xcassets */; };
@@ -78,6 +80,7 @@
 				03DC3A381D88678E00D18A48 /* BurstAPI.framework in Embed Frameworks */,
 				03DC3A6A1D88756000D18A48 /* Alamofire.framework in Embed Frameworks */,
 				03DC3A6B1D88756000D18A48 /* AlamofireImage.framework in Embed Frameworks */,
+				03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */,
 				03DC3A6C1D88756000D18A48 /* UIScrollView_InfiniteScroll.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -87,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
+		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C7D2201D18588E0040A875 /* Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C7D2231D18588E0040A875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03C7D2281D18588E0040A875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				03DC3A371D88678900D18A48 /* BurstAPI.framework in Frameworks */,
 				03DC3A6D1D88758800D18A48 /* Alamofire.framework in Frameworks */,
 				03DC3A6E1D88758800D18A48 /* AlamofireImage.framework in Frameworks */,
+				03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */,
 				03DC3A6F1D88758800D18A48 /* UIScrollView_InfiniteScroll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +154,7 @@
 		03C7D2171D18588E0040A875 = {
 			isa = PBXGroup;
 			children = (
+				03C321711DAC2917008928B1 /* UIImageColors.framework */,
 				03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */,
 				030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */,
 				03C7D2221D18588E0040A875 /* Burst */,
@@ -584,13 +590,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Burst/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = min.Burst;
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -604,13 +611,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Burst/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = min.Burst;
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -622,7 +630,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = min.BurstTests;
 				PRODUCT_NAME = Burst;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Burst.app/Burst";
 			};
 			name = Debug;
@@ -635,7 +643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = min.BurstTests;
 				PRODUCT_NAME = Burst;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Burst.app/Burst";
 			};
 			name = Release;
