@@ -5,8 +5,8 @@ import Unbox
 
 public typealias PhotosCallback = (_ photos: [Photo]?, _ error: NSError?) -> ()
 public typealias EmptyCallback = () -> ()
-public typealias ProgressCallback = (_ progress: Float) -> ()
-public typealias PhotoDownloadCallback = (_ response: Response<UIImage, Error>, _ photo: Photo) -> ()
+public typealias ProgressCallback = (_ progress: Progress) -> ()
+public typealias PhotoDownloadCallback = (_ response: DataResponse<UIImage>, _ photo: Photo) -> ()
 
 open class UnsplashPhotos: NSObject {
     
@@ -65,14 +65,20 @@ open class UnsplashPhotos: NSObject {
         }
     }
     
-    open func addImageToQueueForDownload(_ photo: Photo, progressHandler: @escaping ProgressCallback, completion: PhotoDownloadCallback) {
-        imageDownloader.downloadImage(URLRequest: URLRequest(url: photo.urls.full), filter: .none,
-            progress: { (bytesRead, totalBytesRead, totalExpectedBytesToRead) in
-                let progress = Float(totalBytesRead) / Float(totalExpectedBytesToRead)
-                progressHandler(progress: progress)
+    open func addImageToQueueForDownload(_ photo: Photo, progressHandler: @escaping ProgressCallback, completion: @escaping PhotoDownloadCallback) {
+    
+//        filter: ImageFilter? = nil,
+//        progress: ProgressHandler? = nil,
+//        progressQueue: DispatchQueue = DispatchQueue.main,
+//        completion: CompletionHandler?
+        let request = URLRequest(url: photo.urls.full)
+        imageDownloader.download(request, progress:
+            { progress in
+//                let progress = Float(totalBytesRead) / Float(totalExpectedBytesToRead)
+//                progressHandler(progress: progress)
             },
             completion: { response in
-                completion(response: response, photo: photo)
+                completion(response, photo)
             }
         )
     }

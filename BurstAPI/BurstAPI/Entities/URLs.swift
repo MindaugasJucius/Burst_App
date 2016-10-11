@@ -17,12 +17,12 @@ open class URLs: NSObject, Unboxable {
     open let small: URL
     open let thumb: URL
     
-    required public init(unboxer: Unboxer) {
-        self.full = unboxer.unbox("full")
-        self.raw = unboxer.unbox("raw")
-        self.regular = unboxer.unbox("regular")
-        self.small = unboxer.unbox("small")
-        self.thumb = unboxer.unbox("thumb")
+    required public init(unboxer: Unboxer) throws {
+        self.full = try unboxer.unbox(key: "full")
+        self.raw = try unboxer.unbox(key: "raw")
+        self.regular = try unboxer.unbox(key: "regular")
+        self.small = try unboxer.unbox(key: "small")
+        self.thumb = try unboxer.unbox(key: "thumb")
     }
     
     public init(full: URL, raw: URL, regular: URL, small: URL, thumb: URL) {

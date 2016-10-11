@@ -43,10 +43,10 @@ class ContainerViewController: UIViewController {
                     return
                 }
                 switch response.result {
-                case .Success(let image):
+                case .success(let image):
                     strongSelf.save(imageToSave: image)
-                case .Failure(let error):
-                    strongSelf.presentError(error)
+                case .failure(let error):
+                    strongSelf.presentError(error as NSError)
                 }
             }
         )

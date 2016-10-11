@@ -5,9 +5,9 @@ open class PhotoCategoryLinks: NSObject, Unboxable {
     open let photos: URL
     open let linkToSelf: URL //wtf is this?
     
-    required public init(unboxer: Unboxer) {
-        self.photos = unboxer.unbox("photos")
-        self.linkToSelf = unboxer.unbox("self")
+    required public init(unboxer: Unboxer) throws {
+        self.photos = try unboxer.unbox(key: "photos")
+        self.linkToSelf = try unboxer.unbox(key: "self")
     }
 
 }
@@ -19,11 +19,11 @@ open class PhotoCategory: NSObject, Unboxable {
     open let categoryTitle: String
     open let links: PhotoCategoryLinks
     
-    required public init(unboxer: Unboxer) {
-        self.id = unboxer.unbox("id")
-        self.links = unboxer.unbox("links")
-        self.photoCount = unboxer.unbox("photo_count")
-        self.categoryTitle = unboxer.unbox("title")
+    required public init(unboxer: Unboxer) throws {
+        self.id = try unboxer.unbox(key: "id")
+        self.links = try unboxer.unbox(key: "links")
+        self.photoCount = try unboxer.unbox(key:"photo_count")
+        self.categoryTitle = try unboxer.unbox(key: "title")
         super.init()
     }
     

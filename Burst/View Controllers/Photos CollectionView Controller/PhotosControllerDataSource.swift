@@ -63,7 +63,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         photoCell.onBlurFinish = { [weak self] cell in
             guard let strongSelf = self else { return }
             if let currentBlurredCell = strongSelf.blurredCell , currentBlurredCell != cell {
-                currentBlurredCell.clearBlurWithCallback(.None)
+                currentBlurredCell.clearBlurWithCallback(.none)
             }
             strongSelf.blurredCell = cell
         }
@@ -86,7 +86,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func clearCellBlur() {
-        blurredCell?.clearBlurWithCallback(.None)
+        blurredCell?.clearBlurWithCallback(.none)
         blurredCell = .none
     }
 
@@ -102,8 +102,7 @@ class PhotosControllerDataSource: NSObject, UICollectionViewDataSource {
         
         // create index paths for affected items
         for photo in photos {
-            let indexPath = NSIndexPath(forItem: index + 1, inSection: 0)
-            
+            let indexPath = IndexPath(item: index + 1, section: 0)
             indexPaths.append(indexPath)
             fetchedPhotos.append(photo)
         }

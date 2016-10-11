@@ -7,14 +7,11 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
     
     fileprivate var dataSource: PhotosControllerDataSource?
     fileprivate var blurredCell: PhotoCellCollectionViewCell?
-    
-    var delegate: ContainerControllerDelegate?
     fileprivate var gradient: CAGradientLayer?
     fileprivate let orange = UIColor.colorWithHexString("FD4340")
     fileprivate let velvet = UIColor.colorWithHexString("CE2BAE")
     
-    fileprivate let some = UIColor.colorWithHexString("8D24FF")
-    fileprivate let someColor = UIColor.colorWithHexString("23A8F9")
+    var delegate: ContainerControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +48,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
         gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = navigationController.navigationBar.bounds
-        gradient.colors = [some.CGColor, someColor.CGColor]
+        gradient.colors = [orange.cgColor, velvet.cgColor]
         gradient.locations = [NSNumber(value: 0.0 as Double), NSNumber(value: 1 as Double)]
         navigationController.navigationBar.layer.insertSublayer(gradient, at: 0)
         self.gradient = gradient
@@ -60,7 +57,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDelegate
     fileprivate func animateLayer() {
         let colorChangeAnimation = CABasicAnimation(keyPath: "colors")
         colorChangeAnimation.duration = 4.0
-        colorChangeAnimation.toValue = [someColor.CGColor, some.CGColor]
+        colorChangeAnimation.toValue = [velvet.cgColor, orange.cgColor]
         colorChangeAnimation.autoreverses = true
         colorChangeAnimation.repeatCount = .infinity
         self.gradient?.add(colorChangeAnimation, forKey: "colorChange")

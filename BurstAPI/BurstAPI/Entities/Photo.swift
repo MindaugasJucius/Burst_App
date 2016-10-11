@@ -13,16 +13,16 @@ open class Photo: NSObject, Unboxable {
      
     open var thumbImage: UIImage?
     
-    required public init(unboxer: Unboxer) {
-        self.id = unboxer.unbox("id")
-        self.urls = unboxer.unbox("urls")
-        self.likes = unboxer.unbox("likes")
-        self.uploader = unboxer.unbox("user")
-        self.categories = unboxer.unbox("categories")
-        let hexString: String = unboxer.unbox("color")
+    required public init(unboxer: Unboxer) throws {
+        self.id = try unboxer.unbox(key: "id")
+        self.urls = try unboxer.unbox(key: "urls")
+        self.likes = try unboxer.unbox(key: "likes")
+        self.uploader = try unboxer.unbox(key: "user")
+        self.categories = unboxer.unbox(key: "categories")
+        let hexString: String = try unboxer.unbox(key: "color")
         self.color = UIColor.colorWithHexString(hexString)
-        let height: CGFloat = unboxer.unbox("height")
-        let width: CGFloat = unboxer.unbox("width")
+        let height: CGFloat = try unboxer.unbox(key: "height")
+        let width: CGFloat = try unboxer.unbox(key: "width")
         self.fullSize = CGSize(width: width, height: height)
     }
     

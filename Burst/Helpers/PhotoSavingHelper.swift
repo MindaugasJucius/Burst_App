@@ -65,7 +65,7 @@ class PhotoSavingHelper: NSObject {
                     return
                 }
                 let albumChangeRequest = PHAssetCollectionChangeRequest(for: album)
-                albumChangeRequest?.addAssets([placeholder])
+                albumChangeRequest?.addAssets([placeholder] as NSArray)
             },
             completionHandler: { [weak self] success, error in
                 if let error = error {
@@ -75,7 +75,7 @@ class PhotoSavingHelper: NSObject {
         )
     }
     
-    fileprivate func createAlbumIfNeeded(withSuccess created: EmptyCallback, andFailure failure: EmptyCallback) {
+    fileprivate func createAlbumIfNeeded(withSuccess created: @escaping EmptyCallback, andFailure failure: @escaping EmptyCallback) {
         //Get PHFetch Options
         let fetchOptions = PHFetchOptions()
         var assetCollectionPlaceholder: PHObjectPlaceholder = PHObjectPlaceholder()
@@ -87,7 +87,7 @@ class PhotoSavingHelper: NSObject {
         )
         
         //Check return value - If found, then get the first album out
-        if let availableCollection = collection.firstObject as? PHAssetCollection {
+        if let availableCollection = collection.firstObject {
             assetCollection = availableCollection
             created()
             return
@@ -108,7 +108,7 @@ class PhotoSavingHelper: NSObject {
                     withLocalIdentifiers: [assetCollectionPlaceholder.localIdentifier],
                     options: nil
                 )
-                self?.assetCollection = collectionFetchResult.firstObject as? PHAssetCollection
+                self?.assetCollection = collectionFetchResult.firstObject
                 created()
             }
         )

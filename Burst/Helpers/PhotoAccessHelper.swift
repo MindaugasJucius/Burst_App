@@ -59,7 +59,7 @@ class PhotoAccessHelper: NSObject {
         }
     }
     
-    fileprivate func requestPhotoAuthorization(withSuccess success: EmptyCallback?, andFailure failure: EmptyCallback) {
+    fileprivate func requestPhotoAuthorization(withSuccess success: EmptyCallback?, andFailure failure: @escaping EmptyCallback) {
         PHPhotoLibrary.requestAuthorization({ status in
                 switch status {
                 case .authorized:

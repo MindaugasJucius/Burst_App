@@ -27,7 +27,7 @@ class StatusBarProgressView: UIView {
     fileprivate func addProgressView(withFrame frame: CGRect, andProgress progress: Float = 0) {
         let progressView = UIProgressView()
         progressView.progressViewStyle = .bar
-        progressView.progressTintColor = .white()
+        progressView.progressTintColor = UIColor.white
         progressView.trackTintColor = AppAppearance.lightBlueAppColor()
         progressView.progress = progress
         progressView.frame =  frame

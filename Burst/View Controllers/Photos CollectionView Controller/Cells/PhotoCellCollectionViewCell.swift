@@ -48,11 +48,11 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
     func prepareForVisibility(_ photo: Photo){
         cellPhoto = photo
         imageView.image = photo.thumbImage
-        authorLabel.text = photo.uploader.name.uppercaseString
+        authorLabel.text = photo.uploader.name.uppercased()
         guard let category = photo.categories?.first?.categoryTitle else {
             return
         }
-        categoryTitle.text = category.uppercaseString
+        categoryTitle.text = category.uppercased()
     }
     
     // MARK: - Private
@@ -77,7 +77,7 @@ class PhotoCellCollectionViewCell: UICollectionViewCell {
     
     @IBAction func saveTouched(_ sender: UIButton) {
         guard let photo = cellPhoto else { return }
-        onSaveTouch?(photoToDownload: photo)
+        onSaveTouch?(photo)
     }
     
     // MARK: - Animations

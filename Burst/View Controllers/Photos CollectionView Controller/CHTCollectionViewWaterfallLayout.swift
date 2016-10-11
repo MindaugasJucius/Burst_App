@@ -380,14 +380,13 @@ open class CHTCollectionViewWaterfallLayout : UICollectionViewLayout{
     func shortestColumnIndexInSection (_ section: NSInteger) -> NSInteger {
         var index = 0
         var shorestHeight = MAXFLOAT
-        
-        (self.columnHeights[section] as AnyObject).enumerateObjects({(object : AnyObject!, idx : NSInteger,pointer :UnsafeMutablePointer<ObjCBool>) in
-            let height = object.floatValue
+        (self.columnHeights[section] as AnyObject).enumerateObjects { (obj: Any, idx: NSInteger, pointer: UnsafeMutablePointer<ObjCBool>) in
+            let height = obj as! Float
             if (height<shorestHeight){
                 shorestHeight = height
                 index = idx
             }
-        })
+        }
         return index
     }
     
@@ -400,14 +399,13 @@ open class CHTCollectionViewWaterfallLayout : UICollectionViewLayout{
     func longestColumnIndexInSection (_ section: NSInteger) -> NSInteger {
         var index = 0
         var longestHeight:CGFloat = 0.0
-        
-        (self.columnHeights[section] as AnyObject).enumerateObjects({(object : AnyObject!, idx : NSInteger,pointer :UnsafeMutablePointer<ObjCBool>) in
-            let height = CGFloat(object.floatValue)
+        (self.columnHeights[section] as AnyObject).enumerateObjects { (obj: Any, idx: NSInteger, pointer: UnsafeMutablePointer<ObjCBool>) in
+            let height = obj as! CGFloat
             if (height > longestHeight){
                 longestHeight = height
                 index = idx
             }
-        })
+        }
         return index
     }
     
