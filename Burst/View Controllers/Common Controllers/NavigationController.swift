@@ -1,5 +1,7 @@
 class NavigationController: UINavigationController {
     
+    private var titleView: TitleView?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -10,7 +12,7 @@ class NavigationController: UINavigationController {
         guard let titleView = Bundle.main.loadNibNamed("TitleView", owner: self, options: nil)?.first as? TitleView else {
             return
         }
-
+        self.titleView = titleView
         rootViewController.navigationItem.titleView = titleView
     }
     
@@ -18,14 +20,9 @@ class NavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //hidesBarsOnSwipe = true
-        
-        let width = UIScreen.main.bounds.width
-        let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: width, height: 0))
-        let progressView = StatusBarProgressView(frame: frame, progress: 0.5)
-        //view.addSubview(progressView)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        titleView?.configure()
     }
 
 }
