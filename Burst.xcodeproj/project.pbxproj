@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DB01DAD2A97000A774C /* TitleView.swift */; };
 		03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; };
 		03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2231D18588E0040A875 /* AppDelegate.swift */; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
+		037A6DB01DAD2A97000A774C /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C7D2201D18588E0040A875 /* Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C7D2231D18588E0040A875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */,
 				03DC3AB21D8878F100D18A48 /* TitleView.xib */,
+				037A6DB01DAD2A97000A774C /* TitleView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
 				03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */,
 				03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */,
+				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

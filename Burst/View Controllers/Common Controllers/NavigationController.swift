@@ -1,5 +1,5 @@
 class NavigationController: UINavigationController {
-
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -7,8 +7,11 @@ class NavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         navigationBar.isTranslucent = false
-        
-        rootViewController.navigationItem.title = APPName
+        guard let titleView = Bundle.main.loadNibNamed("TitleView", owner: self, options: nil)?.first as? TitleView else {
+            return
+        }
+
+        rootViewController.navigationItem.titleView = titleView
     }
     
     required init?(coder aDecoder: NSCoder) {
