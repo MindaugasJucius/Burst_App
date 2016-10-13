@@ -22,9 +22,13 @@ class ContainerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //settingsStoreGetPreferredVC
-        let controller = UIViewController()
+        let className = String(describing: PhotosTableViewController.self)
+        
+        let photosTableViewStoryboard = UIStoryboard.init(name: className, bundle: nil)
+        let controller = photosTableViewStoryboard.instantiateViewController(withIdentifier: className)
+        
         contentViewController = controller
-        //controller.delegate = self
+        
         photoSavingHelper = PhotoSavingHelper(controller: controller)
         addChildViewController(controller)
         view.addSubview(controller.view)

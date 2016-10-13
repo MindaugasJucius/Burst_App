@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DB01DAD2A97000A774C /* TitleView.swift */; };
 		037A6DE21DAE26F1000A774C /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DE11DAE26F1000A774C /* InsetLabel.swift */; };
+		037A6DE71DAE2D2F000A774C /* PhotosTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DE61DAE2D2F000A774C /* PhotosTableHeaderView.swift */; };
+		037A6E261DAF8CCC000A774C /* MainTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E251DAF8CCC000A774C /* MainTabBarViewController.xib */; };
+		037A6E281DAF8E42000A774C /* PhotosTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E271DAF8E42000A774C /* PhotosTableViewController.storyboard */; };
 		03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; };
 		03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2231D18588E0040A875 /* AppDelegate.swift */; };
-		03C7D2291D18588E0040A875 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D2271D18588E0040A875 /* Main.storyboard */; };
 		03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22A1D18588E0040A875 /* Assets.xcassets */; };
 		03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */; };
 		03C7D2391D18588E0040A875 /* BurstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2381D18588E0040A875 /* BurstTests.swift */; };
@@ -34,7 +36,6 @@
 		03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */; };
 		03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A961D88782F00D18A48 /* NavigationController.swift */; };
 		03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */; };
-		03DC3AAD1D88782F00D18A48 /* PhotosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */; };
 		03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */; };
 		03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB21D8878F100D18A48 /* TitleView.xib */; };
 		03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EF71DA13550002BDF0A /* Unbox.framework */; };
@@ -88,10 +89,12 @@
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
 		037A6DB01DAD2A97000A774C /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		037A6DE11DAE26F1000A774C /* InsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
+		037A6DE61DAE2D2F000A774C /* PhotosTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableHeaderView.swift; sourceTree = "<group>"; };
+		037A6E251DAF8CCC000A774C /* MainTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabBarViewController.xib; sourceTree = "<group>"; };
+		037A6E271DAF8E42000A774C /* PhotosTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotosTableViewController.storyboard; sourceTree = "<group>"; };
 		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C7D2201D18588E0040A875 /* Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C7D2231D18588E0040A875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03C7D2281D18588E0040A875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03C7D22A1D18588E0040A875 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03C7D22D1D18588E0040A875 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03C7D22F1D18588E0040A875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,7 +115,6 @@
 		03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		03DC3A961D88782F00D18A48 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
-		03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosTableViewController.xib; sourceTree = "<group>"; };
 		03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		03DC3AB21D8878F100D18A48 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		03EE3EF71DA13550002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
@@ -143,6 +145,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		037A6DE51DAE2D0E000A774C /* Photos Header */ = {
+			isa = PBXGroup;
+			children = (
+				037A6DE61DAE2D2F000A774C /* PhotosTableHeaderView.swift */,
+			);
+			path = "Photos Header";
+			sourceTree = "<group>";
+		};
 		03C7D2171D18588E0040A875 = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +182,6 @@
 				03DC3A911D88782F00D18A48 /* View Controllers */,
 				03DC3A771D88781E00D18A48 /* Helpers */,
 				03C7D2231D18588E0040A875 /* AppDelegate.swift */,
-				03C7D2271D18588E0040A875 /* Main.storyboard */,
 				03C7D22A1D18588E0040A875 /* Assets.xcassets */,
 				03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */,
 				03C7D22F1D18588E0040A875 /* Info.plist */,
@@ -221,6 +230,7 @@
 		03DC3A921D88782F00D18A48 /* Common Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				037A6E251DAF8CCC000A774C /* MainTabBarViewController.xib */,
 				03DC3A931D88782F00D18A48 /* ContainerViewController.swift */,
 				03DC3A941D88782F00D18A48 /* ContainerViewController.xib */,
 				03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */,
@@ -232,8 +242,9 @@
 		03DC3A9F1D88782F00D18A48 /* Photos TableView Controller */ = {
 			isa = PBXGroup;
 			children = (
+				037A6DE51DAE2D0E000A774C /* Photos Header */,
 				03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */,
-				03DC3AA11D88782F00D18A48 /* PhotosTableViewController.xib */,
+				037A6E271DAF8E42000A774C /* PhotosTableViewController.storyboard */,
 			);
 			path = "Photos TableView Controller";
 			sourceTree = "<group>";
@@ -365,11 +376,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */,
-				03DC3AAD1D88782F00D18A48 /* PhotosTableViewController.xib in Resources */,
 				03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
-				03C7D2291D18588E0040A875 /* Main.storyboard in Resources */,
 				03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */,
+				037A6E261DAF8CCC000A774C /* MainTabBarViewController.xib in Resources */,
+				037A6E281DAF8E42000A774C /* PhotosTableViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +418,7 @@
 				03DC3A7E1D88781E00D18A48 /* AppAppearance.swift in Sources */,
 				03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */,
 				03DC3A801D88781E00D18A48 /* PhotoAccessHelper.swift in Sources */,
+				037A6DE71DAE2D2F000A774C /* PhotosTableHeaderView.swift in Sources */,
 				03DC3A7D1D88781E00D18A48 /* AlertControllerPresenterHelper.swift in Sources */,
 				03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */,
 				03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */,
@@ -444,14 +456,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		03C7D2271D18588E0040A875 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03C7D2281D18588E0040A875 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

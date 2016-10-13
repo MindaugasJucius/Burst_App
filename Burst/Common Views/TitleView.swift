@@ -12,7 +12,9 @@ class TitleView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.text = APPName
+        let attributedString = NSMutableAttributedString(string: APPName)
+        attributedString.addAttribute(NSKernAttributeName, value: 3.0, range: NSMakeRange(0, attributedString.length-1))
+        titleLabel.attributedText = attributedString
         titleLabel.font = AppAppearance.navigationBarFont()
         titleLabel.textColor = .white
         titleLabel.textInsets = LabelInsets
@@ -47,7 +49,7 @@ class TitleView: UIView {
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.white.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 3.0
+        shapeLayer.lineWidth = 2.0
         return shapeLayer
     }
     

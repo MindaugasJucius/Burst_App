@@ -6,8 +6,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let mainTabBarController = MainTabBarViewController()
+        let mainTabBarController = MainTabBarViewController(nibName: "MainTabBarViewController", bundle: nil)
+        let mainWindow = UIWindow(frame: UIScreen.main.bounds)
+        window = mainWindow
         window?.rootViewController = mainTabBarController
+        window?.makeKeyAndVisible()
         updateNavigationBarAppearance()
         updateTabBarAppearance()
         return true
@@ -17,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate func updateTabBarAppearance() {
         UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().tintColor = AppAppearance.lightBlueAppColor()
+        UITabBar.appearance().tintColor = AppAppearance.lightBlue
     }
 
     fileprivate func updateNavigationBarAppearance() {

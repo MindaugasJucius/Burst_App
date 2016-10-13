@@ -1,26 +1,32 @@
-//
-//  PhotosTableViewController.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 21/08/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
 import UIKit
 
-class PhotosTableViewController: UIViewController, UITableViewDelegate {
+class PhotosTableViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.backgroundColor = UIColor.black
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        sizeHeaderToFit()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func sizeHeaderToFit() {
+        let headerView = tableView.tableHeaderView!
+        
+        guard let header = headerView as? PhotosTableHeaderView else {
+            return
+        }
+        header.layoutIfNeeded()
+        let height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        var frame = header.frame
+        frame.size.height = height
+        header.frame = frame
+        tableView.tableHeaderView = header
+        header.configureSeparator()
     }
-
+    
 }
