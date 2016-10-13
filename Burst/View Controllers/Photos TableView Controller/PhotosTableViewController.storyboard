@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ZGG-WI-zqV">
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZGG-WI-zqV">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="BzI-49-b7t" customClass="PhotosTableHeaderView" customModule="Burst" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-kC-S8m">
@@ -36,13 +36,13 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="0Oj-AS-EP2" secondAttribute="bottom" constant="38" id="3HM-5M-rzt"/>
-                                        <constraint firstItem="SD9-kC-S8m" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="5y1-NO-Yxh"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Oj-AS-EP2" secondAttribute="trailing" constant="15" id="6IO-E4-Cs6"/>
-                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="top" secondItem="SD9-kC-S8m" secondAttribute="bottom" constant="5" id="9J0-f9-CUQ"/>
-                                        <constraint firstItem="SD9-kC-S8m" firstAttribute="top" secondItem="BzI-49-b7t" secondAttribute="top" constant="15" id="FUA-Qj-lMA"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SD9-kC-S8m" secondAttribute="trailing" constant="15" id="nnP-dn-9Iq"/>
-                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="ooN-Ci-siT"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SD9-kC-S8m" secondAttribute="trailing" constant="15" id="A0u-ON-vwg"/>
+                                        <constraint firstAttribute="bottom" secondItem="0Oj-AS-EP2" secondAttribute="bottom" constant="19" id="CZN-Tb-QfQ"/>
+                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="top" secondItem="SD9-kC-S8m" secondAttribute="bottom" constant="5" id="Omx-m4-P55"/>
+                                        <constraint firstItem="SD9-kC-S8m" firstAttribute="top" secondItem="BzI-49-b7t" secondAttribute="top" constant="15" id="lA4-IF-O0f"/>
+                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="rDA-Uu-EC7"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Oj-AS-EP2" secondAttribute="trailing" constant="15" id="sQ2-IX-A33"/>
+                                        <constraint firstItem="SD9-kC-S8m" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="y0p-Yn-2Yp"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="bottomLabel" destination="0Oj-AS-EP2" id="GAO-B0-EPT"/>
@@ -51,7 +51,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="w0s-rr-xkY">
-                                        <rect key="frame" x="0.0" y="156" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="109" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0s-rr-xkY" id="Wab-F7-z3s">
                                             <frame key="frameInset" width="375" height="43"/>

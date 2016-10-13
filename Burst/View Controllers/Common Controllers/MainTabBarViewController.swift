@@ -1,11 +1,3 @@
-//
-//  MainTabBarViewController.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 31/08/16.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
 import UIKit
 
 final class MainTabBarViewController: UITabBarController {
@@ -16,6 +8,7 @@ final class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         viewControllers = [containerTab(), cameraTab(), settingsTab()]
         tabBar.isTranslucent = false
+        tabBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
