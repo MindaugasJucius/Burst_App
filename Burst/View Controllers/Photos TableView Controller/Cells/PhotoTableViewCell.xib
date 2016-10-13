@@ -21,11 +21,6 @@
                             <constraint firstAttribute="height" constant="200" id="9Xi-A0-FnP"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRr-d3-Tg0">
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-u2-vAo">
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rs-71-3Qr">
@@ -39,7 +34,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="34" id="WRN-s7-PYO"/>
+                            <constraint firstAttribute="height" constant="20" id="WRN-s7-PYO"/>
                         </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="RbH-aZ-tvL">
@@ -48,29 +43,49 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="quA-3D-IK9"/>
                         </constraints>
                     </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Iqg-nP-dIY">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goa-5r-gSK">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUC-10-2tl">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFK-dh-J79">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Iqg-nP-dIY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="1tO-DZ-gFu"/>
                     <constraint firstItem="Mcm-wj-rLh" firstAttribute="top" secondItem="RbH-aZ-tvL" secondAttribute="bottom" constant="10" id="AON-pz-Vg2"/>
-                    <constraint firstAttribute="trailing" secondItem="MRr-d3-Tg0" secondAttribute="trailing" constant="15" id="DoX-NV-99l"/>
                     <constraint firstAttribute="trailing" secondItem="Mcm-wj-rLh" secondAttribute="trailing" constant="15" id="Ez6-dn-Moj"/>
-                    <constraint firstItem="V6N-u2-vAo" firstAttribute="top" secondItem="MRr-d3-Tg0" secondAttribute="bottom" constant="5" id="Gnl-7C-Sie"/>
-                    <constraint firstItem="MRr-d3-Tg0" firstAttribute="top" secondItem="Mcm-wj-rLh" secondAttribute="bottom" constant="10" id="H8L-n0-30e"/>
+                    <constraint firstItem="Iqg-nP-dIY" firstAttribute="top" secondItem="Mcm-wj-rLh" secondAttribute="bottom" constant="8" id="LL0-7Y-GlF"/>
                     <constraint firstAttribute="trailing" secondItem="V6N-u2-vAo" secondAttribute="trailing" constant="30" id="Lsv-wP-aTU"/>
                     <constraint firstItem="Mcm-wj-rLh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="aEm-hj-7PO"/>
                     <constraint firstItem="V6N-u2-vAo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="bZF-Db-OM4"/>
+                    <constraint firstItem="V6N-u2-vAo" firstAttribute="top" secondItem="Iqg-nP-dIY" secondAttribute="bottom" constant="15" id="baa-KC-Ord"/>
                     <constraint firstAttribute="trailing" secondItem="RbH-aZ-tvL" secondAttribute="trailing" constant="15" id="gnD-J7-RP4"/>
+                    <constraint firstAttribute="trailing" secondItem="Iqg-nP-dIY" secondAttribute="trailing" constant="30" id="i4n-x0-P5F"/>
                     <constraint firstItem="RbH-aZ-tvL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="iaj-72-vco"/>
-                    <constraint firstItem="MRr-d3-Tg0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="phF-Sj-j7n"/>
                     <constraint firstAttribute="bottom" secondItem="V6N-u2-vAo" secondAttribute="bottom" constant="10" id="r07-k7-Mjm"/>
                     <constraint firstItem="RbH-aZ-tvL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="w5X-IZ-31g"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addButton" destination="B2C-FD-FsL" id="BMj-2p-O3L"/>
-                <outlet property="descriptionLabel" destination="MRr-d3-Tg0" id="DF3-1L-nqB"/>
-                <outlet property="labelSideConstraint" destination="phF-Sj-j7n" id="h4A-Lf-m2K"/>
+                <outlet property="categoryLabel" destination="nFK-dh-J79" id="wJn-cK-ncm"/>
+                <outlet property="likesLabel" destination="goa-5r-gSK" id="RE7-DK-YLh"/>
                 <outlet property="loveButton" destination="0rs-71-3Qr" id="AtG-tV-qtJ"/>
                 <outlet property="saveButton" destination="DKO-3b-RM9" id="7Ka-8u-sBd"/>
+                <outlet property="sawLabel" destination="SUC-10-2tl" id="GRX-g5-TzW"/>
             </connections>
             <point key="canvasLocation" x="26" y="152.5"/>
         </tableViewCell>

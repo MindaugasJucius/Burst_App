@@ -8,21 +8,46 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     
-    @IBOutlet weak var descriptionLabel: UILabel!
-
-    @IBOutlet weak var labelSideConstraint: NSLayoutConstraint!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var sawLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .clear
-        setupDescription()
         setupButtons()
+        setupLikedLabel()
+        setupSawLabel()
+        setupCategoryLabel()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        descriptionLabel.preferredMaxLayoutWidth =
-            bounds.width - labelSideConstraint.constant * 2
+    private func setupLikedLabel() {
+        let attributedDescription = NSMutableAttributedString()
+        let lovedFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAHeart)
+        let lovedAttributedString = AppAppearance.infoTextAttributedString(forValue: " 21333")
+        attributedDescription.append(lovedFAAttributedString!)
+        attributedDescription.append(lovedAttributedString)
+        likesLabel.attributedText = attributedDescription
+    }
+    
+    private func setupSawLabel() {
+        let attributedDescription = NSMutableAttributedString()
+        
+        let sawFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAEye, textSize: 15)
+        let sawAttributedString = AppAppearance.infoTextAttributedString(forValue: " 34555")
+        attributedDescription.append(sawFAAttributedString!)
+        attributedDescription.append(sawAttributedString)
+        sawLabel.attributedText = attributedDescription
+    }
+    
+    private func setupCategoryLabel() {
+        let attributedDescription = NSMutableAttributedString()
+        
+        let categoryFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAPictureO)
+        let categoryAttributedString = AppAppearance.infoTextAttributedString(forValue: " dogs")
+        attributedDescription.append(categoryFAAttributedString!)
+        attributedDescription.append(categoryAttributedString)
+        categoryLabel.attributedText = attributedDescription
     }
     
     private func setupButtons() {
@@ -41,35 +66,4 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
                             forState: .normal)
         addButton.setFATitleColor(color: AppAppearance.white)
     }
-    
-    private func setupDescription() {
-        let attributedDescription = NSMutableAttributedString()
-        
-        let categoryFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAPictureO)
-        let categoryAttributedString = AppAppearance.infoTextAttributedString(forValue: " dogs ")
-        
-        let sawFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAEye, textSize: 15)
-        let sawAttributedString = AppAppearance.infoTextAttributedString(forValue: " 34555 ")
-        
-        let lovedFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAHeart)
-        let lovedAttributedString = AppAppearance.infoTextAttributedString(forValue: " 21333 ")
-        
-        guard let category = categoryFAAttributedString,
-            let saw = sawFAAttributedString,
-            let loved = lovedFAAttributedString else {
-            return
-        }
-        
-        attributedDescription.append(category)
-        attributedDescription.append(categoryAttributedString)
-        
-        attributedDescription.append(saw)
-        attributedDescription.append(sawAttributedString)
-        
-        attributedDescription.append(loved)
-        attributedDescription.append(lovedAttributedString)
-        
-        descriptionLabel.attributedText = attributedDescription
-    }
-    
 }
