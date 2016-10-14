@@ -20,6 +20,7 @@
 		037A6E7D1DAFF58C000A774C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E7B1DAFF58C000A774C /* FontAwesome.ttf */; };
 		037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E831DB0C812000A774C /* PhotoHeader.swift */; };
 		037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E851DB0C81F000A774C /* PhotoHeader.xib */; };
+		037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */; };
 		03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; };
 		03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2231D18588E0040A875 /* AppDelegate.swift */; };
@@ -108,6 +109,7 @@
 		037A6E7B1DAFF58C000A774C /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		037A6E831DB0C812000A774C /* PhotoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHeader.swift; sourceTree = "<group>"; };
 		037A6E851DB0C81F000A774C /* PhotoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoHeader.xib; sourceTree = "<group>"; };
+		037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewDataSource.swift; sourceTree = "<group>"; };
 		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C7D2201D18588E0040A875 /* Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C7D2231D18588E0040A875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				037A6DE51DAE2D0E000A774C /* Photos Header */,
 				03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */,
 				037A6E271DAF8E42000A774C /* PhotosTableViewController.storyboard */,
+				037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */,
 			);
 			path = "Photos TableView Controller";
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */,
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
+				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
 				03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
 			);

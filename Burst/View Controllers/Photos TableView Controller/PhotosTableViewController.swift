@@ -1,58 +1,26 @@
 import UIKit
 
-class PhotosTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PhotosTableViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    private var dataSource: PhotosTableViewDataSource!
+
+    // Mark: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cellNib = UINib.init(nibName: PhotoTableViewCell.className(), bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: PhotoTableViewCell.reuseIdentifier)
-        
-        let headerNib = UINib.init(nibName: PhotoHeader.className(), bundle: nil)
-        
-        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PhotoHeader.reuseIdentifier)
-        
-        tableView.delaysContentTouches = false
-        for case let subview as UIScrollView in tableView.subviews {
-            subview.delaysContentTouches = false
-        }
-        
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.estimatedSectionHeaderHeight = 30
-        tableView.estimatedRowHeight = 360
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.allowsSelection = false
-        tableView.backgroundColor = UIColor.black
+        setupTableView()
     }
+    
+    // Mark: - Layout
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         sizeHeaderToFit()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.reuseIdentifier, for: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier)
-        return header
-    }
-
-    func sizeHeaderToFit() {
+    private func sizeHeaderToFit() {
         let headerView = tableView.tableHeaderView!
         
         guard let header = headerView as? PhotosTableHeaderView else {
@@ -67,4 +35,38 @@ class PhotosTableViewController: UIViewController, UITableViewDelegate, UITableV
         header.configureSeparator()
     }
     
+    // Mark: - Configuration
+    
+    private func setupTableView() {
+        tableView.backgroundColor = AppAppearance.tableViewBackground
+        tableView.allowsSelection = false
+        tableView.delaysContentTouches = false
+        for case let subview as UIScrollView in tableView.subviews {
+            subview.delaysContentTouches = false
+        }
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        setupDataSource()
+        configureDimensions()
+    }
+    
+    private func setupDataSource() {
+        dataSource = PhotosTableViewDataSource(tableView: tableView)
+        tableView.dataSource = dataSource
+    }
+    
+    private func configureDimensions() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 30
+        tableView.estimatedRowHeight = 360
+    }
+}
+
+extension PhotosTableViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier)
+        return header
+    }
 }

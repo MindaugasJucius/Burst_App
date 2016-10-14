@@ -40,7 +40,7 @@
                         <constraint firstItem="H6O-c0-cSz" firstAttribute="centerY" secondItem="YwL-6P-B2B" secondAttribute="centerY" id="CIl-cT-8KC"/>
                         <constraint firstAttribute="bottom" secondItem="YwL-6P-B2B" secondAttribute="bottom" constant="5" id="KVr-gz-TyI"/>
                         <constraint firstAttribute="trailing" secondItem="YwL-6P-B2B" secondAttribute="trailing" id="WHG-Hv-f1J"/>
-                        <constraint firstItem="H6O-c0-cSz" firstAttribute="leading" secondItem="bdi-9W-hDI" secondAttribute="leading" id="aLb-pq-cM9"/>
+                        <constraint firstItem="H6O-c0-cSz" firstAttribute="leading" secondItem="bdi-9W-hDI" secondAttribute="leading" constant="10" id="aLb-pq-cM9"/>
                         <constraint firstItem="YwL-6P-B2B" firstAttribute="leading" secondItem="H6O-c0-cSz" secondAttribute="trailing" constant="10" id="pun-s6-iGN"/>
                     </constraints>
                 </view>

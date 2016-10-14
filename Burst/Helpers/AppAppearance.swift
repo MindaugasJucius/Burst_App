@@ -41,7 +41,9 @@ class AppAppearance: NSObject {
     static let lightRed = UIColor.colorWithHexString("e74c3c")
     
     static let white = UIColor.white
+    
     static let subtitleColor = UIColor.colorWithHexString("999999")
+    static let tableViewBackground = UIColor.black
     
     // MARK: - Attributed String Helpers
     
