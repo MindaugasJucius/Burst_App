@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PhotoHeader" customModule="Burst" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-9W-hDI">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="H6O-c0-cSz">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="5ho-oe-QFK"/>
+                                <constraint firstAttribute="width" constant="15" id="D1Q-ta-wIC"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-6P-B2B">
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-8j-p8T">
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5z-ln-Btj">
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="YwL-6P-B2B" firstAttribute="top" secondItem="bdi-9W-hDI" secondAttribute="top" constant="5" id="2bh-M8-EPh"/>
+                        <constraint firstItem="H6O-c0-cSz" firstAttribute="centerY" secondItem="YwL-6P-B2B" secondAttribute="centerY" id="CIl-cT-8KC"/>
+                        <constraint firstAttribute="bottom" secondItem="YwL-6P-B2B" secondAttribute="bottom" constant="5" id="KVr-gz-TyI"/>
+                        <constraint firstAttribute="trailing" secondItem="YwL-6P-B2B" secondAttribute="trailing" id="WHG-Hv-f1J"/>
+                        <constraint firstItem="H6O-c0-cSz" firstAttribute="leading" secondItem="bdi-9W-hDI" secondAttribute="leading" id="aLb-pq-cM9"/>
+                        <constraint firstItem="YwL-6P-B2B" firstAttribute="leading" secondItem="H6O-c0-cSz" secondAttribute="trailing" constant="10" id="pun-s6-iGN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bdi-9W-hDI" secondAttribute="bottom" id="7Q1-W0-coR"/>
+                <constraint firstItem="bdi-9W-hDI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Wxb-MT-p3U"/>
+                <constraint firstItem="bdi-9W-hDI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bLX-1c-6V2"/>
+                <constraint firstAttribute="trailing" secondItem="bdi-9W-hDI" secondAttribute="trailing" constant="15" id="eXN-VB-y7T"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomLabel" destination="r5z-ln-Btj" id="E2B-70-eCO"/>
+                <outlet property="imageView" destination="H6O-c0-cSz" id="fOM-gx-alA"/>
+                <outlet property="topLabel" destination="kT2-8j-p8T" id="KnH-zB-5b0"/>
+            </connections>
+            <point key="canvasLocation" x="159.5" y="-216.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Camera" width="32" height="32"/>
+    </resources>
+</document>

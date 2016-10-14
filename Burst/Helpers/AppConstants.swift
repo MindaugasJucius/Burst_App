@@ -1,5 +1,7 @@
 // MARK: - MessageConstants
 
+let Separator = " • "
+
 // MARK: - Title
 let APPName = "BURST"
 

@@ -9,12 +9,18 @@ class PhotosTableViewController: UIViewController, UITableViewDelegate, UITableV
         let cellNib = UINib.init(nibName: PhotoTableViewCell.className(), bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: PhotoTableViewCell.reuseIdentifier)
         
+        let headerNib = UINib.init(nibName: PhotoHeader.className(), bundle: nil)
+        
+        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PhotoHeader.reuseIdentifier)
+        
         tableView.delaysContentTouches = false
         for case let subview as UIScrollView in tableView.subviews {
             subview.delaysContentTouches = false
         }
         
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 30
         tableView.estimatedRowHeight = 360
         tableView.separatorStyle = .none
         tableView.dataSource = self
@@ -29,16 +35,21 @@ class PhotosTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.reuseIdentifier, for: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier)
+        return header
     }
 
     func sizeHeaderToFit() {

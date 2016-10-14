@@ -16,38 +16,6 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
         super.awakeFromNib()
         backgroundColor = .clear
         setupButtons()
-        setupLikedLabel()
-        setupSawLabel()
-        setupCategoryLabel()
-    }
-    
-    private func setupLikedLabel() {
-        let attributedDescription = NSMutableAttributedString()
-        let lovedFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAHeart)
-        let lovedAttributedString = AppAppearance.infoTextAttributedString(forValue: " 21333")
-        attributedDescription.append(lovedFAAttributedString!)
-        attributedDescription.append(lovedAttributedString)
-        likesLabel.attributedText = attributedDescription
-    }
-    
-    private func setupSawLabel() {
-        let attributedDescription = NSMutableAttributedString()
-        
-        let sawFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAEye, textSize: 15)
-        let sawAttributedString = AppAppearance.infoTextAttributedString(forValue: " 34555")
-        attributedDescription.append(sawFAAttributedString!)
-        attributedDescription.append(sawAttributedString)
-        sawLabel.attributedText = attributedDescription
-    }
-    
-    private func setupCategoryLabel() {
-        let attributedDescription = NSMutableAttributedString()
-        
-        let categoryFAAttributedString = AppAppearance.faAttributedString(forIcon: .FAPictureO)
-        let categoryAttributedString = AppAppearance.infoTextAttributedString(forValue: " dogs")
-        attributedDescription.append(categoryFAAttributedString!)
-        attributedDescription.append(categoryAttributedString)
-        categoryLabel.attributedText = attributedDescription
     }
     
     private func setupButtons() {
