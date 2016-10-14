@@ -1,3 +1,13 @@
+enum FontSize: CGFloat {
+    case CellText = 12
+    case SubtitleCellText = 11
+    case SectionHeaderTitle = 13
+    case HeaderTitle = 20
+    case HeaderSubtitle = 14
+    case IconSize = 9
+}
+
+
 class AppAppearance: NSObject {
     
     // MARK: - Button sizes
@@ -6,22 +16,20 @@ class AppAppearance: NSObject {
     
     // MARK: - Text
     
-    static let InfoTextFontSize: CGFloat = 12
-    
-    static func navigationBarFont() -> UIFont {
-        return UIFont(name: "AvenirNext-Regular", size: 20)!
+    static func regularFont(withSize size: FontSize) -> UIFont {
+        return font(withName: "AvenirNext-Regular", fontSize: size)
     }
     
-    static func cellInfoTextFont() -> UIFont {
-        return UIFont(name: "AvenirNext-Regular", size: InfoTextFontSize)!
+    static func condensedFont(withSize size: FontSize) -> UIFont {
+        return font(withName: "AvenirNextCondensed-Regular", fontSize: size)
     }
     
-    static func headerViewTitleFont() -> UIFont {
-        return UIFont(name: "AvenirNextCondensed-Regular", size: 20)!
-    }
-    
-    static func headerViewSubtitleFont() -> UIFont {
-        return UIFont(name: "AvenirNextCondensed-Regular", size: 14)!
+    private static func font(withName name: String, fontSize size: FontSize) -> UIFont {
+        let fontSize = size.rawValue
+        guard let font = UIFont(name: name, size: fontSize) else {
+            return UIFont.systemFont(ofSize: fontSize)
+        }
+        return font
     }
     
     // MARK: - Colors
@@ -38,23 +46,24 @@ class AppAppearance: NSObject {
     // MARK: - Attributed String Helpers
     
     static func faAttributedString(forIcon icon: FAType,
-                                    textSize size: CGFloat = AppAppearance.InfoTextFontSize,
+                                    textSize size: FontSize = .CellText,
                                     textColor color: UIColor = AppAppearance.white) -> NSAttributedString? {
         guard let iconText = icon.text else {
             return nil
         }
         FontLoader.loadFontIfNeeded()
-        let iconFont = UIFont(name: FAStruct.FontName, size: size)!
+        let iconFont = UIFont(name: FAStruct.FontName, size: size.rawValue)!
         let iconAttributes = [NSFontAttributeName: iconFont,
                               NSForegroundColorAttributeName: color]
         
         return NSAttributedString(string: iconText, attributes: iconAttributes)
     }
     
-    static func infoTextAttributedString(forValue value: String, textColor color: UIColor = AppAppearance.white) -> NSAttributedString {
-        let textAttributes = [NSFontAttributeName: AppAppearance.cellInfoTextFont(),
+    static func infoTextAttributedString(forValue value: String,
+                                         textSize size: FontSize = .CellText,
+                                         textColor color: UIColor = AppAppearance.white) -> NSAttributedString {
+        let textAttributes = [NSFontAttributeName: AppAppearance.regularFont(withSize: size),
                               NSForegroundColorAttributeName: color]
         return NSAttributedString(string: value, attributes: textAttributes)
-    }
-    
+    }    
 }
