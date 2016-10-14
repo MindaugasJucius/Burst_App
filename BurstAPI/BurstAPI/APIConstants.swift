@@ -1,6 +1,7 @@
 // MARK: - API urls
 
 let UnsplashPhotosAll = "https://api.unsplash.com/photos/"
+let UnsplashPhotoStats = "https://api.unsplash.com/photos/%@/stats"
 let UnsplashCuratedPhotos = "https://api.unsplash.com/photos/curated"
 
 // MARK: - key constants

@@ -4,6 +4,7 @@ import AlamofireImage
 import Unbox
 
 public typealias PhotosCallback = (_ photos: [Photo]?, _ error: NSError?) -> ()
+public typealias StatsCallback = (_ photos: Stats?, _ error: NSError?) -> ()
 public typealias EmptyCallback = () -> ()
 public typealias ProgressCallback = (_ progress: Double) -> ()
 public typealias PhotoDownloadCallback = (_ response: DataResponse<UIImage>, _ photo: Photo) -> ()
@@ -17,12 +18,36 @@ open class UnsplashPhotos: NSObject {
 
     open func getPhotos(_ page: Int, completion completionHandler: @escaping PhotosCallback) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
-        Alamofire.request(UnsplashPhotosAll, method: .get, parameters: [BurstID : appID, "page": String(page), "per_page": 10]).responseJSON { [weak self] response in
+        let params = [BurstID : appID,
+                      "page": String(page),
+                      "per_page": 10] as [String : Any]
+        Alamofire.request(UnsplashPhotosAll, method: .get, parameters: params).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 guard let photosJSON = value as? NSArray else { return }
                 guard let strongSelf = self else { return }
                 strongSelf.parsePhotoEntities(photosJSON, completionCallback: completionHandler)
+            case .failure(let error):
+                completionHandler(.none, error as NSError)
+            }
+        }
+    }
+    
+    open func getPhotoStats(forPhoto photo: Photo, completion completionHandler: @escaping StatsCallback) {
+        guard let appID = AppConstants.appConstDict[BurstID] else { return }
+        let statsURL = String(format: UnsplashPhotoStats, photo.id)
+        let params = [BurstID : appID] as [String : Any]
+        Alamofire.request(statsURL, method: .get, parameters: params).responseJSON { [weak self] response in
+            switch response.result {
+            case .success(let value):
+                dump(value)
+                guard let statsDict = value as? UnboxableDictionary else { return }
+                do {
+                    let stats: Stats = try unbox(dictionary: statsDict)
+                    completionHandler(stats, .none)
+                } catch let error as NSError {
+                    completionHandler(.none, error)
+                }
             case .failure(let error):
                 completionHandler(.none, error as NSError)
             }

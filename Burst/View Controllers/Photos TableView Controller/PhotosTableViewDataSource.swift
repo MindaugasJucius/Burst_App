@@ -44,7 +44,6 @@ class PhotosTableViewDataSource: NSObject {
         var indexPaths = [IndexPath]()
         let previousCount = fetchedPhotos.count
         var currentCount = previousCount
-        
         // create index paths for affected items
         for _ in photos {
             let indexPath = IndexPath(item: 0, section: currentCount)
