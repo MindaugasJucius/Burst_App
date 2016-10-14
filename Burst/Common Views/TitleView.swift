@@ -1,6 +1,8 @@
 import UIKit
 
-fileprivate let ProgressAnimationDuration: CFTimeInterval = 2
+fileprivate let ProgressAnimationDuration: CFTimeInterval = 1
+fileprivate let FadeOutAnimationDuration: CFTimeInterval = 1.5
+fileprivate let GreetingsAnimationDuration: CFTimeInterval = 2
 fileprivate let LabelInsets = UIEdgeInsets(top: 1, left: 10, bottom: 1, right: 10)
 
 class TitleView: UIView {
@@ -53,41 +55,87 @@ class TitleView: UIView {
         return shapeLayer
     }
     
-    private func beginProgressAnimationTransaction() {
+    private func beginGreetingsAnimationTransaction() {
         let timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         CATransaction.begin()
         CATransaction.setAnimationTimingFunction(timingFunction)
-        CATransaction.setAnimationDuration(ProgressAnimationDuration)
-        upperShapeLayer?.add(progressAnimation(), forKey: nil)
-        lowerShapeLayer?.add(progressAnimation(), forKey: nil)
-        upperShapeLayer?.add(fadeOutAnimation(withDelay: ProgressAnimationDuration), forKey: nil)
-        lowerShapeLayer?.add(fadeOutAnimation(withDelay: ProgressAnimationDuration), forKey: nil)
+        CATransaction.setAnimationDuration(GreetingsAnimationDuration)
+        CATransaction.setCompletionBlock { [weak self] in
+            self?.beginFadeOutTransaction()
+        }
+        upperShapeLayer?.add(progressAnimation(forDownload: false), forKey: nil)
+        lowerShapeLayer?.add(progressAnimation(forDownload: false), forKey: nil)
+        
+        CATransaction.commit()
+    }
+    
+    func beginFadeOutTransaction() {
+        let timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        CATransaction.begin()
+        CATransaction.setAnimationTimingFunction(timingFunction)
+        CATransaction.setAnimationDuration(FadeOutAnimationDuration)
+        CATransaction.setCompletionBlock { [weak self] in
+            self?.removeLayers()
+        }
+        upperShapeLayer?.add(fadeOutAnimation(), forKey: nil)
+        lowerShapeLayer?.add(fadeOutAnimation(), forKey: nil)
+        upperShapeLayer?.opacity = 0
+        lowerShapeLayer?.opacity = 0
         CATransaction.commit()
     }
     
     // MARK: - Animations
     
-    private func progressAnimation() -> CABasicAnimation {
+    private func progressAnimation(forDownload download: Bool) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.toValue = 1
+        if download {
+            animation.duration = ProgressAnimationDuration
+        }
         animation.setValue("drawProgress", forKey: "animID")
         return animation
     }
     
-    func fadeOutAnimation(withDelay delay: CFTimeInterval) -> CABasicAnimation {
+    private func fadeOutAnimation() -> CABasicAnimation {
         let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
         fadeOutAnimation.fromValue = 1
         fadeOutAnimation.toValue = 0
-        fadeOutAnimation.beginTime = CACurrentMediaTime() + delay
         fadeOutAnimation.setValue("fadeProgress", forKey: "animID")
         return fadeOutAnimation
+    }
+    
+    // MARK: - Progress animation handling
+    
+    private func prepareProgressAnimation() {
+        removeLayers()
+        configure()
+        upperShapeLayer?.speed = 0
+        lowerShapeLayer?.speed = 0
+        upperShapeLayer?.add(progressAnimation(forDownload: true), forKey: nil)
+        lowerShapeLayer?.add(progressAnimation(forDownload: true), forKey: nil)
+    }
+    
+    private func removeLayers() {
+        titleLabel.layer.removeAllAnimations()
+        titleLabel.layer.sublayers = nil
     }
     
     // MARK: - Public methods
     
     func beginAnimation() {
-        beginProgressAnimationTransaction()
+        beginGreetingsAnimationTransaction()
+    }
+    
+    func update(withOffset offset: Double) {
+        if titleLabel.layer.sublayers == nil {
+            prepareProgressAnimation()
+        }
+        upperShapeLayer?.timeOffset = offset
+        lowerShapeLayer?.timeOffset = offset
+        if offset == 1.0 {
+            removeLayers()
+        }
     }
     
     func configure() {

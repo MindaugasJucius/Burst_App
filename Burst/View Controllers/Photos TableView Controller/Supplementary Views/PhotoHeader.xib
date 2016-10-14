@@ -20,7 +20,7 @@
                                 <constraint firstAttribute="width" constant="15" id="D1Q-ta-wIC"/>
                             </constraints>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-6P-B2B">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-6P-B2B">
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-8j-p8T">
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -45,7 +45,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bdi-9W-hDI" secondAttribute="bottom" id="7Q1-W0-coR"/>
                 <constraint firstItem="bdi-9W-hDI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Wxb-MT-p3U"/>

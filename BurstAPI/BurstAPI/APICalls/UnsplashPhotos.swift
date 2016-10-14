@@ -5,7 +5,7 @@ import Unbox
 
 public typealias PhotosCallback = (_ photos: [Photo]?, _ error: NSError?) -> ()
 public typealias EmptyCallback = () -> ()
-public typealias ProgressCallback = (_ progress: Progress) -> ()
+public typealias ProgressCallback = (_ progress: Double) -> ()
 public typealias PhotoDownloadCallback = (_ response: DataResponse<UIImage>, _ photo: Photo) -> ()
 
 open class UnsplashPhotos: NSObject {
@@ -15,9 +15,9 @@ open class UnsplashPhotos: NSObject {
     fileprivate let networkGroup = DispatchGroup()
     fileprivate let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .fifo, maximumActiveDownloads: 1)
 
-    open func getPhotos(_ completionHandler: @escaping PhotosCallback, page: Int) -> [Photo]? {
-        guard let appID = AppConstants.appConstDict[BurstID] else { return .none }
-        Alamofire.request(UnsplashPhotosAll, method: .get, parameters: [BurstID : appID, "page": String(page)]).responseJSON { [weak self] response in
+    open func getPhotos(_ page: Int, completion completionHandler: @escaping PhotosCallback) {
+        guard let appID = AppConstants.appConstDict[BurstID] else { return }
+        Alamofire.request(UnsplashPhotosAll, method: .get, parameters: [BurstID : appID, "page": String(page), "per_page": 10]).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
                 guard let photosJSON = value as? NSArray else { return }
@@ -27,10 +27,9 @@ open class UnsplashPhotos: NSObject {
                 completionHandler(.none, error as NSError)
             }
         }
-        return .none
     }
     
-    fileprivate func parsePhotoEntities(_ photosJSON: NSArray, completionCallback: @escaping PhotosCallback) {
+    private func parsePhotoEntities(_ photosJSON: NSArray, completionCallback: @escaping PhotosCallback) {
         do {
             var photos = [Photo]()
             try photosJSON.forEach({ (photoJSON) in
@@ -55,7 +54,7 @@ open class UnsplashPhotos: NSObject {
     
     fileprivate func getPhotoImage(_ urlRequest: URL, callback: @escaping (_ image: UIImage?, _ error: Error?) -> ()) {
         let request = URLRequest(url: urlRequest)
-        ImageDownloader.default.download(request) { response in
+        imageDownloader.download(request) { response in
             switch response.result {
             case .success(let image):
                 callback(image, .none)
@@ -66,16 +65,10 @@ open class UnsplashPhotos: NSObject {
     }
     
     open func addImageToQueueForDownload(_ photo: Photo, progressHandler: @escaping ProgressCallback, completion: @escaping PhotoDownloadCallback) {
-    
-//        filter: ImageFilter? = nil,
-//        progress: ProgressHandler? = nil,
-//        progressQueue: DispatchQueue = DispatchQueue.main,
-//        completion: CompletionHandler?
         let request = URLRequest(url: photo.urls.full)
         imageDownloader.download(request, progress:
             { progress in
-//                let progress = Float(totalBytesRead) / Float(totalExpectedBytesToRead)
-//                progressHandler(progress: progress)
+                progressHandler(progress.fractionCompleted)
             },
             completion: { response in
                 completion(response, photo)

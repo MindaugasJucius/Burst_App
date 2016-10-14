@@ -12,7 +12,6 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
         topLabel.textColor = AppAppearance.white
         setupPhotoDescription()
         contentView.backgroundColor = .black
-        
     }
     
     private func setupPhotoDescription() {

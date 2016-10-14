@@ -11,8 +11,6 @@ protocol ContainerControllerDelegate: class {
 
 extension ContainerControllerDelegate where Self: UIViewController { }
 
-protocol ContainerAlerts { }
-
 class ContainerViewController: UIViewController {
 
     fileprivate var contentViewController: UIViewController?
@@ -20,13 +18,17 @@ class ContainerViewController: UIViewController {
     
     fileprivate var progressViewPresented = false
     
+    var delegate: NavigationControllerDelegate?
+    
     override func viewWillAppear(_ animated: Bool) {
-        //settingsStoreGetPreferredVC
+        super.viewWillAppear(animated)
         let className = String(describing: PhotosTableViewController.self)
         
         let photosTableViewStoryboard = UIStoryboard.init(name: className, bundle: nil)
-        let controller = photosTableViewStoryboard.instantiateViewController(withIdentifier: className)
-        
+        guard let controller = photosTableViewStoryboard.instantiateViewController(withIdentifier: className) as? PhotosTableViewController else {
+            return
+        }
+        controller.delegate = self
         contentViewController = controller
         
         photoSavingHelper = PhotoSavingHelper(controller: controller)
@@ -39,8 +41,8 @@ class ContainerViewController: UIViewController {
     
     fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
         UnsplashPhotos.defaultInstance.addImageToQueueForDownload(photo,
-            progressHandler: { (progress) in
-
+            progressHandler: { [weak self] progress in
+                self?.delegate?.update(withProgress: progress)
             },
             completion: { [weak self] response, photo in
                 guard let strongSelf = self else {
@@ -64,7 +66,7 @@ class ContainerViewController: UIViewController {
     }
 }
 
-extension ContainerViewController: ContainerAlerts {
+extension ContainerViewController {
     
     fileprivate func presentError(_ error: NSError) {
         AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(

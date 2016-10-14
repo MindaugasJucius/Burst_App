@@ -23,6 +23,7 @@ final class MainTabBarViewController: UITabBarController {
             image: UIImage(named: "GalleryDisabled"),
             selectedImage: UIImage(named: "GallerySelected")
         )
+        controller.delegate = containerNavigationController
         containerNavigationController.tabBarItem.imageInsets = imageInsets
         return containerNavigationController
     }

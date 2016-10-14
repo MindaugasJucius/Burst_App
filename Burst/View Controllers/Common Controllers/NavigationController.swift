@@ -1,6 +1,11 @@
+protocol NavigationControllerDelegate: class {
+    func update(withProgress progress: Double)
+    
+}
+
 class NavigationController: UINavigationController {
     
-    private var titleView: TitleView?
+    fileprivate var titleView: TitleView?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -26,4 +31,10 @@ class NavigationController: UINavigationController {
         titleView?.beginAnimation()
     }
 
+}
+
+extension NavigationController: NavigationControllerDelegate {
+    func update(withProgress progress: Double) {
+        titleView?.update(withOffset: progress)
+    }
 }

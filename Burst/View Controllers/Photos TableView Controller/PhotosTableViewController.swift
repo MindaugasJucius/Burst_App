@@ -2,7 +2,9 @@ import UIKit
 
 class PhotosTableViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
+    
+    var delegate: ContainerControllerDelegate?
     
     private var dataSource: PhotosTableViewDataSource!
 
@@ -41,6 +43,8 @@ class PhotosTableViewController: UIViewController {
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.allowsSelection = false
         tableView.delaysContentTouches = false
+        tableView.infiniteScrollIndicatorStyle = .white
+        tableView.infiniteScrollTriggerOffset = tableView.bounds.height
         for case let subview as UIScrollView in tableView.subviews {
             subview.delaysContentTouches = false
         }
@@ -51,15 +55,22 @@ class PhotosTableViewController: UIViewController {
     }
     
     private func setupDataSource() {
-        dataSource = PhotosTableViewDataSource(tableView: tableView)
+        dataSource = PhotosTableViewDataSource(tableView: tableView, viewController: self)
+        dataSource.onPhotoSave = { [weak self] photo in
+            guard let unwrappedPhoto = photo else {
+                return
+            }
+            print("begin download")
+            self?.delegate?.downloadPhoto(unwrappedPhoto)
+        }
         tableView.dataSource = dataSource
     }
     
     private func configureDimensions() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.estimatedSectionHeaderHeight = 30
-        tableView.estimatedRowHeight = 360
+        tableView.estimatedSectionHeaderHeight = 35
+        tableView.estimatedRowHeight = 250
     }
 }
 
