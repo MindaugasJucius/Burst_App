@@ -16,8 +16,8 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="H6O-c0-cSz">
                             <constraints>
-                                <constraint firstAttribute="height" constant="15" id="5ho-oe-QFK"/>
-                                <constraint firstAttribute="width" constant="15" id="D1Q-ta-wIC"/>
+                                <constraint firstAttribute="height" constant="20" id="5ho-oe-QFK"/>
+                                <constraint firstAttribute="width" constant="20" id="D1Q-ta-wIC"/>
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-6P-B2B">

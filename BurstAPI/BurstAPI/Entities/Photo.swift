@@ -13,6 +13,7 @@ open class Photo: NSObject, Unboxable {
     open let color: UIColor
      
     open var thumbImage: UIImage?
+    open var stats: Stats?
     
     required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")

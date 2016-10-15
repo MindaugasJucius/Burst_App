@@ -16,7 +16,6 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-wj-rLh">
-                        <color key="backgroundColor" red="0.98431372549999996" green="0.45882352939999999" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="189.5" id="FYb-DY-c3g"/>
                         </constraints>

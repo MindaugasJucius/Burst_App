@@ -68,6 +68,11 @@ class PhotosTableViewDataSource: NSObject {
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PhotoHeader.reuseIdentifier)
     }
     
+    func configureHeader(forView view: PhotoHeader, atSection section: Int) {
+        let photo = fetchedPhotos[section]
+        view.setupInfo(forPhoto: photo)
+    }
+    
     // MARK: - Cell configuration
     
     fileprivate func configure(photoCell: PhotoTableViewCell, forPhoto photo: Photo) {

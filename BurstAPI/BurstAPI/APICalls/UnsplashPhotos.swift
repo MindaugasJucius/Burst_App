@@ -66,7 +66,15 @@ open class UnsplashPhotos: NSObject {
                     guard let image = image else { return }
                     parsedPhoto.thumbImage = image
                     photos.append(parsedPhoto)
-                    strongSelf.networkGroup.leave()
+                    strongSelf.getPhotoStats(forPhoto: parsedPhoto, completion: { stats, error in
+                            guard let stats = stats else {
+                                strongSelf.networkGroup.leave()
+                                return
+                            }
+                            parsedPhoto.stats = stats
+                            strongSelf.networkGroup.leave()
+                        }
+                    )
                 })
             })
             networkGroup.notify(queue: DispatchQueue.main, execute: {

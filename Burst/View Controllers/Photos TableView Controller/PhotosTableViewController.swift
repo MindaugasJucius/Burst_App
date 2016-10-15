@@ -6,7 +6,7 @@ class PhotosTableViewController: UIViewController {
     
     var delegate: ContainerControllerDelegate?
     
-    private var dataSource: PhotosTableViewDataSource!
+    fileprivate var dataSource: PhotosTableViewDataSource!
 
     // Mark: - Lifecycle
     
@@ -77,7 +77,10 @@ class PhotosTableViewController: UIViewController {
 extension PhotosTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier)
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier) as? PhotoHeader else {
+            return .none
+        }
+        dataSource.configureHeader(forView: header, atSection: section)
         return header
     }
 }
