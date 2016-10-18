@@ -16,8 +16,6 @@
 		037A6E691DAFE743000A774C /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E681DAFE743000A774C /* ReusableView.swift */; };
 		037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E6B1DAFE79A000A774C /* PhotoTableViewCell.swift */; };
 		037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E6C1DAFE79A000A774C /* PhotoTableViewCell.xib */; };
-		037A6E7C1DAFF58C000A774C /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E7A1DAFF58C000A774C /* FAIcon.swift */; };
-		037A6E7D1DAFF58C000A774C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E7B1DAFF58C000A774C /* FontAwesome.ttf */; };
 		037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E831DB0C812000A774C /* PhotoHeader.swift */; };
 		037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E851DB0C81F000A774C /* PhotoHeader.xib */; };
 		037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */; };
@@ -47,6 +45,8 @@
 		03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */; };
 		03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */; };
 		03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB21D8878F100D18A48 /* TitleView.xib */; };
+		03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB148F1DB6391C00049E45 /* FAIcon.swift */; };
+		03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03EB14901DB6391C00049E45 /* FontAwesome.ttf */; };
 		03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EF71DA13550002BDF0A /* Unbox.framework */; };
 		03EE3EFB1DA13B3A002BDF0A /* Unbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -105,8 +105,6 @@
 		037A6E681DAFE743000A774C /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		037A6E6B1DAFE79A000A774C /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		037A6E6C1DAFE79A000A774C /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
-		037A6E7A1DAFF58C000A774C /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
-		037A6E7B1DAFF58C000A774C /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		037A6E831DB0C812000A774C /* PhotoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHeader.swift; sourceTree = "<group>"; };
 		037A6E851DB0C81F000A774C /* PhotoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoHeader.xib; sourceTree = "<group>"; };
 		037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -135,6 +133,8 @@
 		03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
 		03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		03DC3AB21D8878F100D18A48 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
+		03EB148F1DB6391C00049E45 /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
+		03EB14901DB6391C00049E45 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		03EE3EF71DA13550002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 		03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +199,8 @@
 		037A6E791DAFF579000A774C /* FontAwesome */ = {
 			isa = PBXGroup;
 			children = (
+				03EB148F1DB6391C00049E45 /* FAIcon.swift */,
+				03EB14901DB6391C00049E45 /* FontAwesome.ttf */,
 			);
 			path = FontAwesome;
 			sourceTree = "<group>";
@@ -240,8 +242,6 @@
 				037A6E671DAFE743000A774C /* Protocols */,
 				037A6E641DAFE73A000A774C /* Extensions */,
 				037A6E791DAFF579000A774C /* FontAwesome */,
-				037A6E7A1DAFF58C000A774C /* FAIcon.swift */,
-				037A6E7B1DAFF58C000A774C /* FontAwesome.ttf */,
 				03DC3AAE1D8878F100D18A48 /* Common Views */,
 				03DC3A911D88782F00D18A48 /* View Controllers */,
 				03DC3A771D88781E00D18A48 /* Helpers */,
@@ -445,9 +445,9 @@
 				03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */,
 				03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
-				037A6E7D1DAFF58C000A774C /* FontAwesome.ttf in Resources */,
 				037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */,
 				037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */,
+				03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */,
 				03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */,
 				037A6E261DAF8CCC000A774C /* MainTabBarViewController.xib in Resources */,
 				037A6E281DAF8E42000A774C /* PhotosTableViewController.storyboard in Resources */,
@@ -494,7 +494,6 @@
 				03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */,
 				03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */,
 				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
-				037A6E7C1DAFF58C000A774C /* FAIcon.swift in Sources */,
 				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
 				037A6DE21DAE26F1000A774C /* InsetLabel.swift in Sources */,
@@ -505,6 +504,7 @@
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
 				03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
+				03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
