@@ -60,7 +60,6 @@ class PhotosTableViewController: UIViewController {
             guard let unwrappedPhoto = photo else {
                 return
             }
-            print("begin download")
             self?.delegate?.downloadPhoto(unwrappedPhoto)
         }
         tableView.dataSource = dataSource

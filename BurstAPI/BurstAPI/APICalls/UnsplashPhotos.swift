@@ -19,8 +19,7 @@ open class UnsplashPhotos: NSObject {
     open func getPhotos(_ page: Int, completion completionHandler: @escaping PhotosCallback) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
         let params = [BurstID : appID,
-                      "page": String(page),
-                      "per_page": 10] as [String : Any]
+                      "page": String(page)] as [String : Any]
         Alamofire.request(UnsplashPhotosAll, method: .get, parameters: params).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
@@ -40,7 +39,6 @@ open class UnsplashPhotos: NSObject {
         Alamofire.request(statsURL, method: .get, parameters: params).responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
-                dump(value)
                 guard let statsDict = value as? UnboxableDictionary else { return }
                 do {
                     let stats: Stats = try unbox(dictionary: statsDict)

@@ -28,6 +28,13 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     func configure(forPhoto photo: Photo) {
         displayPhoto = photo
         photoImageView.image = photo.thumbImage
+        guard let image = photo.thumbImage else {
+            return
+        }
+        let aspectRatio = image.size.width / image.size.height
+        let aspectRatioConstraint = NSLayoutConstraint(item: photoImageView, attribute: .width, relatedBy: .equal, toItem: photoImageView, attribute: .height, multiplier: aspectRatio, constant: 0.0)
+        aspectRatioConstraint.priority = 999
+        photoImageView.addConstraint(aspectRatioConstraint)
     }
     
     @IBAction func loveButtonTouched(_ sender: UIButton) {
@@ -61,5 +68,13 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
                             iconSize: AppAppearance.ButtonFAIconSize,
                             forState: .normal)
         addButton.setFATitleColor(color: AppAppearance.white)
+    }
+    
+    override func prepareForReuse() {
+        photoImageView?.image = nil
+        loveButton.setFAIcon(icon: .FAHeartO,
+                             iconSize: AppAppearance.ButtonFAIconSize,
+                             forState: .normal)
+        loveButton.setFATitleColor(color: AppAppearance.white)
     }
 }
