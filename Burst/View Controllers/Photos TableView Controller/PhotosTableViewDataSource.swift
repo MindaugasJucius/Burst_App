@@ -81,7 +81,7 @@ class PhotosTableViewDataSource: NSObject {
         tableView.insertRows(at: indexPaths, with: .none)
         tableView.endUpdates()
         tableView.finishInfiniteScroll()
-        tableView.reloadData()
+        //tableView.reloadData()
         currentPage = currentPage + 1
     }
     

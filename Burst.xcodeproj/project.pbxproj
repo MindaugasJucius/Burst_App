@@ -15,7 +15,6 @@
 		037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E651DAFE73A000A774C /* NSObject+ClassName.swift */; };
 		037A6E691DAFE743000A774C /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E681DAFE743000A774C /* ReusableView.swift */; };
 		037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E6B1DAFE79A000A774C /* PhotoTableViewCell.swift */; };
-		037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E6C1DAFE79A000A774C /* PhotoTableViewCell.xib */; };
 		037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E831DB0C812000A774C /* PhotoHeader.swift */; };
 		037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E851DB0C81F000A774C /* PhotoHeader.xib */; };
 		037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */; };
@@ -104,7 +103,6 @@
 		037A6E651DAFE73A000A774C /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 		037A6E681DAFE743000A774C /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		037A6E6B1DAFE79A000A774C /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
-		037A6E6C1DAFE79A000A774C /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		037A6E831DB0C812000A774C /* PhotoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHeader.swift; sourceTree = "<group>"; };
 		037A6E851DB0C81F000A774C /* PhotoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoHeader.xib; sourceTree = "<group>"; };
 		037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				037A6E6B1DAFE79A000A774C /* PhotoTableViewCell.swift */,
-				037A6E6C1DAFE79A000A774C /* PhotoTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 				03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
 				037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */,
-				037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */,
 				03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */,
 				03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */,
 				037A6E261DAF8CCC000A774C /* MainTabBarViewController.xib in Resources */,

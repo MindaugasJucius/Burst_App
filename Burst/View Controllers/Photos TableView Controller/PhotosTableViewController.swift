@@ -69,7 +69,7 @@ class PhotosTableViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 35
-        tableView.estimatedRowHeight = 250
+        tableView.estimatedRowHeight = 500
     }
 }
 
