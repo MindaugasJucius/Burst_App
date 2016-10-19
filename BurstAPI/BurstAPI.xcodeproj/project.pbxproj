@@ -26,6 +26,7 @@
 		03EB14A61DB78CA200049E45 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14A21DB78CA200049E45 /* APIConstants.swift */; };
 		03EB14A71DB78CA200049E45 /* UnsplashPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14A41DB78CA200049E45 /* UnsplashPhotos.swift */; };
 		03EB14A81DB78CA200049E45 /* UnsplashPhotoStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14A51DB78CA200049E45 /* UnsplashPhotoStats.swift */; };
+		03EB14AC1DB78E4B00049E45 /* UnboxSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14AB1DB78E4B00049E45 /* UnboxSerializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +65,7 @@
 		03EB14A21DB78CA200049E45 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		03EB14A41DB78CA200049E45 /* UnsplashPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhotos.swift; sourceTree = "<group>"; };
 		03EB14A51DB78CA200049E45 /* UnsplashPhotoStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoStats.swift; sourceTree = "<group>"; };
+		03EB14AB1DB78E4B00049E45 /* UnboxSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnboxSerializer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				03EB14A21DB78CA200049E45 /* APIConstants.swift */,
 				03EB14A31DB78CA200049E45 /* Calls */,
+				03EB14AB1DB78E4B00049E45 /* UnboxSerializer.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				03EB14A81DB78CA200049E45 /* UnsplashPhotoStats.swift in Sources */,
 				03DC3A4B1D886E2000D18A48 /* User.swift in Sources */,
 				03EB14A61DB78CA200049E45 /* APIConstants.swift in Sources */,
+				03EB14AC1DB78E4B00049E45 /* UnboxSerializer.swift in Sources */,
 				03D42A041DB1794C001F490E /* Stats.swift in Sources */,
 				03DC3A551D886F5300D18A48 /* UIColor+Hex.swift in Sources */,
 				03DC3A491D886E2000D18A48 /* PhotoCategory.swift in Sources */,

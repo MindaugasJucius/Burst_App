@@ -11,10 +11,10 @@ public typealias PhotoDownloadCallback = (_ response: DataResponse<UIImage>, _ p
 
 open class UnsplashPhotos: NSObject {
     
-    open static let defaultInstance = UnsplashPhotos()
+    public static let defaultInstance = UnsplashPhotos()
     
-    fileprivate let networkGroup = DispatchGroup()
-    fileprivate let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .fifo, maximumActiveDownloads: 1)
+    private let networkGroup = DispatchGroup()
+    private let imageDownloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: .fifo, maximumActiveDownloads: 1)
 
     public func getPhotos(_ page: Int, completion completionHandler: @escaping PhotosCallback) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
@@ -63,7 +63,7 @@ open class UnsplashPhotos: NSObject {
         }
     }
     
-    fileprivate func getPhotoImage(_ urlRequest: URL, callback: @escaping (_ image: UIImage?, _ error: Error?) -> ()) {
+    private func getPhotoImage(_ urlRequest: URL, callback: @escaping (_ image: UIImage?, _ error: Error?) -> ()) {
         let request = URLRequest(url: urlRequest)
         imageDownloader.download(request) { response in
             switch response.result {
