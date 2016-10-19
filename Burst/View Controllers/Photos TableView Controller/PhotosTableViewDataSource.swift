@@ -86,10 +86,10 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     private func registerViews() {
-        let cellNib = UINib.init(nibName: PhotoTableViewCell.className(), bundle: nil)
+        //let cellNib = UINib.init(nibName: PhotoTableViewCell.className(), bundle: nil)
         let headerNib = UINib.init(nibName: PhotoHeader.className(), bundle: nil)
         
-        tableView.register(cellNib, forCellReuseIdentifier: PhotoTableViewCell.reuseIdentifier)
+        //tableView.register(cellNib, forCellReuseIdentifier: PhotoTableViewCell.reuseIdentifier)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PhotoHeader.reuseIdentifier)
     }
     

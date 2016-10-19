@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZGG-WI-zqV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="236" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZGG-WI-zqV">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="BzI-49-b7t" customClass="PhotosTableHeaderView" customModule="Burst" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
@@ -51,6 +51,41 @@
                                         <outlet property="topLabel" destination="SD9-kC-S8m" id="ZAm-Nf-DgU"/>
                                     </connections>
                                 </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotoTableViewCellReuse" id="J2Y-aV-0l0" customClass="PhotoTableViewCell" customModule="Burst" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="109" width="375" height="236"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J2Y-aV-0l0" id="bXJ-ga-Dhn">
+                                            <frame key="frameInset" width="375" height="235"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-7d-Qbq"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eou-sv-vRS">
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xab-Fw-OIx">
+                                                            <state key="normal" title="love"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pE-NI-lBH">
+                                                            <state key="normal" title="save"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lej-iN-8nW">
+                                                            <state key="normal" title="add"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="hJs-7d-Qbq" secondAttribute="trailing" constant="15" id="17g-Gc-XBy"/>
+                                                <constraint firstItem="hJs-7d-Qbq" firstAttribute="leading" secondItem="bXJ-ga-Dhn" secondAttribute="leading" constant="15" id="4ad-gt-Tq7"/>
+                                                <constraint firstItem="eou-sv-vRS" firstAttribute="leading" secondItem="bXJ-ga-Dhn" secondAttribute="leading" constant="15" id="Htn-Qd-NP2"/>
+                                                <constraint firstItem="hJs-7d-Qbq" firstAttribute="top" secondItem="bXJ-ga-Dhn" secondAttribute="top" id="MrU-gh-G0M"/>
+                                                <constraint firstItem="eou-sv-vRS" firstAttribute="top" secondItem="hJs-7d-Qbq" secondAttribute="bottom" constant="10" id="b4O-Qd-7yB"/>
+                                                <constraint firstAttribute="bottom" secondItem="eou-sv-vRS" secondAttribute="bottom" constant="5" id="kQG-fm-i4N"/>
+                                                <constraint firstAttribute="trailing" secondItem="eou-sv-vRS" secondAttribute="trailing" constant="15" id="qdQ-QS-8Fd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
