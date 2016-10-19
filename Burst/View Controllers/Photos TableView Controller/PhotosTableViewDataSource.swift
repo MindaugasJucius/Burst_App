@@ -28,7 +28,7 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     private func retrievePhotos() {
-        UnsplashPhotos.defaultInstance.getPhotos(currentPage, completion: { [weak self] photos, error in
+        UnsplashPhotos.photos(forPage: currentPage, completion: { [weak self] photos, error in
                 guard let photos = photos else {
                     AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(onController: self?.viewController,
                                                                                        withError: error)

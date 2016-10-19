@@ -40,7 +40,7 @@ class ContainerViewController: UIViewController {
     }
     
     fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
-        UnsplashPhotos.defaultInstance.addImageToQueueForDownload(photo,
+        UnsplashImages.addImageToQueueForDownload(photo,
             progressHandler: { [weak self] progress in
                 self?.delegate?.update(withProgress: progress)
             },
