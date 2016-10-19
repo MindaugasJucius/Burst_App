@@ -17,14 +17,15 @@
 		03DC3A491D886E2000D18A48 /* PhotoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A451D886E2000D18A48 /* PhotoCategory.swift */; };
 		03DC3A4A1D886E2000D18A48 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A461D886E2000D18A48 /* URLs.swift */; };
 		03DC3A4B1D886E2000D18A48 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A471D886E2000D18A48 /* User.swift */; };
-		03DC3A4E1D886E3200D18A48 /* UnsplashPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A4D1D886E3200D18A48 /* UnsplashPhotos.swift */; };
 		03DC3A531D886F5300D18A48 /* UIButton+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A501D886F5300D18A48 /* UIButton+Blur.swift */; };
 		03DC3A541D886F5300D18A48 /* UIColor+Darkness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A511D886F5300D18A48 /* UIColor+Darkness.swift */; };
 		03DC3A551D886F5300D18A48 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A521D886F5300D18A48 /* UIColor+Hex.swift */; };
-		03DC3A571D886FD000D18A48 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A561D886FD000D18A48 /* APIConstants.swift */; };
 		03DC3A5F1D8872FF00D18A48 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03DC3A401D886D1C00D18A48 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03DC3A601D8872FF00D18A48 /* AlamofireImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03DC3A411D886D1C00D18A48 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03DC3A611D8872FF00D18A48 /* Unbox.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03DC3A261D8864DD00D18A48 /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03EB14A61DB78CA200049E45 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14A21DB78CA200049E45 /* APIConstants.swift */; };
+		03EB14A71DB78CA200049E45 /* UnsplashPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14A41DB78CA200049E45 /* UnsplashPhotos.swift */; };
+		03EB14A81DB78CA200049E45 /* UnsplashPhotoStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB14A51DB78CA200049E45 /* UnsplashPhotoStats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,11 +58,12 @@
 		03DC3A451D886E2000D18A48 /* PhotoCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCategory.swift; sourceTree = "<group>"; };
 		03DC3A461D886E2000D18A48 /* URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		03DC3A471D886E2000D18A48 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		03DC3A4D1D886E3200D18A48 /* UnsplashPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhotos.swift; sourceTree = "<group>"; };
 		03DC3A501D886F5300D18A48 /* UIButton+Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Blur.swift"; sourceTree = "<group>"; };
 		03DC3A511D886F5300D18A48 /* UIColor+Darkness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Darkness.swift"; sourceTree = "<group>"; };
 		03DC3A521D886F5300D18A48 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
-		03DC3A561D886FD000D18A48 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		03EB14A21DB78CA200049E45 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		03EB14A41DB78CA200049E45 /* UnsplashPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhotos.swift; sourceTree = "<group>"; };
+		03EB14A51DB78CA200049E45 /* UnsplashPhotoStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +103,11 @@
 		03DC3A061D8860B300D18A48 /* BurstAPI */ = {
 			isa = PBXGroup;
 			children = (
+				03EB14A11DB78CA200049E45 /* API */,
 				03DC3A4F1D886F1E00D18A48 /* Extensions */,
-				03DC3A4C1D886E3200D18A48 /* APICalls */,
 				03DC3A211D88633700D18A48 /* Entities */,
 				03DC3A071D8860B300D18A48 /* BurstAPI.h */,
 				03DC3A091D8860B300D18A48 /* Info.plist */,
-				03DC3A561D886FD000D18A48 /* APIConstants.swift */,
 			);
 			path = BurstAPI;
 			sourceTree = "<group>";
@@ -133,14 +134,6 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		03DC3A4C1D886E3200D18A48 /* APICalls */ = {
-			isa = PBXGroup;
-			children = (
-				03DC3A4D1D886E3200D18A48 /* UnsplashPhotos.swift */,
-			);
-			path = APICalls;
-			sourceTree = "<group>";
-		};
 		03DC3A4F1D886F1E00D18A48 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +142,24 @@
 				03DC3A521D886F5300D18A48 /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		03EB14A11DB78CA200049E45 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				03EB14A21DB78CA200049E45 /* APIConstants.swift */,
+				03EB14A31DB78CA200049E45 /* Calls */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		03EB14A31DB78CA200049E45 /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				03EB14A41DB78CA200049E45 /* UnsplashPhotos.swift */,
+				03EB14A51DB78CA200049E45 /* UnsplashPhotoStats.swift */,
+			);
+			path = Calls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,17 +245,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03EB14A81DB78CA200049E45 /* UnsplashPhotoStats.swift in Sources */,
 				03DC3A4B1D886E2000D18A48 /* User.swift in Sources */,
+				03EB14A61DB78CA200049E45 /* APIConstants.swift in Sources */,
 				03D42A041DB1794C001F490E /* Stats.swift in Sources */,
 				03DC3A551D886F5300D18A48 /* UIColor+Hex.swift in Sources */,
 				03DC3A491D886E2000D18A48 /* PhotoCategory.swift in Sources */,
 				03DC3A4A1D886E2000D18A48 /* URLs.swift in Sources */,
+				03EB14A71DB78CA200049E45 /* UnsplashPhotos.swift in Sources */,
 				037A6E8B1DB11FED000A774C /* UserProfileImage.swift in Sources */,
 				03DC3A481D886E2000D18A48 /* Photo.swift in Sources */,
-				03DC3A571D886FD000D18A48 /* APIConstants.swift in Sources */,
 				03DC3A531D886F5300D18A48 /* UIButton+Blur.swift in Sources */,
 				03DC3A541D886F5300D18A48 /* UIColor+Darkness.swift in Sources */,
-				03DC3A4E1D886E3200D18A48 /* UnsplashPhotos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
