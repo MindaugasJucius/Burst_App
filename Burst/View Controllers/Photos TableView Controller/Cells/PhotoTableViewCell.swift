@@ -26,13 +26,14 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     }
     
     func configure(forPhoto photo: Photo) {
-        displayPhoto = photo
-        photoImageView.image = photo.thumbImage
-        guard let image = photo.thumbImage else {
-            return
-        }
-        let aspectRatio = image.size.width / image.size.height
-        let aspectRatioConstraint = NSLayoutConstraint(item: photoImageView, attribute: .width, relatedBy: .equal, toItem: photoImageView, attribute: .height, multiplier: aspectRatio, constant: 0.0)
+        alter(forImage: photo.thumbImage!)
+    }
+    
+    private func alter(forImage image: UIImage) {
+        photoImageView.image = image
+        let aspectRatio = image.size.height / image.size.width
+        let aspectRatioConstraint = NSLayoutConstraint(item: photoImageView, attribute: .height, relatedBy: .equal, toItem: photoImageView, attribute: .width, multiplier:
+            aspectRatio, constant: 0.0)
         aspectRatioConstraint.priority = 999
         photoImageView.addConstraint(aspectRatioConstraint)
     }
