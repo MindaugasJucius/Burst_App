@@ -31,7 +31,6 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
         let description = NSMutableAttributedString()
         description.append(infoSubstring(withIcon: .FAHeart, infoText: "\(stats.likes)", withSeparator: true))
         description.append(infoSubstring(withIcon: .FACloudDownload, infoText: "\(stats.downloads)", withSeparator: true))
-        //description.append(infoSubstring(withIcon: .FAPictureO, infoText: "dogze", withSeparator: true))
         description.append(infoSubstring(withIcon: .FAEye, infoText: "\(stats.views)"))
         bottomLabel.attributedText = description
     }

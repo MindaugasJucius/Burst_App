@@ -41,6 +41,30 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     private func updateTableView(forPhotos photos: [Photo]) {
+        let photoGroup = DispatchGroup()
+        photos.forEach { photo in
+            photoGroup.enter()
+            UnsplashImages.getPhotoImage(photo.urls.small,
+                success: { image in
+                    photo.thumbImage = image
+                    photoGroup.leave()
+                },
+                failure: { error in
+                                            
+                }
+            )
+        }
+        photoGroup.notify(queue: DispatchQueue.main,
+            execute: { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.update(forPhotos: photos)
+            }
+        )
+    }
+    
+    func update(forPhotos photos: [Photo]) {
         var indexPaths = [IndexPath]()
         let previousCount = fetchedPhotos.count
         var currentCount = previousCount
@@ -54,7 +78,7 @@ class PhotosTableViewDataSource: NSObject {
         
         tableView.beginUpdates()
         tableView.insertSections(IndexSet(integersIn: Range(uncheckedBounds: (lower: previousCount, upper: currentCount))), with: .fade)
-        tableView.insertRows(at: indexPaths, with: .fade)
+        tableView.insertRows(at: indexPaths, with: .none)
         tableView.endUpdates()
         tableView.finishInfiniteScroll()
         currentPage = currentPage + 1
