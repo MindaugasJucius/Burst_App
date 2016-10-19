@@ -2,6 +2,7 @@ import AlamofireImage
 import Alamofire
 
 public typealias ProgressCallback = (_ progress: Double) -> ()
+public typealias ImageCallback = (_ image: UIImage) -> ()
 public typealias PhotoDownloadCallback = (_ response: DataResponse<UIImage>, _ photo: Photo) -> ()
 
 public class UnsplashImages: NSObject {
@@ -12,14 +13,14 @@ public class UnsplashImages: NSObject {
         maximumActiveDownloads: 1
     )
 
-    public static func getPhotoImage(_ urlRequest: URL, callback: @escaping (_ image: UIImage?, _ error: Error?) -> ()) {
+    public static func getPhotoImage(_ urlRequest: URL, success: @escaping ImageCallback, failure: @escaping ErrorCallback) {
         let request = URLRequest(url: urlRequest)
         imageDownloader.download(request) { response in
             switch response.result {
             case .success(let image):
-                callback(image, .none)
+                success(image)
             case .failure(let error):
-                callback(.none, error)
+                failure(error)
             }
         }
     }

@@ -3,7 +3,7 @@ import Unbox
 
 public typealias EntitiesCallback<U: Unboxable> = (_ entities: [U]) -> ()
 public typealias EntityCallback<U: Unboxable> = (_ entity: U) -> ()
-public typealias ErrorCallback = (NSError) -> ()
+public typealias ErrorCallback = (Error) -> ()
 
 class UnboxSerializer: NSObject {
     
@@ -19,7 +19,7 @@ class UnboxSerializer: NSObject {
                 DispatchQueue.main.async {
                     success(parsedEntity)
                 }
-            } catch let error as NSError {
+            } catch let error {
                 DispatchQueue.main.async {
                     failure(error)
                 }

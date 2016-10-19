@@ -6,7 +6,7 @@ class AlertControllerPresenterHelper: NSObject {
     
     static let sharedInstance = AlertControllerPresenterHelper()
     
-    func presentErrorAlert(onController controller: UIViewController?, withError error: NSError?) {
+    func presentErrorAlert(onController controller: UIViewController?, withError error: Error?) {
         let errorAlertController = UIAlertController(
             title: Error,
             message: error?.localizedDescription ?? Error,

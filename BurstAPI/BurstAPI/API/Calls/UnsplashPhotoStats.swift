@@ -1,7 +1,7 @@
 import Alamofire
 import Unbox
 
-public typealias StatsCallback = (_ photos: Stats?, _ error: NSError?) -> ()
+public typealias StatsCallback = (_ photos: Stats?, _ error: Error?) -> ()
 
 public class UnsplashPhotoStats: NSObject {
 
