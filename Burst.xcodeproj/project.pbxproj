@@ -43,7 +43,6 @@
 		03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */; };
 		03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3A961D88782F00D18A48 /* NavigationController.swift */; };
 		03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */; };
-		03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */; };
 		03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03DC3AB21D8878F100D18A48 /* TitleView.xib */; };
 		03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB148F1DB6391C00049E45 /* FAIcon.swift */; };
 		03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03EB14901DB6391C00049E45 /* FontAwesome.ttf */; };
@@ -131,7 +130,6 @@
 		03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		03DC3A961D88782F00D18A48 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		03DC3AA01D88782F00D18A48 /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
-		03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarProgressView.swift; sourceTree = "<group>"; };
 		03DC3AB21D8878F100D18A48 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		03EB148F1DB6391C00049E45 /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
 		03EB14901DB6391C00049E45 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 		03DC3AAE1D8878F100D18A48 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
-				03DC3AB11D8878F100D18A48 /* StatusBarProgressView.swift */,
 				03DC3AB21D8878F100D18A48 /* TitleView.xib */,
 				037A6DB01DAD2A97000A774C /* TitleView.swift */,
 				037A6DE11DAE26F1000A774C /* InsetLabel.swift */,
@@ -502,7 +499,6 @@
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
-				03DC3AB51D8878F100D18A48 /* StatusBarProgressView.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
 				03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */,
 			);

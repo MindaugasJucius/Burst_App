@@ -24,14 +24,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-kC-S8m">
-                                            <frame key="frameInset" width="1000" height="1000"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-kC-S8m">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-AS-EP2">
-                                            <frame key="frameInset" width="1000" height="1000"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-AS-EP2">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -39,7 +37,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SD9-kC-S8m" secondAttribute="trailing" constant="15" id="A0u-ON-vwg"/>
-                                        <constraint firstAttribute="bottom" secondItem="0Oj-AS-EP2" secondAttribute="bottom" constant="19" id="CZN-Tb-QfQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="0Oj-AS-EP2" secondAttribute="bottom" constant="20" id="CZN-Tb-QfQ"/>
                                         <constraint firstItem="0Oj-AS-EP2" firstAttribute="top" secondItem="SD9-kC-S8m" secondAttribute="bottom" constant="5" id="Omx-m4-P55"/>
                                         <constraint firstItem="SD9-kC-S8m" firstAttribute="top" secondItem="BzI-49-b7t" secondAttribute="top" constant="15" id="lA4-IF-O0f"/>
                                         <constraint firstItem="0Oj-AS-EP2" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="rDA-Uu-EC7"/>
