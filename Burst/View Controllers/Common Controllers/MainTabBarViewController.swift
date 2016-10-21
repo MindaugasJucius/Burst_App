@@ -2,54 +2,65 @@ import UIKit
 
 final class MainTabBarViewController: UITabBarController {
 
-    fileprivate let imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+    fileprivate var customTabBar: MainTabBar?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [containerTab(), cameraTab(), settingsTab()]
         tabBar.isTranslucent = false
-        tabBar.isHidden = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        delegate = self
+        customTabBar = tabBar as? MainTabBar
+        let offset = UIOffset(horizontal: 0, vertical: -5)
+        tabBar.items?.forEach { item in
+            item.image = nil
+            item.titlePositionAdjustment = offset
+        }
     }
     
-    fileprivate func containerTab() -> UINavigationController {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        customTabBar?.setupBar()
+    }
+    
+    private func containerTab() -> UINavigationController {
         let controller = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
         let containerNavigationController = NavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
-            title: nil,
-            image: UIImage(named: "GalleryDisabled"),
-            selectedImage: UIImage(named: "GallerySelected")
+            title: "Photos",
+            image: nil,
+            selectedImage: nil
         )
         controller.delegate = containerNavigationController
-        containerNavigationController.tabBarItem.imageInsets = imageInsets
         return containerNavigationController
     }
     
-    fileprivate func cameraTab() -> UINavigationController {
+    private func cameraTab() -> UINavigationController {
         let controller = UIViewController()
         let containerNavigationController = UINavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
-            title: nil,
-            image: UIImage(named: "CameraDisabled"),
-            selectedImage: UIImage(named: "CameraSelected")
+            title: "Camera",
+            image: nil,
+            selectedImage: nil
         )
-        containerNavigationController.tabBarItem.imageInsets = imageInsets
         return containerNavigationController
     }
     
-    fileprivate func settingsTab() -> UINavigationController {
+    private func settingsTab() -> UINavigationController {
         let controller = UIViewController()
         let containerNavigationController = UINavigationController(rootViewController: controller)
-        containerNavigationController.tabBarItem  = UITabBarItem(
-            title: nil,
-            image: UIImage(named: "SettingsDisabled"),
-            selectedImage: UIImage(named: "SettingsSelected")
+        containerNavigationController.tabBarItem = UITabBarItem(
+            title: "Settings",
+            image: nil,
+            selectedImage: nil
         )
-        containerNavigationController.tabBarItem.imageInsets = imageInsets
         return containerNavigationController
     }
 
+}
+
+extension MainTabBarViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        customTabBar?.updateBar(toPosition: tabBarController.selectedIndex)
+    }
 }

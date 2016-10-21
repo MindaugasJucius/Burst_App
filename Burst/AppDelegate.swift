@@ -6,13 +6,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let mainTabBarController = MainTabBarViewController(nibName: "MainTabBarViewController", bundle: nil)
-        let mainWindow = UIWindow(frame: UIScreen.main.bounds)
-        window = mainWindow
-        window?.rootViewController = mainTabBarController
-        window?.makeKeyAndVisible()
+//        let mainTableViewStoryboard = UIStoryboard.init(name: MainTabBarViewController.className(), bundle: nil)
+//        guard let controller = photosTableViewStoryboard.instantiateViewController(withIdentifier: className) as? PhotosTableViewController else {
+//            return
+//        }
+//        let mainTabBarController = MainTabBarViewController(nibName: "MainTabBarViewController", bundle: nil)
+//        let mainWindow = UIWindow(frame: UIScreen.main.bounds)
+//        window = mainWindow
+//        window?.rootViewController = mainTabBarController
+//        window?.makeKeyAndVisible()
         updateNavigationBarAppearance()
-        updateTabBarAppearance()
+        //updateTabBarAppearance()
         return true
     }
     
