@@ -32,6 +32,8 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
         }
     }
     
+    
+    
     private func alter(forImage image: UIImage) {
         photoImageView.image = image
         let aspectRatio = image.size.height / image.size.width

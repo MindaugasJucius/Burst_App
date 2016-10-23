@@ -65,20 +65,10 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     func update(forPhotos photos: [Photo]) {
-        var indexPaths = [IndexPath]()
-        let previousCount = fetchedPhotos.count
-        var currentCount = previousCount
-        // create index paths for affected items
-        for _ in photos {
-            let indexPath = IndexPath(item: 0, section: currentCount)
-            indexPaths.append(indexPath)
-            currentCount = currentCount + 1
-        }
         fetchedPhotos.append(contentsOf: photos)
-        
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
         tableView.beginUpdates()
-        tableView.insertSections(IndexSet(integersIn: Range(uncheckedBounds: (lower: previousCount, upper: currentCount))), with: .fade)
-        tableView.insertRows(at: indexPaths, with: .none)
         tableView.endUpdates()
         tableView.finishInfiniteScroll()
         currentPage = currentPage + 1
@@ -122,6 +112,7 @@ extension PhotosTableViewDataSource: UITableViewDataSource {
         guard let photoTableViewCell = cell as? PhotoTableViewCell else {
             return cell
         }
+        
         let photo = fetchedPhotos[indexPath.section]
         configure(photoCell: photoTableViewCell, forPhoto: photo)
         return photoTableViewCell

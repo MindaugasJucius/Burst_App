@@ -12,16 +12,19 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
         super.awakeFromNib()
         topLabel.font = AppAppearance.regularFont(withSize: .CellText)
         topLabel.textColor = AppAppearance.white
+        bottomLabel.font = AppAppearance.regularFont(withSize: .CellText)
+        bottomLabel.textColor = AppAppearance.white
         contentView.backgroundColor = .black
     }
     
     func setupInfo(forPhoto photo: Photo) {
-        setupDescription(forPhoto: photo)
+        //setupDescription(forPhoto: photo)
         topLabel.text = photo.uploader.name
-        imageView.layer.cornerRadius = imageView.frame.height / 2
-        imageView.clipsToBounds = true
+        //imageView.layer.cornerRadius = imageView.frame.height / 2
+        //imageView.clipsToBounds = true
         let url = URL(string: photo.uploader.userProfileImage.small)!
-        imageView.af_setImage(withURL: url)
+        bottomLabel.text = "suldubuldu"
+        //imageView.af_setImage(withURL: url)
     }
     
     private func setupDescription(forPhoto photo: Photo) {

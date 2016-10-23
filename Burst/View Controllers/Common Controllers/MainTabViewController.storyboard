@@ -9,7 +9,7 @@
         <!--Main Tab Bar View Controller-->
         <scene sceneID="RQe-xj-LP0">
             <objects>
-                <tabBarController id="zvS-5d-NRj" customClass="MainTabBarViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zvS-5d-NRj" customClass="MainTabBarViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bWc-Va-Va2" customClass="MainTabBar" customModule="Burst" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

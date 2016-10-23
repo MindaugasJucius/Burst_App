@@ -15,28 +15,28 @@
                 <frame key="frameInset" width="304" height="234"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-wj-rLh"/>
-                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-u2-vAo">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-wj-rLh"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-u2-vAo">
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rs-71-3Qr">
-                                <state key="normal" title="love"/>
                                 <connections>
                                     <action selector="loveButtonTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bp8-sh-hY6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKO-3b-RM9">
-                                <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="saveButtonTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YcA-tN-hTf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2C-FD-FsL">
-                                <state key="normal" title="add"/>
                                 <connections>
                                     <action selector="addButtonTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dCd-ZD-5mT"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="5vh-IY-nQX"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>

@@ -9,7 +9,7 @@
         <!--Photos Table View Controller-->
         <scene sceneID="F8t-2e-JTP">
             <objects>
-                <viewController storyboardIdentifier="PhotosTableViewController" id="Q61-j7-FSE" customClass="PhotosTableViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotosTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="Q61-j7-FSE" customClass="PhotosTableViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uIE-jf-din"/>
                         <viewControllerLayoutGuide type="bottom" id="7Hf-KY-4lg"/>
