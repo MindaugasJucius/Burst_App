@@ -15,7 +15,7 @@
                 <frame key="frameInset" width="304" height="234"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-wj-rLh"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-wj-rLh"/>
                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-u2-vAo">
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rs-71-3Qr">
@@ -40,10 +40,10 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Mcm-wj-rLh" secondAttribute="trailing" constant="15" id="Ez6-dn-Moj"/>
+                    <constraint firstAttribute="trailing" secondItem="Mcm-wj-rLh" secondAttribute="trailing" id="Ez6-dn-Moj"/>
                     <constraint firstItem="Mcm-wj-rLh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K1g-zm-n1T"/>
                     <constraint firstAttribute="trailing" secondItem="V6N-u2-vAo" secondAttribute="trailing" constant="30" id="Lsv-wP-aTU"/>
-                    <constraint firstItem="Mcm-wj-rLh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="aEm-hj-7PO"/>
+                    <constraint firstItem="Mcm-wj-rLh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aEm-hj-7PO"/>
                     <constraint firstItem="V6N-u2-vAo" firstAttribute="top" secondItem="Mcm-wj-rLh" secondAttribute="bottom" constant="10" id="bE7-UI-kLG"/>
                     <constraint firstItem="V6N-u2-vAo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="bZF-Db-OM4"/>
                     <constraint firstAttribute="bottom" secondItem="V6N-u2-vAo" secondAttribute="bottom" constant="5" id="r07-k7-Mjm"/>
@@ -51,6 +51,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="addButton" destination="B2C-FD-FsL" id="BMj-2p-O3L"/>
+                <outlet property="imageViewLeftConstraint" destination="aEm-hj-7PO" id="r6g-Rd-FMa"/>
+                <outlet property="imageViewRightConstraint" destination="Ez6-dn-Moj" id="a64-JO-Of5"/>
                 <outlet property="loveButton" destination="0rs-71-3Qr" id="AtG-tV-qtJ"/>
                 <outlet property="photoImageView" destination="Mcm-wj-rLh" id="Glb-Zj-7kj"/>
                 <outlet property="saveButton" destination="DKO-3b-RM9" id="7Ka-8u-sBd"/>

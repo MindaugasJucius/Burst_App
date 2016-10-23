@@ -41,6 +41,8 @@ class PhotosTableViewController: UIViewController {
     
     private func setupTableView() {
         tableView.backgroundColor = AppAppearance.tableViewBackground
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 35
         tableView.allowsSelection = false
         tableView.delaysContentTouches = false
         tableView.infiniteScrollIndicatorStyle = .white
@@ -51,7 +53,6 @@ class PhotosTableViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         setupDataSource()
-        configureDimensions()
     }
     
     private func setupDataSource() {
@@ -65,12 +66,6 @@ class PhotosTableViewController: UIViewController {
         tableView.dataSource = dataSource
     }
     
-    private func configureDimensions() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.estimatedSectionHeaderHeight = 35
-        tableView.estimatedRowHeight = 250
-    }
 }
 
 extension PhotosTableViewController: UITableViewDelegate {
@@ -81,5 +76,9 @@ extension PhotosTableViewController: UITableViewDelegate {
         }
         dataSource.configureHeader(forView: header, atSection: section)
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return dataSource.estimatedHeight(forRowAtIndex: indexPath.section)
     }
 }

@@ -18,13 +18,13 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
     }
     
     func setupInfo(forPhoto photo: Photo) {
-        //setupDescription(forPhoto: photo)
         topLabel.text = photo.uploader.name
-        //imageView.layer.cornerRadius = imageView.frame.height / 2
-        //imageView.clipsToBounds = true
         let url = URL(string: photo.uploader.userProfileImage.small)!
-        bottomLabel.text = "suldubuldu"
-        //imageView.af_setImage(withURL: url)
+        imageView.af_setImage(withURL: url,
+                              placeholderImage: #imageLiteral(resourceName: "Camera"),
+                              filter: CircleFilter(),
+                              imageTransition: .crossDissolve(1.0),
+                              runImageTransitionIfCached: false)
     }
     
     private func setupDescription(forPhoto photo: Photo) {

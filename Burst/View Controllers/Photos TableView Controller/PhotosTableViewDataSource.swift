@@ -20,6 +20,14 @@ class PhotosTableViewDataSource: NSObject {
         retrievePhotos()
     }
     
+    private func registerViews() {
+        let cellNib = UINib.init(nibName: PhotoTableViewCell.className(), bundle: nil)
+        let headerNib = UINib.init(nibName: PhotoHeader.className(), bundle: nil)
+        
+        tableView.register(cellNib, forCellReuseIdentifier: PhotoTableViewCell.reuseIdentifier)
+        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PhotoHeader.reuseIdentifier)
+    }
+    
     private func prepareForRetrieval() {
         tableView.addInfiniteScroll(handler: { [weak self] tableView in
                 self?.retrievePhotos()
@@ -44,13 +52,14 @@ class PhotosTableViewDataSource: NSObject {
         let photoGroup = DispatchGroup()
         photos.forEach { photo in
             photoGroup.enter()
-            UnsplashImages.getPhotoImage(photo.urls.small,
+            UnsplashImages.getPhotoImage(photo.urls.thumb,
                 success: { image in
                     photo.thumbImage = image
                     photoGroup.leave()
                 },
-                failure: { error in
-                                            
+                failure: { [weak self] error in
+                    AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(onController: self?.viewController,
+                                                                                    withError: error)
                 }
             )
         }
@@ -65,26 +74,39 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     func update(forPhotos photos: [Photo]) {
+        var indexPaths = [IndexPath]()
+        let previousCount = fetchedPhotos.count
+        var currentCount = previousCount
+        // create index paths for affected items
+        for _ in photos {
+            let indexPath = IndexPath(item: 0, section: currentCount)
+            indexPaths.append(indexPath)
+            currentCount = currentCount + 1
+        }
         fetchedPhotos.append(contentsOf: photos)
-        tableView.reloadData()
-        tableView.layoutIfNeeded()
+        
         tableView.beginUpdates()
+        tableView.insertSections(IndexSet(integersIn: Range(uncheckedBounds: (lower: previousCount, upper: currentCount))), with: .fade)
+        tableView.insertRows(at: indexPaths, with: .none)
         tableView.endUpdates()
         tableView.finishInfiniteScroll()
         currentPage = currentPage + 1
     }
     
-    private func registerViews() {
-        let cellNib = UINib.init(nibName: PhotoTableViewCell.className(), bundle: nil)
-        let headerNib = UINib.init(nibName: PhotoHeader.className(), bundle: nil)
-        
-        tableView.register(cellNib, forCellReuseIdentifier: PhotoTableViewCell.reuseIdentifier)
-        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PhotoHeader.reuseIdentifier)
-    }
+    // MARK: - Delegate helpers
     
     func configureHeader(forView view: PhotoHeader, atSection section: Int) {
         let photo = fetchedPhotos[section]
         view.setupInfo(forPhoto: photo)
+    }
+    
+    func estimatedHeight(forRowAtIndex rowIndex: Int) -> CGFloat {
+        guard let image = fetchedPhotos[rowIndex].thumbImage else {
+            return 0
+        }
+        let rate = (UIScreen.main.bounds.width - SideInset * 2) / image.size.width
+        let height = image.size.height * rate
+        return height + ControlHeight
     }
     
     // MARK: - Cell configuration
