@@ -6,40 +6,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        let mainTableViewStoryboard = UIStoryboard.init(name: MainTabBarViewController.className(), bundle: nil)
-//        guard let controller = photosTableViewStoryboard.instantiateViewController(withIdentifier: className) as? PhotosTableViewController else {
-//            return
-//        }
-//        let mainTabBarController = MainTabBarViewController(nibName: "MainTabBarViewController", bundle: nil)
-//        let mainWindow = UIWindow(frame: UIScreen.main.bounds)
-//        window = mainWindow
-//        window?.rootViewController = mainTabBarController
-//        window?.makeKeyAndVisible()
         updateNavigationBarAppearance()
-        //updateTabBarAppearance()
+        updateTabBarAppearance()
         return true
     }
     
     // MARK: - Private state handlers
     
-    fileprivate func updateTabBarAppearance() {
-        UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().tintColor = AppAppearance.lightBlue
+    private func updateTabBarAppearance() {
+        let attributes = [NSFontAttributeName: AppAppearance.regularFont(withSize: .CellText)]
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UITabBar.appearance().shadowImage = UIImage()
     }
 
-    fileprivate func updateNavigationBarAppearance() {
+    private func updateNavigationBarAppearance() {
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().titleTextAttributes =
             [NSForegroundColorAttributeName : UIColor.white,
              NSFontAttributeName : AppAppearance.regularFont(withSize: .HeaderTitle)]
         UINavigationBar.appearance().barTintColor = UIColor.black
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().setBackgroundImage(
-                                                        UIImage(),
-                                                        for: .any,
-                                                        barMetrics: .default)
-        
-        UINavigationBar.appearance().shadowImage = UIImage()
     }
 
 }

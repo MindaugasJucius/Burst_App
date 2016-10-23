@@ -14,7 +14,7 @@ class MainTabBar: UITabBar {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        barTintColor = .black
+        barTintColor = AppAppearance.lightBlack
         tintColor = .white
         addSubview(indexView)
         sendSubview(toBack: indexView)
@@ -22,7 +22,7 @@ class MainTabBar: UITabBar {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let sizeThatFits = super.sizeThatFits(size)
-        return CGSize(width: sizeThatFits.width, height: sizeThatFits.height / 2)
+        return CGSize(width: sizeThatFits.width, height: sizeThatFits.height / 1.8)
     }
     
     // MARK: - Public methods
@@ -53,9 +53,9 @@ class MainTabBar: UITabBar {
     private func createShapeLayer(withPath path: UIBezierPath) -> CAShapeLayer {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = AppAppearance.lightRed.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 1.5
+        shapeLayer.lineWidth = 1.0
         return shapeLayer
     }
     

@@ -10,7 +10,7 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.isTranslucent = false
         delegate = self
         customTabBar = tabBar as? MainTabBar
-        let offset = UIOffset(horizontal: 0, vertical: -5)
+        let offset = UIOffset(horizontal: 0, vertical: -3)
         tabBar.items?.forEach { item in
             item.image = nil
             item.titlePositionAdjustment = offset
@@ -26,7 +26,7 @@ final class MainTabBarViewController: UITabBarController {
         let controller = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
         let containerNavigationController = NavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
-            title: "Photos",
+            title: "Photos".uppercased(),
             image: nil,
             selectedImage: nil
         )
@@ -38,7 +38,7 @@ final class MainTabBarViewController: UITabBarController {
         let controller = UIViewController()
         let containerNavigationController = UINavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
-            title: "Camera",
+            title: "Collections".uppercased(),
             image: nil,
             selectedImage: nil
         )
@@ -49,7 +49,7 @@ final class MainTabBarViewController: UITabBarController {
         let controller = UIViewController()
         let containerNavigationController = UINavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
-            title: "Settings",
+            title: "You".uppercased(),
             image: nil,
             selectedImage: nil
         )

@@ -17,6 +17,7 @@ class NavigationController: UINavigationController {
         guard let titleView = Bundle.main.loadNibNamed("TitleView", owner: nil, options: nil)?.first as? TitleView else {
             return
         }
+        
         self.titleView = titleView
         rootViewController.navigationItem.titleView = titleView
     }

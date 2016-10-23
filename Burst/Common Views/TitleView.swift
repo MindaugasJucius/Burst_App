@@ -22,10 +22,6 @@ class TitleView: UIView {
         titleLabel.textInsets = LabelInsets
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
     private func createUpperBezierPath() -> UIBezierPath {
         let path = UIBezierPath()
         let labelFrame = titleLabel.frame

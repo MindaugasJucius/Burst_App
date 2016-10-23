@@ -34,6 +34,8 @@ class AppAppearance: NSObject {
     
     // MARK: - Colors
     
+    static let lightBlack = UIColor.colorWithHexString("101010")
+    
     static let darkBlue = UIColor.colorWithHexString("124399")
     static let lightBlue = UIColor.colorWithHexString("4487C9")
     
