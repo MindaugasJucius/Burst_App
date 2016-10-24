@@ -17,13 +17,32 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     @IBOutlet weak private var imageViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageViewRightConstraint: NSLayoutConstraint!
     
+    private let progressIndicatorView = CircularProgressView(frame: .zero)
+
     var onLoveButton: PhotoCallback?
     var onAddButton: PhotoCallback?
     var onSaveButton: PhotoCallback?
     
-    private var displayPhoto: Photo?
+    private weak var displayPhoto: Photo?
     
-    private let progressIndicatorView = CircularProgressView(frame: .zero)
+    var displayImage: UIImage? {
+        get {
+            return photoImageView.image
+        }
+        set {
+            displayPhoto?.smallImage = newValue
+            transition(image: newValue)
+        }
+    }
+    
+    var downloadProgress: CGFloat {
+        get {
+            return progressIndicatorView.progress
+        }
+        set {
+            progressIndicatorView.progress = newValue
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,46 +55,30 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     
     override func prepareForReuse() {
         photoImageView?.image = nil
+        progressIndicatorView.progress = 0
+        progressIndicatorView.alpha = 1
         loveButton.setFAIcon(icon: .FAHeartO,
                              iconSize: AppAppearance.ButtonFAIconSize,
                              forState: .normal)
         loveButton.setFATitleColor(color: AppAppearance.white)
-        progressIndicatorView.isHidden = false
-        progressIndicatorView.alpha = 1
-        progressIndicatorView.progress = 0
     }
     
     func configure(forPhoto photo: Photo) {
         displayPhoto = photo
-        guard let image = photo.thumbImage else {
-            return
-        }
-        photoImageView.af_setImage(
-            withURL: photo.urls.regular,
-            placeholderImage: image,
-            progress: { [weak self] progress in
-                self?.progressIndicatorView.progress = CGFloat(progress.fractionCompleted)
-            },
-            imageTransition: .custom(duration: 0.2,
-                                     animationOptions: .transitionCrossDissolve,
-                                     animations: { imageView, image in
-                                        imageView.image = image
-                                     },
-                                     completion: { [weak self] finished in
-                                        self?.hideProgressView()
-                                     }
-            ),
-            runImageTransitionIfCached: false,
-            completion: nil)
+        photoImageView.image = photo.presentationImage
     }
     
-    func hideProgressView() {
-        progressIndicatorView.progress = 1
-        UIView.animate(withDuration: 0.2,
-                       animations: { [weak self] in
-                           self?.progressIndicatorView.alpha = 0
-                       },
-                       completion: nil)
+    private func transition(image: UIImage?) {
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: .transitionCrossDissolve,
+            animations: { [weak self] in
+                self?.progressIndicatorView.alpha = 0
+                self?.photoImageView.image = image
+            },
+            completion: nil
+        )
     }
     
     private func setupProgressView() {

@@ -2,8 +2,8 @@ import UIKit
 
 class CircularProgressView: UIView {
 
-    let circlePathLayer = CAShapeLayer()
-    let circleRadius: CGFloat = 20.0
+    private let circlePathLayer = CAShapeLayer()
+    private let circleRadius: CGFloat = 20.0
     
     var progress: CGFloat {
         get {
@@ -36,7 +36,7 @@ class CircularProgressView: UIView {
         circlePathLayer.path = circlePath().cgPath
     }
     
-    func configure() {
+    private func configure() {
         progress = 0
         circlePathLayer.frame = bounds
         circlePathLayer.lineWidth = 1.5
@@ -46,14 +46,14 @@ class CircularProgressView: UIView {
         backgroundColor = UIColor.white
     }
 
-    func circleFrame() -> CGRect {
+    private func circleFrame() -> CGRect {
         var circleFrame = CGRect(x: 0, y: 0, width: 2*circleRadius, height: 2*circleRadius)
         circleFrame.origin.x = circlePathLayer.bounds.midX - circleFrame.midX
         circleFrame.origin.y = circlePathLayer.bounds.midY - circleFrame.midY
         return circleFrame
     }
     
-    func circlePath() -> UIBezierPath {
+    private func circlePath() -> UIBezierPath {
         return UIBezierPath(ovalIn: circleFrame())
     }
     

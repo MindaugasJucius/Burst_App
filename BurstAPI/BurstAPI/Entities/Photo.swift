@@ -12,7 +12,17 @@ open class Photo: NSObject, Unboxable {
     open let color: UIColor
      
     open var thumbImage: UIImage?
+    open var smallImage: UIImage?
     open var stats: Stats?
+    
+    public var presentationImage: UIImage? {
+        get {
+            guard let small = smallImage else {
+                return thumbImage
+            }
+            return small
+        }
+    }
     
     required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
@@ -27,5 +37,5 @@ open class Photo: NSObject, Unboxable {
         self.fullSize = CGSize(width: width, height: height)
         super.init()
     }
-    
+
 }

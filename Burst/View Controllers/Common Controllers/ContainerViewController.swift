@@ -40,37 +40,31 @@ class ContainerViewController: UIViewController {
     }
     
     fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
-        UnsplashImages.addImageToQueueForDownload(photo,
-            progressHandler: { [weak self] progress in
-                self?.delegate?.update(withProgress: progress)
+        UnsplashImages.image(
+            fromUrl: photo.urls.full,
+            withDownloader: UnsplashImages.fullImageDownloader,
+            progressHandler: { [weak self] fractionCompleted in
+                self?.delegate?.update(withProgress: fractionCompleted)
             },
-            completion: { [weak self] response, photo in
-                guard let strongSelf = self else {
-                    return
-                }
-                switch response.result {
-                case .success(let image):
-                    strongSelf.save(imageToSave: image)
-                case .failure(let error):
-                    strongSelf.presentError(error as NSError)
-                }
+            success: { [weak self] image in
+                self?.save(imageToSave: image)
+            },
+            failure: { [weak self] error in
+                self?.presentError(error)
             }
         )
     }
     
-    fileprivate func save(imageToSave image: UIImage) {
+    private func save(imageToSave image: UIImage) {
         guard let saveHelper = photoSavingHelper else {
             return
         }
         saveHelper.save(imageToSave: image)
     }
-}
-
-extension ContainerViewController {
     
-    fileprivate func presentError(_ error: NSError) {
+    private func presentError(_ error: Error) {
         AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
-            onController: self.contentViewController,
+            onController: contentViewController,
             withError: error
         )
     }

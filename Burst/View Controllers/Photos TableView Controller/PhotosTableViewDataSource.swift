@@ -1,5 +1,6 @@
 import UIKit
 import BurstAPI
+import AlamofireImage
 
 class PhotosTableViewDataSource: NSObject {
     
@@ -7,6 +8,7 @@ class PhotosTableViewDataSource: NSObject {
     private weak var viewController: UIViewController!
     
     fileprivate var fetchedPhotos = [Photo]()
+
     private var currentPage = 1
     
     var onPhotoSave: PhotoCallback?
@@ -36,30 +38,32 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     private func retrievePhotos() {
-        UnsplashPhotos.photos(forPage: currentPage, completion: { [weak self] photos, error in
-                guard let photos = photos else {
-                    AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(onController: self?.viewController,
-                                                                                       withError: error)
-                    self?.tableView.finishInfiniteScroll()
-                    return
-                }
-                self?.updateTableView(forPhotos: photos)
+        UnsplashPhotos.photos(
+            forPage: currentPage,
+            success: { [weak self] photos in
+                self?.updateThumbImages(forPhotos: photos)
+            },
+            failure: { [weak self] error in
+                self?.presentError(error)
+                self?.tableView.finishInfiniteScroll()
             }
         )
     }
     
-    private func updateTableView(forPhotos photos: [Photo]) {
+    private func updateThumbImages(forPhotos photos: [Photo]) {
         let photoGroup = DispatchGroup()
         photos.forEach { photo in
             photoGroup.enter()
-            UnsplashImages.getPhotoImage(photo.urls.thumb,
+            UnsplashImages.image(
+                fromUrl: photo.urls.small,
+                withDownloader: UnsplashImages.thumbImageDownloader,
+                progressHandler: nil,
                 success: { image in
                     photo.thumbImage = image
                     photoGroup.leave()
                 },
                 failure: { [weak self] error in
-                    AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(onController: self?.viewController,
-                                                                                    withError: error)
+                    self?.presentError(error)
                 }
             )
         }
@@ -68,39 +72,65 @@ class PhotosTableViewDataSource: NSObject {
                 guard let strongSelf = self else {
                     return
                 }
-                strongSelf.update(forPhotos: photos)
+                strongSelf.updateTableView(forPhotos: photos)
             }
         )
     }
     
-    func update(forPhotos photos: [Photo]) {
+    func updateTableView(forPhotos photos: [Photo]) {
         var indexPaths = [IndexPath]()
         let previousCount = fetchedPhotos.count
         var currentCount = previousCount
         // create index paths for affected items
-        for _ in photos {
+        photos.forEach { _ in
             let indexPath = IndexPath(item: 0, section: currentCount)
             indexPaths.append(indexPath)
             currentCount = currentCount + 1
         }
         fetchedPhotos.append(contentsOf: photos)
-        
+        tableView.finishInfiniteScroll()
         tableView.beginUpdates()
         tableView.insertSections(IndexSet(integersIn: Range(uncheckedBounds: (lower: previousCount, upper: currentCount))), with: .fade)
-        tableView.insertRows(at: indexPaths, with: .none)
+        tableView.insertRows(at: indexPaths, with: .fade)
         tableView.endUpdates()
-        tableView.finishInfiniteScroll()
+
         currentPage = currentPage + 1
     }
     
+    // MARK: - Helpers
+    
+    private func presentError(_ error: Error) {
+        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
+            onController: viewController,
+            withError: error
+        )
+    }
+    
+    private func photoCell(atPath indexPath: IndexPath) -> PhotoTableViewCell? {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PhotoTableViewCell else {
+            return .none
+        }
+        return cell
+    }
+    
     // MARK: - Delegate helpers
+    
+    func downloadImagesForVisibleCells() {
+        tableView.indexPathsForVisibleRows?.forEach{ [weak self] indexPath in
+            guard let photo = self?.fetchedPhotos[indexPath.section],
+                photo.smallImage == nil else {
+                return
+            }
+            self?.image(forPhoto: photo, atPath: indexPath)
+        }
+    }
     
     func configureHeader(forView view: PhotoHeader, atSection section: Int) {
         let photo = fetchedPhotos[section]
         view.setupInfo(forPhoto: photo)
     }
     
-    func estimatedHeight(forRowAtIndex rowIndex: Int) -> CGFloat {
+    func height(forRowAtIndex rowIndex: Int) -> CGFloat {
         guard let image = fetchedPhotos[rowIndex].thumbImage else {
             return 0
         }
@@ -110,6 +140,22 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     // MARK: - Cell configuration
+    
+    private func image(forPhoto photo: Photo, atPath indexPath: IndexPath) {
+        UnsplashImages.image(
+            fromUrl: photo.urls.regular,
+            withDownloader: UnsplashImages.cellImageDownloader,
+            progressHandler: { [weak self] fractionCompleted in
+                self?.photoCell(atPath: indexPath)?.downloadProgress = CGFloat(fractionCompleted)
+            },
+            success: { [weak self] image in
+                self?.photoCell(atPath: indexPath)?.displayImage = image
+            },
+            failure: { [weak self] error in
+                self?.presentError(error)
+            }
+        )
+    }
     
     fileprivate func configure(photoCell: PhotoTableViewCell, forPhoto photo: Photo) {
         photoCell.configure(forPhoto: photo)

@@ -48,7 +48,7 @@ class PhotoSavingHelper: NSObject {
                 self?.createPhoto(fromImage: image)
             },
             andFailure: {
-                print("lol")
+                print("Failed to create album")
             }
         )
         

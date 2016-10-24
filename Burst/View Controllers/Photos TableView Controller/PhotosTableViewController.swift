@@ -40,6 +40,7 @@ class PhotosTableViewController: UIViewController {
     // Mark: - Configuration
     
     private func setupTableView() {
+        
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 35
@@ -79,6 +80,18 @@ extension PhotosTableViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return dataSource.estimatedHeight(forRowAtIndex: indexPath.section)
+        return dataSource.height(forRowAtIndex: indexPath.section)
     }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        dataSource.downloadImagesForVisibleCells()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate else {
+            return
+        }
+        dataSource.downloadImagesForVisibleCells()
+    }
+    
 }
