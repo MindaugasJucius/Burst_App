@@ -1,6 +1,5 @@
 import UIKit
 
-fileprivate let ProgressAnimationDuration: CFTimeInterval = 1
 fileprivate let FadeOutAnimationDuration: CFTimeInterval = 1.5
 fileprivate let GreetingsAnimationDuration: CFTimeInterval = 2
 fileprivate let LabelInsets = UIEdgeInsets(top: 1, left: 10, bottom: 1, right: 10)
@@ -59,8 +58,8 @@ class TitleView: UIView {
         CATransaction.setCompletionBlock { [weak self] in
             self?.beginFadeOutTransaction()
         }
-        upperShapeLayer?.add(progressAnimation(forDownload: false), forKey: nil)
-        lowerShapeLayer?.add(progressAnimation(forDownload: false), forKey: nil)
+        upperShapeLayer?.add(progressAnimation(), forKey: nil)
+        lowerShapeLayer?.add(progressAnimation(), forKey: nil)
         
         CATransaction.commit()
     }
@@ -71,7 +70,7 @@ class TitleView: UIView {
         CATransaction.setAnimationTimingFunction(timingFunction)
         CATransaction.setAnimationDuration(FadeOutAnimationDuration)
         CATransaction.setCompletionBlock { [weak self] in
-            self?.removeLayers()
+            self?.resetLayerState()
         }
         upperShapeLayer?.add(fadeOutAnimation(), forKey: nil)
         lowerShapeLayer?.add(fadeOutAnimation(), forKey: nil)
@@ -82,13 +81,10 @@ class TitleView: UIView {
     
     // MARK: - Animations
     
-    private func progressAnimation(forDownload download: Bool) -> CABasicAnimation {
+    private func progressAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.toValue = 1
-        if download {
-            animation.duration = ProgressAnimationDuration
-        }
         animation.setValue("drawProgress", forKey: "animID")
         return animation
     }
@@ -103,18 +99,14 @@ class TitleView: UIView {
     
     // MARK: - Progress animation handling
     
-    private func prepareProgressAnimation() {
-        removeLayers()
-        configure()
-        upperShapeLayer?.speed = 0
-        lowerShapeLayer?.speed = 0
-        upperShapeLayer?.add(progressAnimation(forDownload: true), forKey: nil)
-        lowerShapeLayer?.add(progressAnimation(forDownload: true), forKey: nil)
-    }
-    
-    private func removeLayers() {
-        titleLabel.layer.removeAllAnimations()
-        titleLabel.layer.sublayers = nil
+    private func resetLayerState() {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        upperShapeLayer?.strokeEnd = CGFloat(0)
+        lowerShapeLayer?.strokeEnd = CGFloat(0)
+        upperShapeLayer?.opacity = 1
+        lowerShapeLayer?.opacity = 1
+        CATransaction.commit()
     }
     
     // MARK: - Public methods
@@ -124,13 +116,11 @@ class TitleView: UIView {
     }
     
     func update(withOffset offset: Double) {
-        if titleLabel.layer.sublayers == nil {
-            prepareProgressAnimation()
-        }
-        upperShapeLayer?.timeOffset = offset
-        lowerShapeLayer?.timeOffset = offset
+        upperShapeLayer?.strokeEnd = CGFloat(offset)
+        lowerShapeLayer?.strokeEnd = CGFloat(offset)
         if offset == 1.0 {
-            removeLayers()
+            upperShapeLayer?.strokeEnd = CGFloat(0)
+            lowerShapeLayer?.strokeEnd = CGFloat(0)
         }
     }
     

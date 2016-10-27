@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func updateNavigationBarAppearance() {
-        UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().titleTextAttributes =
             [NSForegroundColorAttributeName : UIColor.white,
              NSFontAttributeName : AppAppearance.regularFont(withSize: .HeaderTitle)]
