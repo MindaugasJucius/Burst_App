@@ -20,8 +20,8 @@ class ContainerViewController: UIViewController {
     
     var delegate: NavigationControllerDelegate?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         let className = String(describing: PhotosTableViewController.self)
         
         let photosTableViewStoryboard = UIStoryboard.init(name: className, bundle: nil)
@@ -37,6 +37,11 @@ class ContainerViewController: UIViewController {
         controller.view.frame = view.bounds
         controller.didMove(toParentViewController: self)
         navigationController?.viewControllers = [controller]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
+    }
+    
+    @objc func search() {
+        
     }
     
     fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
