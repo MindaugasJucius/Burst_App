@@ -5,6 +5,7 @@ enum FontSize: CGFloat {
     case HeaderTitle = 20
     case HeaderSubtitle = 14
     case IconSize = 9
+    case SystemSize = 15
 }
 
 
@@ -69,5 +70,42 @@ class AppAppearance: NSObject {
         let textAttributes = [NSFontAttributeName: AppAppearance.regularFont(withSize: size),
                               NSForegroundColorAttributeName: color]
         return NSAttributedString(string: value, attributes: textAttributes)
-    }    
+    }
+    
+    // MARK: - SearchBar appearance
+    
+    static func applyLightBlackStyle(forSearchBar searchBar: UISearchBar) {
+        searchBar.searchBarStyle = .minimal
+        let image = UIImage.image(
+            fromColor: AppAppearance.lightBlack,
+            withSize: CGSize(width: 28, height: 28)
+        )
+        searchBar.tintColor = .white
+        searchBar.searchTextPositionAdjustment = UIOffset(horizontal: 8, vertical: 0)
+        searchBar.setImage(#imageLiteral(resourceName: "searchFieldClearIcon"), for: .clear, state: .normal)
+        searchBar.setImage(#imageLiteral(resourceName: "searchFieldClearIcon"), for: .clear, state: .highlighted)
+        searchBar.setSearchFieldBackgroundImage(
+            image?.af_imageRounded(withCornerRadius: 4),
+            for: .normal
+        )
+        let searchBarTextfield = searchBar.subview(ofType: UITextField.self)
+        guard let textField = searchBarTextfield else {
+            return
+        }
+        textField.textColor = .white
+        let placeholderAttributes: [String : AnyObject] = [NSForegroundColorAttributeName: UIColor.white]
+        textField.font = AppAppearance.regularFont(withSize: .SystemSize)
+        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: Search, attributes: placeholderAttributes)
+        textField.attributedPlaceholder = attributedPlaceholder
+        tint(forView: textField.leftView)        
+    }
+    
+    private static func tint(forView view: UIView?) {
+        guard let imageView = view as? UIImageView else {
+                return
+        }
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        imageView.contentMode = .center
+        imageView.tintColor = .white
+    }
 }

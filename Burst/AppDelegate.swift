@@ -25,7 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              NSFontAttributeName : AppAppearance.regularFont(withSize: .HeaderTitle)]
         UINavigationBar.appearance().barTintColor = UIColor.black
         UINavigationBar.appearance().tintColor = UIColor.white
+        let barButtonAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                                   NSFontAttributeName : AppAppearance.regularFont(withSize: .SystemSize)]
+        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(barButtonAttributes,
+                                                                                                            for: .normal)
+        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(barButtonAttributes,
+                                                                                                            for: .highlighted)
     }
-
 }
 

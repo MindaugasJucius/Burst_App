@@ -13,10 +13,9 @@ extension ContainerControllerDelegate where Self: UIViewController { }
 
 class ContainerViewController: UIViewController {
 
-    fileprivate var contentViewController: UIViewController?
-    fileprivate var photoSavingHelper: PhotoSavingHelper?
-    
-    fileprivate var progressViewPresented = false
+    private var contentViewController: UIViewController?
+    private var photoSavingHelper: PhotoSavingHelper?
+    private var searchController: UISearchController!
     
     var delegate: NavigationControllerDelegate?
     
@@ -37,6 +36,12 @@ class ContainerViewController: UIViewController {
         controller.view.frame = view.bounds
         controller.didMove(toParentViewController: self)
         navigationController?.viewControllers = [controller]
+        self.searchController = UISearchController(searchResultsController:  nil)
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+
+        navigationItem.titleView = searchController.searchBar
+        AppAppearance.applyLightBlackStyle(forSearchBar: searchController.searchBar)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
     }
     
