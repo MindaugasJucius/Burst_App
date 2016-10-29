@@ -83,7 +83,9 @@ class AppAppearance: NSObject {
         searchBar.tintColor = .white
         searchBar.searchTextPositionAdjustment = UIOffset(horizontal: 8, vertical: 0)
         searchBar.setImage(#imageLiteral(resourceName: "searchFieldClearIcon"), for: .clear, state: .normal)
-        searchBar.setImage(#imageLiteral(resourceName: "searchFieldClearIcon"), for: .clear, state: .highlighted)
+        searchBar.setImage(#imageLiteral(resourceName: "searchFieldClearIconHighlighted"), for: .clear, state: .highlighted)
+        searchBar.setImage(#imageLiteral(resourceName: "searchFieldIcon"), for: .search, state: .normal)
+        searchBar.setImage(#imageLiteral(resourceName: "searchFieldIcon"), for: .search, state: .highlighted)
         searchBar.setSearchFieldBackgroundImage(
             image?.af_imageRounded(withCornerRadius: 4),
             for: .normal
@@ -93,19 +95,9 @@ class AppAppearance: NSObject {
             return
         }
         textField.textColor = .white
-        let placeholderAttributes: [String : AnyObject] = [NSForegroundColorAttributeName: UIColor.white]
+        let placeholderAttributes = [NSForegroundColorAttributeName: AppAppearance.subtitleColor]
         textField.font = AppAppearance.regularFont(withSize: .SystemSize)
         let attributedPlaceholder: NSAttributedString = NSAttributedString(string: Search, attributes: placeholderAttributes)
         textField.attributedPlaceholder = attributedPlaceholder
-        tint(forView: textField.leftView)        
-    }
-    
-    private static func tint(forView view: UIView?) {
-        guard let imageView = view as? UIImageView else {
-                return
-        }
-        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-        imageView.contentMode = .center
-        imageView.tintColor = .white
     }
 }

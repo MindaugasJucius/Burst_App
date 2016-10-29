@@ -2,11 +2,9 @@ import UIKit
 import Photos
 import BurstAPI
 
-// progress viewa isvis i sita nukelt
-// arba padaryt kad ant celiu rodytu progresa
 protocol ContainerControllerDelegate: class {
     func photoPermissionsGranted() -> Bool
-    func downloadPhoto(_ photo: Photo) //grazini success ir tada ta cele pakeicia savo busena ;]
+    func downloadPhoto(_ photo: Photo)
 }
 
 extension ContainerControllerDelegate where Self: UIViewController { }
@@ -16,11 +14,20 @@ class ContainerViewController: UIViewController {
     private var contentViewController: UIViewController?
     private var photoSavingHelper: PhotoSavingHelper?
     private var searchController: UISearchController!
+    private var searchBarButton: UIBarButtonItem!
+    private var burstTitleView: UIView!
+    private var searchBar: UISearchBar!
     
     var delegate: NavigationControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addContentController()
+        burstTitleView = navigationItem.titleView
+        setupSearchBar()
+    }
+    
+    func addContentController() {
         let className = String(describing: PhotosTableViewController.self)
         
         let photosTableViewStoryboard = UIStoryboard.init(name: className, bundle: nil)
@@ -36,18 +43,39 @@ class ContainerViewController: UIViewController {
         controller.view.frame = view.bounds
         controller.didMove(toParentViewController: self)
         navigationController?.viewControllers = [controller]
-        self.searchController = UISearchController(searchResultsController:  nil)
-        
+    }
+    
+    // MARK: - Search bar handling
+    
+    private func setupSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
-
-        navigationItem.titleView = searchController.searchBar
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchBar = searchController.searchBar
+        searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
         AppAppearance.applyLightBlackStyle(forSearchBar: searchController.searchBar)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
+        navigationItem.rightBarButtonItem = searchBarButton
     }
     
     @objc func search() {
-        
+        showSearchBar()
     }
+    
+    func showSearchBar() {
+        navigationItem.titleView = searchBar
+        navigationItem.setRightBarButton(nil, animated: true)
+        searchBar.becomeFirstResponder()
+        UIView.fadeIn(view: searchBar, completion: nil)
+    }
+    
+    fileprivate func hideSearchBar() {
+        navigationItem.setRightBarButton(searchBarButton, animated: true)
+        navigationItem.titleView = burstTitleView
+        UIView.fadeIn(view: burstTitleView, completion: nil)
+    }
+    
+    // MARK: - Photo download handling
     
     fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
         UnsplashImages.image(
@@ -89,5 +117,11 @@ extension ContainerViewController: ContainerControllerDelegate {
     func downloadPhoto(_ photo: Photo) {
         addPhotoToDownloadQueue(photo)
     }
+}
+
+extension ContainerViewController: UISearchBarDelegate {
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hideSearchBar()
+    }
 }

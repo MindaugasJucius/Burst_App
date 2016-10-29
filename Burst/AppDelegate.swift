@@ -27,9 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         let barButtonAttributes = [NSForegroundColorAttributeName : UIColor.white,
                                    NSFontAttributeName : AppAppearance.regularFont(withSize: .SystemSize)]
+        let highlightedBarButtonAttributes = [NSForegroundColorAttributeName : AppAppearance.subtitleColor,
+                                   NSFontAttributeName : AppAppearance.regularFont(withSize: .SystemSize)]
         (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(barButtonAttributes,
                                                                                                             for: .normal)
-        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(barButtonAttributes,
+        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(highlightedBarButtonAttributes,
                                                                                                             for: .highlighted)
     }
 }

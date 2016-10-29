@@ -9,7 +9,7 @@ let APPName = "BURST"
 let Cancel = "Cancel"
 let Error = "Error"
 let Ok = "Ok"
-let Search = "Search..."
+let Search = "Enter a keyword"
 
 let SettingsApp = "Settings"
 

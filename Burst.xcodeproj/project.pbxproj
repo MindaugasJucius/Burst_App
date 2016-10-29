@@ -52,6 +52,9 @@
 		03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03EB14901DB6391C00049E45 /* FontAwesome.ttf */; };
 		03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EF71DA13550002BDF0A /* Unbox.framework */; };
 		03EE3EFB1DA13B3A002BDF0A /* Unbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03F147EC1DC4A04900D523E6 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F147EB1DC4A04900D523E6 /* UIView+Fade.swift */; };
+		03F147EF1DC4B7A700D523E6 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F147ED1DC4B7A700D523E6 /* SearchResultsViewController.swift */; };
+		03F147F01DC4B7A700D523E6 /* SearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F147EE1DC4B7A700D523E6 /* SearchResultsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +146,9 @@
 		03EB14901DB6391C00049E45 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		03EE3EF71DA13550002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 		03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
+		03F147EB1DC4A04900D523E6 /* UIView+Fade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
+		03F147ED1DC4B7A700D523E6 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		03F147EE1DC4B7A700D523E6 /* SearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 				037A6E651DAFE73A000A774C /* NSObject+ClassName.swift */,
 				0365ADDE1DC3635A00248284 /* UIImage+Manipulations.swift */,
 				03C35EE41DC384C60032F1DD /* UIView+SubviewOfClass.swift */,
+				03F147EB1DC4A04900D523E6 /* UIView+Fade.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +314,8 @@
 				03DC3A951D88782F00D18A48 /* MainTabBarViewController.swift */,
 				03DC3A961D88782F00D18A48 /* NavigationController.swift */,
 				03191C9B1DBA671000695972 /* MainTabViewController.storyboard */,
+				03F147ED1DC4B7A700D523E6 /* SearchResultsViewController.swift */,
+				03F147EE1DC4B7A700D523E6 /* SearchResultsViewController.xib */,
 			);
 			path = "Common Controllers";
 			sourceTree = "<group>";
@@ -452,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */,
+				03F147F01DC4B7A700D523E6 /* SearchResultsViewController.xib in Resources */,
 				03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */,
 				03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
@@ -494,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F147EC1DC4A04900D523E6 /* UIView+Fade.swift in Sources */,
 				03DC3A7E1D88781E00D18A48 /* AppAppearance.swift in Sources */,
 				037A6E691DAFE743000A774C /* ReusableView.swift in Sources */,
 				03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */,
@@ -517,6 +528,7 @@
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
 				03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */,
+				03F147EF1DC4B7A700D523E6 /* SearchResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
