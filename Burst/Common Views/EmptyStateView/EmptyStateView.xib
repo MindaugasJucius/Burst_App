@@ -12,30 +12,46 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN0-Kk-aWO">
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hni-YU-7A3">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DHB-7a-gbH"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WL-Kj-Ze9">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN0-Kk-aWO">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hni-YU-7A3">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="4Ee-Fs-dvC"/>
+                                <constraint firstAttribute="width" constant="100" id="nRT-ug-Kc7"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="cX7-Ds-q3o"/>
-                        <constraint firstAttribute="width" constant="100" id="sE5-Fy-QcH"/>
+                        <constraint firstItem="PN0-Kk-aWO" firstAttribute="centerX" secondItem="4WL-Kj-Ze9" secondAttribute="centerX" id="74t-ns-iAr"/>
+                        <constraint firstItem="PN0-Kk-aWO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4WL-Kj-Ze9" secondAttribute="leading" constant="100" id="FW2-KH-jvf"/>
+                        <constraint firstItem="PN0-Kk-aWO" firstAttribute="centerY" secondItem="4WL-Kj-Ze9" secondAttribute="centerY" id="Kjw-gf-4oq"/>
+                        <constraint firstItem="PN0-Kk-aWO" firstAttribute="top" secondItem="hni-YU-7A3" secondAttribute="bottom" constant="10" id="Mme-Z2-xSl"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PN0-Kk-aWO" secondAttribute="trailing" constant="100" id="gnT-39-AxP"/>
+                        <constraint firstItem="hni-YU-7A3" firstAttribute="centerX" secondItem="4WL-Kj-Ze9" secondAttribute="centerX" id="xBu-uu-mad"/>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="PN0-Kk-aWO" firstAttribute="top" secondItem="hni-YU-7A3" secondAttribute="bottom" constant="10" id="9XE-XE-QW0"/>
-                <constraint firstItem="PN0-Kk-aWO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="100" id="9lM-kV-3vN"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PN0-Kk-aWO" secondAttribute="trailing" constant="100" id="o18-B3-p1h"/>
-                <constraint firstItem="hni-YU-7A3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oym-pV-elK"/>
-                <constraint firstItem="PN0-Kk-aWO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rmu-Ub-tcr"/>
-                <constraint firstItem="PN0-Kk-aWO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zwf-YJ-pXt"/>
+                <constraint firstItem="4WL-Kj-Ze9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4qX-Ux-qgp"/>
+                <constraint firstAttribute="bottom" secondItem="4WL-Kj-Ze9" secondAttribute="bottom" id="GKC-4s-6ZN"/>
+                <constraint firstAttribute="trailing" secondItem="4WL-Kj-Ze9" secondAttribute="trailing" id="IR9-1m-zA5"/>
+                <constraint firstItem="DHB-7a-gbH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UkF-EF-Z4j"/>
+                <constraint firstItem="DHB-7a-gbH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rba-Ig-pQK"/>
+                <constraint firstItem="4WL-Kj-Ze9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="t3Z-Jx-Q49"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="activityIndicator" destination="DHB-7a-gbH" id="eeN-Jf-b2H"/>
+                <outlet property="containerView" destination="4WL-Kj-Ze9" id="8dj-6n-dNP"/>
                 <outlet property="imageView" destination="hni-YU-7A3" id="QRy-X5-j1a"/>
                 <outlet property="label" destination="PN0-Kk-aWO" id="xFZ-S1-MlZ"/>
             </connections>

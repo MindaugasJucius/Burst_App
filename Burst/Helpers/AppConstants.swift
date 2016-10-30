@@ -5,11 +5,15 @@ let Separator = " • "
 // MARK: - Title
 let APPName = "BURST"
 
-// MARK: - GenericMessages
+// MARK: - Search messages
+
+let Search = "Enter a keyword"
+let SearchPhotos = "To search for photos enter a keyword (e.g. 'city')"
+
+// MARK: - Generic messages
 let Cancel = "Cancel"
 let Error = "Error"
 let Ok = "Ok"
-let Search = "Enter a keyword"
 
 let SettingsApp = "Settings"
 
