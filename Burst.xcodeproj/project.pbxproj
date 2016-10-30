@@ -11,6 +11,9 @@
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
 		0365ADDF1DC3635A00248284 /* UIImage+Manipulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365ADDE1DC3635A00248284 /* UIImage+Manipulations.swift */; };
+		03673ED31DC6386900FE37E7 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03673ED01DC6386900FE37E7 /* EmptyStateView.swift */; };
+		03673ED41DC6386900FE37E7 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03673ED11DC6386900FE37E7 /* EmptyStateView.xib */; };
+		03673ED51DC6386900FE37E7 /* EmptyStateViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03673ED21DC6386900FE37E7 /* EmptyStateViewFactory.swift */; };
 		037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DB01DAD2A97000A774C /* TitleView.swift */; };
 		037A6DE21DAE26F1000A774C /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DE11DAE26F1000A774C /* InsetLabel.swift */; };
 		037A6DE71DAE2D2F000A774C /* PhotosTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6DE61DAE2D2F000A774C /* PhotosTableHeaderView.swift */; };
@@ -22,9 +25,6 @@
 		037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E831DB0C812000A774C /* PhotoHeader.swift */; };
 		037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E851DB0C81F000A774C /* PhotoHeader.xib */; };
 		037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */; };
-		03A19E051DC5337300078B4C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19E041DC5337300078B4C /* EmptyStateView.swift */; };
-		03A19E071DC5339200078B4C /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03A19E061DC5339200078B4C /* EmptyStateView.xib */; };
-		03A19E0A1DC537CF00078B4C /* EmptyStateViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19E091DC537CF00078B4C /* EmptyStateViewFactory.swift */; };
 		03A19E0C1DC539BD00078B4C /* UIView+NIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */; };
 		03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; };
 		03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -110,6 +110,9 @@
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
 		032C58561DBD3153003FFF4B /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		0365ADDE1DC3635A00248284 /* UIImage+Manipulations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Manipulations.swift"; sourceTree = "<group>"; };
+		03673ED01DC6386900FE37E7 /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		03673ED11DC6386900FE37E7 /* EmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
+		03673ED21DC6386900FE37E7 /* EmptyStateViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateViewFactory.swift; sourceTree = "<group>"; };
 		037A6DB01DAD2A97000A774C /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		037A6DE11DAE26F1000A774C /* InsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		037A6DE61DAE2D2F000A774C /* PhotosTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableHeaderView.swift; sourceTree = "<group>"; };
@@ -121,9 +124,6 @@
 		037A6E831DB0C812000A774C /* PhotoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHeader.swift; sourceTree = "<group>"; };
 		037A6E851DB0C81F000A774C /* PhotoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoHeader.xib; sourceTree = "<group>"; };
 		037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewDataSource.swift; sourceTree = "<group>"; };
-		03A19E041DC5337300078B4C /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		03A19E061DC5339200078B4C /* EmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
-		03A19E091DC537CF00078B4C /* EmptyStateViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateViewFactory.swift; sourceTree = "<group>"; };
 		03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NIB.swift"; sourceTree = "<group>"; };
 		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C35EE41DC384C60032F1DD /* UIView+SubviewOfClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewOfClass.swift"; sourceTree = "<group>"; };
@@ -183,6 +183,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03673ECF1DC6386900FE37E7 /* EmptyStateView */ = {
+			isa = PBXGroup;
+			children = (
+				03673ED01DC6386900FE37E7 /* EmptyStateView.swift */,
+				03673ED11DC6386900FE37E7 /* EmptyStateView.xib */,
+				03673ED21DC6386900FE37E7 /* EmptyStateViewFactory.swift */,
+			);
+			path = EmptyStateView;
+			sourceTree = "<group>";
+		};
 		037A6DE51DAE2D0E000A774C /* Photos Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,14 +355,12 @@
 		03DC3AAE1D8878F100D18A48 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				03673ECF1DC6386900FE37E7 /* EmptyStateView */,
 				03DC3AB21D8878F100D18A48 /* TitleView.xib */,
 				037A6DB01DAD2A97000A774C /* TitleView.swift */,
 				037A6DE11DAE26F1000A774C /* InsetLabel.swift */,
 				03191C991DBA661F00695972 /* MainTabBar.swift */,
 				032C58561DBD3153003FFF4B /* CircularProgressView.swift */,
-				03A19E041DC5337300078B4C /* EmptyStateView.swift */,
-				03A19E061DC5339200078B4C /* EmptyStateView.xib */,
-				03A19E091DC537CF00078B4C /* EmptyStateViewFactory.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -472,7 +480,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A19E071DC5339200078B4C /* EmptyStateView.xib in Resources */,
 				03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */,
 				03F147F01DC4B7A700D523E6 /* SearchResultsViewController.xib in Resources */,
 				03DC3AA31D88782F00D18A48 /* ContainerViewController.xib in Resources */,
@@ -483,6 +490,7 @@
 				03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */,
 				03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */,
 				037A6E281DAF8E42000A774C /* PhotosTableViewController.storyboard in Resources */,
+				03673ED41DC6386900FE37E7 /* EmptyStateView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,10 +543,10 @@
 				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
 				037A6DE21DAE26F1000A774C /* InsetLabel.swift in Sources */,
+				03673ED31DC6386900FE37E7 /* EmptyStateView.swift in Sources */,
 				03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */,
-				03A19E0A1DC537CF00078B4C /* EmptyStateViewFactory.swift in Sources */,
-				03A19E051DC5337300078B4C /* EmptyStateView.swift in Sources */,
 				037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */,
+				03673ED51DC6386900FE37E7 /* EmptyStateViewFactory.swift in Sources */,
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,

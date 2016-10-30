@@ -7,8 +7,8 @@ class EmptyStateView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        label.font = AppAppearance.regularFont(withSize: .SystemSize)
-        label.textColor = AppAppearance.subtitleColor
+        label.font = AppAppearance.condensedFont(withSize: .SystemSize)
+        label.textColor = AppAppearance.white
         backgroundColor = AppAppearance.tableViewBackground
     }
     

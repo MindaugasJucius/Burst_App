@@ -4,7 +4,7 @@ enum EmptyStateViewType {
     var translation: String {
         switch self {
         case .photoSearch:
-            return "To search for photos enter a keyword (e.g. 'city')"
+            return SearchPhotos
         }
     }
     
