@@ -21,6 +21,11 @@ class EmptyStateView: UIView {
         imageView.image = type.image
     }
     
+    func hideEmptyStateView() {
+        UIView.fadeOut(view: self, completion: nil)
+        activityIndicator.stopAnimating()
+    }
+    
     func presentActivityIndicator() {
         activityIndicator.startAnimating()
         UIView.animate(

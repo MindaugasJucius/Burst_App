@@ -40,7 +40,6 @@ class PhotosTableViewController: UIViewController {
     // Mark: - Configuration
     
     private func setupTableView() {
-        
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 35
