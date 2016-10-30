@@ -1,7 +1,7 @@
 extension NSObject {
-    
-    static func className() -> String {
+
+    class var className: String {
         return String(describing: self)
     }
-
+    
 }

@@ -48,7 +48,7 @@ class ContainerViewController: UIViewController {
     // MARK: - Search bar handling
     
     private func setupSearchBar() {
-        let className = SearchResultsViewController.className()
+        let className = SearchResultsViewController.className
         let resultsController = SearchResultsViewController(nibName: className, bundle: nil)
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.hidesNavigationBarDuringPresentation = false

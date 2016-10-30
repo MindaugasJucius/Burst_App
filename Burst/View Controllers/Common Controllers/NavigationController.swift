@@ -14,11 +14,8 @@ class NavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         navigationBar.isTranslucent = false
-        guard let titleView = Bundle.main.loadNibNamed("TitleView", owner: nil, options: nil)?.first as? TitleView else {
-            return
-        }
-        
-        self.titleView = titleView
+        let burstTitleView: TitleView? = TitleView.loadFromNib()
+        self.titleView = burstTitleView
         rootViewController.navigationItem.titleView = titleView
     }
     
