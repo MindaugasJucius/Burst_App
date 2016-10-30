@@ -3,6 +3,7 @@
 let UnsplashPhotosAllURL = "https://api.unsplash.com/photos/"
 let UnsplashPhotoStatsURL = "https://api.unsplash.com/photos/%@/stats"
 let UnsplashCuratedPhotosURL = "https://api.unsplash.com/photos/curated"
+let UnsplashSearchPhotosURL = "https://api.unsplash.com/search/photos/"
 
 // MARK: - key constants
 

@@ -1,4 +1,6 @@
-fileprivate let MinSearchQueryLenght = 3
+import BurstAPI
+
+fileprivate let MinSearchQueryLenght = 4
 
 class SearchResultsViewController: UIViewController {
 
@@ -25,6 +27,16 @@ extension SearchResultsViewController: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.text, searchText.characters.count >= MinSearchQueryLenght else {
             return
         }
+        UnsplashSearch.photos(
+            forQuery: searchText,
+            resultsPage: 1,
+            success: { results in
+                print(results.results.count)
+            },
+            failure: { error in
+                print(error.localizedDescription)
+            }
+        )
         emptyStateView.presentActivityIndicator()
     }
 }
