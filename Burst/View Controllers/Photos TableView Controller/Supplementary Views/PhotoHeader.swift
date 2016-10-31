@@ -25,6 +25,12 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
                               filter: CircleFilter(),
                               imageTransition: .crossDissolve(1.0),
                               runImageTransitionIfCached: false)
+        UnsplashPhotoStats.stats(forPhoto: photo,
+            completion: { [weak self] stats, error in
+                photo.stats = stats
+                self?.setupDescription(forPhoto: photo)
+            }
+        )
     }
     
     private func setupDescription(forPhoto photo: Photo) {

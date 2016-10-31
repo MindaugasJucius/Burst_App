@@ -5,7 +5,7 @@ public typealias StatsCallback = (_ photos: Stats?, _ error: Error?) -> ()
 
 public class UnsplashPhotoStats: NSObject {
 
-    static func stats(forPhoto photo: Photo, completion completionHandler: @escaping StatsCallback) {
+    public static func stats(forPhoto photo: Photo, completion completionHandler: @escaping StatsCallback) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
         let statsURL = String(format: UnsplashPhotoStatsURL, photo.id)
         let params = [BurstID : appID] as [String : Any]

@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func updateTabBarAppearance() {
         let attributes = [NSFontAttributeName: AppAppearance.regularFont(withSize: .CellText)]
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
-        UITabBar.appearance().shadowImage = UIImage()
     }
 
     private func updateNavigationBarAppearance() {
@@ -29,10 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                    NSFontAttributeName : AppAppearance.regularFont(withSize: .SystemSize)]
         let highlightedBarButtonAttributes = [NSForegroundColorAttributeName : AppAppearance.subtitleColor,
                                    NSFontAttributeName : AppAppearance.regularFont(withSize: .SystemSize)]
-        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(barButtonAttributes,
-                                                                                                            for: .normal)
-        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(highlightedBarButtonAttributes,
-                                                                                                            for: .highlighted)
+        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(barButtonAttributes, for: .normal)
+        (UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])).setTitleTextAttributes(highlightedBarButtonAttributes, for: .highlighted)
     }
 }
 

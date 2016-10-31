@@ -3,6 +3,7 @@ import UIKit
 class MainTabBar: UITabBar {
 
     private let indexView = UIView()
+    private let backgroundColorView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,7 +18,8 @@ class MainTabBar: UITabBar {
         barTintColor = AppAppearance.lightBlack
         tintColor = .white
         addSubview(indexView)
-        sendSubview(toBack: indexView)
+        insertSubview(backgroundColorView, belowSubview: indexView)
+
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -29,6 +31,7 @@ class MainTabBar: UITabBar {
     
     func setupBar() {
         updateIndexViewWidth()
+        updateBackgroundView()
         updateIndexView(toPosition: 0)
         indexView.layer.addSublayer(createShapeLayer(withPath: createBezierPath()))
     }
@@ -59,6 +62,15 @@ class MainTabBar: UITabBar {
         return shapeLayer
     }
     
+    func updateBackgroundView() {
+        let width = UIScreen.main.bounds.width
+        backgroundColorView.frame = CGRect(x: 0,
+                                           y: -1,
+                                           width: width,
+                                           height: frame.height)
+        backgroundColorView.backgroundColor = AppAppearance.lightBlack
+    }
+    
     private func updateIndexViewWidth() {
         guard let itemsCount = items?.count else {
             return
@@ -76,15 +88,18 @@ class MainTabBar: UITabBar {
             indexView.frame.origin = endFrame
             return
         }
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut,
-                       animations: { [weak self] in
-                        guard let strongSelf = self else {
-                            return
-                        }
-                        let indexView = strongSelf.indexView
-                        indexView.frame.origin = endFrame
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                let indexView = strongSelf.indexView
+                indexView.frame.origin = endFrame
             },
-                       completion: nil
+            completion: nil
         )
     }
 
