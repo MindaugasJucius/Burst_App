@@ -10,9 +10,9 @@ class PhotosTableHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         bottomLabel.textColor = AppAppearance.subtitleColor
-        bottomLabel.font = AppAppearance.condensedFont(withSize: .HeaderSubtitle)
+        bottomLabel.font = AppAppearance.condensedFont(withSize: .headerSubtitle)
         topLabel.textColor = AppAppearance.white
-        topLabel.font = AppAppearance.condensedFont(withSize: .HeaderTitle)
+        topLabel.font = AppAppearance.condensedFont(withSize: .headerTitle)
         topLabel.text = NewPhotosTitle.uppercased()
         bottomLabel.text = NewPhotosSubtitle
     }

@@ -10,7 +10,7 @@ class EmptyStateView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        label.font = AppAppearance.condensedFont(withSize: .SystemSize)
+        label.font = AppAppearance.condensedFont(withSize: .systemSize)
         label.textColor = AppAppearance.white
         backgroundColor = AppAppearance.tableViewBackground
         containerView.backgroundColor = AppAppearance.tableViewBackground

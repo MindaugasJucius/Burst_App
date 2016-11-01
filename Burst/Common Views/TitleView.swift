@@ -16,7 +16,7 @@ class TitleView: UIView {
         let attributedString = NSMutableAttributedString(string: APPName)
         attributedString.addAttribute(NSKernAttributeName, value: 3.0, range: NSMakeRange(0, attributedString.length-1))
         titleLabel.attributedText = attributedString
-        titleLabel.font = AppAppearance.regularFont(withSize: .HeaderTitle)
+        titleLabel.font = AppAppearance.regularFont(withSize: .headerTitle)
         titleLabel.textColor = .white
         titleLabel.textInsets = LabelInsets
     }

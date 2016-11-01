@@ -1,11 +1,11 @@
 enum FontSize: CGFloat {
-    case CellText = 12
-    case SubtitleCellText = 11
-    case SectionHeaderTitle = 13
-    case HeaderTitle = 20
-    case HeaderSubtitle = 14
-    case IconSize = 9
-    case SystemSize = 15
+    case cellText = 12
+    case subtitleCellText = 11
+    case sectionHeaderTitle = 13
+    case headerTitle = 20
+    case headerSubtitle = 14
+    case iconSize = 9
+    case systemSize = 15
 }
 
 
@@ -52,7 +52,7 @@ class AppAppearance: NSObject {
     // MARK: - Attributed String Helpers
     
     static func faAttributedString(forIcon icon: FAType,
-                                    textSize size: FontSize = .CellText,
+                                    textSize size: FontSize = .cellText,
                                     textColor color: UIColor = AppAppearance.white) -> NSAttributedString? {
         guard let iconText = icon.text else {
             return nil
@@ -66,7 +66,7 @@ class AppAppearance: NSObject {
     }
     
     static func infoTextAttributedString(forValue value: String,
-                                         textSize size: FontSize = .CellText,
+                                         textSize size: FontSize = .cellText,
                                          textColor color: UIColor = AppAppearance.white) -> NSAttributedString {
         let textAttributes = [NSFontAttributeName: AppAppearance.regularFont(withSize: size),
                               NSForegroundColorAttributeName: color]
@@ -95,9 +95,10 @@ class AppAppearance: NSObject {
         guard let textField = searchBarTextfield else {
             return
         }
+        textField.keyboardAppearance = .dark
         textField.textColor = .white
         let placeholderAttributes = [NSForegroundColorAttributeName: AppAppearance.subtitleColor]
-        textField.font = AppAppearance.regularFont(withSize: .SystemSize)
+        textField.font = AppAppearance.regularFont(withSize: .systemSize)
         let attributedPlaceholder: NSAttributedString = NSAttributedString(string: Search, attributes: placeholderAttributes)
         textField.attributedPlaceholder = attributedPlaceholder
     }

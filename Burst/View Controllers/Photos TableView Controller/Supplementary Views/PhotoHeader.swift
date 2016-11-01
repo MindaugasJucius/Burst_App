@@ -10,9 +10,9 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        topLabel.font = AppAppearance.regularFont(withSize: .CellText)
+        topLabel.font = AppAppearance.regularFont(withSize: .cellText)
         topLabel.textColor = AppAppearance.white
-        bottomLabel.font = AppAppearance.regularFont(withSize: .CellText)
+        bottomLabel.font = AppAppearance.regularFont(withSize: .cellText)
         bottomLabel.textColor = AppAppearance.white
         contentView.backgroundColor = .black
     }
@@ -47,11 +47,11 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
     private func infoSubstring(withIcon icon: FAType, infoText text: String, withSeparator separator: Bool = false) -> NSAttributedString {
         let attributedDescription = NSMutableAttributedString()
         let iconAttributedString = AppAppearance.faAttributedString(forIcon: icon,
-            textSize: .IconSize,
+            textSize: .iconSize,
             textColor: AppAppearance.subtitleColor)
         let fullText = separator ? " \(text)\(Separator)" : " \(text)"
         let attributedString = AppAppearance.infoTextAttributedString(forValue: fullText,
-            textSize: .SubtitleCellText,
+            textSize: .subtitleCellText,
             textColor: AppAppearance.subtitleColor)
         guard let iconString = iconAttributedString else {
             return attributedString
