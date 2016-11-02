@@ -22,14 +22,14 @@ class PhotosTableHeaderView: UIView {
         let labelFrame = bottomLabel.frame
         let separatorYCoord = labelFrame.height + LabelSeparatorOffset
         path.move(to: CGPoint(x: 0, y: separatorYCoord))
-        path.addLine(to: CGPoint(x: labelFrame.width/3, y: separatorYCoord))
+        path.addLine(to: CGPoint(x: labelFrame.width/2, y: separatorYCoord))
         return path
     }
 
     private func createShapeLayer(withPath path: UIBezierPath) -> CAShapeLayer {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = AppAppearance.lightRed.cgColor
+        shapeLayer.strokeColor = AppAppearance.lightBlue.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 2.0
         return shapeLayer

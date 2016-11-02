@@ -34,6 +34,7 @@ class SearchResultsViewController: UIViewController {
         didSet {
             guard let results = searchResults,
                 results.results.count > 0 else {
+                emptyStateView?.presentEmptyStateView()
                 return
             }
             updateCollectionView(forSearchResults: results.results)
@@ -139,6 +140,7 @@ class SearchResultsViewController: UIViewController {
             },
             failure: { [weak self] error in
                 self?.searchRequest = nil
+                self?.searchResults = nil
                 print(error.localizedDescription)
             }
         )

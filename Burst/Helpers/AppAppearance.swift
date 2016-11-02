@@ -33,13 +33,33 @@ class AppAppearance: NSObject {
         return font
     }
     
+    // MARK: - Main gradients
+    
+    static func mainGradientLayer(withMask mask: CALayer, andFrame frame: CGRect) -> CAGradientLayer {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = AppAppearance.gradientStartColors
+        gradientLayer.locations = [0.0, 0.48, 1.0]
+        gradientLayer.frame = frame
+        gradientLayer.mask = mask
+        gradientLayer.startPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
+        return gradientLayer
+    }
+    
+    static let gradientStartColors = [UIColor(hue: 0.582, saturation: 0.676, brightness: 0.992, alpha: 1).cgColor,
+                                       UIColor(hue: 0.582, saturation: 1, brightness: 0.748, alpha: 1).cgColor,
+                                       UIColor(hue: 0.975, saturation: 1, brightness: 1, alpha: 1).cgColor]
+    static let gradientEndColors = [UIColor(hue: 0.975, saturation: 1, brightness: 1, alpha: 1).cgColor,
+                                     UIColor(hue: 0.582, saturation: 1, brightness: 0.748, alpha: 1).cgColor,
+                                     UIColor(hue: 0.582, saturation: 0.676, brightness: 0.992, alpha: 1).cgColor]
+    
     // MARK: - Colors
     
     static let lightBlack = UIColor.colorWithHexString("101010")
     static let lightGray = UIColor.colorWithHexString("EBEDEE")
     
-    static let darkBlue = UIColor.colorWithHexString("124399")
-    static let lightBlue = UIColor.colorWithHexString("4487C9")
+    static let darkBlue = UIColor.colorWithHexString("0465C2")
+    static let lightBlue = UIColor.colorWithHexString("469EF4")
     
     static let darkRed = UIColor.colorWithHexString("c0392b")
     static let lightRed = UIColor.colorWithHexString("e74c3c")
