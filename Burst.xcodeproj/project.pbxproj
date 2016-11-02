@@ -33,6 +33,7 @@
 		03C321721DAC2917008928B1 /* UIImageColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; };
 		03C321731DAC2917008928B1 /* UIImageColors.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C321711DAC2917008928B1 /* UIImageColors.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03C35EE51DC384C60032F1DD /* UIView+SubviewOfClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C35EE41DC384C60032F1DD /* UIView+SubviewOfClass.swift */; };
+		03C4E3981DC90488005CECE2 /* LaunchscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4E3971DC90488005CECE2 /* LaunchscreenView.swift */; };
 		03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7D2231D18588E0040A875 /* AppDelegate.swift */; };
 		03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22A1D18588E0040A875 /* Assets.xcassets */; };
 		03C7D22E1D18588E0040A875 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */; };
@@ -133,6 +134,7 @@
 		03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NIB.swift"; sourceTree = "<group>"; };
 		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C35EE41DC384C60032F1DD /* UIView+SubviewOfClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewOfClass.swift"; sourceTree = "<group>"; };
+		03C4E3971DC90488005CECE2 /* LaunchscreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchscreenView.swift; sourceTree = "<group>"; };
 		03C7D2201D18588E0040A875 /* Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Burst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C7D2231D18588E0040A875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03C7D22A1D18588E0040A875 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				037A6DE11DAE26F1000A774C /* InsetLabel.swift */,
 				03191C991DBA661F00695972 /* MainTabBar.swift */,
 				032C58561DBD3153003FFF4B /* CircularProgressView.swift */,
+				03C4E3971DC90488005CECE2 /* LaunchscreenView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
+				03C4E3981DC90488005CECE2 /* LaunchscreenView.swift in Sources */,
 				03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

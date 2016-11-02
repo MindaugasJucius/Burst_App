@@ -3,18 +3,27 @@ import UIKit
 final class MainTabBarViewController: UITabBarController {
 
     fileprivate var customTabBar: MainTabBar?
+    private var launchscreenView: LaunchscreenView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [containerTab(), cameraTab(), settingsTab()]
         tabBar.isTranslucent = false
         delegate = self
+        let launchscreenView = LaunchscreenView(frame: view.frame)
+        view.layer.addSublayer(launchscreenView.layer)
+        self.launchscreenView = launchscreenView
         customTabBar = tabBar as? MainTabBar
         let offset = UIOffset(horizontal: 0, vertical: -3)
         tabBar.items?.forEach { item in
             item.image = nil
             item.titlePositionAdjustment = offset
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        launchscreenView?.animateGradient()
     }
     
     override func viewDidLayoutSubviews() {
