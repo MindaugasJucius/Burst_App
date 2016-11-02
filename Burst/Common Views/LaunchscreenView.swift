@@ -13,12 +13,6 @@ class LaunchscreenView: UIView {
     private var pointScaleFactor: CGPoint = CGPoint.zero
     private var animatableLayer: CAGradientLayer?
     
-    private let gradientStartColors = [UIColor(hue: 0.582, saturation: 0.676, brightness: 0.992, alpha: 1).cgColor,
-                                       UIColor(hue: 0.582, saturation: 1, brightness: 0.748, alpha: 1).cgColor,
-                                       UIColor(hue: 0.975, saturation: 1, brightness: 1, alpha: 1).cgColor]
-    private let gradientEndColors = [UIColor(hue: 0.975, saturation: 1, brightness: 1, alpha: 1).cgColor,
-                                     UIColor(hue: 0.582, saturation: 1, brightness: 0.748, alpha: 1).cgColor,
-                                     UIColor(hue: 0.582, saturation: 0.676, brightness: 0.992, alpha: 1).cgColor]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,14 +30,9 @@ class LaunchscreenView: UIView {
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.black.cgColor
         shapeLayer.lineWidth = 2
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientStartColors
-        gradientLayer.locations = [0.0, 0.48, 1.0]
-        let origin = scale(point: CGPoint(x: 108, y: 174))
-        gradientLayer.frame = CGRect(origin: origin, size: path.bounds.size)
-        gradientLayer.mask = shapeLayer
-        gradientLayer.startPoint = CGPoint(x: 1, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
+        
+        let gradientFrame = CGRect(origin: CGPoint(x: 108, y: 174), size: path.bounds.size)
+        let gradientLayer = AppAppearance.mainGradientLayer(withMask: shapeLayer, andFrame: gradientFrame)
         layer.addSublayer(gradientLayer)
         animatableLayer = gradientLayer
     }
@@ -51,7 +40,7 @@ class LaunchscreenView: UIView {
     func animateGradient() {
         let colorChangeAnimation = CABasicAnimation(keyPath: "colors")
         colorChangeAnimation.duration = 2
-        colorChangeAnimation.toValue = gradientEndColors
+        colorChangeAnimation.toValue = AppAppearance.gradientEndColors
         colorChangeAnimation.autoreverses = true
         colorChangeAnimation.repeatCount = .infinity
         colorChangeAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)

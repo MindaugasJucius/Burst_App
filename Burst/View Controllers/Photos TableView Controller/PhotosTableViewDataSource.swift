@@ -2,6 +2,8 @@ import UIKit
 import BurstAPI
 import AlamofireImage
 
+let PeparationNotificationName = Notification.Name("PreparationNotification")
+
 class PhotosTableViewDataSource: NSObject {
     
     private weak var tableView: UITableView!
@@ -10,6 +12,7 @@ class PhotosTableViewDataSource: NSObject {
     fileprivate var fetchedPhotos = [Photo]()
 
     private var currentPage = 1
+    private var prepared = false
     
     var onPhotoSave: PhotoCallback?
     
@@ -35,6 +38,14 @@ class PhotosTableViewDataSource: NSObject {
                 self?.retrievePhotos()
             }
         )
+    }
+    
+    private func postPreparedNotificationIfNeeded() {
+        guard !prepared else {
+            return
+        }
+        prepared = true
+        NotificationCenter.default.post(name: PeparationNotificationName, object: nil)
     }
     
     private func retrievePhotos() {
@@ -78,6 +89,7 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     func updateTableView(forPhotos photos: [Photo]) {
+        postPreparedNotificationIfNeeded()
         var indexPaths = [IndexPath]()
         let previousCount = fetchedPhotos.count
         var currentCount = previousCount
@@ -93,17 +105,17 @@ class PhotosTableViewDataSource: NSObject {
         tableView.insertSections(IndexSet(integersIn: Range(uncheckedBounds: (lower: previousCount, upper: currentCount))), with: .fade)
         tableView.insertRows(at: indexPaths, with: .fade)
         tableView.endUpdates()
-
         currentPage = currentPage + 1
     }
     
     // MARK: - Helpers
     
     private func presentError(_ error: Error) {
-        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
-            onController: viewController,
-            withError: error
-        )
+        postPreparedNotificationIfNeeded()
+//        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
+//            onController: viewController,
+//            withError: error
+//        )
     }
     
     private func photoCell(atPath indexPath: IndexPath) -> PhotoTableViewCell? {

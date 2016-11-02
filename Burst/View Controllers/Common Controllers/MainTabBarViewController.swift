@@ -3,16 +3,18 @@ import UIKit
 final class MainTabBarViewController: UITabBarController {
 
     fileprivate var customTabBar: MainTabBar?
-    private var launchscreenView: LaunchscreenView?
+    private var launchscreenView: LaunchscreenView = LaunchscreenView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [containerTab(), cameraTab(), settingsTab()]
         tabBar.isTranslucent = false
         delegate = self
+        
         let launchscreenView = LaunchscreenView(frame: view.frame)
         view.layer.addSublayer(launchscreenView.layer)
         self.launchscreenView = launchscreenView
+        handlePreparationNotification()
         customTabBar = tabBar as? MainTabBar
         let offset = UIOffset(horizontal: 0, vertical: -3)
         tabBar.items?.forEach { item in
@@ -23,12 +25,34 @@ final class MainTabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        launchscreenView?.animateGradient()
+        launchscreenView.animateGradient()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         customTabBar?.setupBar()
+    }
+    
+    private func handlePreparationNotification() {
+        NotificationCenter.default.addObserver(
+            forName: PeparationNotificationName,
+            object: nil,
+            queue: nil,
+            using: { [weak self] notification in
+                self?.handlePreparedState(withNofication: notification)
+            }
+        )
+        
+    }
+    
+    private func handlePreparedState(withNofication notification: Notification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        UIView.fadeOut(
+            view: launchscreenView,
+            completion: { [weak self] in
+                self?.launchscreenView.removeFromSuperview()
+            }
+        )
     }
     
     private func containerTab() -> UINavigationController {
