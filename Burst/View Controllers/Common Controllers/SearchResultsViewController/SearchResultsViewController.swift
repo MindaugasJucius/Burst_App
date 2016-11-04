@@ -134,7 +134,6 @@ class SearchResultsViewController: UIViewController {
             forQuery: query,
             resultsPage: page,
             success: { [weak self] results in
-                print(results.results.count)
                 self?.searchRequest = nil
                 self?.searchResults = results
             },

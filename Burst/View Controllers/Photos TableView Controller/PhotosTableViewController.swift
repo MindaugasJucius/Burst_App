@@ -2,17 +2,27 @@ import UIKit
 
 class PhotosTableViewController: UIViewController {
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
     var delegate: ContainerControllerDelegate?
     
     fileprivate var dataSource: PhotosTableViewDataSource!
-
+    fileprivate var headerHolder: UIView?
+    
+    var state: ContainerViewState = .normal {
+        didSet {
+            updateView(forState: state)
+            if oldValue != state {
+                tableView.reloadData()
+            }
+        }
+    }
     // Mark: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        configureCommonState()
+        state = .normal
     }
     
     // Mark: - Layout
@@ -23,11 +33,10 @@ class PhotosTableViewController: UIViewController {
     }
     
     private func sizeHeaderToFit() {
-        let headerView = tableView.tableHeaderView!
-        
-        guard let header = headerView as? PhotosTableHeaderView else {
+        guard let header = tableView.tableHeaderView as? PhotosTableHeaderView else {
             return
         }
+        headerHolder = header
         header.layoutIfNeeded()
         let height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
         var frame = header.frame
@@ -39,24 +48,8 @@ class PhotosTableViewController: UIViewController {
     
     // Mark: - Configuration
     
-    private func setupTableView() {
-        tableView.backgroundColor = AppAppearance.tableViewBackground
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.estimatedSectionHeaderHeight = 35
-        tableView.allowsSelection = false
-        tableView.delaysContentTouches = false
-        tableView.infiniteScrollIndicatorStyle = .white
-        tableView.infiniteScrollTriggerOffset = tableView.bounds.height
-        for case let subview as UIScrollView in tableView.subviews {
-            subview.delaysContentTouches = false
-        }
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        setupDataSource()
-    }
-    
-    private func setupDataSource() {
-        dataSource = PhotosTableViewDataSource(tableView: tableView, viewController: self)
+    fileprivate func setupDataSource() {
+        dataSource = PhotosTableViewDataSource(tableView: tableView, container: self)
         dataSource.onPhotoSave = { [weak self] photo in
             guard let unwrappedPhoto = photo else {
                 return
@@ -68,14 +61,49 @@ class PhotosTableViewController: UIViewController {
     
 }
 
+extension PhotosTableViewController: StatefulContainerView {
+    
+    func handle(error: Error) {
+        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
+            onController: self,
+            withError: error
+        )
+    }
+    
+    func configureEmptyState() {
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.tableHeaderView = nil
+    }
+    
+    func configureNormalState() {
+        tableView.estimatedSectionHeaderHeight = 35
+        guard headerHolder != nil else {
+            headerHolder = tableView.tableHeaderView
+            return
+        }
+        tableView.tableHeaderView = headerHolder
+    }
+    
+    func configureCommonState() {
+        tableView.backgroundColor = AppAppearance.tableViewBackground
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.allowsSelection = false
+        tableView.delaysContentTouches = false
+        tableView.infiniteScrollIndicatorStyle = .white
+        tableView.infiniteScrollTriggerOffset = tableView.bounds.height
+        for case let subview as UIScrollView in tableView.subviews {
+            subview.delaysContentTouches = false
+        }
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        setupDataSource()
+    }
+}
+
 extension PhotosTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier) as? PhotoHeader else {
-            return .none
-        }
-        dataSource.configureHeader(forView: header, atSection: section)
-        return header
+        return dataSource.header(forSection: section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

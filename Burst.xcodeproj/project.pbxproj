@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03001B8B1DCC990F004D478C /* StatefulContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B8A1DCC990F004D478C /* StatefulContainerView.swift */; };
 		03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C991DBA661F00695972 /* MainTabBar.swift */; };
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
@@ -113,6 +114,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03001B8A1DCC990F004D478C /* StatefulContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatefulContainerView.swift; path = "../View Controllers/Photos TableView Controller/StatefulContainerView.swift"; sourceTree = "<group>"; };
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
 		03191C991DBA661F00695972 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				037A6E681DAFE743000A774C /* ReusableView.swift */,
+				03001B8A1DCC990F004D478C /* StatefulContainerView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				03DC3A7E1D88781E00D18A48 /* AppAppearance.swift in Sources */,
 				037A6E691DAFE743000A774C /* ReusableView.swift in Sources */,
 				03C7D2241D18588E0040A875 /* AppDelegate.swift in Sources */,
+				03001B8B1DCC990F004D478C /* StatefulContainerView.swift in Sources */,
 				034422A41DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift in Sources */,
 				03A19E0C1DC539BD00078B4C /* UIView+NIB.swift in Sources */,
 				039EF49C1DC65B19004E94E4 /* SearchResultsViewController.swift in Sources */,

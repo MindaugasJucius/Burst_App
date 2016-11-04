@@ -8,7 +8,7 @@ let APPName = "BURST"
 // MARK: - Search messages
 
 let Search = "Enter a keyword"
-let SearchPhotos = "To search for photos enter a keyword (e.g. 'city')"
+let SearchPhotos = "Enter a keyword to search for photos (e.g. 'city')"
 
 // MARK: - Generic messages
 let Cancel = "Cancel"
