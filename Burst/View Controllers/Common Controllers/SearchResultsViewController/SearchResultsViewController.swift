@@ -128,7 +128,7 @@ class SearchResultsViewController: UIViewController {
     
     // MARK: - Cell config
     
-    func photoCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell{
+    fileprivate func photoCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoSearchResultCollectionViewCell.reuseIdentifier, for: indexPath)
         guard let resultsCell = cell as? PhotoSearchResultCollectionViewCell else {
             return cell
@@ -137,7 +137,7 @@ class SearchResultsViewController: UIViewController {
         return resultsCell
     }
     
-    func emptyStateCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+    fileprivate func emptyStateCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyStateCollectionViewCell.reuseIdentifier, for: indexPath)
         guard let emptyStateCell = cell as? EmptyStateCollectionViewCell else {
             return cell
@@ -261,6 +261,7 @@ extension SearchResultsViewController: StatefulContainerView {
     func configureCommonState() {
         prepareForRetrieval()
         registerViews()
+        automaticallyAdjustsScrollViewInsets = false
         activityIndicator.activityIndicatorViewStyle = .whiteLarge
         acitivityIndicatorContainerView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         acitivityIndicatorContainerView.alpha = 0
