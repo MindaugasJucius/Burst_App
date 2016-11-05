@@ -14,10 +14,11 @@ class ContainerViewController: UIViewController {
     private var contentViewController: UIViewController?
     private var photoSavingHelper: PhotoSavingHelper?
     private var searchController: UISearchController!
-    private var searchControllerContainer: UISearchContainerViewController!
     private var searchBarButton: UIBarButtonItem!
     private var burstTitleView: UIView!
     private var searchBar: UISearchBar!
+    
+    fileprivate var searchResultsController: SearchResultsViewController?
     
     var delegate: NavigationControllerDelegate?
     
@@ -49,6 +50,7 @@ class ContainerViewController: UIViewController {
     
     private func setupSearchBar() {
         let resultsController = SearchResultsViewController(searchType: .photos)
+        self.searchResultsController = resultsController
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
@@ -56,16 +58,12 @@ class ContainerViewController: UIViewController {
         definesPresentationContext = true
         searchController.searchResultsUpdater = resultsController
         searchBar = searchController.searchBar
-        searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
+        searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
         AppAppearance.applyLightBlackStyle(forSearchBar: searchController.searchBar)
         navigationItem.rightBarButtonItem = searchBarButton
     }
     
-    @objc func search() {
-        showSearchBar()
-    }
-    
-    func showSearchBar() {
+    @objc func showSearchBar() {
         navigationItem.titleView = searchBar
         navigationItem.setRightBarButton(nil, animated: true)
         searchBar.becomeFirstResponder()

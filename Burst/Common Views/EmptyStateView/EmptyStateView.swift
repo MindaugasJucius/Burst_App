@@ -20,9 +20,8 @@ class EmptyStateView: UIView {
     
     private func createUpperBezierPath() -> UIBezierPath {
         let path = UIBezierPath()
-        let labelFrame = label.frame
         path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: labelFrame.width, y: 0))
+        path.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 0))
         return path
     }
     
@@ -39,33 +38,9 @@ class EmptyStateView: UIView {
         label.text = type.translation
     }
     
-    override func layoutSubviews() {
-        label.layer.sublayers = nil
+    func addSeparator() {
         let shapeLayer = createShapeLayer(withPath: createUpperBezierPath())
         let upperLayer = AppAppearance.mainGradientLayer(withMask: shapeLayer, andFrame: label.bounds)
         label.layer.addSublayer(upperLayer)
-    }
-    
-    func hideEmptyStateView() {
-        UIView.fadeOut(view: self, completion: nil)
-        activityIndicator.stopAnimating()
-    }
-    
-    func presentEmptyStateView() {
-        UIView.fadeIn(view: containerView, completion: nil)
-        activityIndicator.stopAnimating()
-    }
-    
-    func presentActivityIndicator() {
-        activityIndicator.startAnimating()
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0,
-            options: .transitionCrossDissolve,
-            animations: { [weak self] in
-                self?.containerView.alpha = 0
-            },
-            completion: nil
-        )
     }
 }

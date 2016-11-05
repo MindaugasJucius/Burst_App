@@ -15,12 +15,6 @@ protocol StatefulContainerView: class {
 
 extension StatefulContainerView {
     
-    var emptyState: Bool {
-        get {
-            return state == .empty
-        }
-    }
-    
     func updateView(forState state: ContainerViewState) {
         switch state {
         case .empty:
@@ -28,5 +22,22 @@ extension StatefulContainerView {
         case .normal:
             configureNormalState()
         }
+    }
+    
+    var emptyState: Bool {
+        get {
+            return state == .empty
+        }
+    }
+    
+}
+
+extension StatefulContainerView where Self: UIViewController {
+    
+    func handle(error: Error) {
+        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
+            onController: self,
+            withError: error
+        )
     }
 }

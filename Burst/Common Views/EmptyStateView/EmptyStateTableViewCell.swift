@@ -1,4 +1,4 @@
-class EmptyStateTableViewCell: UITableViewCell, ReusableView, EmptyStateContainable {
+class EmptyStateTableViewCell: UITableViewCell, ReusableView, EmptyStateContainer {
 
     var emptyStateView: EmptyStateView?
     var emptyStateViewType: EmptyStateViewType = .none {

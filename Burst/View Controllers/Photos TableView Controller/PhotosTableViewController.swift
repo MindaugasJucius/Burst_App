@@ -22,7 +22,7 @@ class PhotosTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCommonState()
-        state = .normal
+        updateView(forState: .normal)
     }
     
     // Mark: - Layout
@@ -62,13 +62,6 @@ class PhotosTableViewController: UIViewController {
 }
 
 extension PhotosTableViewController: StatefulContainerView {
-    
-    func handle(error: Error) {
-        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
-            onController: self,
-            withError: error
-        )
-    }
     
     func configureEmptyState() {
         tableView.estimatedSectionHeaderHeight = 0

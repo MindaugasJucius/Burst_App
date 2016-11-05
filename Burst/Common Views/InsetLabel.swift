@@ -13,6 +13,13 @@ class InsetLabel: UILabel {
     override func drawText(in rect: CGRect) {
         super.drawText(in: textInsets.apply(rect: rect))
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.sublayers?.forEach { [unowned self] sublayer in
+            sublayer.frame = self.bounds
+        }
+    }
 }
 
 extension UIEdgeInsets {

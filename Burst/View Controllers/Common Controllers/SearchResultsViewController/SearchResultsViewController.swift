@@ -1,13 +1,13 @@
 import BurstAPI
 import Alamofire
 
-fileprivate let MinSearchQueryLenght = 3
 fileprivate let InteritemSpacing: CGFloat = 1
 
 enum SearchType {
     case photos
     case collections
     case users
+    case noResults
     
     var itemsPerRow: CGFloat {
         switch self {
@@ -23,22 +23,31 @@ enum SearchType {
 class SearchResultsViewController: UIViewController {
 
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var collectionViewLayout: UICollectionViewFlowLayout!
     
+    fileprivate var searchDelayer: Timer?
     fileprivate var searchType: SearchType
-    fileprivate var emptyStateView: EmptyStateView?
     fileprivate var searchRequest: DataRequest?
     fileprivate var currentSearchPage: Int = 1
-    fileprivate var searchQuery: String?
+    fileprivate var searchQuery: String = ""
     fileprivate var fetchedResults: [Photo] = []
+    fileprivate var indexPaths: [IndexPath] = []
+    fileprivate var currentItemCount: Int = 0
     fileprivate var searchResults: SearchResults<Photo>? {
         didSet {
-            guard let results = searchResults,
-                results.results.count > 0 else {
-                emptyStateView?.presentEmptyStateView()
+            guard let results = searchResults else {
                 return
             }
             updateCollectionView(forSearchResults: results.results)
-            emptyStateView?.hideEmptyStateView()
+        }
+    }
+    
+    var state: ContainerViewState = .normal {
+        didSet {
+            if oldValue != state {
+                collectionViewLayout.invalidateLayout()
+                updateView(forState: state)
+            }
         }
     }
     
@@ -53,77 +62,130 @@ class SearchResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let emptyStateView = EmptyStateViewFactory.view(forType: .photoSearch) else {
-            return
-        }
-        emptyStateView.frame = view.bounds
-        self.emptyStateView = emptyStateView
-        view.insertSubview(emptyStateView, aboveSubview: collectionView)
-        prepareCollectionView()
+        configureCommonState()
+        updateView(forState: .normal)
     }
     
     // MARK: - Collection View preparation
     
-    private func prepareCollectionView() {
-        collectionView.backgroundColor = AppAppearance.tableViewBackground
-        let cellName = PhotoSearchResultCollectionViewCell.className
-        let cellNib = UINib.init(nibName: cellName, bundle: nil)
-        collectionView.register(cellNib, forCellWithReuseIdentifier: cellName)
-        collectionView.dataSource = self
-        collectionView.collectionViewLayout = prepareLayout()
-        collectionView.infiniteScrollIndicatorStyle = .white
+    fileprivate func prepareForRetrieval() {
         collectionView.addInfiniteScroll { [weak self] collectionView in
-            guard let strongSelf = self,
-                let query = strongSelf.searchQuery else {
-                return
+            guard let strongSelf = self else {
+                    return
             }
             strongSelf.currentSearchPage = strongSelf.currentSearchPage + 1
-            strongSelf.fetchResults(forQuery: query, page: strongSelf.currentSearchPage)
+            strongSelf.fetchResults(forQuery: strongSelf.searchQuery, page: strongSelf.currentSearchPage)
         }
         collectionView.setShouldShowInfiniteScrollHandler { [weak self] collectionView in
             guard let strongSelf = self,
                 let searchResults = strongSelf.searchResults else {
-                return false
+                    return false
             }
-            return searchResults.results.count != 0 ||
+            return searchResults.results.count != 0 &&
                 strongSelf.currentSearchPage != searchResults.totalPages
         }
     }
     
-    func prepareLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        let screenWidth = UIScreen.main.bounds.width
-        let paddingSpace = (searchType.itemsPerRow + 1)
-        let availableWidth = screenWidth - paddingSpace
-        let widthPerItem = availableWidth / searchType.itemsPerRow
-        let cellSize = CGSize(width: widthPerItem, height: widthPerItem)
-        layout.itemSize = cellSize
-        layout.minimumInteritemSpacing = InteritemSpacing
-        layout.minimumLineSpacing = InteritemSpacing * 2
-        return layout
+    fileprivate func registerViews() {
+        let cellNib = UINib.init(nibName: PhotoSearchResultCollectionViewCell.className,
+                                 bundle: nil)
+        collectionView.register(cellNib,
+                                forCellWithReuseIdentifier: PhotoSearchResultCollectionViewCell.reuseIdentifier)
+        
+        let emptyCellNib = UINib.init(nibName: EmptyStateCollectionViewCell.className,
+                                      bundle: nil)
+        collectionView.register(emptyCellNib,
+                                forCellWithReuseIdentifier: EmptyStateCollectionViewCell.reuseIdentifier)
+    }
+    
+    // MARK: - Cell config
+    
+    func photoCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoSearchResultCollectionViewCell.reuseIdentifier, for: indexPath)
+        guard let resultsCell = cell as? PhotoSearchResultCollectionViewCell else {
+            return cell
+        }
+        resultsCell.configure(forPhoto: fetchedResults[indexPath.row])
+        return resultsCell
+    }
+    
+    func emptyStateCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyStateCollectionViewCell.reuseIdentifier, for: indexPath)
+        guard let emptyStateCell = cell as? EmptyStateCollectionViewCell else {
+            return cell
+        }
+        emptyStateCell.emptyStateViewType = .photoSearch
+        return emptyStateCell
+    }
+    
+    // MARK: - Collection view housekeeping
+    
+    private func updateCollectionView(forSearchResults results: [Photo]) {
+        var currentIndexPaths = [IndexPath]()
+        var indexPathsToDelete = [IndexPath]()
+        var cellCount = 0
+        var newState: ContainerViewState = .normal
+        if results.isEmpty { // no results - delete previous items and show empty cell
+            newState = .empty
+            fetchedResults = []
+            indexPathsToDelete = indexPaths
+            indexPaths = []
+            currentIndexPaths.append(IndexPath(item: 0, section: 0))
+            cellCount = currentIndexPaths.count
+        } else if currentSearchPage == 1 { // new search - delete previous items + show new results
+            newState = .normal
+            fetchedResults = results
+            indexPathsToDelete = indexPaths
+            indexPaths = []
+            currentIndexPaths = indexPaths(startingFrom: currentIndexPaths.count,
+                                           to: results.count)
+            cellCount = results.count
+        } else { // continuation of old search query - append results
+            let allItemsCount = fetchedResults.count + results.count
+            currentIndexPaths = indexPaths(startingFrom: fetchedResults.count,
+                                           to: allItemsCount)
+            cellCount = allItemsCount
+            fetchedResults.append(contentsOf: results)
+        }
+        
+        collectionView.performBatchUpdates(
+            { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                if !indexPathsToDelete.isEmpty {
+                    strongSelf.currentItemCount = 0
+                    strongSelf.collectionView.deleteItems(at: indexPathsToDelete)
+                }
+                strongSelf.currentItemCount = cellCount
+                strongSelf.state = newState
+                strongSelf.collectionView.insertItems(at: currentIndexPaths)
+            },
+            completion: { [weak self] finished in
+                self?.indexPaths.append(contentsOf: currentIndexPaths)
+                self?.collectionView.finishInfiniteScroll()
+            }
+        )
+    }
+    
+    private func indexPaths(startingFrom: Int, to: Int) -> [IndexPath] {
+        var newPaths: [IndexPath] = []
+        for index in startingFrom...to-1 {
+            let indexPath = IndexPath(item: index, section: 0)
+            newPaths.append(indexPath)
+        }
+        return newPaths
     }
     
     // MARK: - Results fetching
     
-    private func updateCollectionView(forSearchResults results: [Photo]) {
-        var indexPaths = [IndexPath]()
-        let previousCount = fetchedResults.count
-        var currentCount = previousCount
-
-        results.forEach { _ in
-            let indexPath = IndexPath(item: currentCount, section: 0)
-            indexPaths.append(indexPath)
-            currentCount = currentCount + 1
+    @objc func search(withDelayer delayer: Timer) {
+        guard let query = delayer.userInfo as? String else {
+            return
         }
-        fetchedResults.append(contentsOf: results)
-        collectionView.performBatchUpdates(
-            { [weak self] in
-                self?.collectionView.insertItems(at: indexPaths)
-            },
-            completion: { [weak self] finished in
-                self?.collectionView.finishInfiniteScroll()
-            }
-        )
+        searchQuery = query
+        currentSearchPage = 1
+        fetchResults(forQuery: query)
     }
     
     fileprivate func fetchResults(forQuery query: String, page: Int = 1) {
@@ -143,7 +205,48 @@ class SearchResultsViewController: UIViewController {
                 print(error.localizedDescription)
             }
         )
-        emptyStateView?.presentActivityIndicator()
+    }
+
+}
+
+extension SearchResultsViewController: StatefulContainerView {
+    
+    func configureEmptyState() {
+        let cellSize = CGSize(width: UIScreen.main.bounds.width,
+                              height: collectionView.bounds.height)
+        collectionViewLayout.itemSize = cellSize
+        collectionViewLayout.minimumLineSpacing = 0
+        collectionViewLayout.minimumInteritemSpacing = 0
+    }
+
+    func configureNormalState() {
+        let screenWidth = UIScreen.main.bounds.width
+        let paddingSpace = (searchType.itemsPerRow + 1)
+        let availableWidth = screenWidth - paddingSpace
+        let widthPerItem = availableWidth / searchType.itemsPerRow
+        let cellSize = CGSize(width: widthPerItem, height: widthPerItem)
+        collectionViewLayout.itemSize = cellSize
+        collectionViewLayout.minimumInteritemSpacing = InteritemSpacing
+        collectionViewLayout.minimumLineSpacing = InteritemSpacing * 2
+    }
+    
+    func configureCommonState() {
+        prepareForRetrieval()
+        registerViews()
+        collectionView.alwaysBounceVertical = true
+        collectionView.backgroundColor = AppAppearance.tableViewBackground
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.infiniteScrollIndicatorStyle = .white
+    }
+}
+
+extension SearchResultsViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let emptyStateCell = cell as? EmptyStateCollectionViewCell else {
+            return
+        }
     }
 
 }
@@ -151,29 +254,33 @@ class SearchResultsViewController: UIViewController {
 extension SearchResultsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchedResults.count
+        return currentItemCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoSearchResultCollectionViewCell.className, for: indexPath)
-        guard let resultsCell = cell as? PhotoSearchResultCollectionViewCell else {
-            return cell
+        guard !fetchedResults.isEmpty else {
+            return emptyStateCell(forIndexPath: indexPath)
         }
-        resultsCell.configure(forPhoto: fetchedResults[indexPath.row])
-        return resultsCell
+        return photoCell(forIndexPath: indexPath)
     }
 }
 
 extension SearchResultsViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text, searchText.characters.count >= MinSearchQueryLenght else {
+        guard let searchText = searchController.searchBar.text,
+            searchText.characters.count > 0, searchQuery != searchText else {
             return
         }
-        fetchedResults = []
-        collectionView.reloadData()
-        currentSearchPage = 1
-        searchQuery = searchText
-        fetchResults(forQuery: searchText)
+        if let searchDelayer = searchDelayer {
+            searchDelayer.invalidate()
+        }
+        searchDelayer = Timer.scheduledTimer(
+            timeInterval: 0.5,
+            target: self,
+            selector: #selector(search(withDelayer:)),
+            userInfo: searchText,
+            repeats: false
+        )
     }
 }

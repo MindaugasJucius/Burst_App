@@ -1,8 +1,9 @@
-class EmptyStateCollectionViewCell: UICollectionViewCell {
+class EmptyStateCollectionViewCell: UICollectionViewCell, ReusableView, EmptyStateContainer {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var emptyStateView: EmptyStateView?
+    var emptyStateViewType: EmptyStateViewType = .none {
+        didSet {
+            configure(emptyStateViewContentView: contentView)
+        }
     }
-
 }

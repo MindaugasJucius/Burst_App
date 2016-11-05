@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchResultsViewController" customModule="Burst" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="60l-JG-DBQ" id="v6e-5M-zgC"/>
+                <outlet property="collectionViewLayout" destination="Aqz-m2-c1i" id="gUk-8h-fzb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -1,11 +1,11 @@
-protocol EmptyStateContainable: class {
+protocol EmptyStateContainer: class {
     
     var emptyStateView: EmptyStateView? { get set }
     var emptyStateViewType: EmptyStateViewType { get set }
     
 }
 
-extension EmptyStateContainable {
+extension EmptyStateContainer {
     
     func configure(emptyStateViewContentView view: UIView) {
         emptyStateView?.removeFromSuperview()
@@ -16,5 +16,6 @@ extension EmptyStateContainable {
         newStateView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.addSubview(newStateView)
         emptyStateView = newStateView
+        emptyStateView?.addSeparator()
     }
 }

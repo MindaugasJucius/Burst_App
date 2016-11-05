@@ -90,6 +90,7 @@ class PhotosTableViewDataSource: NSObject {
                 let state: ContainerViewState = self?.currentPage == InitialPageIndex ? .empty : .normal
                 self?.stateChangeHandler(state: state)
                 self?.container.handle(error: error)
+                self?.refreshControl.endRefreshing()
                 self?.tableView.finishInfiniteScroll()
             }
         )

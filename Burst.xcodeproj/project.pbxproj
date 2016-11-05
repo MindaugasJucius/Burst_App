@@ -15,7 +15,7 @@
 		034422A11DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0344229F1DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib */; };
 		034422A41DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034422A21DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift */; };
 		034422A51DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034422A31DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.xib */; };
-		034422A71DCB2952008EF3B1 /* EmptyStateContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034422A61DCB2952008EF3B1 /* EmptyStateContainable.swift */; };
+		034422A71DCB2952008EF3B1 /* EmptyStateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034422A61DCB2952008EF3B1 /* EmptyStateContainer.swift */; };
 		0365ADDF1DC3635A00248284 /* UIImage+Manipulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365ADDE1DC3635A00248284 /* UIImage+Manipulations.swift */; };
 		03673ED31DC6386900FE37E7 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03673ED01DC6386900FE37E7 /* EmptyStateView.swift */; };
 		03673ED41DC6386900FE37E7 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03673ED11DC6386900FE37E7 /* EmptyStateView.xib */; };
@@ -123,7 +123,7 @@
 		0344229F1DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateTableViewCell.xib; sourceTree = "<group>"; };
 		034422A21DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateCollectionViewCell.swift; sourceTree = "<group>"; };
 		034422A31DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateCollectionViewCell.xib; sourceTree = "<group>"; };
-		034422A61DCB2952008EF3B1 /* EmptyStateContainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateContainable.swift; sourceTree = "<group>"; };
+		034422A61DCB2952008EF3B1 /* EmptyStateContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateContainer.swift; sourceTree = "<group>"; };
 		0365ADDE1DC3635A00248284 /* UIImage+Manipulations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Manipulations.swift"; sourceTree = "<group>"; };
 		03673ED01DC6386900FE37E7 /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		03673ED11DC6386900FE37E7 /* EmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 				0344229F1DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib */,
 				034422A21DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift */,
 				034422A31DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.xib */,
-				034422A61DCB2952008EF3B1 /* EmptyStateContainable.swift */,
+				034422A61DCB2952008EF3B1 /* EmptyStateContainer.swift */,
 			);
 			path = EmptyStateView;
 			sourceTree = "<group>";
@@ -596,7 +596,7 @@
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
 				03C4E3981DC90488005CECE2 /* LaunchscreenView.swift in Sources */,
 				03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */,
-				034422A71DCB2952008EF3B1 /* EmptyStateContainable.swift in Sources */,
+				034422A71DCB2952008EF3B1 /* EmptyStateContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
