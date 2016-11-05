@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchResultsViewController" customModule="Burst" customModuleProvider="target">
             <connections>
+                <outlet property="acitivityIndicatorContainerView" destination="YmB-Ce-X6E" id="FEh-yW-iMN"/>
+                <outlet property="activityIndicator" destination="Zlq-cP-hbp" id="6Sq-6A-1gu"/>
                 <outlet property="collectionView" destination="60l-JG-DBQ" id="v6e-5M-zgC"/>
                 <outlet property="collectionViewLayout" destination="Aqz-m2-c1i" id="gUk-8h-fzb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,11 +32,28 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmB-Ce-X6E">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-cP-hbp">
+                            <rect key="frame" x="177" y="323" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Zlq-cP-hbp" firstAttribute="centerY" secondItem="YmB-Ce-X6E" secondAttribute="centerY" id="Srl-P9-7m5"/>
+                        <constraint firstItem="Zlq-cP-hbp" firstAttribute="centerX" secondItem="YmB-Ce-X6E" secondAttribute="centerX" id="zQE-tf-iF5"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="60l-JG-DBQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cda-t3-YN6"/>
                 <constraint firstAttribute="bottom" secondItem="60l-JG-DBQ" secondAttribute="bottom" id="OMT-Ip-22p"/>
+                <constraint firstItem="YmB-Ce-X6E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qly-uq-scM"/>
+                <constraint firstAttribute="bottom" secondItem="YmB-Ce-X6E" secondAttribute="bottom" id="T4L-Lz-kvL"/>
+                <constraint firstItem="YmB-Ce-X6E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Y4h-6v-uYS"/>
                 <constraint firstItem="60l-JG-DBQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YaO-g5-OPK"/>
+                <constraint firstAttribute="trailing" secondItem="YmB-Ce-X6E" secondAttribute="trailing" id="j0U-vE-Qw6"/>
                 <constraint firstAttribute="trailing" secondItem="60l-JG-DBQ" secondAttribute="trailing" id="vJY-b3-Yur"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>

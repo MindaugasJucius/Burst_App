@@ -24,7 +24,10 @@ class SearchResultsViewController: UIViewController {
 
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     @IBOutlet fileprivate weak var collectionViewLayout: UICollectionViewFlowLayout!
+    @IBOutlet fileprivate weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet fileprivate weak var acitivityIndicatorContainerView: UIView!
     
+    fileprivate var isActivityIndicatorVisible: Bool = false
     fileprivate var searchDelayer: Timer?
     fileprivate var searchType: SearchType
     fileprivate var searchRequest: DataRequest?
@@ -38,6 +41,7 @@ class SearchResultsViewController: UIViewController {
             guard let results = searchResults else {
                 return
             }
+            hideActivityIndicator()
             updateCollectionView(forSearchResults: results.results)
         }
     }
@@ -64,6 +68,30 @@ class SearchResultsViewController: UIViewController {
         super.viewDidLoad()
         configureCommonState()
         updateView(forState: .normal)
+    }
+    
+    // MARK: - Activity indicator appearance
+    
+    func showActivityIndicator() {
+        guard !isActivityIndicatorVisible else {
+            return
+        }
+        isActivityIndicatorVisible = true
+        activityIndicator.startAnimating()
+        UIView.fadeIn(view: acitivityIndicatorContainerView, completion: nil)
+    }
+    
+    func hideActivityIndicator() {
+        guard isActivityIndicatorVisible else {
+            return
+        }
+        isActivityIndicatorVisible = false
+        UIView.fadeOut(
+            view: acitivityIndicatorContainerView,
+            completion: { [weak self] in
+                self?.activityIndicator.stopAnimating()
+            }
+        )
     }
     
     // MARK: - Collection View preparation
@@ -233,6 +261,9 @@ extension SearchResultsViewController: StatefulContainerView {
     func configureCommonState() {
         prepareForRetrieval()
         registerViews()
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        acitivityIndicatorContainerView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        acitivityIndicatorContainerView.alpha = 0
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = AppAppearance.tableViewBackground
         collectionView.dataSource = self
@@ -275,6 +306,7 @@ extension SearchResultsViewController: UISearchResultsUpdating {
         if let searchDelayer = searchDelayer {
             searchDelayer.invalidate()
         }
+        showActivityIndicator()
         searchDelayer = Timer.scheduledTimer(
             timeInterval: 0.5,
             target: self,
