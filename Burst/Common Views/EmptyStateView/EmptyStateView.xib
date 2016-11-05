@@ -15,9 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DHB-7a-gbH">
-                    <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
-                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WL-Kj-Ze9">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
@@ -42,14 +39,11 @@
                 <constraint firstItem="4WL-Kj-Ze9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4qX-Ux-qgp"/>
                 <constraint firstAttribute="bottom" secondItem="4WL-Kj-Ze9" secondAttribute="bottom" id="GKC-4s-6ZN"/>
                 <constraint firstAttribute="trailing" secondItem="4WL-Kj-Ze9" secondAttribute="trailing" id="IR9-1m-zA5"/>
-                <constraint firstItem="DHB-7a-gbH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UkF-EF-Z4j"/>
-                <constraint firstItem="DHB-7a-gbH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rba-Ig-pQK"/>
                 <constraint firstItem="4WL-Kj-Ze9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="t3Z-Jx-Q49"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="activityIndicator" destination="DHB-7a-gbH" id="eeN-Jf-b2H"/>
                 <outlet property="containerView" destination="4WL-Kj-Ze9" id="8dj-6n-dNP"/>
                 <outlet property="label" destination="PN0-Kk-aWO" id="xFZ-S1-MlZ"/>
             </connections>

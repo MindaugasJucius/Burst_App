@@ -142,7 +142,13 @@ class SearchResultsViewController: UIViewController {
         guard let emptyStateCell = cell as? EmptyStateCollectionViewCell else {
             return cell
         }
-        emptyStateCell.emptyStateViewType = .photoSearch
+        if searchQuery.characters.isEmpty {
+            emptyStateCell.emptyStateViewType = .photoSearch
+        } else {
+            emptyStateCell.substring = searchQuery
+            emptyStateCell.emptyStateViewType = .noSearchResults
+        }
+        
         return emptyStateCell
     }
     
@@ -268,19 +274,8 @@ extension SearchResultsViewController: StatefulContainerView {
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = AppAppearance.tableViewBackground
         collectionView.dataSource = self
-        collectionView.delegate = self
         collectionView.infiniteScrollIndicatorStyle = .white
     }
-}
-
-extension SearchResultsViewController: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let emptyStateCell = cell as? EmptyStateCollectionViewCell else {
-            return
-        }
-    }
-
 }
 
 extension SearchResultsViewController: UICollectionViewDataSource {

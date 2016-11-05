@@ -2,15 +2,20 @@ fileprivate let LabelInsets = UIEdgeInsets(top: 5, left: 10, bottom: 1, right: 1
 
 class EmptyStateView: UIView {
 
-    @IBOutlet weak var label: InsetLabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak private var label: InsetLabel!
     @IBOutlet weak var containerView: UIView!
     
-    private var emptyStateViewType: EmptyStateViewType = .photoSearch
+    var attributedString: NSAttributedString? {
+        get {
+            return label.attributedText
+        }
+        set {
+            label.attributedText = newValue
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
         label.font = AppAppearance.regularFont(withSize: .systemSize)
         label.textColor = AppAppearance.white
         label.textInsets = LabelInsets
@@ -32,10 +37,6 @@ class EmptyStateView: UIView {
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 3.0
         return shapeLayer
-    }
-    
-    func configure(forType type: EmptyStateViewType) {
-        label.text = type.translation
     }
     
     func addSeparator() {

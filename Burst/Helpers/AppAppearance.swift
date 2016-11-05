@@ -25,6 +25,10 @@ class AppAppearance: NSObject {
         return font(withName: "AvenirNextCondensed-Regular", fontSize: size)
     }
     
+    static func italicFont(withSize size: FontSize) -> UIFont {
+        return font(withName: "AvenirNext-Italic", fontSize: size)
+    }
+    
     private static func font(withName name: String, fontSize size: FontSize) -> UIFont {
         let fontSize = size.rawValue
         guard let font = UIFont(name: name, size: fontSize) else {
