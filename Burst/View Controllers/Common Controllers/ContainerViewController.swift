@@ -40,10 +40,20 @@ class ContainerViewController: UIViewController {
         contentViewController = controller
         
         photoSavingHelper = PhotoSavingHelper(controller: controller)
+        add(containedController: controller)
+    }
+    
+    func add(containedController controller: UIViewController) {
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.view.frame = view.bounds
         controller.didMove(toParentViewController: self)
+    }
+    
+    func remove(containedController controller: UIViewController) {
+        controller.willMove(toParentViewController: nil)
+        controller.view.removeFromSuperview()
+        controller.removeFromParentViewController()
     }
     
     // MARK: - Search bar handling
@@ -67,10 +77,16 @@ class ContainerViewController: UIViewController {
         navigationItem.titleView = searchBar
         navigationItem.setRightBarButton(nil, animated: true)
         searchBar.becomeFirstResponder()
+        let recentSearchesController = RecentSearchesViewController()
+        add(containedController: recentSearchesController)
         UIView.fadeIn(view: searchBar, completion: nil)
     }
     
     fileprivate func hideSearchBar() {
+        guard let child = childViewControllers.last, childViewControllers.count > 1 else {
+            return
+        }
+        remove(containedController: child)
         navigationItem.setRightBarButton(searchBarButton, animated: true)
         navigationItem.titleView = burstTitleView
         UIView.fadeIn(view: burstTitleView, completion: nil)

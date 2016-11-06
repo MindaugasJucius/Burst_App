@@ -269,7 +269,7 @@ extension SearchResultsViewController: StatefulContainerView {
         registerViews()
         automaticallyAdjustsScrollViewInsets = false
         activityIndicator.activityIndicatorViewStyle = .whiteLarge
-        acitivityIndicatorContainerView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        acitivityIndicatorContainerView.backgroundColor = .black
         acitivityIndicatorContainerView.alpha = 0
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = AppAppearance.tableViewBackground
