@@ -8,10 +8,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         updateNavigationBarAppearance()
         updateTabBarAppearance()
+        updateTableViewCellAppearance()
         return true
     }
     
     // MARK: - Private state handlers
+    
+    private func updateTableViewCellAppearance() {
+        let selectionView = UIView()
+        selectionView.backgroundColor = AppAppearance.lightBlack
+        UITableViewCell.appearance().selectedBackgroundView = selectionView
+    }
     
     private func updateTabBarAppearance() {
         let attributes = [NSFontAttributeName: AppAppearance.regularFont(withSize: .cellText)]

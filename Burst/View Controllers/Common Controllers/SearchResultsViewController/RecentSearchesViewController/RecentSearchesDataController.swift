@@ -66,4 +66,10 @@ class RecentSearchesDataController {
         recentSearches = newSearchesArray
     }
     
+    func clearHistory() {
+        let documentsFileURL = NSURL(fileURLWithPath: documentsFilePath) as URL
+        ([] as NSArray).write(to: documentsFileURL, atomically: true)
+        recentSearches = []
+    }
+    
 }

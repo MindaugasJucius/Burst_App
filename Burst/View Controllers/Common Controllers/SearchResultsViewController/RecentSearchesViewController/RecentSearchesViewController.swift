@@ -1,5 +1,3 @@
-let RecentSearchCellReuseIdentifier = "RecentSearchCell"
-
 class RecentSearchesViewController: UIViewController {
     
     @IBOutlet weak fileprivate var tableView: UITableView!
@@ -37,12 +35,22 @@ class RecentSearchesViewController: UIViewController {
         updateView(forState: .normal)
         dataSource.update(forRecentSearches: dataController.recentSearches)
     }
+    
+    fileprivate func clearHistory() {
+        dataController.clearHistory()
+        updateView(forState: .empty)
+        dataSource.update(forRecentSearches: dataController.recentSearches)
+    }
 }
 
 extension RecentSearchesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard dataSource.shouldSelectCell(atIndexPath: indexPath) else {
+        guard !dataSource.isEmptyStateCell(atIndexPath: indexPath) else {
+            return
+        }
+        guard !dataSource.isClearHistoryCell(atIndexPath: indexPath) else {
+            clearHistory()
             return
         }
         onSearchQuerySelect?(dataController.recentSearches[indexPath.row].query)
@@ -68,9 +76,6 @@ extension RecentSearchesViewController: StatefulContainerView {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.keyboardDismissMode = .onDrag
-        let emptyCellNib = UINib.init(nibName: EmptyStateTableViewCell.className, bundle: nil)
-        tableView.register(emptyCellNib, forCellReuseIdentifier: EmptyStateTableViewCell.reuseIdentifier)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: RecentSearchCellReuseIdentifier)
     }
     
     func configureNormalState() {

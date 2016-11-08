@@ -8,6 +8,7 @@ let APPName = "BURST"
 // MARK: - Search messages
 
 let Search = "Enter a keyword"
+let ClearSearchHistory = "Clear search history"
 
 // MARK: - Generic messages
 let Cancel = "Cancel"
