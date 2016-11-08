@@ -17,6 +17,7 @@ class ContainerViewController: UIViewController {
     private var searchBar: UISearchBar!
     
     fileprivate var searchResultsController: SearchResultsViewController?
+    fileprivate var recentSearchesController: RecentSearchesViewController?
     
     var delegate: NavigationControllerDelegate?
     
@@ -58,6 +59,9 @@ class ContainerViewController: UIViewController {
     
     private func setupSearchBar() {
         let resultsController = SearchResultsViewController(searchType: .photos)
+        resultsController.onSearchOccurence = { [weak self] query in
+            self?.recentSearchesController?.insert(query: query)
+        }
         self.searchResultsController = resultsController
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -76,6 +80,10 @@ class ContainerViewController: UIViewController {
         navigationItem.setRightBarButton(nil, animated: true)
         searchBar.becomeFirstResponder()
         let recentSearchesController = RecentSearchesViewController()
+        recentSearchesController.onSearchQuerySelect = { [weak self] query in
+            self?.searchBar.text = query
+        }
+        self.recentSearchesController = recentSearchesController
         add(containedController: recentSearchesController)
         UIView.fadeIn(view: searchBar, completion: nil)
     }

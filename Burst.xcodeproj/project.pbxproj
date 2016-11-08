@@ -11,6 +11,10 @@
 		03001B941DD09D6F004D478C /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B921DD09D6F004D478C /* RecentSearchesViewController.swift */; };
 		03001B951DD09D6F004D478C /* RecentSearchesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03001B931DD09D6F004D478C /* RecentSearchesViewController.xib */; };
 		03001B971DD09D90004D478C /* RecentSearchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B961DD09D90004D478C /* RecentSearchesDataSource.swift */; };
+		03001B991DD1E79E004D478C /* Searches.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03001B981DD1E79E004D478C /* Searches.plist */; };
+		03001B9B1DD1E8A1004D478C /* Dictionary+Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9A1DD1E8A1004D478C /* Dictionary+Plist.swift */; };
+		03001B9D1DD1EB04004D478C /* RecentSearchesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9C1DD1EB04004D478C /* RecentSearchesDataController.swift */; };
+		03001B9F1DD1EB7E004D478C /* RecentSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9E1DD1EB7E004D478C /* RecentSearch.swift */; };
 		03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C991DBA661F00695972 /* MainTabBar.swift */; };
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
@@ -121,6 +125,10 @@
 		03001B921DD09D6F004D478C /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
 		03001B931DD09D6F004D478C /* RecentSearchesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchesViewController.xib; sourceTree = "<group>"; };
 		03001B961DD09D90004D478C /* RecentSearchesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesDataSource.swift; sourceTree = "<group>"; };
+		03001B981DD1E79E004D478C /* Searches.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Searches.plist; sourceTree = "<group>"; };
+		03001B9A1DD1E8A1004D478C /* Dictionary+Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Plist.swift"; sourceTree = "<group>"; };
+		03001B9C1DD1EB04004D478C /* RecentSearchesDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesDataController.swift; sourceTree = "<group>"; };
+		03001B9E1DD1EB7E004D478C /* RecentSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearch.swift; sourceTree = "<group>"; };
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
 		03191C991DBA661F00695972 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
@@ -213,6 +221,8 @@
 				03001B921DD09D6F004D478C /* RecentSearchesViewController.swift */,
 				03001B931DD09D6F004D478C /* RecentSearchesViewController.xib */,
 				03001B961DD09D90004D478C /* RecentSearchesDataSource.swift */,
+				03001B9C1DD1EB04004D478C /* RecentSearchesDataController.swift */,
+				03001B9E1DD1EB7E004D478C /* RecentSearch.swift */,
 			);
 			path = RecentSearchesViewController;
 			sourceTree = "<group>";
@@ -248,6 +258,7 @@
 				03C35EE41DC384C60032F1DD /* UIView+SubviewOfClass.swift */,
 				03F147EB1DC4A04900D523E6 /* UIView+Fade.swift */,
 				03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */,
+				03001B9A1DD1E8A1004D478C /* Dictionary+Plist.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +348,7 @@
 				03C7D22A1D18588E0040A875 /* Assets.xcassets */,
 				03C7D22C1D18588E0040A875 /* LaunchScreen.storyboard */,
 				03C7D22F1D18588E0040A875 /* Info.plist */,
+				03001B981DD1E79E004D478C /* Searches.plist */,
 			);
 			path = Burst;
 			sourceTree = "<group>";
@@ -482,7 +494,7 @@
 				TargetAttributes = {
 					03C7D21F1D18588E0040A875 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = N823MDJ67R;
+						DevelopmentTeam = PDR4VQLAH4;
 						LastSwiftMigration = 0800;
 					};
 					03C7D2331D18588E0040A875 = {
@@ -538,6 +550,7 @@
 				039EF4A21DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.xib in Resources */,
 				03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
+				03001B991DD1E79E004D478C /* Searches.plist in Resources */,
 				03001B951DD09D6F004D478C /* RecentSearchesViewController.xib in Resources */,
 				037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */,
 				037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */,
@@ -595,9 +608,12 @@
 				034422A01DCB28AC008EF3B1 /* EmptyStateTableViewCell.swift in Sources */,
 				03DC3AA51D88782F00D18A48 /* NavigationController.swift in Sources */,
 				0365ADDF1DC3635A00248284 /* UIImage+Manipulations.swift in Sources */,
+				03001B9F1DD1EB7E004D478C /* RecentSearch.swift in Sources */,
 				03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */,
 				03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */,
+				03001B9B1DD1E8A1004D478C /* Dictionary+Plist.swift in Sources */,
 				03C35EE51DC384C60032F1DD /* UIView+SubviewOfClass.swift in Sources */,
+				03001B9D1DD1EB04004D478C /* RecentSearchesDataController.swift in Sources */,
 				039EF4A11DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift in Sources */,
 				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
 				032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */,
@@ -752,6 +768,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -759,7 +776,7 @@
 				);
 				INFOPLIST_FILE = Burst/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = min.Burst;
+				PRODUCT_BUNDLE_IDENTIFIER = min.Burst.app;
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -773,6 +790,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -780,7 +798,7 @@
 				);
 				INFOPLIST_FILE = Burst/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = min.Burst;
+				PRODUCT_BUNDLE_IDENTIFIER = min.Burst.app;
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;

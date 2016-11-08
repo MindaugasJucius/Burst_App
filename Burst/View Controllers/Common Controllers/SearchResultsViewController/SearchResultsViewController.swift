@@ -55,6 +55,8 @@ class SearchResultsViewController: UIViewController {
         }
     }
     
+    var onSearchOccurence: ((String) -> ())?
+    
     init(searchType: SearchType) {
         self.searchType = searchType
         super.init(nibName: SearchResultsViewController.className, bundle: nil)
@@ -219,6 +221,7 @@ class SearchResultsViewController: UIViewController {
         }
         searchQuery = query
         currentSearchPage = 1
+        onSearchOccurence?(query)
         fetchResults(forQuery: query)
     }
     

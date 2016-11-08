@@ -66,7 +66,10 @@ class PhotosTableViewDataSource: NSObject {
         let sectionsToDeleteIndexSet = IndexSet(integersIn: range)
         currentPage = InitialPageIndex
         fetchedPhotos = []
+        tableView.beginUpdates()
         tableView.deleteSections(sectionsToDeleteIndexSet, with: .fade)
+        tableView.insertSections(IndexSet(integer: 0), with: .none)
+        tableView.endUpdates()
         retrievePhotos()
     }
     
