@@ -64,12 +64,10 @@ class PhotosTableViewController: UIViewController {
 extension PhotosTableViewController: StatefulContainerView {
     
     func configureEmptyState() {
-        tableView.estimatedSectionHeaderHeight = 0
         tableView.tableHeaderView = nil
     }
     
     func configureNormalState() {
-        tableView.estimatedSectionHeaderHeight = 35
         guard headerHolder != nil else {
             headerHolder = tableView.tableHeaderView
             return
@@ -79,9 +77,9 @@ extension PhotosTableViewController: StatefulContainerView {
     
     func configureCommonState() {
         tableView.backgroundColor = AppAppearance.tableViewBackground
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.allowsSelection = false
         tableView.delaysContentTouches = false
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.infiniteScrollIndicatorStyle = .white
         tableView.infiniteScrollTriggerOffset = tableView.bounds.height
         for case let subview as UIScrollView in tableView.subviews {
@@ -101,6 +99,10 @@ extension PhotosTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return dataSource.height(forRowAtIndex: indexPath.section)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return dataSource.height(forSection: section)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

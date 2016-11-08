@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		03001B8B1DCC990F004D478C /* StatefulContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B8A1DCC990F004D478C /* StatefulContainerView.swift */; };
-		03001B8F1DCFA5AD004D478C /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B8D1DCFA5AD004D478C /* RecentSearchesViewController.swift */; };
-		03001B901DCFA5AD004D478C /* RecentSearchesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03001B8E1DCFA5AD004D478C /* RecentSearchesViewController.xib */; };
+		03001B941DD09D6F004D478C /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B921DD09D6F004D478C /* RecentSearchesViewController.swift */; };
+		03001B951DD09D6F004D478C /* RecentSearchesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03001B931DD09D6F004D478C /* RecentSearchesViewController.xib */; };
+		03001B971DD09D90004D478C /* RecentSearchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B961DD09D90004D478C /* RecentSearchesDataSource.swift */; };
 		03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C991DBA661F00695972 /* MainTabBar.swift */; };
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
@@ -117,8 +118,9 @@
 
 /* Begin PBXFileReference section */
 		03001B8A1DCC990F004D478C /* StatefulContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatefulContainerView.swift; path = "../View Controllers/Photos TableView Controller/StatefulContainerView.swift"; sourceTree = "<group>"; };
-		03001B8D1DCFA5AD004D478C /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
-		03001B8E1DCFA5AD004D478C /* RecentSearchesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchesViewController.xib; sourceTree = "<group>"; };
+		03001B921DD09D6F004D478C /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
+		03001B931DD09D6F004D478C /* RecentSearchesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchesViewController.xib; sourceTree = "<group>"; };
+		03001B961DD09D90004D478C /* RecentSearchesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesDataSource.swift; sourceTree = "<group>"; };
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
 		03191C991DBA661F00695972 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
@@ -205,6 +207,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03001B911DD09D6F004D478C /* RecentSearchesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				03001B921DD09D6F004D478C /* RecentSearchesViewController.swift */,
+				03001B931DD09D6F004D478C /* RecentSearchesViewController.xib */,
+				03001B961DD09D90004D478C /* RecentSearchesDataSource.swift */,
+			);
+			path = RecentSearchesViewController;
+			sourceTree = "<group>";
+		};
 		03673ECF1DC6386900FE37E7 /* EmptyStateView */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,8 +295,7 @@
 				039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */,
 				039EF49F1DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift */,
 				039EF4A01DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.xib */,
-				03001B8D1DCFA5AD004D478C /* RecentSearchesViewController.swift */,
-				03001B8E1DCFA5AD004D478C /* RecentSearchesViewController.xib */,
+				03001B911DD09D6F004D478C /* RecentSearchesViewController */,
 			);
 			path = SearchResultsViewController;
 			sourceTree = "<group>";
@@ -527,7 +538,7 @@
 				039EF4A21DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.xib in Resources */,
 				03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
-				03001B901DCFA5AD004D478C /* RecentSearchesViewController.xib in Resources */,
+				03001B951DD09D6F004D478C /* RecentSearchesViewController.xib in Resources */,
 				037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */,
 				037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */,
 				03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */,
@@ -590,7 +601,7 @@
 				039EF4A11DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift in Sources */,
 				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
 				032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */,
-				03001B8F1DCFA5AD004D478C /* RecentSearchesViewController.swift in Sources */,
+				03001B941DD09D6F004D478C /* RecentSearchesViewController.swift in Sources */,
 				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
 				037A6DE21DAE26F1000A774C /* InsetLabel.swift in Sources */,
@@ -601,6 +612,7 @@
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
+				03001B971DD09D90004D478C /* RecentSearchesDataSource.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
 				03C4E3981DC90488005CECE2 /* LaunchscreenView.swift in Sources */,
 				03EB14911DB6391C00049E45 /* FAIcon.swift in Sources */,

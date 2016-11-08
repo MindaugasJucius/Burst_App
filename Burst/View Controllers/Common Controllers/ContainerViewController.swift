@@ -7,8 +7,6 @@ protocol ContainerControllerDelegate: class {
     func downloadPhoto(_ photo: Photo)
 }
 
-extension ContainerControllerDelegate where Self: UIViewController { }
-
 class ContainerViewController: UIViewController {
 
     private var contentViewController: UIViewController?

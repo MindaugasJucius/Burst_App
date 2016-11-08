@@ -138,6 +138,9 @@ class PhotosTableViewDataSource: NSObject {
         fetchedPhotos.append(contentsOf: photos)
         tableView.finishInfiniteScroll()
         tableView.beginUpdates()
+        if tableView.cellForRow(at: IndexPath(item: 0, section: 0)) is EmptyStateTableViewCell, currentPage == InitialPageIndex {
+            tableView.deleteSections(IndexSet(integer: 0), with: .none)
+        }
         tableView.insertSections(indexSet, with: .fade)
         tableView.insertRows(at: indexPaths, with: .fade)
         tableView.endUpdates()
@@ -181,6 +184,13 @@ class PhotosTableViewDataSource: NSObject {
         let photo = fetchedPhotos[section]
         header.setupInfo(forPhoto: photo)
         return header
+    }
+    
+    func height(forSection section: Int) -> CGFloat {
+        guard !fetchedPhotos.isEmpty else {
+            return 0
+        }
+        return 35
     }
     
     func height(forRowAtIndex rowIndex: Int) -> CGFloat {
@@ -245,7 +255,7 @@ extension PhotosTableViewDataSource: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard !fetchedPhotos.isEmpty else {
-            return 0
+            return 1
         }
         return fetchedPhotos.count
     }
