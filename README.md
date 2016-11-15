@@ -1,4 +1,5 @@
-# Burst
+![Burst](https://raw.githubusercontent.com/MindaugasJucius/Burst_App/master/Screenshots/Splash.png)
+
 
 This is an iOS app made in Swift 3. It's purpose is to become a full-fledged [Unsplash](unsplash.com) client leveraging all the features of the provided [API](https://unsplash.com/documentation). 
 
