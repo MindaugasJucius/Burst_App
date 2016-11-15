@@ -16,6 +16,11 @@ You can view planned features and work in progress at [Burst's trello board](htt
 
 ### Screenshots
 
+
+<img src="https://raw.githubusercontent.com/MindaugasJucius/Burst_App/master/Screenshots/feed.png" width="25%" align="left" hspace="10" vspace="10">
+<img src="https://raw.githubusercontent.com/MindaugasJucius/Burst_App/master/Screenshots/search.png" width="25%" hspace="10" vspace="10">
+<img src="https://raw.githubusercontent.com/MindaugasJucius/Burst_App/master/Screenshots/history.png" width="25%" hspace="10" vspace="10">
+
 ### Tech
 
 Burst uses these open source projects to work properly:
