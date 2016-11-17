@@ -1,6 +1,6 @@
 import UIKit
 
-class FullPhotoTableViewCell: UITableViewCell {
+class FullPhotoTableViewCell: UITableViewCell, ReusableView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
