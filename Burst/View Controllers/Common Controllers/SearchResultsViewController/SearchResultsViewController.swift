@@ -27,6 +27,8 @@ class SearchResultsViewController: UIViewController {
     @IBOutlet fileprivate weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet fileprivate weak var acitivityIndicatorContainerView: UIView!
     
+    fileprivate let navController: UINavigationController?
+    
     fileprivate var isActivityIndicatorVisible: Bool = false
     fileprivate var searchDelayer: Timer?
     fileprivate var searchType: SearchType
@@ -57,8 +59,9 @@ class SearchResultsViewController: UIViewController {
     
     var onSearchOccurence: ((String) -> ())?
     
-    init(searchType: SearchType) {
+    init(searchType: SearchType, navController: UINavigationController?) {
         self.searchType = searchType
+        self.navController = navController
         super.init(nibName: SearchResultsViewController.className, bundle: nil)
     }
     
@@ -277,7 +280,17 @@ extension SearchResultsViewController: StatefulContainerView {
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = AppAppearance.tableViewBackground
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.infiniteScrollIndicatorStyle = .white
+    }
+}
+
+extension SearchResultsViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+        let photoViewController = PhotoViewController(nibName: "PhotoViewController", bundle: nil)
+        navController?.pushViewController(photoViewController, animated: true)
     }
 }
 

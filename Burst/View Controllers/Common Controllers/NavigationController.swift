@@ -14,6 +14,9 @@ class NavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         navigationBar.isTranslucent = false
+        navigationBar.barStyle = .black
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
         let burstTitleView: TitleView? = TitleView.loadFromNib()
         self.titleView = burstTitleView
         rootViewController.navigationItem.titleView = titleView

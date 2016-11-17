@@ -58,7 +58,7 @@ class ContainerViewController: UIViewController {
     // MARK: - Search bar handling
     
     private func setupSearchBar() {
-        let resultsController = SearchResultsViewController(searchType: .photos)
+        let resultsController = SearchResultsViewController(searchType: .photos, navController: self.navigationController)
         resultsController.onSearchOccurence = { [weak self] query in
             self?.recentSearchesController?.insert(query: query)
         }
