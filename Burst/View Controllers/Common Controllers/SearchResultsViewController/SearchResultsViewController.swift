@@ -290,6 +290,8 @@ extension SearchResultsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
         let photoViewController = PhotoViewController(nibName: "PhotoViewController", bundle: nil)
+        navController?.isNavigationBarHidden = true
+        photoViewController.hidesBottomBarWhenPushed = true
         navController?.pushViewController(photoViewController, animated: true)
     }
 }
