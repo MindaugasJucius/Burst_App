@@ -14,6 +14,9 @@ protocol StatefulContainerView: class {
 }
 
 extension StatefulContainerView {
+
+    func configureEmptyState() { }
+    func configureNormalState() { }
     
     func updateView(forState state: ContainerViewState) {
         switch state {
