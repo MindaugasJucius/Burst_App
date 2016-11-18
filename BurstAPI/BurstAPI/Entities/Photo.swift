@@ -1,6 +1,13 @@
 import UIKit
 import Unbox
 
+public enum PhotoInfoType {
+    case author
+    case location
+    case exif
+    case categories
+}
+
 public class Photo: NSObject, Unboxable {
 
     // Available on ever photo returning call
@@ -48,5 +55,20 @@ public class Photo: NSObject, Unboxable {
         self.fullSize = CGSize(width: width, height: height)
         super.init()
     }
-
+    
+    public func checkForAvailableInfo() -> [PhotoInfoType] {
+        var availableInfo: [PhotoInfoType] = []
+        availableInfo.append(.author)
+        if location != nil {
+            availableInfo.append(.location)
+        }
+        if exif != nil {
+            availableInfo.append(.exif)
+        }
+        if categories != nil {
+            availableInfo.append(.categories)
+        }
+        return availableInfo
+    }
+    
 }

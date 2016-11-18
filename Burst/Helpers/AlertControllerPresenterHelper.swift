@@ -12,6 +12,7 @@ class AlertControllerPresenterHelper: NSObject {
             message: error?.localizedDescription ?? Error,
             preferredStyle: .alert
         )
+        errorAlertController.addAction(okAction(andTitle: Ok, withHandler: nil))
         presentIfPossible(
             presentingController: controller,
             controllerToPresent: errorAlertController

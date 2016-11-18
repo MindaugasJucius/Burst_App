@@ -59,6 +59,14 @@ class SearchResultsViewController: UIViewController {
     
     var onSearchOccurence: ((String) -> ())?
     
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     init(searchType: SearchType, navController: UINavigationController?) {
         self.searchType = searchType
         self.navController = navController

@@ -119,6 +119,10 @@ class PhotoViewController: UIViewController {
         dataSource.didEndPanWithPositiveVelocity = { [unowned self] in
             self.scrollToTop()
         }
+        dataSource.didTapClosePhotoPreview = { [unowned self] in
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = false
+        }
         return dataSource
     }
     
