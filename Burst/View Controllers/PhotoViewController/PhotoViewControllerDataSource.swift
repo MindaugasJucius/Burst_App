@@ -9,6 +9,7 @@ class PhotoViewControllerDataSource: NSObject {
     
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
+    var didTapClosePhotoPreview: (() -> ())?
     
     init(tableView: UITableView, photo: Photo) {
         self.tableView = tableView
@@ -22,6 +23,7 @@ class PhotoViewControllerDataSource: NSObject {
         photoCell.photoImage = photo.thumbImage
         photoCell.topSpacing = topImageSpacing
         photoCell.backgroundColor = AppAppearance.tableViewBackground
+        photoCell.didTapClosePhotoPreview = didTapClosePhotoPreview
         return photoCell
     }
     

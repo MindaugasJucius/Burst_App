@@ -22,7 +22,7 @@ class PhotosTableViewDataSource: NSObject {
         return refreshControl
     }()
     
-    var onPhotoSave: PhotoCallback?
+    var onPhotoSave: PhotoActionCallback?
     
     init(tableView: UITableView, container: StatefulContainerView) {
         self.tableView = tableView

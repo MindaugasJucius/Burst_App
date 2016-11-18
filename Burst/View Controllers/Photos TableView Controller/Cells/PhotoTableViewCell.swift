@@ -5,7 +5,7 @@ import AlamofireImage
 let SideInset: CGFloat = 15
 let ControlHeight: CGFloat = 30
 
-typealias PhotoCallback = (_ photo: Photo?) -> ()
+typealias PhotoActionCallback = (_ photo: Photo?) -> ()
 
 class PhotoTableViewCell: UITableViewCell, ReusableView {
     
@@ -19,9 +19,9 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     
     private let progressIndicatorView = CircularProgressView(frame: .zero)
 
-    var onLoveButton: PhotoCallback?
-    var onAddButton: PhotoCallback?
-    var onSaveButton: PhotoCallback?
+    var onLoveButton: PhotoActionCallback?
+    var onAddButton: PhotoActionCallback?
+    var onSaveButton: PhotoActionCallback?
     
     private weak var displayPhoto: Photo?
     
