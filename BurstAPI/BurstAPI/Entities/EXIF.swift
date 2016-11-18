@@ -4,7 +4,7 @@ public class EXIF: NSObject, Unboxable {
 
     public let madeBy: String
     public let model: String
-    public let exposureTime: Double
+    public let exposureTime: String
     public let aperture: Double
     public let focalLength: Double
     public let iso: Int
