@@ -24,6 +24,7 @@
 		03314CAE1DDDD3C600F04975 /* PhotoDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03314CAC1DDDD3C600F04975 /* PhotoDetailsTableViewCell.xib */; };
 		03314CB11DDDD3D700F04975 /* FullPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CAF1DDDD3D700F04975 /* FullPhotoTableViewCell.swift */; };
 		03314CB21DDDD3D700F04975 /* FullPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03314CB01DDDD3D700F04975 /* FullPhotoTableViewCell.xib */; };
+		03314CB41DDEF5E400F04975 /* PhotoViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CB31DDEF5E400F04975 /* PhotoViewControllerDataSource.swift */; };
 		034422A01DCB28AC008EF3B1 /* EmptyStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344229E1DCB28AC008EF3B1 /* EmptyStateTableViewCell.swift */; };
 		034422A11DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0344229F1DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib */; };
 		034422A41DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034422A21DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift */; };
@@ -145,6 +146,7 @@
 		03314CAC1DDDD3C600F04975 /* PhotoDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		03314CAF1DDDD3D700F04975 /* FullPhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		03314CB01DDDD3D700F04975 /* FullPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		03314CB31DDEF5E400F04975 /* PhotoViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewControllerDataSource.swift; sourceTree = "<group>"; };
 		0344229E1DCB28AC008EF3B1 /* EmptyStateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateTableViewCell.swift; sourceTree = "<group>"; };
 		0344229F1DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateTableViewCell.xib; sourceTree = "<group>"; };
 		034422A21DCB28C6008EF3B1 /* EmptyStateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				03314CAC1DDDD3C600F04975 /* PhotoDetailsTableViewCell.xib */,
 				03314CAF1DDDD3D700F04975 /* FullPhotoTableViewCell.swift */,
 				03314CB01DDDD3D700F04975 /* FullPhotoTableViewCell.xib */,
+				03314CB31DDEF5E400F04975 /* PhotoViewControllerDataSource.swift */,
 			);
 			path = PhotoViewController;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
 				037A6DE21DAE26F1000A774C /* InsetLabel.swift in Sources */,
 				03673ED31DC6386900FE37E7 /* EmptyStateView.swift in Sources */,
+				03314CB41DDEF5E400F04975 /* PhotoViewControllerDataSource.swift in Sources */,
 				03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */,
 				03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */,
 				037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */,

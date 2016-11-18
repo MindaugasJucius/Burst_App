@@ -5,8 +5,8 @@ class PhotoViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
     fileprivate var panYVelocity: CGFloat = 0
-    fileprivate var topImageSpacing: CGFloat = 0
     fileprivate let photo: Photo
+    fileprivate var dataSource: PhotoViewControllerDataSource!
     
     var state: ContainerViewState = .normal
     
@@ -111,71 +111,27 @@ class PhotoViewController: UIViewController {
         tableView.register(photoDetailsCellNib, forCellReuseIdentifier: PhotoDetailsTableViewCell.reuseIdentifier)
     }
     
-    func setup(photoCell: FullPhotoTableViewCell) -> FullPhotoTableViewCell {
-        photoCell.photoImage = photo.thumbImage
-        photoCell.topSpacing = topImageSpacing
-        return photoCell
-    }
-    
-    fileprivate func setup(photoDetailsCell: PhotoDetailsTableViewCell) -> PhotoDetailsTableViewCell {
-        photoDetailsCell.isUserInteractionEnabled = false
-        photoDetailsCell.parentTableView = tableView
-        photoDetailsCell.didEndPanWithPositiveVelocity = { [unowned self] in
-            self.scrollToTop()
-        }
-        photoDetailsCell.didEndPanWithNegativeVelocity = { [unowned self] in
+    fileprivate func setupDataSource() -> PhotoViewControllerDataSource {
+        let dataSource = PhotoViewControllerDataSource(tableView: tableView, photo: photo)
+        dataSource.didEndPanWithNegativeVelocity = { [unowned self] in
             self.scrollToCellAt(atIndexPath: IndexPath(item: 1, section: 0))
         }
-        return photoDetailsCell
-    }
-}
-
-extension PhotoViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: PhotoDetailsTableViewCell.reuseIdentifier,
-                for: indexPath
-            )
-            guard let photoDetailsCell = cell as? PhotoDetailsTableViewCell else {
-                return cell
-            }
-            return setup(photoDetailsCell: photoDetailsCell)
-        } else {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: FullPhotoTableViewCell.reuseIdentifier,
-                for: indexPath
-            )
-            guard let fullPhotoCell = cell as? FullPhotoTableViewCell else {
-                return cell
-            }
-            cell.backgroundColor = .red
-            return setup(photoCell: fullPhotoCell)
+        dataSource.didEndPanWithPositiveVelocity = { [unowned self] in
+            self.scrollToTop()
         }
+        return dataSource
     }
+    
 }
 
 extension PhotoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            guard let image = photo.thumbImage else {
-                return view.bounds.height
-            }
-            let screenSize = UIScreen.main.bounds
-            let rate = screenSize.width / image.size.width
-            let trueImageheight = image.size.height * rate
-            topImageSpacing = (screenSize.height - trueImageheight) / 2
-            let trueCellHeight = topImageSpacing + trueImageheight
-            return trueCellHeight
-        }
-        return view.bounds.height * 0.75
+        return dataSource.cellHeight(forRowAt: indexPath)
     }
+}
+
+extension PhotoViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let photoDetailsCell = tableView.visibleCells.last as? PhotoDetailsTableViewCell else { return }
@@ -188,10 +144,12 @@ extension PhotoViewController: UITableViewDelegate {
 extension PhotoViewController: StatefulContainerView {
     
     func configureCommonState() {
-        tableView.dataSource = self
+        dataSource = setupDataSource()
+        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.bounces = false
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.panGestureRecognizer.addTarget(self, action: #selector(handle(panGesture:)))
