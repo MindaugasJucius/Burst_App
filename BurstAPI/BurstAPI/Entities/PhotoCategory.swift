@@ -3,7 +3,7 @@ import Unbox
 open class PhotoCategoryLinks: NSObject, Unboxable {
     
     open let photos: URL
-    open let linkToSelf: URL //wtf is this?
+    open let linkToSelf: URL
     
     required public init(unboxer: Unboxer) throws {
         self.photos = try unboxer.unbox(key: "photos")
