@@ -28,6 +28,7 @@ class PhotoViewControllerDataSource: NSObject {
     fileprivate func setup(photoDetailsCell: PhotoDetailsTableViewCell) -> PhotoDetailsTableViewCell {
         photoDetailsCell.isUserInteractionEnabled = false
         photoDetailsCell.parentTableView = tableView
+        photoDetailsCell.photo = photo
         photoDetailsCell.backgroundColor = AppAppearance.tableViewBackground
         photoDetailsCell.didEndPanWithPositiveVelocity = didEndPanWithPositiveVelocity
         photoDetailsCell.didEndPanWithNegativeVelocity = didEndPanWithNegativeVelocity
