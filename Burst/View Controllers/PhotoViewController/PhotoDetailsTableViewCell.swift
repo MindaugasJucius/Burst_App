@@ -85,9 +85,9 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
         presented = true
         layoutIfNeeded()
         UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            options: .curveEaseInOut,
+            withDuration: 0.4,
+            delay: 0.1,
+            options: .curveEaseOut,
             animations: { [unowned self] in
                 self.topTableViewSpacingConstraint.constant = 0
                 self.tableView.alpha = 1

@@ -34,6 +34,7 @@ class PhotoSearchResultCollectionViewCell: UICollectionViewCell, ReusableView {
                 switch response.result {
                 case .success(_):
                     self?.progressIndicatorView.alpha = 0
+                    photo.thumbImage = response.result.value
                 case .failure(_):
                     self?.progressIndicatorView.alpha = 0
                     self?.imageView.backgroundColor = .white

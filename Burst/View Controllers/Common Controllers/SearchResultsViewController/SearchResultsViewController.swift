@@ -288,8 +288,8 @@ extension SearchResultsViewController: StatefulContainerView {
 extension SearchResultsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-        let photoViewController = PhotoViewController(nibName: "PhotoViewController", bundle: nil)
+        
+        let photoViewController = PhotoViewController(photo: fetchedResults[indexPath.row])
         navController?.isNavigationBarHidden = true
         photoViewController.hidesBottomBarWhenPushed = true
         navController?.pushViewController(photoViewController, animated: true)
