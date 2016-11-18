@@ -1,15 +1,29 @@
 import UIKit
+import BurstAPI
 
 class PhotoViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
     fileprivate var panYVelocity: CGFloat = 0
+    fileprivate var topImageSpacing: CGFloat = 0
+    fileprivate let photo: Photo
     
     var state: ContainerViewState = .normal
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    init(photo: Photo) {
+        self.photo = photo
+        super.init(nibName: PhotoViewController.className, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,9 +84,9 @@ class PhotoViewController: UIViewController {
             return
         }
         UIView.animate(
-            withDuration: 0.1,
+            withDuration: 0.2,
             delay: 0,
-            options: .curveEaseOut,
+            options: .curveEaseIn,
             animations: { [unowned self] in
                 let cellsRect = cell.frame
                 if cellsRect.height > self.view.frame.height * 0.75 {
@@ -97,8 +111,14 @@ class PhotoViewController: UIViewController {
         tableView.register(photoDetailsCellNib, forCellReuseIdentifier: PhotoDetailsTableViewCell.reuseIdentifier)
     }
     
+    func setup(photoCell: FullPhotoTableViewCell) -> FullPhotoTableViewCell {
+        photoCell.photoImage = photo.thumbImage
+        photoCell.topSpacing = topImageSpacing
+        return photoCell
+    }
+    
     fileprivate func setup(photoDetailsCell: PhotoDetailsTableViewCell) -> PhotoDetailsTableViewCell {
-        //photoDetailsCell.isUserInteractionEnabled = false
+        photoDetailsCell.isUserInteractionEnabled = false
         photoDetailsCell.parentTableView = tableView
         photoDetailsCell.didEndPanWithPositiveVelocity = { [unowned self] in
             self.scrollToTop()
@@ -131,8 +151,11 @@ extension PhotoViewController: UITableViewDataSource {
                 withIdentifier: FullPhotoTableViewCell.reuseIdentifier,
                 for: indexPath
             )
+            guard let fullPhotoCell = cell as? FullPhotoTableViewCell else {
+                return cell
+            }
             cell.backgroundColor = .red
-            return cell
+            return setup(photoCell: fullPhotoCell)
         }
     }
 }
@@ -141,7 +164,15 @@ extension PhotoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return view.bounds.height
+            guard let image = photo.thumbImage else {
+                return view.bounds.height
+            }
+            let screenSize = UIScreen.main.bounds
+            let rate = screenSize.width / image.size.width
+            let trueImageheight = image.size.height * rate
+            topImageSpacing = (screenSize.height - trueImageheight) / 2
+            let trueCellHeight = topImageSpacing + trueImageheight
+            return trueCellHeight
         }
         return view.bounds.height * 0.75
     }
