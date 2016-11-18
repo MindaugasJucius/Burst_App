@@ -1,10 +1,10 @@
 import Unbox
 
-open class Stats: NSObject, Unboxable {
+public class Stats: NSObject, Unboxable {
 
-    open let downloads: Int
-    open let likes: Int
-    open let views: Int
+    public let downloads: Int
+    public let likes: Int
+    public let views: Int
     
     //TODO: let links
     

@@ -1,12 +1,12 @@
 import Unbox
 
-open class User: NSObject, Unboxable {
+public class User: NSObject, Unboxable {
 
-    open let id: String
-    open let name: String
-    open let portfolioURL: String?
-    open let username: String
-    open let userProfileImage: UserProfileImage
+    public let id: String
+    public let name: String
+    public let portfolioURL: String?
+    public let username: String
+    public let userProfileImage: UserProfileImage
     
     required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
@@ -17,11 +17,4 @@ open class User: NSObject, Unboxable {
         super.init()
     }
     
-//    public init(id: String, name: String, portfolioURL: String?, username: String) {
-//        self.id = id
-//        self.name = name
-//        self.portfolioURL = portfolioURL
-//        self.username = username
-//        super.init()
-//    }
 }

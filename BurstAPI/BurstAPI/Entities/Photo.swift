@@ -1,19 +1,22 @@
 import UIKit
 import Unbox
 
-open class Photo: NSObject, Unboxable {
+public class Photo: NSObject, Unboxable {
 
-    open let id: String
-    open let likes: NSInteger
-    open let urls: URLs
-    open let uploader: User
-    open let fullSize: CGSize
-    open let categories: [PhotoCategory]?
-    open let color: UIColor
-     
-    open var thumbImage: UIImage?
-    open var smallImage: UIImage?
-    open var stats: Stats?
+    public let id: String
+    public let likes: NSInteger
+    public let urls: URLs
+    public let uploader: User
+    public let fullSize: CGSize
+    public let color: UIColor
+    
+    public let categories: [PhotoCategory]?
+    public let location: Location?
+    public let exif: EXIF?
+    
+    public var thumbImage: UIImage?
+    public var smallImage: UIImage?
+    public var stats: Stats?
     
     public var presentationImage: UIImage? {
         get {
@@ -29,6 +32,8 @@ open class Photo: NSObject, Unboxable {
         self.urls = try unboxer.unbox(key: "urls")
         self.likes = try unboxer.unbox(key: "likes")
         self.uploader = try unboxer.unbox(key: "user")
+        self.location = unboxer.unbox(key: "location")
+        self.exif = unboxer.unbox(key: "exif")
         self.categories = unboxer.unbox(key: "categories")
         let hexString: String = try unboxer.unbox(key: "color")
         self.color = UIColor.colorWithHexString(hexString)
