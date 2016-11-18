@@ -14,7 +14,7 @@ enum PresentationState: Int {
     case presented
     case dismissed
     
-    var animationProperties: AnimationProperties {
+    fileprivate var animationProperties: AnimationProperties {
         switch self {
         case .presented:
             return (0.1, 0.4, 0, 1)
@@ -37,7 +37,6 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     weak var parentTableView: UITableView?
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
-    
     var state: ContainerViewState = .normal
     
     override func awakeFromNib() {
@@ -98,7 +97,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
         resetState()
     }
     
-    // MARK: - Details content presentation/dismissal animations
+    // MARK: - Details content animation
     
     func animateDetails(toState state: PresentationState) {
         guard presentationState != state else {
