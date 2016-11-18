@@ -3,16 +3,20 @@ import Unbox
 
 public class Photo: NSObject, Unboxable {
 
+    // Available on ever photo returning call
     public let id: String
     public let likes: NSInteger
     public let urls: URLs
     public let uploader: User
     public let fullSize: CGSize
     public let color: UIColor
+    public let likedByUser: Bool
     
+    // Available only retrieving a single photo
     public let categories: [PhotoCategory]?
     public let location: Location?
     public let exif: EXIF?
+    public let downloads: Int?
     
     public var thumbImage: UIImage?
     public var smallImage: UIImage?
@@ -31,6 +35,8 @@ public class Photo: NSObject, Unboxable {
         self.id = try unboxer.unbox(key: "id")
         self.urls = try unboxer.unbox(key: "urls")
         self.likes = try unboxer.unbox(key: "likes")
+        self.likedByUser = try unboxer.unbox(key: "liked_by_user")
+        self.downloads = unboxer.unbox(key: "downloads")
         self.uploader = try unboxer.unbox(key: "user")
         self.location = unboxer.unbox(key: "location")
         self.exif = unboxer.unbox(key: "exif")

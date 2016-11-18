@@ -13,7 +13,6 @@ public class UnsplashPhoto: NSObject {
         Alamofire.request(singlePhotoURL, method: .get, parameters: params).responseJSON { response in
             switch response.result {
             case .success(let value):
-                dump(String(describing: value))
                 guard let photoJSON = value as? NSDictionary else { return }
                 UnboxSerializer.parse(response: photoJSON,
                     success: { (photo: Photo) in
