@@ -57,7 +57,7 @@ class PhotoViewController: UIViewController {
                 guard let photoDetailsCell = tableView.cellForRow(at: lastIndexPath) as? PhotoDetailsTableViewCell else {
                     return
                 }
-                photoDetailsCell.animateDismissal()
+                photoDetailsCell.animateDetails(toState: .dismissed)
                 scrollToTop()
             }
         default:
@@ -136,7 +136,7 @@ extension PhotoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let photoDetailsCell = tableView.visibleCells.last as? PhotoDetailsTableViewCell else { return }
         if panYVelocity < 0 {
-            photoDetailsCell.animatePresentation()
+            photoDetailsCell.animateDetails(toState: .presented)
         }
     }
 }

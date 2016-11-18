@@ -3,6 +3,27 @@ import UIKit
 fileprivate let DetailsCellReuseId = "DetailsCell"
 fileprivate let TopTableViewSpacing: CGFloat = 75
 
+typealias AnimationProperties = (
+    delay: TimeInterval,
+    duration: TimeInterval,
+    topSpacing: CGFloat,
+    alpha: CGFloat
+)
+
+enum PresentationState: Int {
+    case presented
+    case dismissed
+    
+    var animationProperties: AnimationProperties {
+        switch self {
+        case .presented:
+            return (0.1, 0.4, 0, 1)
+        case .dismissed:
+            return (0, 0.3, TopTableViewSpacing, 0)
+        }
+    }
+}
+
 class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     
     @IBOutlet weak fileprivate var topTableViewSpacingConstraint: NSLayoutConstraint!
@@ -11,6 +32,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     private var initialDiff: CGFloat = 0
     private var lastYVelocity: CGFloat = 0
     private var presented: Bool = false
+    private var presentationState: PresentationState = .dismissed
     
     weak var parentTableView: UITableView?
     var didEndPanWithPositiveVelocity: (() -> ())?
@@ -69,7 +91,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     private func handlePanFinish() {
         if lastYVelocity > 0 {
             didEndPanWithPositiveVelocity?()
-            animateDismissal()
+            animateDetails(toState: .dismissed)
         } else {
             didEndPanWithNegativeVelocity?()
         }
@@ -78,39 +100,20 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     
     // MARK: - Details content presentation/dismissal animations
     
-    func animatePresentation() {
-        guard !presented else {
+    func animateDetails(toState state: PresentationState) {
+        guard presentationState != state else {
             return
         }
-        presented = true
+        presentationState = state
+        let properties = state.animationProperties
         layoutIfNeeded()
         UIView.animate(
-            withDuration: 0.4,
-            delay: 0.1,
+            withDuration: properties.duration,
+            delay: properties.delay,
             options: .curveEaseOut,
             animations: { [unowned self] in
-                self.topTableViewSpacingConstraint.constant = 0
-                self.tableView.alpha = 1
-                self.layoutIfNeeded()
-            },
-            completion: nil
-        )
-    }
-    
-    func animateDismissal() {
-        guard presented else {
-            return
-        }
-        presented = false
-        isUserInteractionEnabled = false
-        layoutIfNeeded()
-        UIView.animate(
-            withDuration: 0.15,
-            delay: 0,
-            options: .curveEaseIn,
-            animations: { [unowned self] in
-                self.topTableViewSpacingConstraint.constant = TopTableViewSpacing
-                self.tableView.alpha = 0
+                self.topTableViewSpacingConstraint.constant = properties.topSpacing
+                self.tableView.alpha = properties.alpha
                 self.layoutIfNeeded()
             },
             completion: nil
