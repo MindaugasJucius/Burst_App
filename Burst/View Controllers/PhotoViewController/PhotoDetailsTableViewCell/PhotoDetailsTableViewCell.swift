@@ -1,7 +1,6 @@
 import UIKit
 import BurstAPI
 
-let DetailsCellReuseId = "DetailsCell"
 fileprivate let TopTableViewSpacing: CGFloat = 75
 
 typealias AnimationProperties = (
@@ -124,6 +123,13 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     
 }
 
+extension PhotoDetailsTableViewCell: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return dataSource.header(forSection: section)
+    }
+}
+
 extension PhotoDetailsTableViewCell: StatefulContainerView {
     
     func handle(error: Error) {
@@ -134,13 +140,18 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         guard let photo = photo else { return }
         topTableViewSpacingConstraint.constant = TopTableViewSpacing
         tableView.backgroundColor = .black
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: DetailsCellReuseId)
+        tableView.delegate = self
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 50
         dataSource = PhotoDetailsDataSource(tableView: tableView, photo: photo)
         tableView.dataSource = dataSource
         tableView.alpha = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
         tableView.delaysContentTouches = false
+        for case let subview as UIScrollView in tableView.subviews {
+            subview.delaysContentTouches = false
+        }
         tableView.panGestureRecognizer.addTarget(self, action: #selector(handle(panGesture:)))
     }
 }
