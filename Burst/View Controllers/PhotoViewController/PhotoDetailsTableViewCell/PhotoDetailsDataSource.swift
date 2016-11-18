@@ -1,13 +1,27 @@
-//
-//  PhotoDetailsDataSource.swift
-//  Burst
-//
-//  Created by Mindaugas Jucius on 18/11/2016.
-//  Copyright © 2016 mindaugo.kompanija.limited. All rights reserved.
-//
-
 import UIKit
+import BurstAPI
 
-class PhotoDetailsDataSource: UITableViewDataSource {
+class PhotoDetailsDataSource: NSObject {
 
+    private weak var tableView: UITableView?
+    private let photo: Photo
+    
+    init(tableView: UITableView, photo: Photo) {
+        self.tableView = tableView
+        self.photo = photo
+        super.init()
+    }
+}
+
+extension PhotoDetailsDataSource: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCellReuseId, for: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
 }

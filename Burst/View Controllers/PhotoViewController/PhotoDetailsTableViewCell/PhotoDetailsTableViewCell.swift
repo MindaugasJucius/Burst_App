@@ -1,6 +1,7 @@
 import UIKit
+import BurstAPI
 
-fileprivate let DetailsCellReuseId = "DetailsCell"
+let DetailsCellReuseId = "DetailsCell"
 fileprivate let TopTableViewSpacing: CGFloat = 75
 
 typealias AnimationProperties = (
@@ -28,6 +29,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     
     @IBOutlet weak fileprivate var topTableViewSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak fileprivate var tableView: UITableView!
+    fileprivate var dataSource: PhotoDetailsDataSource!
     
     private var initialDiff: CGFloat = 0
     private var lastYVelocity: CGFloat = 0
@@ -39,9 +41,10 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     var didEndPanWithNegativeVelocity: (() -> ())?
     var state: ContainerViewState = .normal
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configureCommonState()
+    var photo: Photo? {
+        didSet {
+            configureCommonState()
+        }
     }
     
     // MARK: - Additional scrolling logic
@@ -121,20 +124,6 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     
 }
 
-extension PhotoDetailsTableViewCell: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCellReuseId, for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
-        return cell
-    }
-    
-}
-
 extension PhotoDetailsTableViewCell: StatefulContainerView {
     
     func handle(error: Error) {
@@ -142,10 +131,12 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
     }
     
     func configureCommonState() {
+        guard let photo = photo else { return }
         topTableViewSpacingConstraint.constant = TopTableViewSpacing
         tableView.backgroundColor = .black
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: DetailsCellReuseId)
-        tableView.dataSource = self
+        dataSource = PhotoDetailsDataSource(tableView: tableView, photo: photo)
+        tableView.dataSource = dataSource
         tableView.alpha = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
