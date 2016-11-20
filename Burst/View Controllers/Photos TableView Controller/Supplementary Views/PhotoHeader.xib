@@ -12,40 +12,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PhotoHeader" customModule="Burst" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eDC-TP-Ms4">
-                    <rect key="frame" x="15" y="5" width="345" height="35"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="H6O-c0-cSz">
+                    <rect key="frame" x="16" y="7" width="20" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="XzJ-hk-Gql"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-6P-B2B">
+                    <rect key="frame" x="44" y="5" width="316" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="H6O-c0-cSz">
-                            <rect key="frame" x="0.0" y="0.0" width="32" height="35"/>
-                        </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-6P-B2B">
-                            <rect key="frame" x="42" y="0.0" width="303" height="35"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-8j-p8T">
-                                    <rect key="frame" x="0.0" y="0.0" width="30.5" height="17.5"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5z-ln-Btj">
-                                    <rect key="frame" x="0.0" y="17.5" width="30.5" height="17.5"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-8j-p8T">
+                            <rect key="frame" x="0.0" y="0.0" width="30.5" height="12.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5z-ln-Btj">
+                            <rect key="frame" x="0.0" y="12.5" width="30.5" height="12.5"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="eDC-TP-Ms4" secondAttribute="bottom" constant="5" id="MkO-4D-hAx"/>
-                <constraint firstAttribute="trailing" secondItem="eDC-TP-Ms4" secondAttribute="trailing" constant="15" id="Wg4-mw-ZHp"/>
-                <constraint firstItem="eDC-TP-Ms4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="y1R-GL-mad"/>
-                <constraint firstItem="eDC-TP-Ms4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="zDn-Ax-WEX"/>
+                <constraint firstItem="H6O-c0-cSz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="HdO-BX-Q2U"/>
+                <constraint firstItem="YwL-6P-B2B" firstAttribute="leading" secondItem="H6O-c0-cSz" secondAttribute="trailing" constant="8" id="XtV-61-noT"/>
+                <constraint firstAttribute="trailing" secondItem="YwL-6P-B2B" secondAttribute="trailing" constant="15" id="rKW-yn-juN"/>
+                <constraint firstAttribute="bottom" secondItem="YwL-6P-B2B" secondAttribute="bottom" constant="5" id="rL8-F3-NGR"/>
+                <constraint firstItem="H6O-c0-cSz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="tME-sN-pED"/>
+                <constraint firstAttribute="bottom" secondItem="H6O-c0-cSz" secondAttribute="bottom" constant="7" id="xA0-b0-wZZ"/>
+                <constraint firstItem="YwL-6P-B2B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="z5j-9c-sOg"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -54,7 +55,7 @@
                 <outlet property="imageView" destination="H6O-c0-cSz" id="fOM-gx-alA"/>
                 <outlet property="topLabel" destination="kT2-8j-p8T" id="KnH-zB-5b0"/>
             </connections>
-            <point key="canvasLocation" x="159.5" y="-211.5"/>
+            <point key="canvasLocation" x="159.5" y="-216.5"/>
         </view>
     </objects>
     <resources>

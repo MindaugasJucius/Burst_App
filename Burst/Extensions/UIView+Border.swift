@@ -21,7 +21,7 @@ extension UIView {
             return (CGPoint.zero,
                     CGPoint(x: frame.maxX, y: 0))
         case .bottom:
-            return (CGPoint(x: frame.maxX, y: 0),
+            return (CGPoint(x: 0, y: frame.maxY),
                     CGPoint(x: frame.maxX, y: frame.maxY))
         }
     }

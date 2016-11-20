@@ -203,7 +203,7 @@ class PhotosTableViewDataSource: NSObject {
         guard let image = fetchedPhotos[rowIndex].thumbImage else {
             return 0
         }
-        let rate = (UIScreen.main.bounds.width - SideInset * 2) / image.size.width
+        let rate = UIScreen.main.bounds.width / image.size.width
         let height = image.size.height * rate
         return height + ControlHeight
     }
