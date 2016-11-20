@@ -40,10 +40,12 @@ class PhotosTableViewController: UIViewController {
         header.layoutIfNeeded()
         let height = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
         var frame = header.frame
+        guard frame.size.height != height else {
+            return
+        }
         frame.size.height = height
         header.frame = frame
         tableView.tableHeaderView = header
-        header.configureSeparator()
     }
     
     // Mark: - Configuration

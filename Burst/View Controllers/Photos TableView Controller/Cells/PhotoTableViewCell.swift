@@ -2,7 +2,6 @@ import UIKit
 import BurstAPI
 import AlamofireImage
 
-let SideInset: CGFloat = 15
 let ControlHeight: CGFloat = 30
 
 typealias PhotoActionCallback = (_ photo: Photo?) -> ()
@@ -47,8 +46,6 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .clear
-        imageViewLeftConstraint.constant = SideInset
-        imageViewRightConstraint.constant = SideInset
         setupProgressView()
         setupButtons()
     }

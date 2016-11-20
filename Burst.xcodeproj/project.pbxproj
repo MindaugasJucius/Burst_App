@@ -49,6 +49,7 @@
 		037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E831DB0C812000A774C /* PhotoHeader.swift */; };
 		037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E851DB0C81F000A774C /* PhotoHeader.xib */; };
 		037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */; };
+		0382B1001DE1D25800586B5C /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B0FF1DE1D25800586B5C /* UIView+Border.swift */; };
 		039EF49C1DC65B19004E94E4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */; };
 		039EF49D1DC65B19004E94E4 /* SearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */; };
 		039EF4A11DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039EF49F1DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift */; };
@@ -175,6 +176,7 @@
 		037A6E831DB0C812000A774C /* PhotoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHeader.swift; sourceTree = "<group>"; };
 		037A6E851DB0C81F000A774C /* PhotoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoHeader.xib; sourceTree = "<group>"; };
 		037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewDataSource.swift; sourceTree = "<group>"; };
+		0382B0FF1DE1D25800586B5C /* UIView+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 		039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsViewController.xib; sourceTree = "<group>"; };
 		039EF49F1DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				03F147EB1DC4A04900D523E6 /* UIView+Fade.swift */,
 				03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */,
 				03001B9A1DD1E8A1004D478C /* Dictionary+Plist.swift */,
+				0382B0FF1DE1D25800586B5C /* UIView+Border.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
 				032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */,
 				03001B941DD09D6F004D478C /* RecentSearchesViewController.swift in Sources */,
+				0382B1001DE1D25800586B5C /* UIView+Border.swift in Sources */,
 				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
 				03314CBF1DDF02D600F04975 /* PhotoDetailsDataSource.swift in Sources */,
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,

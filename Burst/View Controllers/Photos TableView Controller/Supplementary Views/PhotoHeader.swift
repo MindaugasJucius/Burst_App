@@ -15,6 +15,7 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
         bottomLabel.font = AppAppearance.regularFont(withSize: .cellText)
         bottomLabel.textColor = AppAppearance.white
         contentView.backgroundColor = .black
+        contentView.add(borderTo: .top, width: 1, color: AppAppearance.lightBlack)
     }
     
     func setupInfo(forPhoto photo: Photo) {

@@ -67,7 +67,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     }
     
     private func scrollParentTableView(withPanGesture panGesture: UIPanGestureRecognizer) {
-        guard let parentTableView = parentTableView else { return }
+        guard let parentTableView = parentTableView, parentTableView.contentOffset.y > 0 else { return }
         tableView.bounces = false
         let yLocation = panGesture.location(in: parentTableView).y
         let yVelocity = panGesture.velocity(in: parentTableView).y
@@ -78,6 +78,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
             initialDiff = yLocation
         }
         let currentDiff = initialDiff - yLocation
+        print("scrolling parent \(currentDiff) at \(yVelocity)")
         let parentYOffset = parentTableView.contentOffset.y + currentDiff
         let parentOffset = CGPoint(x: 0, y: parentYOffset)
         parentTableView.setContentOffset(parentOffset, animated: false)
