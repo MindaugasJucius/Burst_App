@@ -3,18 +3,55 @@ import BurstAPI
 
 class PhotoViewControllerDataSource: NSObject {
 
-    private weak var tableView: UITableView?
-    private let photo: Photo
-    private var topImageSpacing: CGFloat = 0
-    
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
     var didTapClosePhotoPreview: (() -> ())?
     
-    init(tableView: UITableView, photo: Photo) {
+    private let dataController = PhotoDataController()
+    private let photo: Photo
+    
+    private weak var tableView: UITableView?
+    private weak var viewController: UIViewController?
+    
+    private var topImageSpacing: CGFloat = 0
+    private var photoInfoControllers: CorrespondingInfoControllers = [:] {
+        didSet {
+            guard !photoInfoControllers.isEmpty else {
+                return
+            }
+            addChildsToViewController()
+        }
+    }
+    private var fullPhoto: Photo?
+    private var contentHeight: CGFloat = 0
+
+    init(tableView: UITableView, viewController: UIViewController, photo: Photo) {
         self.tableView = tableView
+        self.viewController = viewController
         self.photo = photo
         super.init()
+        dataController.fullPhoto(
+            withID: photo.id,
+            success: { [unowned self] retrievedPhoto, contentControllers in
+                self.photoInfoControllers = contentControllers
+                self.fullPhoto = retrievedPhoto
+                let detailsPath = IndexPath(item: 1, section: 0)
+                self.tableView?.reloadRows(at: [detailsPath], with: .none)
+            },
+            failure: { error in
+                viewController.handle(error: error)
+            }
+        )
+    }
+    
+    // MARK: - Private
+
+    private func addChildsToViewController() {
+        for (_, controller) in photoInfoControllers {
+            viewController?.addChildViewController(controller)
+            controller.didMove(toParentViewController: viewController)
+            contentHeight += controller.view.frame.height
+        }
     }
     
     // MARK: - Cell setup
@@ -30,7 +67,8 @@ class PhotoViewControllerDataSource: NSObject {
     fileprivate func setup(photoDetailsCell: PhotoDetailsTableViewCell) -> PhotoDetailsTableViewCell {
         photoDetailsCell.isUserInteractionEnabled = false
         photoDetailsCell.parentTableView = tableView
-        photoDetailsCell.photo = photo
+        photoDetailsCell.photoInfoControllers = photoInfoControllers
+        photoDetailsCell.photo = fullPhoto ?? photo
         photoDetailsCell.backgroundColor = AppAppearance.tableViewBackground
         photoDetailsCell.didEndPanWithPositiveVelocity = didEndPanWithPositiveVelocity
         photoDetailsCell.didEndPanWithNegativeVelocity = didEndPanWithNegativeVelocity
@@ -51,7 +89,7 @@ class PhotoViewControllerDataSource: NSObject {
             let trueCellHeight = topImageSpacing + trueImageheight
             return trueCellHeight
         }
-        return screenSize.height * 0.75
+        return UIScreen.main.bounds.height * 0.75
     }
     
 }

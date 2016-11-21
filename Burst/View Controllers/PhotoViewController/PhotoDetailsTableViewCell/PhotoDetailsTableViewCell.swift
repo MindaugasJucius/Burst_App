@@ -39,6 +39,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
     var state: ContainerViewState = .normal
+    var photoInfoControllers: CorrespondingInfoControllers = [:]
     
     var photo: Photo? {
         didSet {
@@ -78,7 +79,6 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
             initialDiff = yLocation
         }
         let currentDiff = initialDiff - yLocation
-        print("scrolling parent \(currentDiff) at \(yVelocity)")
         let parentYOffset = parentTableView.contentOffset.y + currentDiff
         let parentOffset = CGPoint(x: 0, y: parentYOffset)
         parentTableView.setContentOffset(parentOffset, animated: false)
@@ -129,6 +129,11 @@ extension PhotoDetailsTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return dataSource.header(forSection: section)
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return dataSource.estimatedHeight(forRowAtPath: indexPath)
+    }
+    
 }
 
 extension PhotoDetailsTableViewCell: StatefulContainerView {
@@ -144,7 +149,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         tableView.delegate = self
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 50
-        dataSource = PhotoDetailsDataSource(tableView: tableView, photo: photo)
+        dataSource = PhotoDetailsDataSource(tableView: tableView, photo: photo, controllers: photoInfoControllers)
         tableView.dataSource = dataSource
         tableView.alpha = 0
         tableView.showsVerticalScrollIndicator = false

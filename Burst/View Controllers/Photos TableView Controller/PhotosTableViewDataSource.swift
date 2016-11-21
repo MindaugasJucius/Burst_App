@@ -92,7 +92,7 @@ class PhotosTableViewDataSource: NSObject {
             failure: { [weak self] error in
                 let state: ContainerViewState = self?.currentPage == InitialPageIndex ? .empty : .normal
                 self?.stateChangeHandler(state: state)
-                self?.container.handle(error: error)
+                //self?.container.handle(error: error)
                 self?.refreshControl.endRefreshing()
                 self?.tableView.finishInfiniteScroll()
             }
@@ -112,7 +112,7 @@ class PhotosTableViewDataSource: NSObject {
                     photoGroup.leave()
                 },
                 failure: { [weak self] error in
-                    self?.container.handle(error: error)
+                    //self?.container.handle(error: error)
                 }
             )
         }
@@ -221,7 +221,7 @@ class PhotosTableViewDataSource: NSObject {
                 self?.photoCell(atPath: indexPath)?.displayImage = image
             },
             failure: { [weak self] error in
-                self?.container.handle(error: error)
+                //self?.container.handle(error: error)
             }
         )
     }

@@ -7,7 +7,6 @@ protocol StatefulContainerView: class {
     
     var state: ContainerViewState { get set }
 
-    func handle(error: Error)
     func configureEmptyState()
     func configureNormalState()
     func configureCommonState()
@@ -38,9 +37,6 @@ extension StatefulContainerView {
 extension StatefulContainerView where Self: UIViewController {
     
     func handle(error: Error) {
-        AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
-            onController: self,
-            withError: error
-        )
+        self.handle(error: error)
     }
 }

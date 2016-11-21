@@ -2,7 +2,7 @@ import UIKit
 
 class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
 
-    @IBOutlet weak var leftImageView: UIImageView!
+    @IBOutlet weak var leftImageView: UIImageView?
     @IBOutlet private weak var button: InsetButton!
     @IBOutlet private weak var label: UILabel!
     
@@ -18,7 +18,7 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         button.isHidden = hideButton
         button.onButtonTap = onButtonTap
         label.text = labelTitle.capitalized
-        guard hideImage else {
+        guard hideImage, leftImageView != nil else {
             return
         }
         setupConstraints()
@@ -34,7 +34,7 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     }
     
     private func setupConstraints() {
-        leftImageView.removeFromSuperview()
+        leftImageView?.removeFromSuperview()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
