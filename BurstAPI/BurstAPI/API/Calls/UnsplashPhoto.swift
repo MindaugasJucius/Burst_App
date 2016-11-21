@@ -14,6 +14,7 @@ public class UnsplashPhoto: NSObject {
             switch response.result {
             case .success(let value):
                 guard let photoJSON = value as? NSDictionary else { return }
+                print(photoJSON["user"])
                 UnboxSerializer.parse(response: photoJSON,
                     success: { (photo: Photo) in
                         success(photo)

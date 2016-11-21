@@ -6,8 +6,12 @@ public class UserProfileLinks: NSObject, Unboxable {
     public let photos: URL
     public let likes: URL
     public let portfolio: URL
+    public let followers: URL
+    public let following: URL
     
     required public init(unboxer: Unboxer) throws {
+        self.followers = try unboxer.unbox(key: "followers")
+        self.following = try unboxer.unbox(key: "following")
         self.profile = try unboxer.unbox(key: "self")
         self.photos = try unboxer.unbox(key: "photos")
         self.likes = try unboxer.unbox(key: "likes")
@@ -35,6 +39,7 @@ public class User: NSObject, Unboxable {
     
     public let userProfileImage: UserProfileImage
     public let userProfileLinks: UserProfileLinks
+    public let usersCollectionsLink: URL?
     
     required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
@@ -52,6 +57,11 @@ public class User: NSObject, Unboxable {
         self.username = try unboxer.unbox(key: "username")
         self.userProfileImage = try unboxer.unbox(key: "profile_image")
         self.userProfileLinks = try unboxer.unbox(key: "links")
+        if let totalCollectionsCount = totalCollections, totalCollectionsCount > 0 {
+            usersCollectionsLink = URL(string: String(format: UnsplashUsersCollections, username))
+        } else {
+            usersCollectionsLink = nil
+        }
         super.init()
     }
     

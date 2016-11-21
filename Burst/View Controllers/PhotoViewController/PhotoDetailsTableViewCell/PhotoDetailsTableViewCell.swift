@@ -32,19 +32,28 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     
     private var initialDiff: CGFloat = 0
     private var lastYVelocity: CGFloat = 0
-    private var presented: Bool = false
     private var presentationState: PresentationState = .dismissed
     
+    var state: ContainerViewState = .normal
     weak var parentTableView: UITableView?
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
-    var state: ContainerViewState = .normal
     var photoInfoControllers: CorrespondingInfoControllers = [:]
     
     var photo: Photo? {
         didSet {
             configureCommonState()
         }
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func prepareForReuse() {
+        photoInfoControllers = [:]
+        parentTableView = nil
+        presentationState = .dismissed
+        initialDiff = 0
+        lastYVelocity = 0
     }
     
     // MARK: - Additional scrolling logic
@@ -138,10 +147,6 @@ extension PhotoDetailsTableViewCell: UITableViewDelegate {
 
 extension PhotoDetailsTableViewCell: StatefulContainerView {
     
-    func handle(error: Error) {
-        
-    }
-    
     func configureCommonState() {
         guard let photo = photo else { return }
         topTableViewSpacingConstraint.constant = TopTableViewSpacing
@@ -154,6 +159,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         tableView.alpha = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.delaysContentTouches = false
         for case let subview as UIScrollView in tableView.subviews {
             subview.delaysContentTouches = false

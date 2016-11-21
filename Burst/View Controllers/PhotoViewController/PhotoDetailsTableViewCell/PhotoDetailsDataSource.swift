@@ -18,7 +18,15 @@ class PhotoDetailsDataSource: NSObject {
         self.fullPhoto = photo
         super.init()
         registerViews()
-        
+        setupInfo()
+    }
+    
+    func setupInfo() {
+        Array(photoInfoControllers.values).forEach { [unowned self] controller in
+            if let authorController = controller as? AuthorViewController {
+                authorController.user = self.fullPhoto.uploader
+            }
+        }
     }
     
     func registerViews() {
@@ -54,7 +62,7 @@ class PhotoDetailsDataSource: NSObject {
         let title = String(describing: availableInfo[section])
         if infoSection == .author {
             header.configure(
-                labelTitle: title,
+                labelTitle: fullPhoto.uploader.name,
                 hideButton: false,
                 hideImage: false,
                 buttonTitle: "follow",
@@ -62,6 +70,7 @@ class PhotoDetailsDataSource: NSObject {
                     
                 }
             )
+            header.image(withURL: fullPhoto.uploader.userProfileImage.medium)
         } else {
             header.configure(labelTitle: title)
         }

@@ -1,35 +1,34 @@
 import UIKit
+import BurstAPI
 
 class AuthorViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "lol")
-        tableView.dataSource = self
-        tableView.bounces = false
+    fileprivate var dataSource: AuthorViewControllerDataSource!
+    var user: User? {
+        didSet {
+            configureCommonState()
+        }
     }
+    
+    var state: ContainerViewState = .normal
 
     func contentHeight() -> CGFloat {
-        view.layoutIfNeeded()
-        tableView.layoutIfNeeded()
         return tableView.contentSize.height
     }
     
 }
 
-extension AuthorViewController: UITableViewDataSource {
+extension AuthorViewController: StatefulContainerView {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func configureCommonState() {
+        guard let user = user else {
+            return
+        }
+        dataSource = AuthorViewControllerDataSource(tableView: tableView, user: user)
+        tableView.dataSource = dataSource
+        tableView.bounces = false
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt
-        indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "lol", for: indexPath)
-        cell.backgroundColor = .red
-        return cell
-    }
-    
+
 }
