@@ -1,4 +1,4 @@
-import UIKit
+import Unbox
 
 class Collection: NSObject, Unboxable {
     
@@ -15,7 +15,7 @@ class Collection: NSObject, Unboxable {
     required init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
         self.title = try unboxer.unbox(key: "title")
-        self.description = try unboxer.unbox(key: "description")
+        self.collectionDescription = try unboxer.unbox(key: "description")
         self.curated = try unboxer.unbox(key: "curated")
         self.photosCount = try unboxer.unbox(key: "total_photos")
         self.privateCollection = try unboxer.unbox(key: "private")

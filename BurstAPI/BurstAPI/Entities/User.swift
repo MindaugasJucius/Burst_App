@@ -41,7 +41,7 @@ public class User: NSObject, Unboxable {
     public let userProfileLinks: UserProfileLinks
     public let usersCollectionsLink: URL?
     
-    required init(unboxer: Unboxer) throws {
+    required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
         self.location = unboxer.unbox(key: "location")
         self.followedByUser = unboxer.unbox(key: "followed_by_user")

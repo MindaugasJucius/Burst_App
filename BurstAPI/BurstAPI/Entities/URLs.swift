@@ -17,7 +17,7 @@ public class URLs: NSObject, Unboxable {
     public let small: URL
     public let thumb: URL
     
-    required init(unboxer: Unboxer) throws {
+    required public init(unboxer: Unboxer) throws {
         self.full = try unboxer.unbox(key: "full")
         self.raw = try unboxer.unbox(key: "raw")
         self.regular = try unboxer.unbox(key: "regular")
