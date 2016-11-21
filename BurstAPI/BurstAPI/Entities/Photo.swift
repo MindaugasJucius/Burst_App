@@ -38,7 +38,7 @@ public class Photo: NSObject, Unboxable {
         }
     }
     
-    required public init(unboxer: Unboxer) throws {
+    required init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
         self.urls = try unboxer.unbox(key: "urls")
         self.likes = try unboxer.unbox(key: "likes")
