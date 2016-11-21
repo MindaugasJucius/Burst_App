@@ -29,10 +29,7 @@ class ContainerViewController: UIViewController {
     }
     
     func addContentController() {
-        let className = String(describing: PhotosTableViewController.self)
-        
-        let photosTableViewStoryboard = UIStoryboard.init(name: className, bundle: nil)
-        guard let controller = photosTableViewStoryboard.instantiateViewController(withIdentifier: className) as? PhotosTableViewController else {
+        guard let controller = PhotosTableViewController.fromStoryboard() else {
             return
         }
         controller.delegate = self
