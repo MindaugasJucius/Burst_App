@@ -88,13 +88,7 @@ class PhotoViewController: UIViewController {
             delay: 0,
             options: .curveEaseIn,
             animations: { [unowned self] in
-                let cellsRect = cell.frame
-                if cellsRect.height > self.view.frame.height * 0.75 {
-                    let targetOffset = CGPoint(x: 0, y: cellsRect.origin.y * 0.75)
-                    self.tableView.setContentOffset(targetOffset, animated: false)
-                } else {
-                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
-                }
+                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
             },
             completion: { finished in
                 cell.isUserInteractionEnabled = true
@@ -112,7 +106,7 @@ class PhotoViewController: UIViewController {
     }
     
     fileprivate func setupDataSource() -> PhotoViewControllerDataSource {
-        let dataSource = PhotoViewControllerDataSource(tableView: tableView, photo: photo)
+        let dataSource = PhotoViewControllerDataSource(tableView: tableView, viewController: self, photo: photo)
         dataSource.didEndPanWithNegativeVelocity = { [unowned self] in
             self.scrollToCellAt(atIndexPath: IndexPath(item: 1, section: 0))
         }
@@ -153,6 +147,7 @@ extension PhotoViewController: StatefulContainerView {
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.bounces = false
         tableView.tableFooterView = UIView(frame: CGRect.zero)

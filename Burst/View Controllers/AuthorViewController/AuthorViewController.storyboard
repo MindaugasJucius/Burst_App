@@ -12,7 +12,7 @@
         <!--Author View Controller-->
         <scene sceneID="rnE-Ev-E3r">
             <objects>
-                <viewController storyboardIdentifier="PhotosTableViewController" id="cTO-3Z-MI3" customClass="AuthorViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthorViewController" id="cTO-3Z-MI3" customClass="AuthorViewController" customModule="Burst" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k56-OH-PlQ"/>
                         <viewControllerLayoutGuide type="bottom" id="u7G-Kc-ykI"/>
@@ -21,26 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gE8-CZ-kc6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uXw-k9-hiE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="qca-7b-ATj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gE8-CZ-kc6" firstAttribute="leading" secondItem="6Ho-mK-Rms" secondAttribute="leading" id="2jL-NN-o8s"/>
-                            <constraint firstItem="u7G-Kc-ykI" firstAttribute="top" secondItem="gE8-CZ-kc6" secondAttribute="bottom" id="CvR-Kj-sgv"/>
-                            <constraint firstItem="gE8-CZ-kc6" firstAttribute="top" secondItem="6Ho-mK-Rms" secondAttribute="top" id="DYo-8b-qlK"/>
-                            <constraint firstAttribute="trailing" secondItem="gE8-CZ-kc6" secondAttribute="trailing" id="O3U-da-Y5A"/>
+                            <constraint firstItem="uXw-k9-hiE" firstAttribute="top" secondItem="6Ho-mK-Rms" secondAttribute="top" id="789-II-fnf"/>
+                            <constraint firstItem="uXw-k9-hiE" firstAttribute="leading" secondItem="6Ho-mK-Rms" secondAttribute="leading" id="Wdu-Wf-a9c"/>
+                            <constraint firstAttribute="trailing" secondItem="uXw-k9-hiE" secondAttribute="trailing" id="pzn-fl-jBF"/>
+                            <constraint firstItem="u7G-Kc-ykI" firstAttribute="top" secondItem="uXw-k9-hiE" secondAttribute="bottom" id="rLR-96-PVO"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="gE8-CZ-kc6" id="EtT-NC-chq"/>
+                        <outlet property="tableView" destination="uXw-k9-hiE" id="xkl-rw-EfY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XzF-Cq-o3h" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -6,26 +6,19 @@ fileprivate let DetailsCellReuseId = "DetailsCell"
 class PhotoDetailsDataSource: NSObject {
 
     private weak var tableView: UITableView?
-    private var fullPhoto: Photo?
-    fileprivate var availableInfo: [PhotoInfoType] = []
-
-    private let dataController = PhotoDetailsDataController()
+    private let fullPhoto: Photo
     
-    init(tableView: UITableView, photo: Photo) {
+    fileprivate var photoInfoControllers: CorrespondingInfoControllers
+    fileprivate let availableInfo: [PhotoInfoType]
+    
+    init(tableView: UITableView, photo: Photo, controllers: CorrespondingInfoControllers) {
         self.tableView = tableView
+        self.photoInfoControllers = controllers
+        self.availableInfo = photo.checkForAvailableInfo()
+        self.fullPhoto = photo
         super.init()
         registerViews()
-        dataController.fullPhoto(
-            withID: photo.id,
-            success: { [unowned self] retrievedPhoto in
-                self.fullPhoto = retrievedPhoto
-                self.availableInfo = retrievedPhoto.checkForAvailableInfo()
-                self.tableView?.reloadData()
-            },
-            failure: { error in
-                print(error.localizedDescription)
-            }
-        )
+        
     }
     
     func registerViews() {
@@ -44,6 +37,16 @@ class PhotoDetailsDataSource: NSObject {
         return header
     }
     
+    func estimatedHeight(forRowAtPath rowPath: IndexPath) -> CGFloat {
+        if availableInfo[rowPath.section] == .author {
+            guard let controller = photoInfoControllers[.author] as? AuthorViewController else {
+                return 44
+            }
+            return controller.contentHeight()
+        }
+        return 44
+    }
+    
     // MARK: - Configure reusable views
     
     func configure(header: TableViewHeaderWithButton, forSection section: Int) {
@@ -53,6 +56,7 @@ class PhotoDetailsDataSource: NSObject {
             header.configure(
                 labelTitle: title,
                 hideButton: false,
+                hideImage: false,
                 buttonTitle: "follow",
                 onButtonTap: {
                     
@@ -76,7 +80,16 @@ extension PhotoDetailsDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCellReuseId, for: indexPath)
-        cell.textLabel?.text = "\(availableInfo[indexPath.section])"
+        let infoForSection = availableInfo[indexPath.section]
+        if infoForSection == .author {
+            guard let controllerForInfo = photoInfoControllers[infoForSection] else {
+                return cell
+            }
+            controllerForInfo.view.frame = cell.bounds
+            cell.contentView.insertSubview(controllerForInfo.view, at: 0)
+        } else {
+            cell.textLabel?.text = "\(infoForSection)"
+        }
         return cell
     }
 }
