@@ -50,6 +50,8 @@
 		037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037A6E851DB0C81F000A774C /* PhotoHeader.xib */; };
 		037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */; };
 		0382B1001DE1D25800586B5C /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B0FF1DE1D25800586B5C /* UIView+Border.swift */; };
+		0382B1351DE2F0BD00586B5C /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1331DE2F0BD00586B5C /* AuthorViewController.swift */; };
+		0382B1361DE2F0BD00586B5C /* AuthorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0382B1341DE2F0BD00586B5C /* AuthorViewController.xib */; };
 		039EF49C1DC65B19004E94E4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */; };
 		039EF49D1DC65B19004E94E4 /* SearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */; };
 		039EF4A11DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039EF49F1DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift */; };
@@ -177,6 +179,8 @@
 		037A6E851DB0C81F000A774C /* PhotoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoHeader.xib; sourceTree = "<group>"; };
 		037A6E871DB0F773000A774C /* PhotosTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewDataSource.swift; sourceTree = "<group>"; };
 		0382B0FF1DE1D25800586B5C /* UIView+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
+		0382B1331DE2F0BD00586B5C /* AuthorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
+		0382B1341DE2F0BD00586B5C /* AuthorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthorViewController.xib; sourceTree = "<group>"; };
 		039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsViewController.xib; sourceTree = "<group>"; };
 		039EF49F1DC65FCD004E94E4 /* PhotoSearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -356,6 +360,15 @@
 			path = "Supplementary Views";
 			sourceTree = "<group>";
 		};
+		0382B1321DE2F0AC00586B5C /* AuthorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0382B1331DE2F0BD00586B5C /* AuthorViewController.swift */,
+				0382B1341DE2F0BD00586B5C /* AuthorViewController.xib */,
+			);
+			path = AuthorViewController;
+			sourceTree = "<group>";
+		};
 		039EF4991DC65B19004E94E4 /* SearchResultsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +453,7 @@
 		03DC3A911D88782F00D18A48 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0382B1321DE2F0AC00586B5C /* AuthorViewController */,
 				03314CA41DDDD30F00F04975 /* PhotoViewController */,
 				03DC3A921D88782F00D18A48 /* Common Controllers */,
 				03DC3A9F1D88782F00D18A48 /* Photos TableView Controller */,
@@ -615,6 +629,7 @@
 				03001B991DD1E79E004D478C /* Searches.plist in Resources */,
 				03001B951DD09D6F004D478C /* RecentSearchesViewController.xib in Resources */,
 				03314CA81DDDD37900F04975 /* PhotoViewController.xib in Resources */,
+				0382B1361DE2F0BD00586B5C /* AuthorViewController.xib in Resources */,
 				037A6E861DB0C81F000A774C /* PhotoHeader.xib in Resources */,
 				037A6E6E1DAFE79A000A774C /* PhotoTableViewCell.xib in Resources */,
 				03EB14921DB6391C00049E45 /* FontAwesome.ttf in Resources */,
@@ -697,6 +712,7 @@
 				03673ED51DC6386900FE37E7 /* EmptyStateViewFactory.swift in Sources */,
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
+				0382B1351DE2F0BD00586B5C /* AuthorViewController.swift in Sources */,
 				037A6E881DB0F773000A774C /* PhotosTableViewDataSource.swift in Sources */,
 				03001B971DD09D90004D478C /* RecentSearchesDataSource.swift in Sources */,
 				037A6DB11DAD2A97000A774C /* TitleView.swift in Sources */,
