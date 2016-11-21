@@ -1,21 +1,21 @@
 import Unbox
 
-class Collection: NSObject, Unboxable {
+public class PhotoCollection: NSObject, Unboxable {
     
-    let id: String
-    let title: String
-    let collectionDescription: String
-    let curated: Bool
-    let photosCount: Int
-    let privateCollection: Bool
-    let shareKey: String
-    let coverPhoto: Photo
-    let collectionOwner: User
+    public let id: String
+    public let title: String
+    public let collectionDescription: String?
+    public let curated: Bool
+    public let photosCount: Int
+    public let privateCollection: Bool
+    public let shareKey: String
+    public let coverPhoto: Photo
+    public let collectionOwner: User
     
-    required init(unboxer: Unboxer) throws {
+    required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
         self.title = try unboxer.unbox(key: "title")
-        self.collectionDescription = try unboxer.unbox(key: "description")
+        self.collectionDescription = unboxer.unbox(key: "description")
         self.curated = try unboxer.unbox(key: "curated")
         self.photosCount = try unboxer.unbox(key: "total_photos")
         self.privateCollection = try unboxer.unbox(key: "private")

@@ -250,7 +250,7 @@ class SearchResultsViewController: UIViewController {
             failure: { [weak self] error in
                 self?.searchRequest = nil
                 self?.searchResults = nil
-                print(error.localizedDescription)
+                self?.handle(error: error)
             }
         )
     }
