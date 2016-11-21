@@ -1,10 +1,10 @@
 import Unbox
 
-open class UserProfileImage: NSObject, Unboxable {
+public class UserProfileImage: NSObject, Unboxable {
     
-    open let small: String
-    open let medium: String
-    open let large: String
+    public let small: URL
+    public let medium: URL
+    public let large: URL
     
     required public init(unboxer: Unboxer) throws {
         self.small = try unboxer.unbox(key: "small")

@@ -20,7 +20,7 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
     
     func setupInfo(forPhoto photo: Photo) {
         topLabel.text = photo.uploader.name
-        let url = URL(string: photo.uploader.userProfileImage.small)!
+        let url = photo.uploader.userProfileImage.small
         imageView.af_setImage(withURL: url,
                               placeholderImage: #imageLiteral(resourceName: "Camera"),
                               filter: CircleFilter(),

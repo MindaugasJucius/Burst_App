@@ -51,7 +51,7 @@ class PhotosTableViewController: UIViewController {
     // Mark: - Configuration
     
     fileprivate func setupDataSource() {
-        dataSource = PhotosTableViewDataSource(tableView: tableView, container: self)
+        dataSource = PhotosTableViewDataSource(tableView: tableView, viewController: self)
         dataSource.onPhotoSave = { [weak self] photo in
             guard let unwrappedPhoto = photo else {
                 return

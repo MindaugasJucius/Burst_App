@@ -1,4 +1,5 @@
 import UIKit
+import AlamofireImage
 
 class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
 
@@ -22,6 +23,14 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
             return
         }
         setupConstraints()
+    }
+    
+    func image(withURL url: URL) {
+        leftImageView?.af_setImage(withURL: url,
+                              placeholderImage: #imageLiteral(resourceName: "Camera"),
+                              filter: CircleFilter(),
+                              imageTransition: .crossDissolve(1.0),
+                              runImageTransitionIfCached: false)
     }
     
     // MARK: - Private

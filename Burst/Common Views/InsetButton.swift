@@ -26,7 +26,7 @@ class InsetButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 3
-        layer.borderWidth = 0.5
+        layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
         setTitleColor(.white, for: .normal)
         setTitleColor(.black, for: .highlighted)

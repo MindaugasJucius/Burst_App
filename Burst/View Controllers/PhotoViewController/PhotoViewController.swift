@@ -151,6 +151,10 @@ extension PhotoViewController: StatefulContainerView {
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.bounces = false
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.delaysContentTouches = false
+        for case let subview as UIScrollView in tableView.subviews {
+            subview.delaysContentTouches = false
+        }
         tableView.panGestureRecognizer.addTarget(self, action: #selector(handle(panGesture:)))
         registerViews()
     }

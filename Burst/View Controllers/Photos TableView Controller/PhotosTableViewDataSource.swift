@@ -12,7 +12,7 @@ class PhotosTableViewDataSource: NSObject {
     private var prepared = false
     private weak var tableView: UITableView!
     
-    fileprivate weak var container: StatefulContainerView!
+    fileprivate weak var viewController: PhotosTableViewController!
     fileprivate var fetchedPhotos = [Photo]()
     
     fileprivate lazy var refreshControl: UIRefreshControl = {
@@ -24,9 +24,9 @@ class PhotosTableViewDataSource: NSObject {
     
     var onPhotoSave: PhotoActionCallback?
     
-    init(tableView: UITableView, container: StatefulContainerView) {
+    init(tableView: UITableView, viewController: PhotosTableViewController) {
         self.tableView = tableView
-        self.container = container
+        self.viewController = viewController
         super.init()
         registerViews()
         prepareForRetrieval()
@@ -52,7 +52,7 @@ class PhotosTableViewDataSource: NSObject {
             guard let strongSelf = self else {
                 return false
             }
-            return !strongSelf.container.emptyState
+            return !strongSelf.viewController.emptyState
         }
         tableView.addSubview(refreshControl)
     }
@@ -92,7 +92,7 @@ class PhotosTableViewDataSource: NSObject {
             failure: { [weak self] error in
                 let state: ContainerViewState = self?.currentPage == InitialPageIndex ? .empty : .normal
                 self?.stateChangeHandler(state: state)
-                //self?.container.handle(error: error)
+                self?.viewController.handle(error: error)
                 self?.refreshControl.endRefreshing()
                 self?.tableView.finishInfiniteScroll()
             }
@@ -112,7 +112,7 @@ class PhotosTableViewDataSource: NSObject {
                     photoGroup.leave()
                 },
                 failure: { [weak self] error in
-                    //self?.container.handle(error: error)
+                    self?.viewController?.handle(error: error)
                 }
             )
         }
@@ -154,7 +154,7 @@ class PhotosTableViewDataSource: NSObject {
     // MARK: - Helpers
     
     func stateChangeHandler(state: ContainerViewState) {
-        container.state = state
+        viewController.state = state
         postPreparedNotificationIfNeeded()
     }
     
@@ -221,7 +221,7 @@ class PhotosTableViewDataSource: NSObject {
                 self?.photoCell(atPath: indexPath)?.displayImage = image
             },
             failure: { [weak self] error in
-                //self?.container.handle(error: error)
+                self?.viewController.handle(error: error)
             }
         )
     }
