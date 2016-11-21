@@ -2,19 +2,26 @@ import UIKit
 
 class Collection: NSObject, Unboxable {
     
-    
-    "id": 296,
-    "title": "I like a man with a beard.",
-    "description": "Yeah even Santa...",
-    "published_at": "2016-01-27T18:47:13-05:00",
-    "curated": false,
-    "total_photos": 12,
-    "private": false,
-    "share_key": "312d188df257b957f8b86d2ce20e4766",
+    let id: String
+    let title: String
+    let collectionDescription: String
+    let curated: Bool
+    let photosCount: Int
+    let privateCollection: Bool
+    let shareKey: String
+    let coverPhoto: Photo
+    let collectionOwner: User
     
     required init(unboxer: Unboxer) throws {
-        self.latitude = try unboxer.unbox(key: "latitude")
-        self.longitude = try unboxer.unbox(key: "longitude")
+        self.id = try unboxer.unbox(key: "id")
+        self.title = try unboxer.unbox(key: "title")
+        self.description = try unboxer.unbox(key: "description")
+        self.curated = try unboxer.unbox(key: "curated")
+        self.photosCount = try unboxer.unbox(key: "total_photos")
+        self.privateCollection = try unboxer.unbox(key: "private")
+        self.shareKey = try unboxer.unbox(key: "share_key")
+        self.coverPhoto = try unboxer.unbox(key: "cover_photo")
+        self.collectionOwner = try unboxer.unbox(key: "user")
         super.init()
     }
 }
