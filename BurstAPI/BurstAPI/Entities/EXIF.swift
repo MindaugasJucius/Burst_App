@@ -10,7 +10,7 @@ public class EXIF: NSObject, Unboxable {
     public let iso: Int
 
     
-    required public init(unboxer: Unboxer) throws {
+    required init(unboxer: Unboxer) throws {
         self.madeBy = try unboxer.unbox(key: "make")
         self.model = try unboxer.unbox(key: "model")
         self.exposureTime = try unboxer.unbox(key: "exposure_time")
