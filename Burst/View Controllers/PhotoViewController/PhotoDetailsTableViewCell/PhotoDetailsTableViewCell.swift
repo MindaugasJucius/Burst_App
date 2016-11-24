@@ -3,6 +3,8 @@ import BurstAPI
 
 fileprivate let TopTableViewSpacing: CGFloat = 75
 
+let ChildUpdateNotificationName = Notification.Name("ChildUpdateNotification")
+
 typealias AnimationProperties = (
     delay: TimeInterval,
     duration: TimeInterval,
@@ -54,6 +56,7 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
         presentationState = .dismissed
         initialDiff = 0
         lastYVelocity = 0
+        NotificationCenter.default.removeObserver(self, name: ChildUpdateNotificationName, object: nil)
     }
     
     // MARK: - Additional scrolling logic
@@ -109,6 +112,22 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
         resetState()
     }
     
+    fileprivate func handleChildUpdateNotification() {
+        NotificationCenter.default.addObserver(
+            forName: ChildUpdateNotificationName,
+            object: nil,
+            queue: nil,
+            using: { [weak self] notification in
+                self?.handleChildUpdate()
+            }
+        )
+        
+    }
+    
+    private func handleChildUpdate() {
+        tableView.reloadData()
+    }
+    
     // MARK: - Details content animation
     
     func animateDetails(toState state: PresentationState) {
@@ -152,6 +171,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
     
     func configureCommonState() {
         guard let photo = photo else { return }
+        handleChildUpdateNotification()
         topTableViewSpacingConstraint.constant = TopTableViewSpacing
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.delegate = self

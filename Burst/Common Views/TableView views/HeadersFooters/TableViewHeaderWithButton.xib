@@ -43,9 +43,9 @@
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="trailing" constant="15" id="PKX-Re-OKd"/>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="SNr-ZS-owg"/>
                 <constraint firstItem="ZN4-1g-aut" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TBC-pX-qCG"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="5" id="VIP-zO-Ohj"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="10" id="VIP-zO-Ohj"/>
                 <constraint firstAttribute="trailing" secondItem="wkK-8Z-e3i" secondAttribute="trailing" constant="15" id="xdn-GC-ZB6"/>
-                <constraint firstItem="ZN4-1g-aut" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="ztF-ZE-Il9"/>
+                <constraint firstItem="ZN4-1g-aut" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="ztF-ZE-Il9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
