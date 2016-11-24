@@ -36,7 +36,6 @@
                     <state key="normal" title="Button"/>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9zW-q4-ZzC"/>
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="Go9-SH-SkS"/>

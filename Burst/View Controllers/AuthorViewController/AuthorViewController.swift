@@ -30,6 +30,7 @@ extension AuthorViewController: StatefulContainerView {
         dataSource = AuthorViewControllerDataSource(tableView: tableView, viewController: self, user: user)
         tableView.dataSource = dataSource
         tableView.bounces = false
+        tableView.separatorStyle = .none
     }
 
 }
