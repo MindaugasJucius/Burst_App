@@ -1,4 +1,5 @@
 import UIKit
+import BurstAPI
 
 class PhotosTableViewController: UIViewController {
 
@@ -46,6 +47,15 @@ class PhotosTableViewController: UIViewController {
         frame.size.height = height
         header.frame = frame
         tableView.tableHeaderView = header
+    }
+    
+    // Mark: - Navigation
+    
+    func presentDetails(forPhoto photo: Photo) {
+        let photoViewController = PhotoViewController(photo: photo)
+        navigationController?.isNavigationBarHidden = true
+        photoViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(photoViewController, animated: true)
     }
     
     // Mark: - Configuration

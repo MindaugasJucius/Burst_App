@@ -165,6 +165,10 @@ class PhotosTableViewDataSource: NSObject {
         return cell
     }
     
+    private func presentDetailsController(forPhoto photo: Photo) {
+        viewController.presentDetails(forPhoto: photo)
+    }
+    
     // MARK: - Delegate helpers
     
     func downloadImagesForVisibleCells() {
@@ -242,8 +246,14 @@ class PhotosTableViewDataSource: NSObject {
         }
         let photo = fetchedPhotos[indexPath.section]
         photoCell.configure(forPhoto: photo)
-        photoCell.onSaveButton = { [weak self] photo in
-            self?.onPhotoSave?(photo)
+        photoCell.onSaveButton = { [unowned self] photo in
+            self.onPhotoSave?(photo)
+        }
+        photoCell.onImageViewTap = { [unowned self] photo in
+            guard let photo = photo else {
+                return
+            }
+            self.presentDetailsController(forPhoto: photo)
         }
         return photoCell
     }

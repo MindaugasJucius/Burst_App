@@ -17,10 +17,12 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
     @IBOutlet weak private var imageViewRightConstraint: NSLayoutConstraint!
     
     private let progressIndicatorView = CircularProgressView(frame: .zero)
+    private var tapGesture: UITapGestureRecognizer!
 
     var onLoveButton: PhotoActionCallback?
     var onAddButton: PhotoActionCallback?
     var onSaveButton: PhotoActionCallback?
+    var onImageViewTap: PhotoActionCallback?
     
     private weak var displayPhoto: Photo?
     
@@ -48,6 +50,9 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
         backgroundColor = .clear
         setupProgressView()
         setupButtons()
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
+        photoImageView.addGestureRecognizer(tapGesture)
+        photoImageView.isUserInteractionEnabled = true
     }
     
     override func prepareForReuse() {
@@ -58,6 +63,10 @@ class PhotoTableViewCell: UITableViewCell, ReusableView {
                              iconSize: AppAppearance.ButtonFAIconSize,
                              forState: .normal)
         loveButton.setFATitleColor(color: AppAppearance.white)
+    }
+    
+    @objc private func imageViewTapped() {
+        onImageViewTap?(displayPhoto)
     }
     
     func configure(forPhoto photo: Photo) {
