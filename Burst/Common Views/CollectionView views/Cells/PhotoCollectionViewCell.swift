@@ -1,7 +1,7 @@
 import BurstAPI
 import AlamofireImage
 
-class PhotoSearchResultCollectionViewCell: UICollectionViewCell, ReusableView {
+class PhotoCollectionViewCell: UICollectionViewCell, ReusableView {
 
     private let progressIndicatorView = CircularProgressView(frame: .zero)
     
