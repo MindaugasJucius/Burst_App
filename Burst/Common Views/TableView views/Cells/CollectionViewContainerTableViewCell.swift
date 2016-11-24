@@ -15,6 +15,16 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
         }
     }
     
+    var isPagingEnabled: Bool {
+        get {
+            return collectionView.isPagingEnabled
+        }
+        set {
+            collectionView.isPagingEnabled = newValue
+        }
+    }
+    
+    
     var layout: UICollectionViewLayout {
         get {
             return collectionView.collectionViewLayout
@@ -33,7 +43,6 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.backgroundColor = AppAppearance.tableViewBackground
