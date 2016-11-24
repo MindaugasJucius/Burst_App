@@ -47,7 +47,7 @@ class PhotoViewControllerDataSource: NSObject {
     // MARK: - Cell setup
     
     fileprivate func setup(photoCell: FullPhotoTableViewCell) -> FullPhotoTableViewCell {
-        photoCell.photoImage = photo.thumbImage
+        photoCell.photoImage = photo.smallImage ?? photo.thumbImage
         photoCell.topSpacing = topImageSpacing
         photoCell.backgroundColor = AppAppearance.tableViewBackground
         photoCell.didTapClosePhotoPreview = didTapClosePhotoPreview

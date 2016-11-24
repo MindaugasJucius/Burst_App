@@ -26,6 +26,10 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
         super.awakeFromNib()
         nameLabel.textColor = .white
         countLabel.textColor = .white
+        nameLabel.font = AppAppearance.regularFont(withSize: .collectionTitleSize, weight: .bold)
+        countLabel.font = AppAppearance.regularFont(withSize: .cellText, weight: .medium)
+        nameLabel.addShadow()
+        countLabel.addShadow()
         layer.cornerRadius = 6
         imageViewHeightConstraint.constant = CollectionCoverPhotoHeight
         backgroundColor = AppAppearance.tableViewBackground

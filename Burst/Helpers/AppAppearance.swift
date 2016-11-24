@@ -6,6 +6,15 @@ enum FontSize: CGFloat {
     case headerSubtitle = 14
     case iconSize = 9
     case systemSize = 15
+    case collectionTitleSize = 24
+}
+
+enum FontWeight: String {
+    case regular = "Regular"
+    case bold = "Bold"
+    case ultraLight = "UltraLight"
+    case italic = "Italic"
+    case medium = "Medium"
 }
 
 let TableViewCellDefaultHeight: CGFloat = 44
@@ -18,16 +27,12 @@ class AppAppearance: NSObject {
     
     // MARK: - Text
     
-    static func regularFont(withSize size: FontSize) -> UIFont {
-        return font(withName: "AvenirNext-Regular", fontSize: size)
+    static func regularFont(withSize size: FontSize, weight: FontWeight = .regular) -> UIFont {
+        return font(withName: "AvenirNext-\(weight.rawValue)", fontSize: size)
     }
     
-    static func condensedFont(withSize size: FontSize) -> UIFont {
-        return font(withName: "AvenirNextCondensed-Regular", fontSize: size)
-    }
-    
-    static func italicFont(withSize size: FontSize) -> UIFont {
-        return font(withName: "AvenirNext-Italic", fontSize: size)
+    static func condensedFont(withSize size: FontSize, weight: FontWeight = .regular) -> UIFont {
+        return font(withName: "AvenirNextCondensed-\(weight.rawValue)", fontSize: size)
     }
     
     private static func font(withName name: String, fontSize size: FontSize) -> UIFont {
