@@ -36,7 +36,7 @@ class EmptyStateViewFactory: NSObject {
         let attributedString = NSMutableAttributedString(string: string)
         let rangeOfSubstring = (string as NSString).range(of: substring)
         let attributes = [NSForegroundColorAttributeName: AppAppearance.lightGray,
-                          NSFontAttributeName : AppAppearance.italicFont(withSize: .systemSize)]
+                          NSFontAttributeName : AppAppearance.regularFont(withSize: .systemSize, weight: .italic)]
         attributedString.addAttributes(attributes, range: rangeOfSubstring)
         return attributedString
     }
