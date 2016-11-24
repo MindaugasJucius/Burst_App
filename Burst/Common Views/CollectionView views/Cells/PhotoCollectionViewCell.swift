@@ -1,4 +1,5 @@
 import BurstAPI
+import Unbox
 import AlamofireImage
 
 class PhotoCollectionViewCell: UICollectionViewCell, ReusableView {
@@ -19,10 +20,17 @@ class PhotoCollectionViewCell: UICollectionViewCell, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupProgressView()
-        imageView.backgroundColor = AppAppearance.lightBlack
+    }
+    
+    func configure(withUnboxable unboxable: Unboxable) {
+        guard let photo = unboxable as? Photo else {
+            return
+        }
+        configure(forPhoto: photo)
     }
     
     func configure(forPhoto photo: Photo) {
+    imageView.backgroundColor = photo.color
     imageView.af_setImage(
             withURL: photo.urls.small,
             progress: { [weak self] (progress: Progress) in

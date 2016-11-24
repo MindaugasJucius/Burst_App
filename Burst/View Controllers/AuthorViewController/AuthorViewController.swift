@@ -35,7 +35,7 @@ extension AuthorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CollectionCoverPhotoHeight
+        return dataSource.height(forRowAtIndexPath: indexPath)
     }
     
 }
