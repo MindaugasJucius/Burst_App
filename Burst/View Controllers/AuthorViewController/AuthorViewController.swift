@@ -28,6 +28,18 @@ class AuthorViewController: UIViewController {
     
 }
 
+extension AuthorViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return dataSource.header(forSection: section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CollectionCoverPhotoHeight
+    }
+    
+}
+
 extension AuthorViewController: StatefulContainerView {
     
     func configureCommonState() {
@@ -38,6 +50,9 @@ extension AuthorViewController: StatefulContainerView {
         if containedInTableView {
             tableView.tableHeaderView = nil
         }
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.estimatedSectionHeaderHeight = 30
+        tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.bounces = false
         tableView.separatorStyle = .none

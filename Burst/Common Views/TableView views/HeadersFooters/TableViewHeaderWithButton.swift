@@ -10,19 +10,30 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         initialSetup()
+        button.isHidden = true
     }
     
     // MARK: - Public
     
     func configure(labelTitle: String, hideButton: Bool = true, hideImage: Bool = true, buttonTitle: String? = nil, onButtonTap: (() -> ())? = nil) {
+        configureLabel(withTitle: labelTitle, hideImage: hideImage)
         button.setTitle(buttonTitle, for: .normal)
         button.isHidden = hideButton
         button.onButtonTap = onButtonTap
-        label.text = labelTitle.capitalized
-        guard hideImage, leftImageView != nil else {
+        guard hideImage else {
             return
         }
-        setupConstraints()
+        hideImageView()
+    }
+    
+    func configureLabel(withTitle title: String, color: UIColor = AppAppearance.subtitleColor, font: UIFont = AppAppearance.condensedFont(withSize: .headerTitle), hideImage: Bool = true) {
+        label.text = title.capitalized
+        label.textColor = color
+        label.font = font
+        guard hideImage else {
+            return
+        }
+        hideImageView()
     }
     
     func image(withURL url: URL) {
@@ -37,12 +48,13 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     
     private func initialSetup() {
         contentView.backgroundColor = AppAppearance.tableViewBackground
-        label.textColor = AppAppearance.subtitleColor
-        label.font = AppAppearance.condensedFont(withSize: .headerTitle)
         label.lineBreakMode = .byWordWrapping
     }
     
-    private func setupConstraints() {
+    private func hideImageView() {
+        guard leftImageView != nil else {
+            return
+        }
         leftImageView?.removeFromSuperview()
         label.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
