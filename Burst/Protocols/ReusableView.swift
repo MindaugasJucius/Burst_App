@@ -1,5 +1,7 @@
+import Unbox
+
 protocol ReusableView: class {
-    
+    func configure(withUnboxable unboxable: Unboxable)
 }
 
 extension ReusableView where Self: UIView {
@@ -8,4 +10,10 @@ extension ReusableView where Self: UIView {
         return className + "reuseIdentifier"
     }
     
+}
+
+extension ReusableView {
+    func configure(withUnboxable unboxable: Unboxable) {
+        
+    }
 }

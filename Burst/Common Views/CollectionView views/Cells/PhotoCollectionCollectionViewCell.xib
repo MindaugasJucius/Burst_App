@@ -12,23 +12,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoCollectionCollectionViewCell" customModule="Burst" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="351" height="127"/>
+            <rect key="frame" x="0.0" y="0.0" width="351" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="351" height="127"/>
+                <rect key="frame" x="0.0" y="0.0" width="351" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rd1-d2-iS8">
-                        <rect key="frame" x="0.0" y="0.0" width="351" height="127"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rd1-d2-iS8">
+                        <rect key="frame" x="0.0" y="0.0" width="351" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="vVF-Kq-nTk"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaN-ho-ksi">
-                        <rect key="frame" x="144.5" y="49" width="62.5" height="29"/>
+                        <rect key="frame" x="144.5" y="85.5" width="62.5" height="29"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMO-Yk-AeQ">
-                        <rect key="frame" x="144.5" y="33" width="37.5" height="18"/>
+                        <rect key="frame" x="144.5" y="69.5" width="37.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -51,6 +54,7 @@
             <connections>
                 <outlet property="countLabel" destination="CMO-Yk-AeQ" id="34E-KB-e6T"/>
                 <outlet property="imageView" destination="rd1-d2-iS8" id="y9h-wZ-AKU"/>
+                <outlet property="imageViewHeightConstraint" destination="vVF-Kq-nTk" id="U3r-ho-e3X"/>
                 <outlet property="nameLabel" destination="vaN-ho-ksi" id="Khv-tN-cd7"/>
             </connections>
             <point key="canvasLocation" x="190.5" y="139.5"/>

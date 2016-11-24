@@ -44,7 +44,6 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     
     private func setupConstraints() {
         leftImageView?.removeFromSuperview()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
             constant: 15).isActive = true

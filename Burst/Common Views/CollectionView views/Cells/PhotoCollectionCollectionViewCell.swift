@@ -1,12 +1,17 @@
 import UIKit
 import BurstAPI
 import AlamofireImage
+import Unbox
 
-class PhotoCollectionCollectionViewCell: UICollectionViewCell {
+let CollectionCoverPhotoHeight: CGFloat = 200
+let CollectionSideSpacing: CGFloat = 10
+
+class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
     
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     
     var collection: PhotoCollection? {
         didSet {
@@ -20,6 +25,16 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         nameLabel.textColor = .white
+        countLabel.textColor = .white
+        layer.cornerRadius = 6
+        imageViewHeightConstraint.constant = CollectionCoverPhotoHeight
+    }
+    
+    func configure(withUnboxable unboxable: Unboxable) {
+        guard let photoCollection = unboxable as? PhotoCollection else { 
+            return
+        }
+        configure(forCollection: photoCollection)
     }
     
     private func configure(forCollection collection: PhotoCollection) {
