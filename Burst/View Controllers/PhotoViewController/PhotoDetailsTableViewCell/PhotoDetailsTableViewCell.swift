@@ -153,7 +153,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
     func configureCommonState() {
         guard let photo = photo else { return }
         topTableViewSpacingConstraint.constant = TopTableViewSpacing
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.delegate = self
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 50
@@ -166,7 +166,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         tableView.alpha = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.separatorStyle = .none
         tableView.delaysContentTouches = false
         for case let subview as UIScrollView in tableView.subviews {
             subview.delaysContentTouches = false

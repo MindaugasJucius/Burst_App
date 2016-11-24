@@ -70,6 +70,7 @@ extension PhotoDetailsDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCellReuseId, for: indexPath)
+        cell.backgroundColor = AppAppearance.tableViewBackground
         let infoForSection = availableInfo[indexPath.section]
         if infoForSection == .author {
             guard let viewForInfo = photoInfoViews[infoForSection] else {

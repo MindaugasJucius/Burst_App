@@ -5,12 +5,11 @@ class AuthorViewController: UIViewController {
     
     @IBOutlet fileprivate weak var tableView: UITableView!
     
+    fileprivate var containedInTableView = false
     fileprivate var dataSource: AuthorViewControllerDataSource!
     
     var user: User?
     var state: ContainerViewState = .normal
-    
-    private var containedInTableView = false
     
     static func instantiate(forPhotoDetails: Bool) -> AuthorViewController? {
         let controller = AuthorViewController.fromStoryboard()
@@ -36,6 +35,9 @@ extension AuthorViewController: StatefulContainerView {
             return
         }
         dataSource = AuthorViewControllerDataSource(tableView: tableView, viewController: self, user: user)
+        if containedInTableView {
+            tableView.tableHeaderView = nil
+        }
         tableView.dataSource = dataSource
         tableView.bounces = false
         tableView.separatorStyle = .none
