@@ -7,7 +7,7 @@ enum UserInfo {
 }
 
 let UserInfoSectioHeaderReuseID = "UserInfoSectioHeader"
-fileprivate let PhotoHeight: CGFloat = 75
+fileprivate let PhotoHeight: CGFloat = 100
 
 class AuthorViewControllerDataSource: NSObject {
 
@@ -68,6 +68,7 @@ class AuthorViewControllerDataSource: NSObject {
                 self.photoCollections = collections
                 self.availableUserInfo.append(.collections)
                 self.tableView?.reloadData()
+                NotificationCenter.default.post(name: ChildUpdateNotificationName, object: nil)
             },
             failure: { [unowned self] error in
                 self.viewController?.handle(error: error)
@@ -82,6 +83,7 @@ class AuthorViewControllerDataSource: NSObject {
                 self.photos = photos
                 self.availableUserInfo.append(.photos)
                 self.tableView?.reloadData()
+                NotificationCenter.default.post(name: ChildUpdateNotificationName, object: nil)
             },
             failure: { [unowned self] error in
                 self.viewController?.handle(error: error)

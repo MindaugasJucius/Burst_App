@@ -30,8 +30,8 @@ class PhotoCollectionViewCell: UICollectionViewCell, ReusableView {
     }
     
     func configure(forPhoto photo: Photo) {
-    imageView.backgroundColor = photo.color
-    imageView.af_setImage(
+        imageView.backgroundColor = photo.color
+        imageView.af_setImage(
             withURL: photo.urls.small,
             progress: { [weak self] (progress: Progress) in
                 self?.downloadProgress = CGFloat(progress.fractionCompleted)

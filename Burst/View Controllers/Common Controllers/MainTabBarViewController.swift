@@ -4,10 +4,6 @@ final class MainTabBarViewController: UITabBarController {
 
     fileprivate var customTabBar: MainTabBar?
     private var launchscreenView: LaunchscreenView = LaunchscreenView()
-//    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
