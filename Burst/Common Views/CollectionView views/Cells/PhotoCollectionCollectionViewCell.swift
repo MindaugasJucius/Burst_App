@@ -28,6 +28,7 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
         countLabel.textColor = .white
         layer.cornerRadius = 6
         imageViewHeightConstraint.constant = CollectionCoverPhotoHeight
+        backgroundColor = AppAppearance.tableViewBackground
     }
     
     func configure(withUnboxable unboxable: Unboxable) {

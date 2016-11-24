@@ -8,6 +8,7 @@ enum FontSize: CGFloat {
     case systemSize = 15
 }
 
+let TableViewCellDefaultHeight: CGFloat = 44
 
 class AppAppearance: NSObject {
     

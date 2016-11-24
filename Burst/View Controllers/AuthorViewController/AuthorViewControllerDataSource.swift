@@ -32,6 +32,7 @@ class AuthorViewControllerDataSource: NSObject {
     private func retrieveInfo() {
         guard let collectionCount = user.totalCollections,
             collectionCount > 0 else {
+                tableView?.tableHeaderView = nil
                 return
         }
         retrieveCollections(forUser: user)

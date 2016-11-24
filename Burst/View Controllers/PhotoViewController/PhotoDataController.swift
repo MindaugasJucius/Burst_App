@@ -1,7 +1,8 @@
 import BurstAPI
 
 typealias CorrespondingInfoControllers = [PhotoInfoType: UIViewController]
-typealias PhotoInfoCallback = (_ photo: Photo, _ infoControllers: CorrespondingInfoControllers) -> ()
+typealias CorrespondingInfoViews = [PhotoInfoType: UIView]
+typealias PhotoInfoCallback = (_ photo: Photo) -> ()
 
 extension PhotoInfoType {
     
@@ -22,7 +23,8 @@ extension PhotoInfoType {
 
 class PhotoDataController: NSObject {
 
-    var infoControllers: [UIViewController]?
+    var infoViews: CorrespondingInfoViews = [:]
+    var infoControllers: CorrespondingInfoControllers = [:]
     
     func fullPhoto(withID id: String,
                    success: @escaping PhotoInfoCallback,
@@ -30,21 +32,38 @@ class PhotoDataController: NSObject {
         UnsplashPhoto.photo(
             withID: id,
             success: { [unowned self] photo in
-                let availableInfo = photo.checkForAvailableInfo()
-                let controllers = self.controllers(forPhotoInfo: availableInfo)
-                success(photo, controllers)
+                self.infoControllers = self.controllers(forPhoto: photo)
+                success(photo)
             },
             failure: failure
         )
     }
     
-    private func controllers(forPhotoInfo photoInfo: [PhotoInfoType]) -> CorrespondingInfoControllers {
-        var photoInfoControllersDict: CorrespondingInfoControllers = [:]
-        photoInfo.forEach { photoInfoType in
-            guard let controller = photoInfoType.controllerTypeForInfo?.fromStoryboard() else {
-                return
+    func contentHeight(forInfoType infoType: PhotoInfoType) -> CGFloat {
+        switch infoType {
+        case .author:
+            guard let authorController = infoControllers[infoType] as? AuthorViewController else {
+                return TableViewCellDefaultHeight
             }
-            photoInfoControllersDict[photoInfoType] = controller
+            return authorController.contentHeight()
+        default:
+            return TableViewCellDefaultHeight
+        }
+    }
+    
+    private func controllers(forPhoto photo: Photo) -> CorrespondingInfoControllers {
+        let photoInfo = photo.checkForAvailableInfo()
+        var photoInfoControllersDict: CorrespondingInfoControllers = [:]
+        photoInfo.forEach { [unowned self] photoInfoType in
+            if photoInfoType == .author {
+                guard let authorType = photoInfoType.controllerTypeForInfo as? AuthorViewController.Type,
+                    let controller = authorType.instantiate(forPhotoDetails: true) else {
+                    return
+                }
+                controller.user = photo.uploader
+                photoInfoControllersDict[photoInfoType] = controller
+                self.infoViews[photoInfoType] = controller.view
+            }
         }
         return photoInfoControllersDict
     }

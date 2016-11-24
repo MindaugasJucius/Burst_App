@@ -79,7 +79,7 @@ extension RecentSearchesViewController: StatefulContainerView {
     }
     
     func configureNormalState() {
-        tableView.rowHeight = 44
+        tableView.rowHeight = TableViewCellDefaultHeight
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = AppAppearance.lightBlack
     }

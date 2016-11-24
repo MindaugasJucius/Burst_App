@@ -14,16 +14,7 @@ class PhotoViewControllerDataSource: NSObject {
     private weak var viewController: UIViewController?
     
     private var topImageSpacing: CGFloat = 0
-    private var photoInfoControllers: CorrespondingInfoControllers = [:] {
-        didSet {
-            guard !photoInfoControllers.isEmpty else {
-                return
-            }
-            addChildsToViewController()
-        }
-    }
     private var fullPhoto: Photo?
-    private var contentHeight: CGFloat = 0
 
     init(tableView: UITableView, viewController: UIViewController, photo: Photo) {
         self.tableView = tableView
@@ -32,8 +23,8 @@ class PhotoViewControllerDataSource: NSObject {
         super.init()
         dataController.fullPhoto(
             withID: photo.id,
-            success: { [unowned self] retrievedPhoto, contentControllers in
-                self.photoInfoControllers = contentControllers
+            success: { [unowned self] retrievedPhoto in
+                self.add(childrenViewControllers: self.dataController.infoControllers)
                 self.fullPhoto = retrievedPhoto
                 let detailsPath = IndexPath(item: 1, section: 0)
                 self.tableView?.reloadRows(at: [detailsPath], with: .none)
@@ -46,11 +37,10 @@ class PhotoViewControllerDataSource: NSObject {
     
     // MARK: - Private
 
-    private func addChildsToViewController() {
-        for (_, controller) in photoInfoControllers {
+    private func add(childrenViewControllers: CorrespondingInfoControllers) {
+        for (_, controller) in childrenViewControllers {
             viewController?.addChildViewController(controller)
             controller.didMove(toParentViewController: viewController)
-            contentHeight += controller.view.frame.height
         }
     }
     
@@ -67,12 +57,23 @@ class PhotoViewControllerDataSource: NSObject {
     fileprivate func setup(photoDetailsCell: PhotoDetailsTableViewCell) -> PhotoDetailsTableViewCell {
         photoDetailsCell.isUserInteractionEnabled = false
         photoDetailsCell.parentTableView = tableView
-        photoDetailsCell.photoInfoControllers = photoInfoControllers
+        photoDetailsCell.photoInfoViews = dataController.infoViews
         photoDetailsCell.photo = fullPhoto ?? photo
+        photoDetailsCell.heightForPhotoDetails = { [unowned self] indexPath in
+            return self.contentHeight(forIndexPath: indexPath)
+        }
         photoDetailsCell.backgroundColor = AppAppearance.tableViewBackground
         photoDetailsCell.didEndPanWithPositiveVelocity = didEndPanWithPositiveVelocity
         photoDetailsCell.didEndPanWithNegativeVelocity = didEndPanWithNegativeVelocity
         return photoDetailsCell
+    }
+    
+    func contentHeight(forIndexPath indexPath: IndexPath) -> CGFloat {
+        guard let photoInfo = fullPhoto?.checkForAvailableInfo() else {
+            return TableViewCellDefaultHeight
+        }
+        let photoInfoType = photoInfo[indexPath.section]
+        return dataController.contentHeight(forInfoType: photoInfoType)
     }
     
     // MARK: - Delegate helpers

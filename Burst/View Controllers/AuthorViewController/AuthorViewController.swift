@@ -7,13 +7,21 @@ class AuthorViewController: UIViewController {
     
     fileprivate var dataSource: AuthorViewControllerDataSource!
     
-    var user: User? {
-        didSet {
-            configureCommonState()
-        }
+    var user: User?
+    var state: ContainerViewState = .normal
+    
+    private var containedInTableView = false
+    
+    static func instantiate(forPhotoDetails: Bool) -> AuthorViewController? {
+        let controller = AuthorViewController.fromStoryboard()
+        controller?.containedInTableView = forPhotoDetails
+        return controller
     }
     
-    var state: ContainerViewState = .normal
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureCommonState()
+    }
     
     func contentHeight() -> CGFloat {
         return tableView.contentSize.height
@@ -31,6 +39,7 @@ extension AuthorViewController: StatefulContainerView {
         tableView.dataSource = dataSource
         tableView.bounces = false
         tableView.separatorStyle = .none
+        tableView.backgroundColor = AppAppearance.tableViewBackground
     }
 
 }
