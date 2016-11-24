@@ -8,25 +8,16 @@ class PhotoDetailsDataSource: NSObject {
     private weak var tableView: UITableView?
     private let fullPhoto: Photo
     
-    fileprivate var photoInfoControllers: CorrespondingInfoControllers
+    fileprivate let photoInfoViews: CorrespondingInfoViews
     fileprivate let availableInfo: [PhotoInfoType]
     
-    init(tableView: UITableView, photo: Photo, controllers: CorrespondingInfoControllers) {
+    init(tableView: UITableView, photo: Photo, correspondingViews: CorrespondingInfoViews) {
         self.tableView = tableView
-        self.photoInfoControllers = controllers
+        self.photoInfoViews = correspondingViews
         self.availableInfo = photo.checkForAvailableInfo()
         self.fullPhoto = photo
         super.init()
         registerViews()
-        setupInfo()
-    }
-    
-    func setupInfo() {
-        Array(photoInfoControllers.values).forEach { [unowned self] controller in
-            if let authorController = controller as? AuthorViewController {
-                authorController.user = self.fullPhoto.uploader
-            }
-        }
     }
     
     func registerViews() {
@@ -43,16 +34,6 @@ class PhotoDetailsDataSource: NSObject {
         }
         configure(header: header, forSection: section)
         return header
-    }
-    
-    func estimatedHeight(forRowAtPath rowPath: IndexPath) -> CGFloat {
-        if availableInfo[rowPath.section] == .author {
-            guard let controller = photoInfoControllers[.author] as? AuthorViewController else {
-                return 44
-            }
-            return controller.contentHeight()
-        }
-        return 44
     }
     
     // MARK: - Configure reusable views
@@ -91,11 +72,11 @@ extension PhotoDetailsDataSource: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCellReuseId, for: indexPath)
         let infoForSection = availableInfo[indexPath.section]
         if infoForSection == .author {
-            guard let controllerForInfo = photoInfoControllers[infoForSection] else {
+            guard let viewForInfo = photoInfoViews[infoForSection] else {
                 return cell
             }
-            controllerForInfo.view.frame = cell.bounds
-            cell.contentView.insertSubview(controllerForInfo.view, at: 0)
+            viewForInfo.frame = cell.bounds
+            cell.contentView.insertSubview(viewForInfo, at: 0)
         } else {
             cell.textLabel?.text = "\(infoForSection)"
         }

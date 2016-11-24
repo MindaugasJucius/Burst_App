@@ -38,7 +38,8 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     weak var parentTableView: UITableView?
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
-    var photoInfoControllers: CorrespondingInfoControllers = [:]
+    var heightForPhotoDetails: ((IndexPath) -> (CGFloat))?
+    var photoInfoViews: CorrespondingInfoViews = [:]
     
     var photo: Photo? {
         didSet {
@@ -49,7 +50,6 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     // MARK: - Lifecycle
     
     override func prepareForReuse() {
-        photoInfoControllers = [:]
         parentTableView = nil
         presentationState = .dismissed
         initialDiff = 0
@@ -140,7 +140,10 @@ extension PhotoDetailsTableViewCell: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return dataSource.estimatedHeight(forRowAtPath: indexPath)
+        guard let heightClosure = heightForPhotoDetails else {
+            return TableViewCellDefaultHeight
+        }
+        return heightClosure(indexPath)
     }
     
 }
@@ -154,7 +157,11 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         tableView.delegate = self
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 50
-        dataSource = PhotoDetailsDataSource(tableView: tableView, photo: photo, controllers: photoInfoControllers)
+        dataSource = PhotoDetailsDataSource(
+            tableView: tableView,
+            photo: photo,
+            correspondingViews: photoInfoViews
+        )
         tableView.dataSource = dataSource
         tableView.alpha = 0
         tableView.showsVerticalScrollIndicator = false
