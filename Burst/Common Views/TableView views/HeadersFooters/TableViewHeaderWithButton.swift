@@ -10,26 +10,15 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         initialSetup()
-        button.isHidden = true
     }
     
     // MARK: - Public
     
     func configure(labelTitle: String, hideButton: Bool = true, hideImage: Bool = true, buttonTitle: String? = nil, onButtonTap: (() -> ())? = nil) {
-        configureLabel(withTitle: labelTitle, hideImage: hideImage)
+        label.text = labelTitle
         button.setTitle(buttonTitle, for: .normal)
         button.isHidden = hideButton
         button.onButtonTap = onButtonTap
-        guard hideImage else {
-            return
-        }
-        hideImageView()
-    }
-    
-    func configureLabel(withTitle title: String, color: UIColor = AppAppearance.subtitleColor, font: UIFont = AppAppearance.condensedFont(withSize: .headerTitle), hideImage: Bool = true) {
-        label.text = title.capitalized
-        label.textColor = color
-        label.font = font
         guard hideImage else {
             return
         }
@@ -40,13 +29,15 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         leftImageView?.af_setImage(withURL: url,
                               placeholderImage: #imageLiteral(resourceName: "Camera"),
                               filter: CircleFilter(),
-                              imageTransition: .crossDissolve(1.0),
+                              imageTransition: .crossDissolve(0.3),
                               runImageTransitionIfCached: false)
     }
     
     // MARK: - Private
     
     private func initialSetup() {
+        label.textColor = AppAppearance.lightGray
+        label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
         contentView.backgroundColor = AppAppearance.tableViewBackground
         label.lineBreakMode = .byWordWrapping
     }

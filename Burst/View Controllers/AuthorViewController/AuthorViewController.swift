@@ -31,7 +31,11 @@ class AuthorViewController: UIViewController {
 extension AuthorViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return dataSource.header(forSection: section)
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: UserInfoSectionHeaderReuseID)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        dataSource.configure(headerView: view, inSection: section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

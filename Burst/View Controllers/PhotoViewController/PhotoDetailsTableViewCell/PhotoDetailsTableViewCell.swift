@@ -155,7 +155,11 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
 extension PhotoDetailsTableViewCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return dataSource.header(forSection: section)
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewHeaderWithButton.reuseIdentifier)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        dataSource.configure(headerView: view, forSection: section)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

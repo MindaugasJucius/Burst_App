@@ -6,7 +6,7 @@ enum UserInfo {
     case collections
 }
 
-let UserInfoSectioHeaderReuseID = "UserInfoSectioHeader"
+let UserInfoSectionHeaderReuseID = "UserInfoSectionHeader"
 fileprivate let PhotoHeight: CGFloat = 100
 
 class AuthorViewControllerDataSource: NSObject {
@@ -14,6 +14,8 @@ class AuthorViewControllerDataSource: NSObject {
     fileprivate weak var tableView: UITableView?
     fileprivate weak var viewController: UIViewController?
     fileprivate let user: User
+    fileprivate let dataController: AuthorDataController
+    fileprivate let onError: ErrorCallback
     
     fileprivate var availableUserInfo: [UserInfo] = []
     fileprivate var photoCollections: [PhotoCollection] = []
@@ -47,46 +49,28 @@ class AuthorViewControllerDataSource: NSObject {
         self.tableView = tableView
         self.viewController = viewController
         self.user = user
+        self.onError = { error in
+            viewController.handle(error: error)
+        }
+        self.dataController = AuthorDataController(user: user, onError: onError)
         super.init()
         registerViews()
         retrieveInfo()
     }
     
     private func retrieveInfo() {
-        retrieveCollections(forUser: user)
-        retrievePhotos(forUser: user)
-    }
-    
-    private func retrieveCollections(forUser user: User) {
-        guard let collectionCount = user.totalCollections,
-            collectionCount > 0 else {
-            return
-        }
-        UnsplashGeneric.unsplash(
-            getFromURL: user.usersCollectionsLink!,
-            success: { [unowned self] (collections: [PhotoCollection]) in
-                self.photoCollections = collections
-                self.availableUserInfo.append(.collections)
+        dataController.fetchUserInfo(
+            success: { [unowned self] userInfo in
+                if let collections = userInfo.collections {
+                    self.photoCollections = collections
+                    self.availableUserInfo.append(.collections)
+                }
+                if let photos = userInfo.photos {
+                    self.photos = photos
+                    self.availableUserInfo.append(.photos)
+                }
                 self.tableView?.reloadData()
                 NotificationCenter.default.post(name: ChildUpdateNotificationName, object: nil)
-            },
-            failure: { [unowned self] error in
-                self.viewController?.handle(error: error)
-            }
-        )
-    }
-    
-    private func retrievePhotos(forUser user: User) {
-        UnsplashGeneric.unsplash(
-            getFromURL: user.userProfileLinks.photos,
-            success: { [unowned self] (photos: [Photo]) in
-                self.photos = photos
-                self.availableUserInfo.append(.photos)
-                self.tableView?.reloadData()
-                NotificationCenter.default.post(name: ChildUpdateNotificationName, object: nil)
-            },
-            failure: { [unowned self] error in
-                self.viewController?.handle(error: error)
             }
         )
     }
@@ -94,8 +78,7 @@ class AuthorViewControllerDataSource: NSObject {
     private func registerViews() {
         let collectionsCellNib = UINib(nibName: CollectionViewContainerTableViewCell.className, bundle: nil)
         tableView?.register(collectionsCellNib, forCellReuseIdentifier: CollectionViewContainerTableViewCell.reuseIdentifier)
-        let headerNib = UINib(nibName: TableViewHeaderWithButton.className, bundle: nil)
-        tableView?.register(headerNib, forHeaderFooterViewReuseIdentifier: TableViewHeaderWithButton.reuseIdentifier)
+        tableView?.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: UserInfoSectionHeaderReuseID)
     }
     
     // MARK: - Configure cells
@@ -130,19 +113,14 @@ class AuthorViewControllerDataSource: NSObject {
         }
     }
     
-    func header(forSection section: Int) -> UIView? {
-        guard let header = tableView?.dequeueReusableHeaderFooterView(withIdentifier: TableViewHeaderWithButton.reuseIdentifier) as? TableViewHeaderWithButton else {
-            return nil
+    func configure(headerView: UIView, inSection section: Int) {
+        guard let header = headerView as? UITableViewHeaderFooterView else {
+            return
         }
-        header.configureLabel(
-            withTitle: title(forContent: availableUserInfo[section]),
-            color: .white,
-            font: AppAppearance.regularFont(
-                withSize: .headerSubtitle,
-                weight: .regular
-            )
-        )
-        return header
+        header.contentView.backgroundColor = AppAppearance.tableViewBackground
+        header.textLabel?.font = AppAppearance.regularFont(withSize: .headerSubtitle)
+        header.textLabel?.text = title(forContent: availableUserInfo[section])
+        header.textLabel?.textColor = .white
     }
     
     private func title(forContent content: UserInfo) -> String {
