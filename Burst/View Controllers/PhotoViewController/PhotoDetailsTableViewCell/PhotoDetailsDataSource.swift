@@ -26,19 +26,12 @@ class PhotoDetailsDataSource: NSObject {
         tableView?.register(headerNib, forHeaderFooterViewReuseIdentifier: TableViewHeaderWithButton.reuseIdentifier)
     }
     
-    // MARK: - Delegate helpers
-    
-    func header(forSection section: Int) -> UIView? {
-        guard let header = tableView?.dequeueReusableHeaderFooterView(withIdentifier: TableViewHeaderWithButton.reuseIdentifier) as? TableViewHeaderWithButton else {
-            return .none
-        }
-        configure(header: header, forSection: section)
-        return header
-    }
-    
     // MARK: - Configure reusable views
     
-    func configure(header: TableViewHeaderWithButton, forSection section: Int) {
+    func configure(headerView: UIView, forSection section: Int) {
+        guard let header = headerView as? TableViewHeaderWithButton else {
+            return
+        }
         let infoSection = availableInfo[section]
         let title = String(describing: availableInfo[section])
         if infoSection == .author {
