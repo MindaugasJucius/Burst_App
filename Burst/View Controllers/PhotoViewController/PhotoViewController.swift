@@ -33,7 +33,6 @@ class PhotoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.flashScrollIndicators()
     }
     
     // MARK: - Additional scrolling logic
@@ -150,6 +149,7 @@ extension PhotoViewController: StatefulContainerView {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.bounces = false
+        tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.delaysContentTouches = false
         for case let subview as UIScrollView in tableView.subviews {

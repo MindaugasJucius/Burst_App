@@ -10,7 +10,7 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        topLabel.font = AppAppearance.regularFont(withSize: .cellText)
+        topLabel.font = AppAppearance.regularFont(withSize: .headerSubtitle)
         topLabel.textColor = AppAppearance.white
         bottomLabel.font = AppAppearance.regularFont(withSize: .cellText)
         bottomLabel.textColor = AppAppearance.white

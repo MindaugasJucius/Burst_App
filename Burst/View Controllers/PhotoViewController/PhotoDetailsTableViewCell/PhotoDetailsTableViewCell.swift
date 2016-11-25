@@ -188,7 +188,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         )
         tableView.dataSource = dataSource
         tableView.alpha = 0
-        tableView.showsVerticalScrollIndicator = false
+        tableView.indicatorStyle = .white
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.delaysContentTouches = false

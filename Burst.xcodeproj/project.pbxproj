@@ -63,7 +63,7 @@
 		0382B1881DE7090900586B5C /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1871DE7090900586B5C /* UIView+Shadow.swift */; };
 		0382B18B1DE72DAC00586B5C /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1891DE72DAC00586B5C /* PhotoCollectionViewCell.swift */; };
 		0382B18C1DE72DAC00586B5C /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0382B18A1DE72DAC00586B5C /* PhotoCollectionViewCell.xib */; };
-		0382B18E1DE734A700586B5C /* AuthorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B18D1DE734A700586B5C /* AuthorDataController.swift */; };
+		0382B1931DE8732C00586B5C /* AuthorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1921DE8732C00586B5C /* AuthorDataController.swift */; };
 		039EF49C1DC65B19004E94E4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */; };
 		039EF49D1DC65B19004E94E4 /* SearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */; };
 		03A19E0C1DC539BD00078B4C /* UIView+NIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */; };
@@ -202,7 +202,7 @@
 		0382B1871DE7090900586B5C /* UIView+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		0382B1891DE72DAC00586B5C /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0382B18A1DE72DAC00586B5C /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
-		0382B18D1DE734A700586B5C /* AuthorDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorDataController.swift; sourceTree = "<group>"; };
+		0382B1921DE8732C00586B5C /* AuthorDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorDataController.swift; sourceTree = "<group>"; };
 		039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsViewController.xib; sourceTree = "<group>"; };
 		03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NIB.swift"; sourceTree = "<group>"; };
@@ -386,10 +386,10 @@
 		0382B1321DE2F0AC00586B5C /* AuthorViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0382B1921DE8732C00586B5C /* AuthorDataController.swift */,
 				0382B1331DE2F0BD00586B5C /* AuthorViewController.swift */,
 				0382B1391DE2F25400586B5C /* AuthorViewController.storyboard */,
 				0382B14A1DE36B7600586B5C /* AuthorViewControllerDataSource.swift */,
-				0382B18D1DE734A700586B5C /* AuthorDataController.swift */,
 			);
 			path = AuthorViewController;
 			sourceTree = "<group>";
@@ -775,7 +775,7 @@
 				032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */,
 				03001B941DD09D6F004D478C /* RecentSearchesViewController.swift in Sources */,
 				0382B1001DE1D25800586B5C /* UIView+Border.swift in Sources */,
-				0382B18E1DE734A700586B5C /* AuthorDataController.swift in Sources */,
+				0382B1931DE8732C00586B5C /* AuthorDataController.swift in Sources */,
 				03DC3AAC1D88782F00D18A48 /* PhotosTableViewController.swift in Sources */,
 				03314CBF1DDF02D600F04975 /* PhotoDetailsDataSource.swift in Sources */,
 				03DC3AA21D88782F00D18A48 /* ContainerViewController.swift in Sources */,
