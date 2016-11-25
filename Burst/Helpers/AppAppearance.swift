@@ -73,6 +73,9 @@ class AppAppearance: NSObject {
     
     static let darkRed = UIColor.colorWithHexString("c0392b")
     static let lightRed = UIColor.colorWithHexString("e74c3c")
+    static let midnightBlue = UIColor.colorWithHexString("2c3e50")
+    static let malibuBlue = UIColor.colorWithHexString("6BB9F0")
+    static let silverSandGray = UIColor.colorWithHexString("BDC3C7")
     
     static let white = UIColor.white
     

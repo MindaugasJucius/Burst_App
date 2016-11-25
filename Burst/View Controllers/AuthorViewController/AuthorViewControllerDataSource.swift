@@ -90,12 +90,16 @@ class AuthorViewControllerDataSource: NSObject {
         switch userInfo {
         case .collections:
             containerCell.layout = photoCollectionsCollectionViewLayout
-            containerCell.cellToRegister(cell: PhotoCollectionCollectionViewCell.self)
+            containerCell.cellToRegister(cell: PhotoCollectionCollectionViewCell.self, cellConfigurationCallback: nil)
             containerCell.model = photoCollections
             containerCell.isPagingEnabled = true
         case .photos:
             containerCell.layout = photoCollectionViewLayout
-            containerCell.cellToRegister(cell: PhotoCollectionViewCell.self)
+            containerCell.cellToRegister(cell: PhotoCollectionViewCell.self,
+                cellConfigurationCallback: { contentView in
+                    contentView.layer.cornerRadius = 6
+                }
+            )
             containerCell.model = photos
             containerCell.isPagingEnabled = false
         }

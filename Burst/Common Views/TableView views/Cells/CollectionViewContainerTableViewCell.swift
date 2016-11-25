@@ -1,11 +1,15 @@
 import UIKit
 import Unbox
 
+typealias CellContentViewCallback = (UIView) -> ()
+
 class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     fileprivate var registeredCellReuseIdentifier: String = ""
     
+    var customConfigCallback: CellContentViewCallback?
+
     var model: [Unboxable] = [] {
         didSet {
             guard !model.isEmpty else {
@@ -35,8 +39,9 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
         }
     }
     
-    func cellToRegister(cell: UICollectionViewCell.Type) {
+    func cellToRegister(cell: UICollectionViewCell.Type, cellConfigurationCallback: CellContentViewCallback?) {
         let nib = UINib(nibName: cell.className, bundle: nil)
+        customConfigCallback = cellConfigurationCallback
         collectionView.register(nib, forCellWithReuseIdentifier: cell.className)
         registeredCellReuseIdentifier = cell.className
     }
@@ -59,6 +64,7 @@ extension CollectionViewContainerTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: registeredCellReuseIdentifier, for: indexPath)
+        customConfigCallback?(cell)
         guard let reusableCell = cell as? ReusableView else {
             return cell
         }
