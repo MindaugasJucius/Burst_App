@@ -24,7 +24,7 @@ class MainTabBar: UITabBar {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let sizeThatFits = super.sizeThatFits(size)
-        return CGSize(width: sizeThatFits.width, height: sizeThatFits.height / 1.8)
+        return CGSize(width: sizeThatFits.width, height: sizeThatFits.height / 1.5)
     }
     
     // MARK: - Public methods
@@ -56,9 +56,9 @@ class MainTabBar: UITabBar {
     private func createShapeLayer(withPath path: UIBezierPath) -> CAShapeLayer {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = AppAppearance.lightRed.cgColor
+        shapeLayer.strokeColor = AppAppearance.malibuBlue.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 1.0
+        shapeLayer.lineWidth = 1.5
         return shapeLayer
     }
     

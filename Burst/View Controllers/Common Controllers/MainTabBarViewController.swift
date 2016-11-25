@@ -16,7 +16,7 @@ final class MainTabBarViewController: UITabBarController {
         self.launchscreenView = launchscreenView
         handlePreparationNotification()
         customTabBar = tabBar as? MainTabBar
-        let offset = UIOffset(horizontal: 0, vertical: -3)
+        let offset = UIOffset(horizontal: 0, vertical: -7)
         tabBar.items?.forEach { item in
             item.image = nil
             item.titlePositionAdjustment = offset

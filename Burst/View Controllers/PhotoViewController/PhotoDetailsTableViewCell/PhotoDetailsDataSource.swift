@@ -37,7 +37,6 @@ class PhotoDetailsDataSource: NSObject {
         if infoSection == .author {
             header.configure(
                 labelTitle: fullPhoto.uploader.name,
-                showButton: true,
                 showImage: true,
                 buttonTitle: "follow",
                 onButtonTap: {

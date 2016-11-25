@@ -3,12 +3,13 @@ import AlamofireImage
 
 class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
 
-    @IBOutlet weak var leftImageView: UIImageView!
+    @IBOutlet private weak var leftImageView: UIImageView!
     @IBOutlet private weak var button: InsetButton!
     @IBOutlet private weak var label: UILabel!
+    @IBOutlet private weak var separatorView: UIImageView!
     
-    var labelToImageView: NSLayoutConstraint?
-    var labelToContentView: NSLayoutConstraint?
+    private var labelToImageView: NSLayoutConstraint?
+    private var labelToContentView: NSLayoutConstraint?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,12 +18,18 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     
     // MARK: - Public
     
-    func configure(labelTitle: String, showButton: Bool = false, showImage: Bool = false, buttonTitle: String? = nil, onButtonTap: (() -> ())? = nil) {
+    func configure(labelTitle: String, showImage: Bool = false, buttonTitle: String? = nil, onButtonTap: (() -> ())? = nil) {
         label.text = labelTitle
         button.setTitle(buttonTitle, for: .normal)
-        button.isHidden = !showButton
+        button.isHidden = buttonTitle == nil
         button.onButtonTap = onButtonTap
+        separatorView.isHidden = showImage
         updateImageView(visible: showImage)
+    }
+    
+    func label(font: UIFont, textColor: UIColor) {
+        label.font = font
+        label.textColor = textColor
     }
     
     func image(withURL url: URL) {
@@ -36,6 +43,7 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     // MARK: - Private
     
     private func initialSetup() {
+        separatorView.backgroundColor = AppAppearance.silverSandGray
         label.textColor = AppAppearance.lightGray
         label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
         contentView.backgroundColor = AppAppearance.tableViewBackground
