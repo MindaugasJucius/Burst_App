@@ -8,6 +8,7 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var location: Location?
+    private var coordinateCenter: CLLocationCoordinate2D?
     
     // MARK: Lifecycle
     
@@ -35,19 +36,33 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     
     private func snapshot(withSnapshotter snapshotter: MKMapSnapshotter) {
         showAnimator()
-        snapshotter.start { [unowned self] snapshot, error in
-            self.hideAnimator()
+        snapshotter.start { [weak self] snapshot, error in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.hideAnimator()
             guard let snapshot = snapshot else {
                 return
             }
-            self.mapImageView.image = snapshot.image
+            strongSelf.mapImageView.image = snapshot.image
+            strongSelf.addPin()
         }
+    }
+    
+    private func addPin() {
+        let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+        var pointOnMap = contentView.center
+        pointOnMap.x = pointOnMap.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
+        pointOnMap.y = pointOnMap.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
+        pin.frame.origin = pointOnMap
+        contentView.addSubview(pin)
     }
     
     private func snapshotOptions(forLocation location: Location) -> MKMapSnapshotOptions {
         let snapshotOptions = MKMapSnapshotOptions()
         let coordinate = CLLocationCoordinate2D(latitude: location.position.latitude,
                                                 longitude: location.position.longitude)
+        coordinateCenter = coordinate
         let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7))
         snapshotOptions.region = region
         snapshotOptions.scale = UIScreen.main.scale
