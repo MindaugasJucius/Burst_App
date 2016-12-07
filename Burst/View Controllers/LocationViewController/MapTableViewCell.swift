@@ -22,7 +22,6 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     
     override func prepareForReuse() {
         activityIndicator.alpha = 0
-        //mapImageView.image = nil
     }
     
     // MARK: Configuration

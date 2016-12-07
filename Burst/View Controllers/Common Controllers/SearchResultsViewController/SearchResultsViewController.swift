@@ -171,16 +171,10 @@ class SearchResultsViewController: UIViewController {
         var currentIndexPaths = [IndexPath]()
         var indexPathsToDelete = [IndexPath]()
         var cellCount = 0
-        var newState: ContainerViewState = .normal
         if results.isEmpty { // no results - delete previous items and show empty cell
-            newState = .empty
-            fetchedResults = []
-            indexPathsToDelete = indexPaths
-            indexPaths = []
-            currentIndexPaths.append(IndexPath(item: 0, section: 0))
-            cellCount = currentIndexPaths.count
+            updateCollectionViewToEmptyState()
+            return
         } else if currentSearchPage == 1 { // new search - delete previous items + show new results
-            newState = .normal
             fetchedResults = results
             indexPathsToDelete = indexPaths
             indexPaths = []
@@ -194,22 +188,33 @@ class SearchResultsViewController: UIViewController {
             cellCount = allItemsCount
             fetchedResults.append(contentsOf: results)
         }
-        
+        currentItemCount = cellCount
+        performUpdates(pathsToDelete: indexPathsToDelete, pathsToAdd: currentIndexPaths)
+    }
+    
+    private func updateCollectionViewToEmptyState() {
+        fetchedResults = []
+        let indexPathsToDelete = indexPaths
+        indexPaths = []
+        currentItemCount = 1
+        performUpdates(pathsToDelete: indexPathsToDelete, pathsToAdd: [IndexPath(item: 0, section: 0)])
+    }
+    
+    private func performUpdates(pathsToDelete: [IndexPath], pathsToAdd: [IndexPath]) {
         collectionView.performBatchUpdates(
             { [weak self] in
                 guard let strongSelf = self else {
                     return
                 }
-                if !indexPathsToDelete.isEmpty {
-                    strongSelf.currentItemCount = 0
-                    strongSelf.collectionView.deleteItems(at: indexPathsToDelete)
+                if !pathsToDelete.isEmpty {
+                    //strongSelf.currentItemCount = 0
+                    strongSelf.collectionView.deleteItems(at: pathsToDelete)
                 }
-                strongSelf.currentItemCount = cellCount
-                strongSelf.state = newState
-                strongSelf.collectionView.insertItems(at: currentIndexPaths)
+                strongSelf.state = strongSelf.fetchedResults.isEmpty ? .empty : .normal
+                strongSelf.collectionView.insertItems(at: pathsToAdd)
             },
             completion: { [weak self] finished in
-                self?.indexPaths.append(contentsOf: currentIndexPaths)
+                self?.indexPaths.append(contentsOf: pathsToAdd)
                 self?.collectionView.finishInfiniteScroll()
             }
         )
@@ -250,6 +255,8 @@ class SearchResultsViewController: UIViewController {
             failure: { [weak self] error in
                 self?.searchRequest = nil
                 self?.searchResults = nil
+                self?.hideActivityIndicator()
+                self?.updateCollectionViewToEmptyState()
                 self?.handle(error: error)
             }
         )

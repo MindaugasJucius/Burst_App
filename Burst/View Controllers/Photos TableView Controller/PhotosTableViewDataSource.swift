@@ -62,7 +62,8 @@ class PhotosTableViewDataSource: NSObject {
             refreshControl.endRefreshing()
             return
         }
-        let range = Range(uncheckedBounds: (lower: 0, upper: fetchedPhotos.count))
+        let upperRange = fetchedPhotos.count == 0 ? 1 : fetchedPhotos.count
+        let range = Range(uncheckedBounds: (lower: 0, upper: upperRange))
         let sectionsToDeleteIndexSet = IndexSet(integersIn: range)
         currentPage = InitialPageIndex
         fetchedPhotos = []
