@@ -46,8 +46,11 @@ class PhotoDetailsDataSource: NSObject {
             header.image(withURL: fullPhoto.uploader.userProfileImage.medium)
         } else {
             header.configure(labelTitle: title)
+            let font = AppAppearance.regularFont(withSize: .systemSizePlusOne, weight: .regular)
+            header.label(font: font, textColor: AppAppearance.lightGray)
         }
     }
+    
 }
 
 extension PhotoDetailsDataSource: UITableViewDataSource {

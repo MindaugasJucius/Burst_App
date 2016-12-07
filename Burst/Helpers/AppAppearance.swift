@@ -6,6 +6,7 @@ enum FontSize: CGFloat {
     case headerSubtitle = 14
     case iconSize = 9
     case systemSize = 15
+    case systemSizePlusOne = 16
     case collectionTitleSize = 24
 }
 
@@ -66,7 +67,10 @@ class AppAppearance: NSObject {
     // MARK: - Colors
     
     static let lightBlack = UIColor.colorWithHexString("101010")
+    
     static let lightGray = UIColor.colorWithHexString("EBEDEE")
+    static let darkGray = UIColor.colorWithHexString("333333")
+    static let gray666 = UIColor.colorWithHexString("666666")
     
     static let darkBlue = UIColor.colorWithHexString("0465C2")
     static let lightBlue = UIColor.colorWithHexString("469EF4")

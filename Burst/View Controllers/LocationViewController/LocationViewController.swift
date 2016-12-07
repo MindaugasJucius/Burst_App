@@ -18,11 +18,17 @@ class LocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        edgesForExtendedLayout = []
+        automaticallyAdjustsScrollViewInsets = false
         let nib = UINib(nibName: MapTableViewCell.className, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: MapTableViewCell.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isUserInteractionEnabled = false
+        tableView.backgroundColor = AppAppearance.tableViewBackground
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = nil
+        tableView.tableHeaderView = nil
     }
     
     func contentHeight() -> CGFloat {

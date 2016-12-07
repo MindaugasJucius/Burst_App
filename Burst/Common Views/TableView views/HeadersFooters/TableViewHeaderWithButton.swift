@@ -43,7 +43,8 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     // MARK: - Private
     
     private func initialSetup() {
-        separatorView.backgroundColor = AppAppearance.silverSandGray
+        separatorView.backgroundColor = AppAppearance.tableViewBackground
+        separatorView.layer.addSublayer(separatorLayer())
         label.textColor = AppAppearance.lightGray
         label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
         contentView.backgroundColor = AppAppearance.tableViewBackground
@@ -54,6 +55,14 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         labelToContentView = label.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
             constant: 15)
+    }
+    
+    private func separatorLayer() -> CALayer {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 0.5)
+        layer.backgroundColor = AppAppearance.darkGray.cgColor
+        separatorView.layer.addSublayer(layer)
+        return layer
     }
     
     private func updateImageView(visible: Bool) {
@@ -67,6 +76,8 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         labelToImageView?.isActive = false
         labelToContentView?.isActive = false
         leftImageView.isHidden = false
+        label.textColor = AppAppearance.lightGray
+        label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
     }
     
 }

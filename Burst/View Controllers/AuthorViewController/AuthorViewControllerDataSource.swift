@@ -122,9 +122,9 @@ class AuthorViewControllerDataSource: NSObject {
             return
         }
         header.contentView.backgroundColor = AppAppearance.tableViewBackground
-        header.textLabel?.font = AppAppearance.regularFont(withSize: .headerSubtitle)
+        header.textLabel?.font = AppAppearance.regularFont(withSize: .sectionHeaderTitle)
         header.textLabel?.text = title(forContent: availableUserInfo[section])
-        header.textLabel?.textColor = .white
+        header.textLabel?.textColor = AppAppearance.gray666
     }
     
     private func title(forContent content: UserInfo) -> String {

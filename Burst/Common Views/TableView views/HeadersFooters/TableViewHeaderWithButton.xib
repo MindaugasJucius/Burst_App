@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="30" id="D4P-jD-3H6"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkK-8Z-e3i" customClass="InsetButton" customModule="Burst" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkK-8Z-e3i" customClass="InsetButton" customModule="Burst" customModuleProvider="target">
                     <rect key="frame" x="306" y="11" width="54" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kwM-7t-KQP"/>
@@ -36,7 +36,7 @@
                     <state key="normal" title="Button"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUs-BM-lJi">
-                    <rect key="frame" x="55" y="34" width="304" height="1"/>
+                    <rect key="frame" x="55" y="31" width="304" height="1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Q2C-6R-xBj"/>
                     </constraints>
@@ -44,7 +44,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9zW-q4-ZzC"/>
-                <constraint firstItem="JUs-BM-lJi" firstAttribute="top" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="4" id="A4g-ly-3ed"/>
+                <constraint firstItem="JUs-BM-lJi" firstAttribute="top" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="1" id="A4g-ly-3ed"/>
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="Go9-SH-SkS"/>
                 <constraint firstItem="ZN4-1g-aut" firstAttribute="leading" secondItem="lDh-Gh-25g" secondAttribute="trailing" constant="10" placeholder="YES" id="Kiu-fI-Z8C"/>
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="trailing" constant="15" id="PKX-Re-OKd"/>
