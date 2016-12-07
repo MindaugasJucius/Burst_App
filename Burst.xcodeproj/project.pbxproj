@@ -64,6 +64,10 @@
 		0382B18B1DE72DAC00586B5C /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1891DE72DAC00586B5C /* PhotoCollectionViewCell.swift */; };
 		0382B18C1DE72DAC00586B5C /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0382B18A1DE72DAC00586B5C /* PhotoCollectionViewCell.xib */; };
 		0382B1931DE8732C00586B5C /* AuthorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1921DE8732C00586B5C /* AuthorDataController.swift */; };
+		0382B1971DE8A91A00586B5C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1951DE8A91A00586B5C /* LocationViewController.swift */; };
+		0382B1981DE8A91A00586B5C /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0382B1961DE8A91A00586B5C /* LocationViewController.xib */; };
+		0382B19B1DE8AA3E00586B5C /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B1991DE8AA3E00586B5C /* MapTableViewCell.swift */; };
+		0382B19C1DE8AA3E00586B5C /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0382B19A1DE8AA3E00586B5C /* MapTableViewCell.xib */; };
 		039EF49C1DC65B19004E94E4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */; };
 		039EF49D1DC65B19004E94E4 /* SearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */; };
 		03A19E0C1DC539BD00078B4C /* UIView+NIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */; };
@@ -203,6 +207,10 @@
 		0382B1891DE72DAC00586B5C /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0382B18A1DE72DAC00586B5C /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		0382B1921DE8732C00586B5C /* AuthorDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorDataController.swift; sourceTree = "<group>"; };
+		0382B1951DE8A91A00586B5C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		0382B1961DE8A91A00586B5C /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		0382B1991DE8AA3E00586B5C /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
+		0382B19A1DE8AA3E00586B5C /* MapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
 		039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsViewController.xib; sourceTree = "<group>"; };
 		03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NIB.swift"; sourceTree = "<group>"; };
@@ -440,6 +448,17 @@
 			path = HeadersFooters;
 			sourceTree = "<group>";
 		};
+		0382B1941DE8A8FF00586B5C /* LocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0382B1951DE8A91A00586B5C /* LocationViewController.swift */,
+				0382B1961DE8A91A00586B5C /* LocationViewController.xib */,
+				0382B1991DE8AA3E00586B5C /* MapTableViewCell.swift */,
+				0382B19A1DE8AA3E00586B5C /* MapTableViewCell.xib */,
+			);
+			path = LocationViewController;
+			sourceTree = "<group>";
+		};
 		039EF4991DC65B19004E94E4 /* SearchResultsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +541,7 @@
 		03DC3A911D88782F00D18A48 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0382B1941DE8A8FF00586B5C /* LocationViewController */,
 				0382B1321DE2F0AC00586B5C /* AuthorViewController */,
 				03314CA41DDDD30F00F04975 /* PhotoViewController */,
 				03DC3A921D88782F00D18A48 /* Common Controllers */,
@@ -696,6 +716,7 @@
 				03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */,
 				03314CC61DDF031400F04975 /* FullPhotoTableViewCell.xib in Resources */,
 				03C7D22B1D18588E0040A875 /* Assets.xcassets in Resources */,
+				0382B19C1DE8AA3E00586B5C /* MapTableViewCell.xib in Resources */,
 				03001B991DD1E79E004D478C /* Searches.plist in Resources */,
 				0382B1521DE376B500586B5C /* TableViewHeaderWithButton.xib in Resources */,
 				0382B18C1DE72DAC00586B5C /* PhotoCollectionViewCell.xib in Resources */,
@@ -707,6 +728,7 @@
 				034422A11DCB28AC008EF3B1 /* EmptyStateTableViewCell.xib in Resources */,
 				03DC3AB61D8878F200D18A48 /* TitleView.xib in Resources */,
 				0382B1491DE3676000586B5C /* PhotoCollectionCollectionViewCell.xib in Resources */,
+				0382B1981DE8A91A00586B5C /* LocationViewController.xib in Resources */,
 				037A6E281DAF8E42000A774C /* PhotosTableViewController.storyboard in Resources */,
 				039EF49D1DC65B19004E94E4 /* SearchResultsViewController.xib in Resources */,
 				03673ED41DC6386900FE37E7 /* EmptyStateView.xib in Resources */,
@@ -765,6 +787,7 @@
 				0382B14B1DE36B7600586B5C /* AuthorViewControllerDataSource.swift in Sources */,
 				03001B9F1DD1EB7E004D478C /* RecentSearch.swift in Sources */,
 				03DC3A811D88781E00D18A48 /* PhotoSavingHelper.swift in Sources */,
+				0382B19B1DE8AA3E00586B5C /* MapTableViewCell.swift in Sources */,
 				03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */,
 				03001B9B1DD1E8A1004D478C /* Dictionary+Plist.swift in Sources */,
 				03C35EE51DC384C60032F1DD /* UIView+SubviewOfClass.swift in Sources */,
@@ -790,6 +813,7 @@
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				0382B1551DE376DF00586B5C /* CollectionViewContainerTableViewCell.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
+				0382B1971DE8A91A00586B5C /* LocationViewController.swift in Sources */,
 				0382B1351DE2F0BD00586B5C /* AuthorViewController.swift in Sources */,
 				0382B18B1DE72DAC00586B5C /* PhotoCollectionViewCell.swift in Sources */,
 				0382B13E1DE302CA00586B5C /* PhotoDataController.swift in Sources */,

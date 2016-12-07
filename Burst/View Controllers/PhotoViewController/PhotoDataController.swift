@@ -10,6 +10,8 @@ extension PhotoInfoType {
         switch self {
         case .author:
             return AuthorViewController.self
+        case .location:
+            return LocationViewController.self
         default:
             return nil
         }
@@ -46,6 +48,11 @@ class PhotoDataController: NSObject {
                 return TableViewCellDefaultHeight
             }
             return authorController.contentHeight()
+        case .location:
+            guard let locationController = infoControllers[infoType] as? LocationViewController else {
+                return TableViewCellDefaultHeight
+            }
+            return locationController.contentHeight()
         default:
             return TableViewCellDefaultHeight
         }
@@ -55,14 +62,24 @@ class PhotoDataController: NSObject {
         let photoInfo = photo.checkForAvailableInfo()
         var photoInfoControllersDict: CorrespondingInfoControllers = [:]
         photoInfo.forEach { [unowned self] photoInfoType in
-            if photoInfoType == .author {
+            switch photoInfoType {
+            case .author:
                 guard let authorType = photoInfoType.controllerTypeForInfo as? AuthorViewController.Type,
                     let controller = authorType.instantiate(forPhotoDetails: true) else {
-                    return
+                        return
                 }
                 controller.user = photo.uploader
                 photoInfoControllersDict[photoInfoType] = controller
                 self.infoViews[photoInfoType] = controller.view
+            case .location:
+                guard let location = photo.location else {
+                    return
+                }
+                let controller = LocationViewController(location: location)
+                photoInfoControllersDict[photoInfoType] = controller
+                self.infoViews[photoInfoType] = controller.view
+            default:
+                return
             }
         }
         return photoInfoControllersDict
