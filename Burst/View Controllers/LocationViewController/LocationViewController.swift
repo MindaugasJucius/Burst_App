@@ -3,7 +3,7 @@ import BurstAPI
 
 class LocationViewController: UIViewController {
     
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak fileprivate var tableView: UITableView!
 
     fileprivate let location: Location
     
@@ -30,7 +30,11 @@ class LocationViewController: UIViewController {
         tableView.tableFooterView = nil
         tableView.tableHeaderView = nil
     }
-    
+
+}
+
+extension LocationViewController: PhotoInfoContentController {
+
     func contentHeight() -> CGFloat {
         return tableView.contentSize.height
     }

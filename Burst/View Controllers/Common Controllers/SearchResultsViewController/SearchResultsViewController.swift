@@ -235,6 +235,7 @@ class SearchResultsViewController: UIViewController {
         guard let query = delayer.userInfo as? String else {
             return
         }
+        print("searching")
         searchQuery = query
         currentSearchPage = 1
         onSearchOccurence?(query)
@@ -336,7 +337,7 @@ extension SearchResultsViewController: UISearchResultsUpdating {
         }
         showActivityIndicator()
         searchDelayer = Timer.scheduledTimer(
-            timeInterval: 0.5,
+            timeInterval: 1,
             target: self,
             selector: #selector(search(withDelayer:)),
             userInfo: searchText,

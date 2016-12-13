@@ -136,10 +136,7 @@ class AuthorViewControllerDataSource: NSObject {
             }
             contentCount = userPhotoCount
         case .collections:
-            guard let userCollectionCount = user.totalCollections else {
-                return "\(content)"
-            }
-            contentCount = userCollectionCount
+            contentCount = photoCollections.count
         }
         return "\(contentCount) \(content)"
     }

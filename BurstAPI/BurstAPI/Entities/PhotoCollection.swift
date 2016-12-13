@@ -9,7 +9,7 @@ public class PhotoCollection: NSObject, Unboxable {
     public let photosCount: Int
     public let privateCollection: Bool
     public let shareKey: String
-    public let coverPhoto: Photo
+    public let coverPhoto: Photo?
     public let collectionOwner: User
     
     required public init(unboxer: Unboxer) throws {
@@ -20,7 +20,7 @@ public class PhotoCollection: NSObject, Unboxable {
         self.photosCount = try unboxer.unbox(key: "total_photos")
         self.privateCollection = try unboxer.unbox(key: "private")
         self.shareKey = try unboxer.unbox(key: "share_key")
-        self.coverPhoto = try unboxer.unbox(key: "cover_photo")
+        self.coverPhoto = unboxer.unbox(key: "cover_photo")
         self.collectionOwner = try unboxer.unbox(key: "user")
         super.init()
     }

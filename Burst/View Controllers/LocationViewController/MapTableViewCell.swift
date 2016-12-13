@@ -28,6 +28,7 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     
     func configure(forLocation location: Location) {
         self.location = location
+        activityIndicator.startAnimating()
         let options = snapshotOptions(forLocation: location)
         let snapshotter = MKMapSnapshotter(options: options)
         snapshot(withSnapshotter: snapshotter)
@@ -73,16 +74,11 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     // MARK: - Activity indicator
     
     private func showAnimator() {
-        activityIndicator.startAnimating()
         UIView.fadeIn(view: activityIndicator, completion: nil)
     }
     
     private func hideAnimator() {
-        UIView.fadeOut(view: activityIndicator,
-            completion: { [unowned self] in
-                self.activityIndicator.stopAnimating()
-            }
-        )
+        UIView.fadeOut(view: activityIndicator, completion: nil)
     }
     
 }

@@ -22,6 +22,10 @@ class AuthorViewController: UIViewController {
         configureCommonState()
     }
     
+}
+
+extension AuthorViewController: PhotoInfoContentController {
+    
     func contentHeight() -> CGFloat {
         return tableView.contentSize.height
     }

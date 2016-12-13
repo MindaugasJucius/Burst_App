@@ -27,7 +27,7 @@ class PhotoViewControllerDataSource: NSObject {
                 self.add(childrenViewControllers: self.dataController.infoControllers)
                 self.fullPhoto = retrievedPhoto
                 let detailsPath = IndexPath(item: 1, section: 0)
-                self.tableView?.reloadRows(at: [detailsPath], with: .none)
+                (self.tableView?.cellForRow(at: detailsPath) as? PhotoDetailsTableViewCell)?.update(photo: retrievedPhoto, infoViews: self.dataController.infoViews)
             },
             failure: { error in
                 viewController.handle(error: error)
@@ -57,8 +57,7 @@ class PhotoViewControllerDataSource: NSObject {
     fileprivate func setup(photoDetailsCell: PhotoDetailsTableViewCell) -> PhotoDetailsTableViewCell {
         photoDetailsCell.isUserInteractionEnabled = false
         photoDetailsCell.parentTableView = tableView
-        photoDetailsCell.photoInfoViews = dataController.infoViews
-        photoDetailsCell.photo = fullPhoto ?? photo
+        photoDetailsCell.update(photo: fullPhoto ?? photo, infoViews: dataController.infoViews)
         photoDetailsCell.heightForPhotoDetails = { [unowned self] indexPath in
             return self.contentHeight(forIndexPath: indexPath)
         }

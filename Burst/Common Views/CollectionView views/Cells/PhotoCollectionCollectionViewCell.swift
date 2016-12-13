@@ -45,8 +45,9 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
     private func configure(forCollection collection: PhotoCollection) {
         countLabel.text = "\(collection.photosCount) photos"
         nameLabel.text = collection.title.uppercased()
-        imageView.backgroundColor = collection.coverPhoto.color
-        imageView.af_setImage(withURL: collection.coverPhoto.urls.small,
+        guard let coverPhoto = collection.coverPhoto else { return }
+        imageView.backgroundColor = coverPhoto.color
+        imageView.af_setImage(withURL: coverPhoto.urls.small,
                               imageTransition: .crossDissolve(1.0),
                               runImageTransitionIfCached: false)
     }

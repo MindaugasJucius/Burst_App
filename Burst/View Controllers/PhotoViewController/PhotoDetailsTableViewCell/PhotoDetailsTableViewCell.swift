@@ -41,15 +41,13 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
     var didEndPanWithPositiveVelocity: (() -> ())?
     var didEndPanWithNegativeVelocity: (() -> ())?
     var heightForPhotoDetails: ((IndexPath) -> (CGFloat))?
-    var photoInfoViews: CorrespondingInfoViews = [:]
-    
-    var photo: Photo? {
-        didSet {
-            configureCommonState()
-        }
-    }
     
     // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureCommonState()
+    }
     
     override func prepareForReuse() {
         parentTableView = nil
@@ -102,6 +100,16 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
         lastYVelocity = 0
     }
     
+    func update(photo: Photo, infoViews: CorrespondingInfoViews) {
+        dataSource = PhotoDetailsDataSource(
+            tableView: tableView,
+            photo: photo,
+            correspondingViews: infoViews
+        )
+        tableView.dataSource = dataSource
+        handleUpdate()
+    }
+    
     private func handlePanFinish() {
         if lastYVelocity > 0 {
             didEndPanWithPositiveVelocity?()
@@ -118,13 +126,13 @@ class PhotoDetailsTableViewCell: UITableViewCell, ReusableView {
             object: nil,
             queue: nil,
             using: { [weak self] notification in
-                self?.handleChildUpdate()
+                self?.handleUpdate()
             }
         )
         
     }
     
-    private func handleChildUpdate() {
+    private func handleUpdate() {
         tableView.reloadData()
     }
     
@@ -174,18 +182,12 @@ extension PhotoDetailsTableViewCell: UITableViewDelegate {
 extension PhotoDetailsTableViewCell: StatefulContainerView {
     
     func configureCommonState() {
-        guard let photo = photo else { return }
         handleChildUpdateNotification()
         topTableViewSpacingConstraint.constant = TopTableViewSpacing
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.delegate = self
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 50
-        dataSource = PhotoDetailsDataSource(
-            tableView: tableView,
-            photo: photo,
-            correspondingViews: photoInfoViews
-        )
         tableView.dataSource = dataSource
         tableView.alpha = 0
         tableView.indicatorStyle = .white

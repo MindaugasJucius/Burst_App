@@ -4,6 +4,10 @@ typealias CorrespondingInfoControllers = [PhotoInfoType: UIViewController]
 typealias CorrespondingInfoViews = [PhotoInfoType: UIView]
 typealias PhotoInfoCallback = (_ photo: Photo) -> ()
 
+protocol PhotoInfoContentController: class {
+    func contentHeight() -> CGFloat
+}
+
 extension PhotoInfoType {
     
     var controllerTypeForInfo: UIViewController.Type? {
@@ -43,18 +47,22 @@ class PhotoDataController: NSObject {
     
     func contentHeight(forInfoType infoType: PhotoInfoType) -> CGFloat {
         switch infoType {
-        case .author:
-            guard let authorController = infoControllers[infoType] as? AuthorViewController else {
+        case .author, .location:
+            guard let controller = infoControllers[infoType] as? PhotoInfoContentController else {
                 return TableViewCellDefaultHeight
             }
-            return authorController.contentHeight()
-        case .location:
-            guard let locationController = infoControllers[infoType] as? LocationViewController else {
-                return TableViewCellDefaultHeight
-            }
-            return locationController.contentHeight()
+            return controller.contentHeight()
         default:
             return TableViewCellDefaultHeight
+        }
+    }
+    
+    func contentHeight() -> CGFloat {
+        return Array(infoControllers.values).reduce(0 as CGFloat) { partialResult, element in
+            guard let contentController = element as? PhotoInfoContentController else {
+                    return partialResult
+            }
+            return partialResult + contentController.contentHeight()
         }
     }
     
