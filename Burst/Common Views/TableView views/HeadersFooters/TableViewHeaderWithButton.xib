@@ -36,25 +36,24 @@
                     <state key="normal" title="Button"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUs-BM-lJi">
-                    <rect key="frame" x="55" y="31" width="304" height="1"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Q2C-6R-xBj"/>
                     </constraints>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="ZN4-1g-aut" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7Eq-rK-hLV"/>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9zW-q4-ZzC"/>
-                <constraint firstItem="JUs-BM-lJi" firstAttribute="top" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="1" id="A4g-ly-3ed"/>
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="Go9-SH-SkS"/>
                 <constraint firstItem="ZN4-1g-aut" firstAttribute="leading" secondItem="lDh-Gh-25g" secondAttribute="trailing" constant="10" placeholder="YES" id="Kiu-fI-Z8C"/>
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="trailing" constant="15" id="PKX-Re-OKd"/>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="SNr-ZS-owg"/>
-                <constraint firstAttribute="trailing" secondItem="JUs-BM-lJi" secondAttribute="trailing" constant="16" id="Sr4-1Y-xNv"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="10" id="VIP-zO-Ohj"/>
-                <constraint firstItem="JUs-BM-lJi" firstAttribute="leading" secondItem="ZN4-1g-aut" secondAttribute="leading" id="tXI-CB-Noq"/>
+                <constraint firstAttribute="bottom" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="10" id="VIP-zO-Ohj"/>
+                <constraint firstAttribute="trailing" secondItem="JUs-BM-lJi" secondAttribute="trailing" id="eWj-jg-rHh"/>
+                <constraint firstItem="JUs-BM-lJi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qEA-IN-tQb"/>
+                <constraint firstItem="JUs-BM-lJi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xYm-GP-JU1"/>
                 <constraint firstAttribute="trailing" secondItem="wkK-8Z-e3i" secondAttribute="trailing" constant="15" id="xdn-GC-ZB6"/>
-                <constraint firstItem="ZN4-1g-aut" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="ztF-ZE-Il9"/>
+                <constraint firstItem="ZN4-1g-aut" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="ztF-ZE-Il9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

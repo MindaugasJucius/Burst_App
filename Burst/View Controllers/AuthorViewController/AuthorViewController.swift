@@ -58,6 +58,7 @@ extension AuthorViewController: StatefulContainerView {
         if containedInTableView {
             tableView.tableHeaderView = nil
         }
+        view.backgroundColor = AppAppearance.tableViewBackground
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 30
         tableView.delegate = self

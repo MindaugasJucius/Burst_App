@@ -18,10 +18,11 @@ class MapTableViewCell: UITableViewCell, ReusableView {
         activityIndicator.alpha = 0
         activityIndicator.activityIndicatorViewStyle = .white
         mapImageView.backgroundColor = AppAppearance.lightBlack
-        contentView.backgroundColor = AppAppearance.tableViewBackground
+        contentView.backgroundColor = AppAppearance.lightBlack
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         activityIndicator.alpha = 0
     }
     
@@ -53,6 +54,7 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     private func addPin() {
         let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
         var pointOnMap = contentView.center
+        pin.animatesDrop = false
         pointOnMap.x = pointOnMap.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
         pointOnMap.y = pointOnMap.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
         pin.frame.origin = pointOnMap

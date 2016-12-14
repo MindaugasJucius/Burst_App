@@ -29,6 +29,7 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         button.isHidden = buttonTitle == nil
         button.onButtonTap = onButtonTap
         separatorView.isHidden = showImage
+        contentView.backgroundColor = showImage ? AppAppearance.tableViewBackground : AppAppearance.lightBlack
         updateImageView(visible: showImage)
     }
     
@@ -48,11 +49,10 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     // MARK: - Private
     
     private func initialSetup() {
-        separatorView.backgroundColor = AppAppearance.tableViewBackground
+        separatorView.backgroundColor = AppAppearance.lightBlack
         separatorView.layer.addSublayer(separatorLayer())
         label.textColor = AppAppearance.lightGray
         label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
-        contentView.backgroundColor = AppAppearance.tableViewBackground
         label.lineBreakMode = .byWordWrapping
         labelToImageView = label.leadingAnchor.constraint(
             equalTo: leftImageView.trailingAnchor,
@@ -66,7 +66,7 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
     
     private func separatorLayer() -> CALayer {
         let layer = CALayer()
-        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height: 0.5)
+        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0.5)
         layer.backgroundColor = AppAppearance.darkGray.cgColor
         separatorView.layer.addSublayer(layer)
         return layer
@@ -76,6 +76,9 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         leftImageView.isHidden = !visible
         labelToImageView?.isActive = visible
         labelToContentView?.isActive = !visible
+        let verticalSeparatorConstant = visible ? VerticalSpacingWithImage : VerticalSpacingNoImage
+        labelToBottom.constant = verticalSeparatorConstant
+        labelToTop.constant = verticalSeparatorConstant
     }
     
     override func prepareForReuse() {
