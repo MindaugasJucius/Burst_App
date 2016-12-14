@@ -73,8 +73,6 @@ extension PhotoDetailsDataSource: UITableViewDataSource {
             }
             viewForInfo.frame = cell.bounds
             cell.contentView.insertSubview(viewForInfo, at: 0)
-        } else {
-            //cell.textLabel?.text = "\(infoForSection)"
         }
         return cell
     }

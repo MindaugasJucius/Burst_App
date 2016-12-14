@@ -177,6 +177,10 @@ extension PhotoDetailsTableViewCell: UITableViewDelegate {
         return heightClosure(indexPath)
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
 }
 
 extension PhotoDetailsTableViewCell: StatefulContainerView {
@@ -187,7 +191,7 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         tableView.backgroundColor = AppAppearance.tableViewBackground
         tableView.delegate = self
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        tableView.estimatedSectionHeaderHeight = 50
+        tableView.estimatedSectionHeaderHeight = 30
         tableView.dataSource = dataSource
         tableView.alpha = 0
         tableView.indicatorStyle = .white

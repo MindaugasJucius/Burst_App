@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eal-Lh-QpL">
-                        <rect key="frame" x="0.0" y="0.0" width="326" height="215"/>
+                        <rect key="frame" x="15" y="0.0" width="296" height="215"/>
                     </imageView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TRu-lR-KER">
                         <rect key="frame" x="153" y="97" width="20" height="20"/>
@@ -30,8 +30,8 @@
                     <constraint firstItem="TRu-lR-KER" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ReV-Jn-yxy"/>
                     <constraint firstItem="TRu-lR-KER" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="UqI-t8-tg9"/>
                     <constraint firstAttribute="bottom" secondItem="Eal-Lh-QpL" secondAttribute="bottom" id="dDj-rY-DJf"/>
-                    <constraint firstItem="Eal-Lh-QpL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kyf-EM-1DO"/>
-                    <constraint firstAttribute="trailing" secondItem="Eal-Lh-QpL" secondAttribute="trailing" id="tNf-Y7-mq5"/>
+                    <constraint firstItem="Eal-Lh-QpL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kyf-EM-1DO"/>
+                    <constraint firstAttribute="trailing" secondItem="Eal-Lh-QpL" secondAttribute="trailing" constant="15" id="tNf-Y7-mq5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

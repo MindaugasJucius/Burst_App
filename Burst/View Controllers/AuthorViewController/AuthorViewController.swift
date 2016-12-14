@@ -21,7 +21,7 @@ class AuthorViewController: UIViewController {
         super.viewDidLoad()
         configureCommonState()
     }
-    
+
 }
 
 extension AuthorViewController: PhotoInfoContentController {

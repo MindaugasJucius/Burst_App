@@ -16,20 +16,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZN4-1g-aut">
-                    <rect key="frame" x="55" y="11" width="42" height="19"/>
+                    <rect key="frame" x="55" y="10" width="42" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-Gh-25g">
-                    <rect key="frame" x="15" y="5" width="30" height="30"/>
+                    <rect key="frame" x="15" y="4.5" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="3hw-Pb-NTM"/>
                         <constraint firstAttribute="height" constant="30" id="D4P-jD-3H6"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkK-8Z-e3i" customClass="InsetButton" customModule="Burst" customModuleProvider="target">
-                    <rect key="frame" x="306" y="11" width="54" height="20"/>
+                    <rect key="frame" x="306" y="10.5" width="54" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kwM-7t-KQP"/>
                     </constraints>
@@ -50,7 +50,6 @@
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="trailing" constant="15" id="PKX-Re-OKd"/>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="SNr-ZS-owg"/>
                 <constraint firstAttribute="trailing" secondItem="JUs-BM-lJi" secondAttribute="trailing" constant="16" id="Sr4-1Y-xNv"/>
-                <constraint firstItem="ZN4-1g-aut" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TBC-pX-qCG"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="10" id="VIP-zO-Ohj"/>
                 <constraint firstItem="JUs-BM-lJi" firstAttribute="leading" secondItem="ZN4-1g-aut" secondAttribute="leading" id="tXI-CB-Noq"/>
                 <constraint firstAttribute="trailing" secondItem="wkK-8Z-e3i" secondAttribute="trailing" constant="15" id="xdn-GC-ZB6"/>
@@ -61,6 +60,8 @@
             <connections>
                 <outlet property="button" destination="wkK-8Z-e3i" id="Pz3-AT-59f"/>
                 <outlet property="label" destination="ZN4-1g-aut" id="iqk-jd-StP"/>
+                <outlet property="labelToBottom" destination="VIP-zO-Ohj" id="Sad-Yi-FIm"/>
+                <outlet property="labelToTop" destination="ztF-ZE-Il9" id="ATY-Wx-pbN"/>
                 <outlet property="leftImageView" destination="lDh-Gh-25g" id="snt-2x-prj"/>
                 <outlet property="separatorView" destination="JUs-BM-lJi" id="Gj9-p3-O1O"/>
             </connections>

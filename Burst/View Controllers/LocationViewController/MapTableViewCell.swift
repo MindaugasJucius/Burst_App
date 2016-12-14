@@ -18,6 +18,7 @@ class MapTableViewCell: UITableViewCell, ReusableView {
         activityIndicator.alpha = 0
         activityIndicator.activityIndicatorViewStyle = .white
         mapImageView.backgroundColor = AppAppearance.lightBlack
+        contentView.backgroundColor = AppAppearance.tableViewBackground
     }
     
     override func prepareForReuse() {
@@ -60,8 +61,10 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     
     private func snapshotOptions(forLocation location: Location) -> MKMapSnapshotOptions {
         let snapshotOptions = MKMapSnapshotOptions()
-        let coordinate = CLLocationCoordinate2D(latitude: location.position.latitude,
-                                                longitude: location.position.longitude)
+        let coordinate = CLLocationCoordinate2D(
+            latitude: location.position.latitude,
+            longitude: location.position.longitude
+        )
         coordinateCenter = coordinate
         let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7))
         snapshotOptions.region = region

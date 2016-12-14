@@ -8,6 +8,7 @@ enum UserInfo {
 
 let UserInfoSectionHeaderReuseID = "UserInfoSectionHeader"
 fileprivate let PhotoHeight: CGFloat = 100
+fileprivate let SideInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
 
 class AuthorViewControllerDataSource: NSObject {
 
@@ -24,10 +25,10 @@ class AuthorViewControllerDataSource: NSObject {
     private lazy var photoCollectionsCollectionViewLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = CollectionSideSpacing
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        flowLayout.minimumLineSpacing = 30
+        flowLayout.sectionInset = SideInset
         flowLayout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width-CollectionSideSpacing,
+            width: UIScreen.main.bounds.width-30,
             height: CollectionCoverPhotoHeight
         )
         return flowLayout
@@ -37,7 +38,7 @@ class AuthorViewControllerDataSource: NSObject {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = CollectionSideSpacing
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        flowLayout.sectionInset = SideInset
         flowLayout.itemSize = CGSize(
             width: PhotoHeight,
             height: PhotoHeight

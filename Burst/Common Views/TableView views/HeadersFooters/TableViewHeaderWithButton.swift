@@ -1,12 +1,17 @@
 import UIKit
 import AlamofireImage
 
+fileprivate let VerticalSpacingWithImage: CGFloat = 10
+fileprivate let VerticalSpacingNoImage: CGFloat = 3
+
 class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
 
     @IBOutlet private weak var leftImageView: UIImageView!
     @IBOutlet private weak var button: InsetButton!
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var separatorView: UIImageView!
+    @IBOutlet private weak var labelToTop: NSLayoutConstraint!
+    @IBOutlet private weak var labelToBottom: NSLayoutConstraint!
     
     private var labelToImageView: NSLayoutConstraint?
     private var labelToContentView: NSLayoutConstraint?
@@ -25,6 +30,7 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         button.onButtonTap = onButtonTap
         separatorView.isHidden = showImage
         updateImageView(visible: showImage)
+        updateVerticalSpacing(toInitialState: showImage)
     }
     
     func label(font: UIFont, textColor: UIColor) {
@@ -51,10 +57,12 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         label.lineBreakMode = .byWordWrapping
         labelToImageView = label.leadingAnchor.constraint(
             equalTo: leftImageView.trailingAnchor,
-            constant: 10)
+            constant: 10
+        )
         labelToContentView = label.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
-            constant: 15)
+            constant: 15
+        )
     }
     
     private func separatorLayer() -> CALayer {
@@ -71,12 +79,24 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         labelToContentView?.isActive = !visible
     }
     
+    func updateVerticalSpacing(toInitialState initialState: Bool) {
+        if initialState {
+            labelToTop.constant = VerticalSpacingWithImage
+            labelToBottom.constant = VerticalSpacingWithImage
+        } else {
+            labelToTop.constant = VerticalSpacingNoImage
+            labelToBottom.constant = VerticalSpacingNoImage
+        }
+    }
+    
     override func prepareForReuse() {
+        super.prepareForReuse()
         leftImageView.image = nil
         labelToImageView?.isActive = false
         labelToContentView?.isActive = false
         leftImageView.isHidden = false
         label.textColor = AppAppearance.lightGray
+        updateVerticalSpacing(toInitialState: true)
         label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
     }
     
