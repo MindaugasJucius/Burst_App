@@ -6,7 +6,7 @@ enum FontSize: CGFloat {
     case headerSubtitle = 14
     case iconSize = 9
     case systemSize = 15
-    case systemSizePlusOne = 16
+    case seventeen = 17
     case collectionTitleSize = 24
 }
 

@@ -24,6 +24,7 @@ class PhotoDetailsDataSource: NSObject {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: DetailsCellReuseId)
         let headerNib = UINib(nibName: TableViewHeaderWithButton.className, bundle: nil)
         tableView?.register(headerNib, forHeaderFooterViewReuseIdentifier: TableViewHeaderWithButton.reuseIdentifier)
+        
     }
     
     // MARK: - Configure reusable views
@@ -34,7 +35,8 @@ class PhotoDetailsDataSource: NSObject {
         }
         let infoSection = availableInfo[section]
         let title = String(describing: availableInfo[section])
-        if infoSection == .author {
+        switch infoSection {
+        case .author:
             header.configure(
                 labelTitle: fullPhoto.uploader.name,
                 showImage: true,
@@ -44,11 +46,20 @@ class PhotoDetailsDataSource: NSObject {
                 }
             )
             header.image(withURL: fullPhoto.uploader.userProfileImage.medium)
-        } else {
-            header.configure(labelTitle: title)
-            let font = AppAppearance.regularFont(withSize: .systemSizePlusOne, weight: .regular)
-            header.label(font: font, textColor: AppAppearance.lightGray)
+        case .location:
+            guard let location = fullPhoto.location else {
+                return
+            }
+            defaultConfiguration(forHeader: header, withTitle: location.fullLocation)
+        default:
+            defaultConfiguration(forHeader: header, withTitle: title)
         }
+    }
+    
+    private func defaultConfiguration(forHeader header: TableViewHeaderWithButton, withTitle title: String) {
+        header.configure(labelTitle: title)
+        let font = AppAppearance.regularFont(withSize: .seventeen, weight: .regular)
+        header.label(font: font, textColor: AppAppearance.lightGray)
     }
     
 }

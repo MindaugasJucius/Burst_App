@@ -30,7 +30,6 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         button.onButtonTap = onButtonTap
         separatorView.isHidden = showImage
         updateImageView(visible: showImage)
-        updateVerticalSpacing(toInitialState: showImage)
     }
     
     func label(font: UIFont, textColor: UIColor) {
@@ -79,16 +78,6 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         labelToContentView?.isActive = !visible
     }
     
-    func updateVerticalSpacing(toInitialState initialState: Bool) {
-        if initialState {
-            labelToTop.constant = VerticalSpacingWithImage
-            labelToBottom.constant = VerticalSpacingWithImage
-        } else {
-            labelToTop.constant = VerticalSpacingNoImage
-            labelToBottom.constant = VerticalSpacingNoImage
-        }
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         leftImageView.image = nil
@@ -96,7 +85,6 @@ class TableViewHeaderWithButton: UITableViewHeaderFooterView, ReusableView {
         labelToContentView?.isActive = false
         leftImageView.isHidden = false
         label.textColor = AppAppearance.lightGray
-        updateVerticalSpacing(toInitialState: true)
         label.font = AppAppearance.regularFont(withSize: .headerTitle, weight: .medium)
     }
     

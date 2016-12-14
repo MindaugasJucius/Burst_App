@@ -43,6 +43,7 @@
                 </imageView>
             </subviews>
             <constraints>
+                <constraint firstItem="ZN4-1g-aut" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7Eq-rK-hLV"/>
                 <constraint firstItem="lDh-Gh-25g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9zW-q4-ZzC"/>
                 <constraint firstItem="JUs-BM-lJi" firstAttribute="top" secondItem="ZN4-1g-aut" secondAttribute="bottom" constant="1" id="A4g-ly-3ed"/>
                 <constraint firstItem="wkK-8Z-e3i" firstAttribute="centerY" secondItem="ZN4-1g-aut" secondAttribute="centerY" id="Go9-SH-SkS"/>

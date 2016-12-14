@@ -177,10 +177,6 @@ extension PhotoDetailsTableViewCell: UITableViewDelegate {
         return heightClosure(indexPath)
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
 }
 
 extension PhotoDetailsTableViewCell: StatefulContainerView {

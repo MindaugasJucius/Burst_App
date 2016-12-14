@@ -18,10 +18,15 @@ public class Location: NSObject, Unboxable {
     public let country: String
     public let position: Position
 
+    public var fullLocation: String {
+        return "\(city), \(country)"
+    }
+    
     required public init(unboxer: Unboxer) throws {
         self.city = try unboxer.unbox(key: "city")
         self.country = try unboxer.unbox(key: "country")
         self.position = try unboxer.unbox(key: "position")
         super.init()
     }
+    
 }
