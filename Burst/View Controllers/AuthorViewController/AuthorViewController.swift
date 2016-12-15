@@ -22,10 +22,6 @@ class AuthorViewController: UIViewController {
         configureCommonState()
     }
     
-    deinit {
-        print("author vc deinit")
-    }
-    
 }
 
 extension AuthorViewController: PhotoInfoContentController {

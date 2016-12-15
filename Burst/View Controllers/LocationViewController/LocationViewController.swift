@@ -29,10 +29,6 @@ class LocationViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    deinit {
-        print("location vc deinit")
-    }
-    
 }
 
 extension LocationViewController: PhotoInfoContentController {
