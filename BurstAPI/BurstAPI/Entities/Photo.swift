@@ -25,8 +25,8 @@ public class Photo: NSObject, Unboxable {
     public let exif: EXIF?
     public let downloads: Int?
     
-    public var thumbImage: UIImage?
-    public var smallImage: UIImage?
+    public weak var thumbImage: UIImage?
+    public weak var smallImage: UIImage?
     public var stats: Stats?
     
     public var presentationImage: UIImage? {

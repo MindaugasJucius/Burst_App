@@ -8,7 +8,7 @@ public class UnsplashGeneric: NSObject {
 
     public static func unsplash<U: Unboxable>(getFromURL url: URL,
                              success: @escaping SingleEntityCallback<U>,
-                             failure: @escaping ErrorCallback) {
+                             failure: ErrorCallback?) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
         let params = [BurstID : appID] as [String : Any]
         Alamofire.request(url, method: .get, parameters: params).responseJSON { response in
@@ -20,18 +20,18 @@ public class UnsplashGeneric: NSObject {
                         success(response)
                     },
                     failure: { error in
-                        failure(error)
+                        failure?(error)
                     }
                 )
             case .failure(let error):
-                failure(error)
+                failure?(error)
             }
         }
     }
     
-    public static func unsplash<U: Unboxable>(getFromURL url: URL,
+    public static func unsplashArray<U: Unboxable>(getFromURL url: URL,
                                 success: @escaping EntityArrayCallback<U>,
-                                failure: @escaping ErrorCallback) {
+                                failure: ErrorCallback?) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
         let params = [BurstID : appID] as [String : Any]
         Alamofire.request(url, method: .get, parameters: params).responseJSON { response in
@@ -43,11 +43,11 @@ public class UnsplashGeneric: NSObject {
                         success(response)
                     },
                     failure: { error in
-                        failure(error)
+                        failure?(error)
                     }
                 )
             case .failure(let error):
-                failure(error)
+                failure?(error)
             }
         }
     }

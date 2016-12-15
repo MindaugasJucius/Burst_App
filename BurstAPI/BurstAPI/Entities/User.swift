@@ -30,8 +30,8 @@ public class User: NSObject, Unboxable {
     
     public let totalLikes: Int?
     public let totalPhotos: Int?
-    public let totalCollections: Int?
     public let totalDownloads: Int?
+    public let totalCollections: Int?
     
     public let followedByUser: Bool?
     public let followersCount: Int?

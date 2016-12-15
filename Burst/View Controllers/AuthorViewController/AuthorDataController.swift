@@ -51,7 +51,7 @@ class AuthorDataController: NSObject {
     }
     
     private func fetch<U: Unboxable>(url: URL, success: @escaping EntityArrayCallback<U>, failure: @escaping ErrorCallback) {
-        UnsplashGeneric.unsplash(getFromURL: url, success: success, failure: failure)
+        UnsplashGeneric.unsplashArray(getFromURL: url, success: success, failure: failure)
     }
     
 }

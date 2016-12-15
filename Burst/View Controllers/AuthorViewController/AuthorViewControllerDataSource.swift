@@ -14,7 +14,7 @@ class AuthorViewControllerDataSource: NSObject {
 
     fileprivate weak var tableView: UITableView?
     fileprivate weak var viewController: UIViewController?
-    fileprivate let user: User
+    fileprivate unowned var user: User
     fileprivate let dataController: AuthorDataController
     fileprivate let onError: ErrorCallback
     
@@ -51,7 +51,6 @@ class AuthorViewControllerDataSource: NSObject {
         self.viewController = viewController
         self.user = user
         self.onError = { error in
-            viewController.handle(error: error)
         }
         self.dataController = AuthorDataController(user: user, onError: onError)
         super.init()

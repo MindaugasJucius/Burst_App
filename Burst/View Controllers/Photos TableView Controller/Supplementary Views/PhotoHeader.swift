@@ -26,18 +26,22 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
                               filter: CircleFilter(),
                               imageTransition: .crossDissolve(1.0),
                               runImageTransitionIfCached: false)
-        UnsplashPhotoStats.stats(forPhoto: photo,
-            completion: { [weak self] stats, error in
-                photo.stats = stats
-                self?.setupDescription(forPhoto: photo)
-            }
-        )
+        if let stats = photo.stats {
+            setupDescription(forStats: stats)
+        } else {
+            let statsURL = String(format: BurstAPI.UnsplashPhotoStatsURL, photo.id)
+            UnsplashGeneric.unsplash(
+                getFromURL: URL(string: statsURL)!,
+                success: { [weak self] (stats: Stats) in
+                    self?.setupDescription(forStats: stats)
+                    photo.stats = stats
+                },
+                failure: nil
+            )
+        }
     }
     
-    private func setupDescription(forPhoto photo: Photo) {
-        guard let stats = photo.stats else {
-            return
-        }
+    private func setupDescription(forStats stats: Stats) {
         let description = NSMutableAttributedString()
         description.append(infoSubstring(withIcon: .FAHeart, infoText: "\(stats.likes)", withSeparator: true))
         description.append(infoSubstring(withIcon: .FACloudDownload, infoText: "\(stats.downloads)", withSeparator: true))

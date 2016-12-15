@@ -8,13 +8,13 @@ class PhotoViewControllerDataSource: NSObject {
     var didTapClosePhotoPreview: (() -> ())?
     
     private let dataController = PhotoDataController()
-    private let photo: Photo
+    private unowned var photo: Photo
     
     private weak var tableView: UITableView?
     private weak var viewController: UIViewController?
     
     private var topImageSpacing: CGFloat = 0
-    private var fullPhoto: Photo?
+    private weak var fullPhoto: Photo?
 
     init(tableView: UITableView, viewController: UIViewController, photo: Photo) {
         self.tableView = tableView

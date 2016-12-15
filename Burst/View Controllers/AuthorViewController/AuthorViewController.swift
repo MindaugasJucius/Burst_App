@@ -8,7 +8,7 @@ class AuthorViewController: UIViewController {
     fileprivate var containedInTableView = false
     fileprivate var dataSource: AuthorViewControllerDataSource!
     
-    var user: User?
+    weak var user: User?
     var state: ContainerViewState = .normal
     
     static func instantiate(forPhotoDetails: Bool) -> AuthorViewController? {
@@ -21,7 +21,11 @@ class AuthorViewController: UIViewController {
         super.viewDidLoad()
         configureCommonState()
     }
-
+    
+    deinit {
+        print("author vc deinit")
+    }
+    
 }
 
 extension AuthorViewController: PhotoInfoContentController {

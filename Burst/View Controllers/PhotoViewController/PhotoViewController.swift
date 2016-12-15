@@ -5,7 +5,7 @@ class PhotoViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
     fileprivate var panYVelocity: CGFloat = 0
-    fileprivate let photo: Photo
+    fileprivate unowned var photo: Photo
     fileprivate var dataSource: PhotoViewControllerDataSource!
     
     var state: ContainerViewState = .normal
