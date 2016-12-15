@@ -2,8 +2,10 @@ import BurstAPI
 import Unbox
 import AlamofireImage
 
-class PhotoCollectionViewCell: UICollectionViewCell, ReusableView {
-
+class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
+    
+    @IBOutlet private weak var imageView: UIImageView!
+    
     private let progressIndicatorView = CircularProgressView(frame: .zero)
     
     var downloadProgress: CGFloat {
@@ -15,14 +17,12 @@ class PhotoCollectionViewCell: UICollectionViewCell, ReusableView {
         }
     }
     
-    @IBOutlet weak var imageView: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupProgressView()
     }
     
-    func configure(withUnboxable unboxable: Unboxable) {
+    func configure(withUnboxable unboxable: AnyObject) {
         guard let photo = unboxable as? Photo else {
             return
         }

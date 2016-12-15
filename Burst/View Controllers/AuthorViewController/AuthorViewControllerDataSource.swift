@@ -95,7 +95,7 @@ class AuthorViewControllerDataSource: NSObject {
             containerCell.isPagingEnabled = true
         case .photos:
             containerCell.layout = photoCollectionViewLayout
-            containerCell.cellToRegister(cell: PhotoCollectionViewCell.self,
+            containerCell.cellToRegister(cell: ImageViewCollectionViewCell.self,
                 cellConfigurationCallback: { contentView in
                     contentView.layer.cornerRadius = 6
                 }

@@ -128,10 +128,10 @@ class SearchResultsViewController: UIViewController {
     }
     
     fileprivate func registerViews() {
-        let cellNib = UINib.init(nibName: PhotoCollectionViewCell.className,
+        let cellNib = UINib.init(nibName: ImageViewCollectionViewCell.className,
                                  bundle: nil)
         collectionView.register(cellNib,
-                                forCellWithReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier)
+                                forCellWithReuseIdentifier: ImageViewCollectionViewCell.reuseIdentifier)
         
         let emptyCellNib = UINib.init(nibName: EmptyStateCollectionViewCell.className,
                                       bundle: nil)
@@ -142,8 +142,8 @@ class SearchResultsViewController: UIViewController {
     // MARK: - Cell config
     
     fileprivate func photoCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier, for: indexPath)
-        guard let resultsCell = cell as? PhotoCollectionViewCell else {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageViewCollectionViewCell.reuseIdentifier, for: indexPath)
+        guard let resultsCell = cell as? ImageViewCollectionViewCell else {
             return cell
         }
         resultsCell.configure(forPhoto: fetchedResults[indexPath.row])
