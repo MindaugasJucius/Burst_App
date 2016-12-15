@@ -8,18 +8,31 @@ public enum PhotoInfoType {
     case categories
 }
 
+public enum PhotoSize: String {
+    case full
+    case raw
+    case regular
+    case small
+    case thumb
+
+    static var allValues: [PhotoSize] {
+        return [.full, .raw, .regular, .small, .thumb]
+    }
+    
+}
+
 public class Photo: NSObject, Unboxable {
 
-    // Available on ever photo returning call
+    // Available on every photo returning call
     public let id: String
     public let likes: NSInteger
-    public let urls: URLs
+    public let donwloadURLs: [PhotoSize: URL]
     public let uploader: User
     public let fullSize: CGSize
     public let color: UIColor
     public let likedByUser: Bool
     
-    // Available only retrieving a single photo
+    // Available only when retrieving a single photo
     public let categories: [PhotoCategory]?
     public let location: Location?
     public let exif: EXIF?
@@ -31,16 +44,13 @@ public class Photo: NSObject, Unboxable {
     
     public var presentationImage: UIImage? {
         get {
-            guard let small = smallImage else {
-                return thumbImage
-            }
-            return small
+            return smallImage ?? thumbImage
         }
     }
     
     required public init(unboxer: Unboxer) throws {
         self.id = try unboxer.unbox(key: "id")
-        self.urls = try unboxer.unbox(key: "urls")
+        self.donwloadURLs = try Photo.sizes(fromUnboxer: unboxer)
         self.likes = try unboxer.unbox(key: "likes")
         self.likedByUser = try unboxer.unbox(key: "liked_by_user")
         self.downloads = unboxer.unbox(key: "downloads")
@@ -56,6 +66,10 @@ public class Photo: NSObject, Unboxable {
         super.init()
     }
     
+    public func url(forSize size: PhotoSize) -> URL {
+        return donwloadURLs[size]!
+    }
+    
     public func checkForAvailableInfo() -> [PhotoInfoType] {
         var availableInfo: [PhotoInfoType] = []
         availableInfo.append(.author)
@@ -69,6 +83,15 @@ public class Photo: NSObject, Unboxable {
             availableInfo.append(.categories)
         }
         return availableInfo
+    }
+    
+    private static func sizes(fromUnboxer unboxer: Unboxer) throws -> [PhotoSize: URL] {
+        var sizesDict: [PhotoSize: URL] = [:]
+        try PhotoSize.allValues.forEach {
+            let url: URL = try unboxer.unbox(keyPath: "urls.\($0.rawValue)")
+            sizesDict[$0] = url
+        }
+        return sizesDict
     }
     
 }

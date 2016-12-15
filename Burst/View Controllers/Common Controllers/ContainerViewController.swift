@@ -99,7 +99,7 @@ class ContainerViewController: UIViewController {
     
     fileprivate func addPhotoToDownloadQueue(_ photo: Photo) {
         UnsplashImages.image(
-            fromUrl: photo.urls.full,
+            fromUrl: photo.url(forSize: .full),
             withDownloader: UnsplashImages.fullImageDownloader,
             progressHandler: { [weak self] fractionCompleted in
                 self?.delegate?.update(withProgress: fractionCompleted)

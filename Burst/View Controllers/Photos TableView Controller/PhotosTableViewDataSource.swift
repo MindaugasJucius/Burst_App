@@ -105,7 +105,7 @@ class PhotosTableViewDataSource: NSObject {
         photos.forEach { photo in
             photoGroup.enter()
             UnsplashImages.image(
-                fromUrl: photo.urls.small,
+                fromUrl: photo.url(forSize: .small),
                 withDownloader: UnsplashImages.thumbImageDownloader,
                 progressHandler: nil,
                 success: { image in
@@ -217,7 +217,7 @@ class PhotosTableViewDataSource: NSObject {
     
     private func image(forPhoto photo: Photo, atPath indexPath: IndexPath) {
         UnsplashImages.image(
-            fromUrl: photo.urls.regular,
+            fromUrl: photo.url(forSize: .small),
             withDownloader: UnsplashImages.cellImageDownloader,
             progressHandler: { [weak self] fractionCompleted in
                 self?.photoCell(atPath: indexPath)?.downloadProgress = CGFloat(fractionCompleted)

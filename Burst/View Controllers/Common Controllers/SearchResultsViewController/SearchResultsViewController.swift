@@ -146,7 +146,8 @@ class SearchResultsViewController: UIViewController {
         guard let resultsCell = cell as? ImageViewCollectionViewCell else {
             return cell
         }
-        resultsCell.configure(forPhoto: fetchedResults[indexPath.row])
+        let photo = fetchedResults[indexPath.row]
+        resultsCell.configure(forImageDTO: photo.imageDTO(withSize: .small))
         return resultsCell
     }
     

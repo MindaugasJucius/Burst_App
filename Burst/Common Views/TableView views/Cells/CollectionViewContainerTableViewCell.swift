@@ -10,7 +10,7 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
     
     var customConfigCallback: CellContentViewCallback?
 
-    var model: [Unboxable] = [] {
+    var model: [Any] = [] {
         didSet {
             guard !model.isEmpty else {
                 return
@@ -68,7 +68,7 @@ extension CollectionViewContainerTableViewCell: UICollectionViewDataSource {
         guard let reusableCell = cell as? ReusableView else {
             return cell
         }
-        reusableCell.configure(withUnboxable: model[indexPath.row])
+        reusableCell.configure(withAny: model[indexPath.row])
         return cell
     }
     

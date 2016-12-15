@@ -2,6 +2,16 @@ import BurstAPI
 import Unbox
 import AlamofireImage
 
+struct ImageDTO {
+    let imageDownloadUrl: URL
+    let placeholderColor: UIColor
+    
+    init(imageDownloadUrl: URL, placeholderColor: UIColor = UIColor.white) {
+        self.imageDownloadUrl = imageDownloadUrl
+        self.placeholderColor = placeholderColor
+    }
+}
+
 class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
     
     @IBOutlet private weak var imageView: UIImageView!
@@ -22,17 +32,17 @@ class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
         setupProgressView()
     }
     
-    func configure(withUnboxable unboxable: AnyObject) {
-        guard let photo = unboxable as? Photo else {
+    func configure(withAny any: Any) {
+        guard let imageDTO = any as? ImageDTO else {
             return
         }
-        configure(forPhoto: photo)
+        configure(forImageDTO: imageDTO)
     }
     
-    func configure(forPhoto photo: Photo) {
-        imageView.backgroundColor = photo.color
+    func configure(forImageDTO imageDTO: ImageDTO) {
+        imageView.backgroundColor = imageDTO.placeholderColor
         imageView.af_setImage(
-            withURL: photo.urls.small,
+            withURL: imageDTO.imageDownloadUrl,
             progress: { [weak self] (progress: Progress) in
                 self?.downloadProgress = CGFloat(progress.fractionCompleted)
             },
@@ -42,7 +52,9 @@ class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
                 switch response.result {
                 case .success(_):
                     self?.progressIndicatorView.alpha = 0
-                    photo.thumbImage = response.result.value
+                    let image = response.result.value
+                    self?.imageView.image = image
+                    //imageDTO.image = response.result.value
                 case .failure(_):
                     self?.progressIndicatorView.alpha = 0
                     self?.imageView.backgroundColor = .white
@@ -65,4 +77,10 @@ class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
         imageView.image = nil
     }
 
+}
+
+extension Photo {
+    func imageDTO(withSize photoSize: PhotoSize) -> ImageDTO {
+        return ImageDTO(imageDownloadUrl: url(forSize: photoSize), placeholderColor: color)
+    }
 }

@@ -1,7 +1,7 @@
 import Unbox
 
 protocol ReusableView: class {
-    func configure(withUnboxable unboxable: Unboxable)
+    func configure(withAny any: Any)
 }
 
 extension ReusableView where Self: UIView {
@@ -13,7 +13,5 @@ extension ReusableView where Self: UIView {
 }
 
 extension ReusableView {
-    func configure(withUnboxable unboxable: Unboxable) {
-        
-    }
+    func configure(withAny any: Any) { }
 }

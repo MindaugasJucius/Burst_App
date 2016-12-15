@@ -35,8 +35,8 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
         backgroundColor = AppAppearance.tableViewBackground
     }
     
-    func configure(withUnboxable unboxable: Unboxable) {
-        guard let photoCollection = unboxable as? PhotoCollection else { 
+    func configure(withAny any: Any) {
+        guard let photoCollection = any as? PhotoCollection else {
             return
         }
         configure(forCollection: photoCollection)
@@ -47,7 +47,7 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
         nameLabel.text = collection.title.uppercased()
         guard let coverPhoto = collection.coverPhoto else { return }
         imageView.backgroundColor = coverPhoto.color
-        imageView.af_setImage(withURL: coverPhoto.urls.small,
+        imageView.af_setImage(withURL: coverPhoto.url(forSize: .small),
                               imageTransition: .crossDissolve(1.0),
                               runImageTransitionIfCached: false)
     }
