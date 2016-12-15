@@ -147,7 +147,13 @@ class SearchResultsViewController: UIViewController {
             return cell
         }
         let photo = fetchedResults[indexPath.row]
-        resultsCell.configure(forImageDTO: photo.imageDTO(withSize: .small))
+        let imageDTO = photo.imageDTO(
+            withSize: .small,
+            imageCallback: { image in
+                photo.thumbImage = image
+            }
+        )
+        resultsCell.configure(forImageDTO: imageDTO)
         return resultsCell
     }
     

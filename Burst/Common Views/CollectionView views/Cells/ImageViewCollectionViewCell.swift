@@ -2,13 +2,17 @@ import BurstAPI
 import Unbox
 import AlamofireImage
 
+typealias ImageCallback = (UIImage?) -> ()
+
 struct ImageDTO {
     let imageDownloadUrl: URL
     let placeholderColor: UIColor
+    let onImageDownload: ImageCallback?
     
-    init(imageDownloadUrl: URL, placeholderColor: UIColor = UIColor.white) {
+    init(imageDownloadUrl: URL, placeholderColor: UIColor = UIColor.white, onImageDownload: ImageCallback? = nil) {
         self.imageDownloadUrl = imageDownloadUrl
         self.placeholderColor = placeholderColor
+        self.onImageDownload = onImageDownload
     }
 }
 
@@ -54,7 +58,7 @@ class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
                     self?.progressIndicatorView.alpha = 0
                     let image = response.result.value
                     self?.imageView.image = image
-                    //imageDTO.image = response.result.value
+                    imageDTO.onImageDownload?(response.result.value)
                 case .failure(_):
                     self?.progressIndicatorView.alpha = 0
                     self?.imageView.backgroundColor = .white
@@ -80,7 +84,7 @@ class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
 }
 
 extension Photo {
-    func imageDTO(withSize photoSize: PhotoSize) -> ImageDTO {
-        return ImageDTO(imageDownloadUrl: url(forSize: photoSize), placeholderColor: color)
+    func imageDTO(withSize photoSize: PhotoSize, imageCallback: ImageCallback? = nil) -> ImageDTO {
+        return ImageDTO(imageDownloadUrl: url(forSize: photoSize), placeholderColor: color, onImageDownload: imageCallback)
     }
 }

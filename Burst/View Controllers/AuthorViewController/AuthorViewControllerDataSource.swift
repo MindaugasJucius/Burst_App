@@ -100,7 +100,12 @@ class AuthorViewControllerDataSource: NSObject {
                     contentView.layer.cornerRadius = 6
                 }
             )
-            let imageDTO = photos.map { $0.imageDTO(withSize: .thumb) }
+            let imageDTO = photos.map { photo in
+                photo.imageDTO(withSize: .thumb, imageCallback: { image in
+                        photo.thumbImage = image
+                    }
+                )
+            }
             containerCell.model = imageDTO
             containerCell.isPagingEnabled = false
         }
