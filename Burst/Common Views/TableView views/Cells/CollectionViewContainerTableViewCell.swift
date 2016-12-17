@@ -49,9 +49,18 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.backgroundColor = AppAppearance.tableViewBackground
         backgroundColor = AppAppearance.tableViewBackground
+    }
+    
+}
+
+extension CollectionViewContainerTableViewCell: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("lol")
     }
     
 }

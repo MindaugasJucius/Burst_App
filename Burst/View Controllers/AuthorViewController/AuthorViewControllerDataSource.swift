@@ -9,6 +9,7 @@ enum UserInfo {
 let UserInfoSectionHeaderReuseID = "UserInfoSectionHeader"
 fileprivate let PhotoHeight: CGFloat = 100
 fileprivate let SideInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+fileprivate let MaxUserPhotosToShow = 10
 
 class AuthorViewControllerDataSource: NSObject {
 
@@ -17,6 +18,7 @@ class AuthorViewControllerDataSource: NSObject {
     fileprivate unowned var user: User
     fileprivate let dataController: AuthorDataController
     fileprivate let onError: ErrorCallback
+    fileprivate let containedInTableView: Bool
     
     fileprivate var availableUserInfo: [UserInfo] = []
     fileprivate var photoCollections: [PhotoCollection] = []
@@ -46,10 +48,11 @@ class AuthorViewControllerDataSource: NSObject {
         return flowLayout
     }()
     
-    init(tableView: UITableView, viewController: UIViewController, user: User) {
+    init(tableView: UITableView, viewController: UIViewController, user: User, containedInTableView: Bool) {
         self.tableView = tableView
         self.viewController = viewController
         self.user = user
+        self.containedInTableView = containedInTableView
         self.onError = { error in
         }
         self.dataController = AuthorDataController(user: user, onError: onError)
@@ -100,13 +103,17 @@ class AuthorViewControllerDataSource: NSObject {
                     contentView.layer.cornerRadius = 6
                 }
             )
-            let imageDTO = photos.map { photo in
+            var imageDTOs = photos.map { photo in
                 photo.imageDTO(withSize: .thumb, imageCallback: { image in
                         photo.thumbImage = image
                     }
                 )
             }
-            containerCell.model = imageDTO
+            if let totalPhotosCount = user.totalPhotos, totalPhotosCount > MaxUserPhotosToShow, containedInTableView {
+                let moreImagesDTO = ImageDTO(image: #imageLiteral(resourceName: "moreImages"))
+                imageDTOs.append(moreImagesDTO)
+            }
+            containerCell.model = imageDTOs
             containerCell.isPagingEnabled = false
         }
         return containerCell
@@ -130,7 +137,7 @@ class AuthorViewControllerDataSource: NSObject {
         header.contentView.backgroundColor = AppAppearance.tableViewBackground
         header.textLabel?.font = AppAppearance.regularFont(withSize: .sectionHeaderTitle)
         header.textLabel?.text = title(forContent: availableUserInfo[section])
-        header.textLabel?.textColor = AppAppearance.gray666
+        header.textLabel?.textColor = AppAppearance.white
     }
     
     private func title(forContent content: UserInfo) -> String {

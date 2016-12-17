@@ -54,7 +54,7 @@ extension AuthorViewController: StatefulContainerView {
         guard let user = user else {
             return
         }
-        dataSource = AuthorViewControllerDataSource(tableView: tableView, viewController: self, user: user)
+        dataSource = AuthorViewControllerDataSource(tableView: tableView, viewController: self, user: user, containedInTableView: containedInTableView)
         if containedInTableView {
             tableView.tableHeaderView = nil
         }
