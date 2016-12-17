@@ -5,11 +5,16 @@ import AlamofireImage
 typealias ImageCallback = (UIImage?) -> ()
 
 struct ImageDTO {
-    let imageDownloadUrl: URL
+    let image: UIImage?
+    let imageDownloadUrl: URL?
     let placeholderColor: UIColor
     let onImageDownload: ImageCallback?
     
-    init(imageDownloadUrl: URL, placeholderColor: UIColor = UIColor.white, onImageDownload: ImageCallback? = nil) {
+    init(imageDownloadUrl: URL? = nil,
+         image: UIImage? = nil,
+         placeholderColor: UIColor = UIColor.white,
+         onImageDownload: ImageCallback? = nil) {
+        self.image = image
         self.imageDownloadUrl = imageDownloadUrl
         self.placeholderColor = placeholderColor
         self.onImageDownload = onImageDownload
@@ -45,8 +50,12 @@ class ImageViewCollectionViewCell: UICollectionViewCell, ReusableView {
     
     func configure(forImageDTO imageDTO: ImageDTO) {
         imageView.backgroundColor = imageDTO.placeholderColor
+        guard let downloadURL = imageDTO.imageDownloadUrl else {
+            imageView.image = imageDTO.image
+            return
+        }
         imageView.af_setImage(
-            withURL: imageDTO.imageDownloadUrl,
+            withURL: downloadURL,
             progress: { [weak self] (progress: Progress) in
                 self?.downloadProgress = CGFloat(progress.fractionCompleted)
             },
