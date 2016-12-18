@@ -1,9 +1,9 @@
 struct SectionItem {
 
     let sectionTitle: String
-    let cellItems: [CellItem]
+    let cellItems: [AnyReusableView<Any>]
     let representedObjects: [Any]
-    let header: ReusableView?
-    let footer: ReusableView?
+    let header: AnyReusableView<Any>?
+    let footer: AnyReusableView<Any>?
     
 }
