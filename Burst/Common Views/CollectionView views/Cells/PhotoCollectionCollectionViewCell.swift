@@ -43,7 +43,8 @@ class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
     }
     
     private func configure(forCollection collection: PhotoCollection) {
-        countLabel.text = "\(collection.photosCount) photos"
+        var contentString = "photos"
+        countLabel.text = "\(collection.photosCount) \(contentString.modifiedPlural(forCount: collection.photosCount))"
         nameLabel.text = collection.title.uppercased()
         guard let coverPhoto = collection.coverPhoto else { return }
         imageView.backgroundColor = coverPhoto.color

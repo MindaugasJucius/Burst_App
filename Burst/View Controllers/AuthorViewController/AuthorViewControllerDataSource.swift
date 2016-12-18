@@ -156,16 +156,17 @@ class AuthorViewControllerDataSource: NSObject {
     
     private func title(forContent content: UserInfo) -> String {
         var contentCount = 0
+        var contentString = "\(content)"
         switch content {
         case .photos:
             guard let userPhotoCount = user.totalPhotos else {
-                return "\(content)"
+                return contentString
             }
             contentCount = userPhotoCount
         case .collections:
             contentCount = photoCollections.count
         }
-        return "\(contentCount) \(content)"
+        return "\(contentCount) \(contentString.modifiedPlural(forCount: contentCount))"
     }
     
 }

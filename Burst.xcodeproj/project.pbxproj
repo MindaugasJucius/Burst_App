@@ -18,6 +18,7 @@
 		03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C991DBA661F00695972 /* MainTabBar.swift */; };
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
 		0324A7C11E0561930042A2A2 /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7C01E0561930042A2A2 /* SectionItem.swift */; };
+		0324A7C81E0704100042A2A2 /* String+Plural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7C71E0704100042A2A2 /* String+Plural.swift */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
 		03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CA51DDDD37900F04975 /* PhotoViewController.swift */; };
 		03314CA81DDDD37900F04975 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03314CA61DDDD37900F04975 /* PhotoViewController.xib */; };
@@ -162,6 +163,7 @@
 		03191C991DBA661F00695972 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
 		0324A7C01E0561930042A2A2 /* SectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
+		0324A7C71E0704100042A2A2 /* String+Plural.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Plural.swift"; sourceTree = "<group>"; };
 		032C58561DBD3153003FFF4B /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		03314CA51DDDD37900F04975 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		03314CA61DDDD37900F04975 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				0382B13B1DE2F47100586B5C /* UIViewController+Storyboard.swift */,
 				0382B1411DE3245F00586B5C /* UIViewController+Error.swift */,
 				0382B1871DE7090900586B5C /* UIView+Shadow.swift */,
+				0324A7C71E0704100042A2A2 /* String+Plural.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0324A7C81E0704100042A2A2 /* String+Plural.swift in Sources */,
 				03F147EC1DC4A04900D523E6 /* UIView+Fade.swift in Sources */,
 				03DC3A7E1D88781E00D18A48 /* AppAppearance.swift in Sources */,
 				037A6E691DAFE743000A774C /* ReusableView.swift in Sources */,
