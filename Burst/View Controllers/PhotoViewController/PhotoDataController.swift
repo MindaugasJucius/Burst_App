@@ -16,6 +16,8 @@ extension PhotoInfoType {
             return AuthorViewController.self
         case .location:
             return LocationViewController.self
+        case .categories:
+            return PhotoCategoryViewController.self
         default:
             return nil
         }
@@ -47,7 +49,7 @@ class PhotoDataController: NSObject {
     
     func contentHeight(forInfoType infoType: PhotoInfoType) -> CGFloat {
         switch infoType {
-        case .author, .location:
+        case .author, .location, .categories:
             guard let controller = infoControllers[infoType] as? PhotoInfoContentController else {
                 return TableViewCellDefaultHeight
             }
@@ -84,6 +86,13 @@ class PhotoDataController: NSObject {
                     return
                 }
                 let controller = LocationViewController(location: location)
+                photoInfoControllersDict[photoInfoType] = controller
+                self.infoViews[photoInfoType] = controller.view
+            case .categories:
+                guard let photoCategories = photo.categories else {
+                    return
+                }
+                let controller = PhotoCategoryViewController(photoCategories: photoCategories)
                 photoInfoControllersDict[photoInfoType] = controller
                 self.infoViews[photoInfoType] = controller.view
             default:
