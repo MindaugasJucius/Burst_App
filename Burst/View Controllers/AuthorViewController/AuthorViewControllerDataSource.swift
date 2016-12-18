@@ -114,8 +114,6 @@ class AuthorViewControllerDataSource: NSObject {
                 let moreImagesDTO = ImageDTO(image: #imageLiteral(resourceName: "moreImages"))
                 imageDTOs.append(moreImagesDTO)
             }
-            let cellItem = CellItem(reusableViewType: ImageViewCollectionViewCell.self, representedObject: imageDTOs, onItemTap: nil)
-            let sectionItem = SectionItem(sectionTitle: SectionAuthorPhotos, cellItems: [cellItem], representedObjects: imageDTOs, header: nil, footer: nil)
             containerCell.model = imageDTOs
             containerCell.isPagingEnabled = false
         }

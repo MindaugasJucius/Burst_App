@@ -60,6 +60,7 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
 extension CollectionViewContainerTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
     
 }
