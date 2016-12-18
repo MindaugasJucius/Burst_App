@@ -17,6 +17,8 @@
 		03001B9F1DD1EB7E004D478C /* RecentSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9E1DD1EB7E004D478C /* RecentSearch.swift */; };
 		03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C991DBA661F00695972 /* MainTabBar.swift */; };
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
+		0324A7BF1E0561880042A2A2 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7BE1E0561880042A2A2 /* CellItem.swift */; };
+		0324A7C11E0561930042A2A2 /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7C01E0561930042A2A2 /* SectionItem.swift */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
 		03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CA51DDDD37900F04975 /* PhotoViewController.swift */; };
 		03314CA81DDDD37900F04975 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03314CA61DDDD37900F04975 /* PhotoViewController.xib */; };
@@ -160,6 +162,8 @@
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
 		03191C991DBA661F00695972 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
+		0324A7BE1E0561880042A2A2 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
+		0324A7C01E0561930042A2A2 /* SectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
 		032C58561DBD3153003FFF4B /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		03314CA51DDDD37900F04975 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		03314CA61DDDD37900F04975 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +285,15 @@
 				03001B9E1DD1EB7E004D478C /* RecentSearch.swift */,
 			);
 			path = RecentSearchesViewController;
+			sourceTree = "<group>";
+		};
+		0324A7BD1E0561770042A2A2 /* ReusableViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				0324A7BE1E0561880042A2A2 /* CellItem.swift */,
+				0324A7C01E0561930042A2A2 /* SectionItem.swift */,
+			);
+			path = ReusableViewHelpers;
 			sourceTree = "<group>";
 		};
 		03314CA41DDDD30F00F04975 /* PhotoViewController */ = {
@@ -579,6 +592,7 @@
 		03DC3AAE1D8878F100D18A48 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				0324A7BD1E0561770042A2A2 /* ReusableViewHelpers */,
 				0382B14C1DE3769E00586B5C /* TableView views */,
 				0382B1441DE3671B00586B5C /* CollectionView views */,
 				03673ECF1DC6386900FE37E7 /* EmptyStateView */,
@@ -808,12 +822,14 @@
 				03314CB41DDEF5E400F04975 /* PhotoViewControllerDataSource.swift in Sources */,
 				03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */,
 				03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */,
+				0324A7BF1E0561880042A2A2 /* CellItem.swift in Sources */,
 				037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */,
 				03673ED51DC6386900FE37E7 /* EmptyStateViewFactory.swift in Sources */,
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				0382B1551DE376DF00586B5C /* CollectionViewContainerTableViewCell.swift in Sources */,
 				037A6E661DAFE73A000A774C /* NSObject+ClassName.swift in Sources */,
 				0382B1971DE8A91A00586B5C /* LocationViewController.swift in Sources */,
+				0324A7C11E0561930042A2A2 /* SectionItem.swift in Sources */,
 				0382B1351DE2F0BD00586B5C /* AuthorViewController.swift in Sources */,
 				0382B18B1DE72DAC00586B5C /* ImageViewCollectionViewCell.swift in Sources */,
 				0382B13E1DE302CA00586B5C /* PhotoDataController.swift in Sources */,

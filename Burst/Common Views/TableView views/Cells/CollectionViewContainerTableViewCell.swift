@@ -39,7 +39,7 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
         }
     }
     
-    func cellToRegister(cell: UICollectionViewCell.Type, cellConfigurationCallback: CellContentViewCallback?) {
+    func cellToRegister(cell: UICollectionViewCell.Type, cellConfigurationCallback: CellContentViewCallback?) { 
         let nib = UINib(nibName: cell.className, bundle: nil)
         customConfigCallback = cellConfigurationCallback
         collectionView.register(nib, forCellWithReuseIdentifier: cell.className)

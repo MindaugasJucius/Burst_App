@@ -6,6 +6,7 @@ enum UserInfo {
     case collections
 }
 
+let SectionAuthorPhotos = "AuthorPhotosSection"
 let UserInfoSectionHeaderReuseID = "UserInfoSectionHeader"
 fileprivate let PhotoHeight: CGFloat = 100
 fileprivate let SideInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -113,6 +114,8 @@ class AuthorViewControllerDataSource: NSObject {
                 let moreImagesDTO = ImageDTO(image: #imageLiteral(resourceName: "moreImages"))
                 imageDTOs.append(moreImagesDTO)
             }
+            let cellItem = CellItem(reusableViewType: ImageViewCollectionViewCell.self, representedObject: imageDTOs, onItemTap: nil)
+            let sectionItem = SectionItem(sectionTitle: SectionAuthorPhotos, cellItems: [cellItem], representedObjects: imageDTOs, header: nil, footer: nil)
             containerCell.model = imageDTOs
             containerCell.isPagingEnabled = false
         }

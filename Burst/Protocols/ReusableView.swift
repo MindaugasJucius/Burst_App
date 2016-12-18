@@ -1,6 +1,7 @@
 import Unbox
 
-protocol ReusableView: class {
+protocol ReusableView {
+
     func configure(withAny any: Any)
 }
 
