@@ -7,6 +7,7 @@ enum UserInfo {
 }
 
 let SectionAuthorPhotos = "AuthorPhotosSection"
+let SectionAuthorPhotoCollections = "AuthorPhotoCollectionsSection"
 let UserInfoSectionHeaderReuseID = "UserInfoSectionHeader"
 fileprivate let PhotoHeight: CGFloat = 100
 fileprivate let SideInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
@@ -94,30 +95,42 @@ class AuthorViewControllerDataSource: NSObject {
         switch userInfo {
         case .collections:
             containerCell.layout = photoCollectionsCollectionViewLayout
-            containerCell.cellToRegister(cell: PhotoCollectionCollectionViewCell.self, cellConfigurationCallback: nil)
-            containerCell.model = photoCollections
             containerCell.isPagingEnabled = true
+            containerCell.sectionItems = sectionItems(forPhotoCollections: photoCollections)
         case .photos:
             containerCell.layout = photoCollectionViewLayout
-            containerCell.cellToRegister(cell: ImageViewCollectionViewCell.self,
-                cellConfigurationCallback: { contentView in
-                    contentView.layer.cornerRadius = 6
-                }
-            )
-            var imageDTOs = photos.map { photo in
-                photo.imageDTO(withSize: .thumb, imageCallback: { image in
-                        photo.thumbImage = image
-                    }
-                )
-            }
-            if let totalPhotosCount = user.totalPhotos, totalPhotosCount > MaxUserPhotosToShow, containedInTableView {
-                let moreImagesDTO = ImageDTO(image: #imageLiteral(resourceName: "moreImages"))
-                imageDTOs.append(moreImagesDTO)
-            }
-            containerCell.model = imageDTOs
             containerCell.isPagingEnabled = false
+            containerCell.sectionItems = sectionItems(forPhotos: imageDTOsForUserPhotos())
         }
         return containerCell
+    }
+    
+    // MARK: - Author photo collections prepartion
+    
+    private func sectionItems(forPhotoCollections collections: [PhotoCollection]) -> [SectionItem] {
+        let sectionItem = SectionItem(sectionTitle: SectionAuthorPhotoCollections, cellItem: PhotoCollectionCollectionViewCell.self, representedObjects: collections, header: nil, footer: nil)
+        return [sectionItem]
+    }
+
+    // MARK: - Author photos prepartion
+    
+    private func imageDTOsForUserPhotos() -> [ImageDTO] {
+        var imageDTOs = photos.map { photo in
+            photo.imageDTO(withSize: .thumb, imageCallback: { image in
+                photo.thumbImage = image
+            }
+            )
+        }
+        if let totalPhotosCount = user.totalPhotos, totalPhotosCount > MaxUserPhotosToShow, containedInTableView {
+            let moreImagesDTO = ImageDTO(image: #imageLiteral(resourceName: "moreImages"))
+            imageDTOs.append(moreImagesDTO)
+        }
+        return imageDTOs
+    }
+    
+    private func sectionItems(forPhotos photos: [ImageDTO]) -> [SectionItem] {
+        let sectionItem = SectionItem(sectionTitle: SectionAuthorPhotos, cellItem: ImageViewCollectionViewCell.self, representedObjects: photos, header: nil, footer: nil)
+        return [sectionItem]
     }
  
     // MARK: - Delegate helpers

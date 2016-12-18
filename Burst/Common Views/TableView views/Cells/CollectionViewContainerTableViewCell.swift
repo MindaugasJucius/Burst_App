@@ -6,15 +6,15 @@ typealias CellContentViewCallback = (UIView) -> ()
 class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    fileprivate var registeredCellReuseIdentifier: String = ""
     
     var customConfigCallback: CellContentViewCallback?
 
-    var model: [Any] = [] {
+    var sectionItems: [SectionItem] = [] {
         didSet {
-            guard !model.isEmpty else {
+            guard !sectionItems.isEmpty else {
                 return
             }
+            registerCells()
             collectionView.reloadData()
         }
     }
@@ -39,13 +39,14 @@ class CollectionViewContainerTableViewCell: UITableViewCell, ReusableView {
         }
     }
     
-    func cellToRegister(cell: UICollectionViewCell.Type, cellConfigurationCallback: CellContentViewCallback?) { 
-        let nib = UINib(nibName: cell.className, bundle: nil)
-        customConfigCallback = cellConfigurationCallback
-        collectionView.register(nib, forCellWithReuseIdentifier: cell.className)
-        registeredCellReuseIdentifier = cell.className
+    private func registerCells() {
+        sectionItems.forEach { [weak self] sectionItem in
+            let reusableViewTypeName = "\(sectionItem.cellItem)"
+            let nib = UINib(nibName: reusableViewTypeName, bundle: nil)
+            self?.collectionView.register(nib, forCellWithReuseIdentifier: reusableViewTypeName)
+        }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.dataSource = self
@@ -67,17 +68,24 @@ extension CollectionViewContainerTableViewCell: UICollectionViewDelegate {
 
 extension CollectionViewContainerTableViewCell: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sectionItems.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.count
+        return sectionItems[section].representedObjects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: registeredCellReuseIdentifier, for: indexPath)
-        customConfigCallback?(cell)
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "\(sectionItems[indexPath.section].cellItem)",
+            for: indexPath
+        )
         guard let reusableCell = cell as? ReusableView else {
             return cell
         }
-        reusableCell.configure(withAny: model[indexPath.row])
+        let representedObject = sectionItems[indexPath.section].representedObjects[indexPath.row]
+        reusableCell.configure(withAny: representedObject)
         return cell
     }
     
