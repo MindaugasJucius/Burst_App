@@ -60,6 +60,11 @@
                 <constraint firstItem="wZa-Tm-O9D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="om9-ze-dk6"/>
             </constraints>
             <size key="customSize" width="412" height="170"/>
+            <connections>
+                <outlet property="categoryNameLabel" destination="LMW-C9-uVa" id="y8k-iN-fnT"/>
+                <outlet property="categoryPhotosCountLabel" destination="wZa-Tm-O9D" id="h2o-Kf-awd"/>
+                <outlet property="categoryPhotosTeaserCollectionView" destination="Ca1-hw-cbd" id="he3-Bb-Tfk"/>
+            </connections>
             <point key="canvasLocation" x="215" y="114"/>
         </collectionViewCell>
     </objects>

@@ -17,8 +17,36 @@ class PhotoCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
     }
 
+    private func registerViews() {
+        let collectionsCellNib = UINib(nibName: CollectionViewContainerTableViewCell.className, bundle: nil)
+        tableView?.register(collectionsCellNib, forCellReuseIdentifier: CollectionViewContainerTableViewCell.reuseIdentifier)
+    }
+    
+    private func configureTableView() {
+        registerViews()
+        tableView.dataSource = self
+    }
+    
+    private func configure(containerCell: CollectionViewContainerTableViewCell) {
+        
+    }
+    
+}
+
+extension PhotoCategoryViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let containerCell = tableView.dequeueReusableCell(withIdentifier: CollectionViewContainerTableViewCell.reuseIdentifier, for: indexPath)
+        
+    }
+    
 }
 
 extension PhotoCategoryViewController: PhotoInfoContentController {
@@ -26,5 +54,4 @@ extension PhotoCategoryViewController: PhotoInfoContentController {
     func contentHeight() -> CGFloat {
         return tableView.contentSize.height
     }
-    
 }
