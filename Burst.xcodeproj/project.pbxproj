@@ -23,6 +23,7 @@
 		0324A7CD1E070C780042A2A2 /* PhotoCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0324A7CB1E070C780042A2A2 /* PhotoCategoryViewController.xib */; };
 		0324A7D01E070C960042A2A2 /* PhotoCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7CE1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.swift */; };
 		0324A7D11E070C960042A2A2 /* PhotoCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0324A7CF1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.xib */; };
+		0324A7D31E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7D21E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift */; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
 		03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CA51DDDD37900F04975 /* PhotoViewController.swift */; };
 		03314CA81DDDD37900F04975 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03314CA61DDDD37900F04975 /* PhotoViewController.xib */; };
@@ -172,6 +173,7 @@
 		0324A7CB1E070C780042A2A2 /* PhotoCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCategoryViewController.xib; sourceTree = "<group>"; };
 		0324A7CE1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0324A7CF1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		0324A7D21E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+CustomLayouts.swift"; sourceTree = "<group>"; };
 		032C58561DBD3153003FFF4B /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		03314CA51DDDD37900F04975 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		03314CA61DDDD37900F04975 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				0382B1411DE3245F00586B5C /* UIViewController+Error.swift */,
 				0382B1871DE7090900586B5C /* UIView+Shadow.swift */,
 				0324A7C71E0704100042A2A2 /* String+Plural.swift */,
+				0324A7D21E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				03DC3A7F1D88781E00D18A48 /* AppConstants.swift in Sources */,
 				03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */,
 				037A6E6D1DAFE79A000A774C /* PhotoTableViewCell.swift in Sources */,
+				0324A7D31E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift in Sources */,
 				03673ED51DC6386900FE37E7 /* EmptyStateViewFactory.swift in Sources */,
 				037A6E841DB0C812000A774C /* PhotoHeader.swift in Sources */,
 				0382B1551DE376DF00586B5C /* CollectionViewContainerTableViewCell.swift in Sources */,
