@@ -1,7 +1,7 @@
 import UIKit
 import BurstAPI
 
-enum UserInfo {
+enum UserInfo: String {
     case photos
     case collections
 }
@@ -9,8 +9,6 @@ enum UserInfo {
 let SectionAuthorPhotos = "AuthorPhotosSection"
 let SectionAuthorPhotoCollections = "AuthorPhotoCollectionsSection"
 let UserInfoSectionHeaderReuseID = "UserInfoSectionHeader"
-fileprivate let PhotoHeight: CGFloat = 100
-fileprivate let SideInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
 fileprivate let MaxUserPhotosToShow = 10
 
 class AuthorViewControllerDataSource: NSObject {
@@ -25,30 +23,6 @@ class AuthorViewControllerDataSource: NSObject {
     fileprivate var availableUserInfo: [UserInfo] = []
     fileprivate var photoCollections: [PhotoCollection] = []
     fileprivate var photos: [Photo] = []
-    
-    private lazy var photoCollectionsCollectionViewLayout: UICollectionViewFlowLayout = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = 30
-        flowLayout.sectionInset = SideInset
-        flowLayout.itemSize = CGSize(
-            width: UIScreen.main.bounds.width-30,
-            height: CollectionCoverPhotoHeight
-        )
-        return flowLayout
-    }()
-    
-    private lazy var photoCollectionViewLayout: UICollectionViewFlowLayout = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = CollectionSideSpacing
-        flowLayout.sectionInset = SideInset
-        flowLayout.itemSize = CGSize(
-            width: PhotoHeight,
-            height: PhotoHeight
-        )
-        return flowLayout
-    }()
     
     init(tableView: UITableView, viewController: UIViewController, user: User, containedInTableView: Bool) {
         self.tableView = tableView
@@ -94,11 +68,11 @@ class AuthorViewControllerDataSource: NSObject {
         }
         switch userInfo {
         case .collections:
-            containerCell.layout = photoCollectionsCollectionViewLayout
+            containerCell.layout = UICollectionViewFlowLayout.photoCollectionsLayout()
             containerCell.isPagingEnabled = true
             containerCell.sectionItems = sectionItems(forPhotoCollections: photoCollections)
         case .photos:
-            containerCell.layout = photoCollectionViewLayout
+            containerCell.layout = UICollectionViewFlowLayout.photoCollectionLayout()
             containerCell.isPagingEnabled = false
             containerCell.sectionItems = sectionItems(forPhotos: imageDTOsForUserPhotos())
         }
@@ -156,7 +130,7 @@ class AuthorViewControllerDataSource: NSObject {
     
     private func title(forContent content: UserInfo) -> String {
         var contentCount = 0
-        var contentString = "\(content)"
+        var contentString = content.rawValue
         switch content {
         case .photos:
             guard let userPhotoCount = user.totalPhotos else {

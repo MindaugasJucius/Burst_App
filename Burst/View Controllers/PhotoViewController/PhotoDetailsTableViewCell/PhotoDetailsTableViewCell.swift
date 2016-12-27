@@ -194,9 +194,6 @@ extension PhotoDetailsTableViewCell: StatefulContainerView {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.delaysContentTouches = false
-        for case let subview as UIScrollView in tableView.subviews {
-            subview.delaysContentTouches = false
-        }
         tableView.panGestureRecognizer.addTarget(self, action: #selector(handle(panGesture:)))
     }
 }

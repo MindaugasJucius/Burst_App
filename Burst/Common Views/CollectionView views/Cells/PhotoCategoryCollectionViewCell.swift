@@ -19,6 +19,6 @@ class PhotoCategoryCollectionViewCell: UICollectionViewCell, ReusableView {
     
     func configure(forCategory category: PhotoCategory) {
         categoryNameLabel.text = category.categoryTitle
-        categoryPhotosCountLabel.text = String(category.photoCount)
+        //categoryPhotosCountLabel.text = String(category.photoCount)
     }
 }

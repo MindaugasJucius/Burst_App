@@ -13,7 +13,7 @@ extension String {
             }
         } else {
             if character == PluralEnding {
-                self.remove(at: self.endIndex)
+                self.remove(at: self.index(before: self.endIndex))
             }
         }
         return self

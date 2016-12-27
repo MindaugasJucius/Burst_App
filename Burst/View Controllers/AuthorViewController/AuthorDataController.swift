@@ -28,9 +28,13 @@ class AuthorDataController: NSObject {
             fetch(url: userCollectionsLink,
                 success: { (photoCollections: [PhotoCollection]) in
                     fetchGroup.leave()
-                    userInfo.collections = photoCollections.filter {
+                    let collectionsWithPhotos = photoCollections.filter {
                         $0.photosCount != 0
                     }
+                    guard !collectionsWithPhotos.isEmpty else {
+                        return
+                    }
+                    userInfo.collections = collectionsWithPhotos
                 },
                 failure: onDispatchGroupError
             )

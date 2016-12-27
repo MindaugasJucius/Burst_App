@@ -140,7 +140,6 @@ class PhotosTableViewDataSource: NSObject {
         let sectionRange = Range(uncheckedBounds: (lower: previousCount, upper: currentCount))
         let indexSet = IndexSet(integersIn: sectionRange)
         fetchedPhotos.append(contentsOf: photos)
-        tableView.finishInfiniteScroll()
         tableView.beginUpdates()
         if tableView.cellForRow(at: IndexPath(item: 0, section: 0)) is EmptyStateTableViewCell, currentPage == InitialPageIndex {
             tableView.deleteSections(IndexSet(integer: 0), with: .none)
@@ -149,6 +148,7 @@ class PhotosTableViewDataSource: NSObject {
         tableView.insertRows(at: indexPaths, with: .fade)
         tableView.endUpdates()
         refreshControl.endRefreshing()
+        tableView.finishInfiniteScroll()
         currentPage = currentPage + 1
     }
     
@@ -164,10 +164,6 @@ class PhotosTableViewDataSource: NSObject {
             return .none
         }
         return cell
-    }
-    
-    private func presentDetailsController(forPhoto photo: Photo) {
-        viewController.presentDetails(forPhoto: photo)
     }
     
     // MARK: - Delegate helpers
@@ -254,7 +250,7 @@ class PhotosTableViewDataSource: NSObject {
             guard let photo = photo else {
                 return
             }
-            self.presentDetailsController(forPhoto: photo)
+            self.viewController.presentDetails(forPhoto: photo)
         }
         return photoCell
     }

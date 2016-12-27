@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		03191C641DB7A98F00695972 /* UnsplashImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C631DB7A98F00695972 /* UnsplashImages.swift */; };
-		03314CC81DDF0ABC00F04975 /* UnsplashPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CC71DDF0ABC00F04975 /* UnsplashPhoto.swift */; };
 		03314CCA1DDF0CB300F04975 /* EXIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CC91DDF0CB300F04975 /* EXIF.swift */; };
 		03314CCC1DDF0CC100F04975 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CCB1DDF0CC100F04975 /* Location.swift */; };
 		037A6E8B1DB11FED000A774C /* UserProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A6E8A1DB11FED000A774C /* UserProfileImage.swift */; };
@@ -51,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		03191C631DB7A98F00695972 /* UnsplashImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashImages.swift; sourceTree = "<group>"; };
-		03314CC71DDF0ABC00F04975 /* UnsplashPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPhoto.swift; sourceTree = "<group>"; };
 		03314CC91DDF0CB300F04975 /* EXIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXIF.swift; sourceTree = "<group>"; };
 		03314CCB1DDF0CC100F04975 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		037A6E8A1DB11FED000A774C /* UserProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileImage.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				03EB14A51DB78CA200049E45 /* UnsplashPhotoStats.swift */,
 				03191C631DB7A98F00695972 /* UnsplashImages.swift */,
 				039EF4951DC64373004E94E4 /* UnsplashSearch.swift */,
-				03314CC71DDF0ABC00F04975 /* UnsplashPhoto.swift */,
 				0382B1591DE3905C00586B5C /* UnsplashGeneric.swift */,
 			);
 			path = Calls;
@@ -265,7 +262,6 @@
 			files = (
 				03EB14A81DB78CA200049E45 /* UnsplashPhotoStats.swift in Sources */,
 				03314CCA1DDF0CB300F04975 /* EXIF.swift in Sources */,
-				03314CC81DDF0ABC00F04975 /* UnsplashPhoto.swift in Sources */,
 				03191C641DB7A98F00695972 /* UnsplashImages.swift in Sources */,
 				03DC3A4B1D886E2000D18A48 /* User.swift in Sources */,
 				03314CCC1DDF0CC100F04975 /* Location.swift in Sources */,

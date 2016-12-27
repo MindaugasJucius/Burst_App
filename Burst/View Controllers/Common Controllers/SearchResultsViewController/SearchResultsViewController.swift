@@ -242,7 +242,6 @@ class SearchResultsViewController: UIViewController {
         guard let query = delayer.userInfo as? String else {
             return
         }
-        print("searching")
         searchQuery = query
         currentSearchPage = 1
         onSearchOccurence?(query)

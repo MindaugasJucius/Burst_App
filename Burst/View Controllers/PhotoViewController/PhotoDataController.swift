@@ -37,9 +37,13 @@ class PhotoDataController: NSObject {
     func fullPhoto(withID id: String,
                    success: @escaping PhotoInfoCallback,
                    failure: @escaping ErrorCallback) {
-        UnsplashPhoto.photo(
-            withID: id,
-            success: { [unowned self] photo in
+        let singlePhotoURL = String(format: UnsplashSinglePhotoURL, id)
+        UnsplashGeneric.unsplash(
+            getFromURL: URL(string: singlePhotoURL)!,
+            success: { [unowned self] (photo: Photo) in
+                if let categories = photo.categories, !categories.isEmpty {
+                    print("datacontroller \(categories[0].categoryTitle)")
+                }
                 self.infoControllers = self.controllers(forPhoto: photo)
                 success(photo)
             },

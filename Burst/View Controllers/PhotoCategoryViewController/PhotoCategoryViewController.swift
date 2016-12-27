@@ -1,5 +1,7 @@
 import BurstAPI
 
+fileprivate let PhotoCategorySection = "PhotoCategorySection"
+
 class PhotoCategoryViewController: UIViewController {
 
     @IBOutlet fileprivate weak var tableView: UITableView!
@@ -8,6 +10,7 @@ class PhotoCategoryViewController: UIViewController {
     
     init(photoCategories: [PhotoCategory]) {
         self.photoCategories = photoCategories
+        print("category vc \(photoCategories.count)")
         super.init(nibName: PhotoCategoryViewController.className, bundle: nil)
     }
     
@@ -28,10 +31,18 @@ class PhotoCategoryViewController: UIViewController {
     private func configureTableView() {
         registerViews()
         tableView.dataSource = self
+        tableView.rowHeight = CollectionCoverPhotoHeight
     }
     
-    private func configure(containerCell: CollectionViewContainerTableViewCell) {
-        
+    fileprivate func configure(containerCell: CollectionViewContainerTableViewCell) {
+        containerCell.layout = UICollectionViewFlowLayout.photoCollectionsLayout()
+        containerCell.isPagingEnabled = true
+        containerCell.sectionItems = categoriesSectionItem()
+    }
+    
+    private func categoriesSectionItem() -> [SectionItem] {
+        let sectionItem = SectionItem(sectionTitle: PhotoCategorySection, cellItem: PhotoCategoryCollectionViewCell.self, representedObjects: photoCategories, header: nil, footer: nil)
+        return [sectionItem]
     }
     
 }
@@ -43,8 +54,12 @@ extension PhotoCategoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let containerCell = tableView.dequeueReusableCell(withIdentifier: CollectionViewContainerTableViewCell.reuseIdentifier, for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewContainerTableViewCell.reuseIdentifier, for: indexPath)
+        guard let containerCell = cell as? CollectionViewContainerTableViewCell else {
+            return cell
+        }
+        configure(containerCell: containerCell)
+        return containerCell
     }
     
 }

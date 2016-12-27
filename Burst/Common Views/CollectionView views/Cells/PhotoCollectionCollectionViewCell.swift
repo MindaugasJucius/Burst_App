@@ -3,9 +3,6 @@ import BurstAPI
 import AlamofireImage
 import Unbox
 
-let CollectionCoverPhotoHeight: CGFloat = 200
-let CollectionSideSpacing: CGFloat = 10
-
 class PhotoCollectionCollectionViewCell: UICollectionViewCell, ReusableView {
     
     @IBOutlet weak var countLabel: UILabel!

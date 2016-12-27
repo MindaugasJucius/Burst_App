@@ -7,8 +7,11 @@ public typealias ErrorCallback = (Error) -> ()
 
 class UnboxSerializer: NSObject {
     
+    private static let queue = DispatchQueue(label: "parsingqueue")
+    
     static func parse<U: Unboxable>(response: NSDictionary, success: @escaping EntityCallback<U>, failure: @escaping ErrorCallback) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        print("parse \(U.self)")
+        queue.sync {
             do {
                 guard let unboxDictionary = response as? UnboxableDictionary else {
                     let error = NSError(domain: "Unable to parse model: \(String(describing: U.self))", code: 0, userInfo: nil)
@@ -25,6 +28,9 @@ class UnboxSerializer: NSObject {
                 }
             }
         }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            
+//        }
     }
     
     static func parse<U: Unboxable>(responses: [NSDictionary], success: @escaping EntitiesCallback<U>, failure: @escaping ErrorCallback) {

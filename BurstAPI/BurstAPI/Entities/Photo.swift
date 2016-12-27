@@ -49,7 +49,9 @@ public class Photo: NSObject, Unboxable {
     }
     
     required public init(unboxer: Unboxer) throws {
-        self.id = try unboxer.unbox(key: "id")
+        let id: String = try unboxer.unbox(key: "id")
+        self.id = id
+        print(id)
         self.donwloadURLs = try Photo.sizes(fromUnboxer: unboxer)
         self.likes = try unboxer.unbox(key: "likes")
         self.likedByUser = try unboxer.unbox(key: "liked_by_user")
@@ -57,7 +59,8 @@ public class Photo: NSObject, Unboxable {
         self.uploader = try unboxer.unbox(key: "user")
         self.location = unboxer.unbox(key: "location")
         self.exif = unboxer.unbox(key: "exif")
-        self.categories = unboxer.unbox(key: "categories")
+        let photoCategories: [PhotoCategory]? = unboxer.unbox(key: "categories")
+        self.categories = photoCategories?.count != 0 ? photoCategories : nil
         let hexString: String = try unboxer.unbox(key: "color")
         self.color = UIColor.colorWithHexString(hexString)
         let height: CGFloat = try unboxer.unbox(key: "height")

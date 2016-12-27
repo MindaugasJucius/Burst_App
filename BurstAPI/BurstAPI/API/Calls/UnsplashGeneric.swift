@@ -11,7 +11,7 @@ public class UnsplashGeneric: NSObject {
                              failure: ErrorCallback?) {
         guard let appID = AppConstants.appConstDict[BurstID] else { return }
         let params = [BurstID : appID] as [String : Any]
-        Alamofire.request(url, method: .get, parameters: params).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: params).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 guard let responseJSON = value as? NSDictionary else { return }
