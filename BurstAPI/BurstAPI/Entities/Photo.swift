@@ -51,7 +51,6 @@ public class Photo: NSObject, Unboxable {
     required public init(unboxer: Unboxer) throws {
         let id: String = try unboxer.unbox(key: "id")
         self.id = id
-        print(id)
         self.donwloadURLs = try Photo.sizes(fromUnboxer: unboxer)
         self.likes = try unboxer.unbox(key: "likes")
         self.likedByUser = try unboxer.unbox(key: "liked_by_user")

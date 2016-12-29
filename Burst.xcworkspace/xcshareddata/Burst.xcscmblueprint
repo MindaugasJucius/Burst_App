@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CF10F6B8DFE64C36E439DA67B3989D1CCEF6976A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CF10F6B8DFE64C36E439DA67B3989D1CCEF6976A" : 9223372036854775807,
+    "85029ED4F863A5F837E7433146887E8B255C2DA0" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "943B8DAD-271C-44FA-8839-C0641176E0F1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CF10F6B8DFE64C36E439DA67B3989D1CCEF6976A" : "BurstApp\/",
+    "85029ED4F863A5F837E7433146887E8B255C2DA0" : "MJSlideMenu\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Burst",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Burst.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MindaugasJucius\/MJSlideMenu.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "85029ED4F863A5F837E7433146887E8B255C2DA0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MindaugasJucius\/Burst_App.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CF10F6B8DFE64C36E439DA67B3989D1CCEF6976A"
+    }
+  ]
+}

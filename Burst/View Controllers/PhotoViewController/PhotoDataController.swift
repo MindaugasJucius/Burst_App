@@ -41,9 +41,6 @@ class PhotoDataController: NSObject {
         UnsplashGeneric.unsplash(
             getFromURL: URL(string: singlePhotoURL)!,
             success: { [unowned self] (photo: Photo) in
-                if let categories = photo.categories, !categories.isEmpty {
-                    print("datacontroller \(categories[0].categoryTitle)")
-                }
                 self.infoControllers = self.controllers(forPhoto: photo)
                 success(photo)
             },

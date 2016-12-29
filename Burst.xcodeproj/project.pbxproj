@@ -228,6 +228,7 @@
 		039EF49A1DC65B19004E94E4 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		039EF49B1DC65B19004E94E4 /* SearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsViewController.xib; sourceTree = "<group>"; };
 		03A19E0B1DC539BD00078B4C /* UIView+NIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NIB.swift"; sourceTree = "<group>"; };
+		03BD6FA11E1406BB009EEA3E /* MJSlideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJSlideMenu.framework; path = ../MJSlideMenu/Carthage/Build/iOS/MJSlideMenu.framework; sourceTree = "<group>"; };
 		03C321711DAC2917008928B1 /* UIImageColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIImageColors.framework; path = Carthage/Build/iOS/UIImageColors.framework; sourceTree = "<group>"; };
 		03C35EE41DC384C60032F1DD /* UIView+SubviewOfClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewOfClass.swift"; sourceTree = "<group>"; };
 		03C4E3971DC90488005CECE2 /* LaunchscreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchscreenView.swift; sourceTree = "<group>"; };
@@ -633,6 +634,7 @@
 		0587710ADC647A5E3943AC69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03BD6FA11E1406BB009EEA3E /* MJSlideMenu.framework */,
 				03EE3EF71DA13550002BDF0A /* Unbox.framework */,
 				03DC3A581D88728800D18A48 /* Alamofire.framework */,
 				03DC3A591D88728800D18A48 /* AlamofireImage.framework */,

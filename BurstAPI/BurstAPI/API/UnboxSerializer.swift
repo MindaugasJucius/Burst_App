@@ -10,7 +10,6 @@ class UnboxSerializer: NSObject {
     private static let queue = DispatchQueue(label: "parsingqueue")
     
     static func parse<U: Unboxable>(response: NSDictionary, success: @escaping EntityCallback<U>, failure: @escaping ErrorCallback) {
-        print("parse \(U.self)")
         queue.sync {
             do {
                 guard let unboxDictionary = response as? UnboxableDictionary else {

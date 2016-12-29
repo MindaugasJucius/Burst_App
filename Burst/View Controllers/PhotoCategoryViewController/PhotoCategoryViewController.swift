@@ -10,7 +10,6 @@ class PhotoCategoryViewController: UIViewController {
     
     init(photoCategories: [PhotoCategory]) {
         self.photoCategories = photoCategories
-        print("category vc \(photoCategories.count)")
         super.init(nibName: PhotoCategoryViewController.className, bundle: nil)
     }
     

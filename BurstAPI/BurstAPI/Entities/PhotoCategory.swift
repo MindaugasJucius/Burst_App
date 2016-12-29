@@ -14,17 +14,16 @@ public class PhotoCategoryLinks: NSObject, Unboxable {
 
 public struct PhotoCategory: Unboxable {
     
-    //public let id: Int
-    //public let photoCount: Int
+    public let id: Int
+    public let photoCount: Int
     public let categoryTitle: String
-    //public let links: PhotoCategoryLinks
+    public let links: PhotoCategoryLinks
     
     public init(unboxer: Unboxer) throws {
-        //self.id = try unboxer.unbox(key: "id")
-        //self.links = try unboxer.unbox(key: "links")
-        //self.photoCount = try unboxer.unbox(key:"photo_count")
+        self.id = try unboxer.unbox(key: "id")
+        self.links = try unboxer.unbox(key: "links")
+        self.photoCount = try unboxer.unbox(key:"photo_count")
         self.categoryTitle = try unboxer.unbox(key: "title")
-        print(">>>>category \(categoryTitle)")
     }
     
 }
