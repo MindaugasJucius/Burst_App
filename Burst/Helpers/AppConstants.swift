@@ -10,6 +10,10 @@ let APPName = "BURST"
 let Search = "Enter a keyword"
 let ClearSearchHistory = "Clear search history"
 
+// MARK: - Errors
+
+let AlbumCreationFailed = "Failed to create Burst photo album"
+
 // MARK: - Generic messages
 let Cancel = "Cancel"
 let Error = "Error"

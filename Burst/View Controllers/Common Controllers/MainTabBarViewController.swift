@@ -60,14 +60,15 @@ final class MainTabBarViewController: UITabBarController {
         let curatedPhotosController = UIViewController()
         let newPhotosContainedController: ContainedController = (title: "new", controller: newPhotosController)
         let curatedPhotosContainedController: ContainedController = (title: "curated", controller: curatedPhotosController)
-        let controller = ContainerViewController(containedControllers: [newPhotosContainedController, curatedPhotosContainedController])
-        let containerNavigationController = NavigationController(rootViewController: controller)
+        let containerController = ContainerViewController(containedControllers: [newPhotosContainedController, curatedPhotosContainedController])
+        newPhotosController.delegate = containerController
+        let containerNavigationController = NavigationController(rootViewController: containerController)
         containerNavigationController.tabBarItem = UITabBarItem(
             title: "Photos".uppercased(),
             image: nil,
             selectedImage: nil
         )
-        controller.delegate = containerNavigationController
+        containerController.delegate = containerNavigationController
         return containerNavigationController
     }
     

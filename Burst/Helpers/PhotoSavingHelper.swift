@@ -2,18 +2,18 @@ import UIKit
 import Photos
 import BurstAPI
 
+typealias OnCurrentController = () -> (UIViewController?)
 private let AlbumPredicate = "title = %@"
 
 class PhotoSavingHelper: NSObject {
 
-    fileprivate let controller: UIViewController
-    
     fileprivate var photosToSave: [UIImage] = []
     fileprivate var assetCollection: PHAssetCollection?
     fileprivate var collection: PHAssetCollection?
+    fileprivate let currentControllerClosure: OnCurrentController
     
-    init(controller: UIViewController) {
-        self.controller = controller
+    init(currentControllerClosure: @escaping OnCurrentController) {
+        self.currentControllerClosure = currentControllerClosure
     }
     
     func save(imageToSave image: UIImage) {
@@ -33,7 +33,7 @@ class PhotoSavingHelper: NSObject {
         }
         
         PhotoAccessHelper.sharedInstance.askForPhotosAccessIfNecessary(
-            withAskingController: controller,
+            withAskingController: currentControllerClosure(),
             whenAuthorized: success,
             whenAuthorizationCancelled: cancelled
         )
@@ -47,8 +47,8 @@ class PhotoSavingHelper: NSObject {
         createAlbumIfNeeded(withSuccess: { [weak self] in
                 self?.createPhoto(fromImage: image)
             },
-            andFailure: {
-                print("Failed to create album")
+            andFailure: { [weak self] in
+                self?.presentError(NSError(domain: AlbumCreationFailed, code: 0, userInfo: nil))
             }
         )
         
@@ -116,7 +116,7 @@ class PhotoSavingHelper: NSObject {
     
     fileprivate func presentError(_ error: NSError?) {
         AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
-            onController: controller,
+            onController: currentControllerClosure(),
             withError: error
         )
     }

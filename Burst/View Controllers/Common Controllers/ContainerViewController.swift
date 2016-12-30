@@ -11,7 +11,6 @@ typealias ContainedController = (title: String, controller: UIViewController)
 
 class ContainerViewController: UIViewController {
 
-    private var contentViewController: UIViewController?
     private var photoSavingHelper: PhotoSavingHelper?
     private var searchController: UISearchController!
     private var searchBarButton: UIBarButtonItem!
@@ -40,6 +39,14 @@ class ContainerViewController: UIViewController {
         burstTitleView = navigationItem.titleView
         setupSearchBar()
         createSegments()
+        let currentController: OnCurrentController = { [unowned self] in
+            guard let segment = self.slideMenu?.currentlyVisibleSegment else {
+                return nil
+            }
+            let containedController = self.containedControllers.filter { $0.title == segment.title }
+            return containedController.first?.controller
+        }
+        photoSavingHelper = PhotoSavingHelper(currentControllerClosure: currentController)
     }
     
     func createSegments() {
@@ -50,7 +57,7 @@ class ContainerViewController: UIViewController {
         slideMenu?.menuTextColorSelected = AppAppearance.lightGray
         slideMenu?.indexViewColor = AppAppearance.lightGray
         containedControllers.forEach { [unowned self] controllerTuple in
-            self.add(containedController: controllerTuple.controller)
+            self.add(containedController: controllerTuple.controller, toSlideMenu: true)
         }
         let segments = containedControllers.map { controllerTuple in
             return Segment(title: controllerTuple.title, contentView: controllerTuple.controller.view)
@@ -58,23 +65,16 @@ class ContainerViewController: UIViewController {
         slideMenu?.segments = segments
     }
     
-    private func addContentController() {
-        guard let controller = PhotosTableViewController.fromStoryboard() else {
-            return
-        }
-        controller.delegate = self
-        contentViewController = controller
-        
-        photoSavingHelper = PhotoSavingHelper(controller: controller)
-        add(containedController: controller)
-    }
-    
-    private func add(containedController controller: UIViewController) {
+    func add(containedController controller: UIViewController, toSlideMenu: Bool) {
         guard let slideMenu = slideMenu else {
             return
         }
+        let controllersFrame = toSlideMenu ? slideMenu.frame : view.bounds
         addChildViewController(controller)
-        controller.view.frame = slideMenu.frame
+        controller.view.frame = controllersFrame
+        if !toSlideMenu {
+            view.addSubview(controller.view)
+        }
         controller.didMove(toParentViewController: self)
     }
     
@@ -113,8 +113,7 @@ class ContainerViewController: UIViewController {
             self?.searchBar.text = query
         }
         self.recentSearchesController = recentSearchesController
-        add(containedController: recentSearchesController)
-        
+        add(containedController: recentSearchesController, toSlideMenu: false)
         UIView.fadeIn(view: searchBar, completion: nil)
     }
     
@@ -155,7 +154,7 @@ class ContainerViewController: UIViewController {
     
     private func presentError(_ error: Error) {
         AlertControllerPresenterHelper.sharedInstance.presentErrorAlert(
-            onController: contentViewController,
+            onController: presentedViewController,
             withError: error
         )
     }
