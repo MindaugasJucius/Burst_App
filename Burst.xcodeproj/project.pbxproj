@@ -24,6 +24,8 @@
 		0324A7D01E070C960042A2A2 /* PhotoCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7CE1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.swift */; };
 		0324A7D11E070C960042A2A2 /* PhotoCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0324A7CF1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.xib */; };
 		0324A7D31E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7D21E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift */; };
+		0326ED6B1E158AE000420F4C /* MJSlideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0326ED6A1E158AE000420F4C /* MJSlideMenu.framework */; };
+		0326ED6D1E158AF600420F4C /* MJSlideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0326ED6C1E158AF600420F4C /* MJSlideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C58561DBD3153003FFF4B /* CircularProgressView.swift */; };
 		03314CA71DDDD37900F04975 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03314CA51DDDD37900F04975 /* PhotoViewController.swift */; };
 		03314CA81DDDD37900F04975 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03314CA61DDDD37900F04975 /* PhotoViewController.xib */; };
@@ -143,6 +145,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0326ED6D1E158AF600420F4C /* MJSlideMenu.framework in Embed Frameworks */,
 				03EE3EFB1DA13B3A002BDF0A /* Unbox.framework in Embed Frameworks */,
 				03DC3A381D88678E00D18A48 /* BurstAPI.framework in Embed Frameworks */,
 				03DC3A6A1D88756000D18A48 /* Alamofire.framework in Embed Frameworks */,
@@ -174,6 +177,8 @@
 		0324A7CE1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0324A7CF1E070C960042A2A2 /* PhotoCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		0324A7D21E083C4A0042A2A2 /* UICollectionViewFlowLayout+CustomLayouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+CustomLayouts.swift"; sourceTree = "<group>"; };
+		0326ED6A1E158AE000420F4C /* MJSlideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJSlideMenu.framework; path = Carthage/Build/iOS/MJSlideMenu.framework; sourceTree = "<group>"; };
+		0326ED6C1E158AF600420F4C /* MJSlideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJSlideMenu.framework; path = Carthage/Build/iOS/MJSlideMenu.framework; sourceTree = "<group>"; };
 		032C58561DBD3153003FFF4B /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		03314CA51DDDD37900F04975 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		03314CA61DDDD37900F04975 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -267,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0326ED6B1E158AE000420F4C /* MJSlideMenu.framework in Frameworks */,
 				03EE3EF91DA13A3A002BDF0A /* Unbox.framework in Frameworks */,
 				03DC3A371D88678900D18A48 /* BurstAPI.framework in Frameworks */,
 				03DC3A6D1D88758800D18A48 /* Alamofire.framework in Frameworks */,
@@ -508,6 +514,7 @@
 		03C7D2171D18588E0040A875 = {
 			isa = PBXGroup;
 			children = (
+				0326ED6C1E158AF600420F4C /* MJSlideMenu.framework */,
 				03C321711DAC2917008928B1 /* UIImageColors.framework */,
 				03EE3EFA1DA13B3A002BDF0A /* Unbox.framework */,
 				030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */,
@@ -634,6 +641,7 @@
 		0587710ADC647A5E3943AC69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0326ED6A1E158AE000420F4C /* MJSlideMenu.framework */,
 				03BD6FA11E1406BB009EEA3E /* MJSlideMenu.framework */,
 				03EE3EF71DA13550002BDF0A /* Unbox.framework */,
 				03DC3A581D88728800D18A48 /* Alamofire.framework */,

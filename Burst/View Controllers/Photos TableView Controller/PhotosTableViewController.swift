@@ -18,6 +18,7 @@ class PhotosTableViewController: UIViewController {
             }
         }
     }
+    
     // Mark: - Lifecycle
     
     override func viewDidLoad() {

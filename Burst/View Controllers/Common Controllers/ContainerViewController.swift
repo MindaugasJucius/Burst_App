@@ -1,11 +1,13 @@
 import UIKit
 import Photos
 import BurstAPI
+import MJSlideMenu
 
 protocol ContainerControllerDelegate: class {
-    func photoPermissionsGranted() -> Bool
     func downloadPhoto(_ photo: Photo)
 }
+
+typealias ContainedController = (title: String, controller: UIViewController)
 
 class ContainerViewController: UIViewController {
 
@@ -21,14 +23,42 @@ class ContainerViewController: UIViewController {
     
     var delegate: NavigationControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addContentController()
-        burstTitleView = navigationItem.titleView
-        setupSearchBar()
+    fileprivate let containedControllers: [ContainedController]
+    fileprivate var slideMenu: MJSlideMenu?
+    
+    init(containedControllers: [ContainedController]) {
+        self.containedControllers = containedControllers
+        super.init(nibName: ContainerViewController.className, bundle: nil)
     }
     
-    func addContentController() {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        burstTitleView = navigationItem.titleView
+        setupSearchBar()
+        createSegments()
+    }
+    
+    func createSegments() {
+        slideMenu = MJSlideMenu.create(withParentVC: self)
+        slideMenu?.menuBackgroundColor = AppAppearance.tableViewBackground
+        slideMenu?.contentBackgroundColor = AppAppearance.tableViewBackground
+        slideMenu?.menuTextColor = AppAppearance.gray666
+        slideMenu?.menuTextColorSelected = AppAppearance.lightGray
+        slideMenu?.indexViewColor = AppAppearance.lightGray
+        containedControllers.forEach { [unowned self] controllerTuple in
+            self.add(containedController: controllerTuple.controller)
+        }
+        let segments = containedControllers.map { controllerTuple in
+            return Segment(title: controllerTuple.title, contentView: controllerTuple.controller.view)
+        }
+        slideMenu?.segments = segments
+    }
+    
+    private func addContentController() {
         guard let controller = PhotosTableViewController.fromStoryboard() else {
             return
         }
@@ -39,14 +69,16 @@ class ContainerViewController: UIViewController {
         add(containedController: controller)
     }
     
-    func add(containedController controller: UIViewController) {
+    private func add(containedController controller: UIViewController) {
+        guard let slideMenu = slideMenu else {
+            return
+        }
         addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.view.frame = view.bounds
+        controller.view.frame = slideMenu.frame
         controller.didMove(toParentViewController: self)
     }
     
-    func remove(containedController controller: UIViewController) {
+    private func remove(containedController controller: UIViewController) {
         controller.willMove(toParentViewController: nil)
         controller.view.removeFromSuperview()
         controller.removeFromParentViewController()
@@ -82,6 +114,7 @@ class ContainerViewController: UIViewController {
         }
         self.recentSearchesController = recentSearchesController
         add(containedController: recentSearchesController)
+        
         UIView.fadeIn(view: searchBar, completion: nil)
     }
     
@@ -129,10 +162,6 @@ class ContainerViewController: UIViewController {
 }
 
 extension ContainerViewController: ContainerControllerDelegate {
-
-    func photoPermissionsGranted() -> Bool {
-        return PHPhotoLibrary.authorizationStatus() == .authorized
-    }
     
     func downloadPhoto(_ photo: Photo) {
         addPhotoToDownloadQueue(photo)

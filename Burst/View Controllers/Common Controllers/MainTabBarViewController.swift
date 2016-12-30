@@ -56,7 +56,11 @@ final class MainTabBarViewController: UITabBarController {
     }
     
     private func containerTab() -> UINavigationController {
-        let controller = ContainerViewController(nibName: "ContainerViewController", bundle: nil)
+        let newPhotosController = PhotosTableViewController.fromStoryboard()!
+        let curatedPhotosController = UIViewController()
+        let newPhotosContainedController: ContainedController = (title: "new", controller: newPhotosController)
+        let curatedPhotosContainedController: ContainedController = (title: "curated", controller: curatedPhotosController)
+        let controller = ContainerViewController(containedControllers: [newPhotosContainedController, curatedPhotosContainedController])
         let containerNavigationController = NavigationController(rootViewController: controller)
         containerNavigationController.tabBarItem = UITabBarItem(
             title: "Photos".uppercased(),
