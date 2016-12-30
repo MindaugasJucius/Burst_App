@@ -25,34 +25,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="BzI-49-b7t" customClass="PhotosTableHeaderView" customModule="Burst" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-kC-S8m">
-                                            <rect key="frame" x="15" y="15" width="42" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-AS-EP2">
-                                            <rect key="frame" x="15" y="40" width="42" height="21"/>
+                                            <rect key="frame" x="166.5" y="10" width="42" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SD9-kC-S8m" secondAttribute="trailing" constant="15" id="A0u-ON-vwg"/>
-                                        <constraint firstAttribute="bottom" secondItem="0Oj-AS-EP2" secondAttribute="bottom" constant="20" id="CZN-Tb-QfQ"/>
-                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="top" secondItem="SD9-kC-S8m" secondAttribute="bottom" constant="5" id="Omx-m4-P55"/>
-                                        <constraint firstItem="SD9-kC-S8m" firstAttribute="top" secondItem="BzI-49-b7t" secondAttribute="top" constant="15" id="lA4-IF-O0f"/>
-                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="rDA-Uu-EC7"/>
+                                        <constraint firstAttribute="bottom" secondItem="0Oj-AS-EP2" secondAttribute="bottom" constant="10" id="XCt-28-xqh"/>
+                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="top" secondItem="BzI-49-b7t" secondAttribute="top" constant="10" id="oB3-HP-d2r"/>
+                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="rDA-Uu-EC7"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Oj-AS-EP2" secondAttribute="trailing" constant="15" id="sQ2-IX-A33"/>
-                                        <constraint firstItem="SD9-kC-S8m" firstAttribute="leading" secondItem="BzI-49-b7t" secondAttribute="leading" constant="15" id="y0p-Yn-2Yp"/>
+                                        <constraint firstItem="0Oj-AS-EP2" firstAttribute="centerX" secondItem="BzI-49-b7t" secondAttribute="centerX" id="w7w-ms-HcF"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="bottomLabel" destination="0Oj-AS-EP2" id="GAO-B0-EPT"/>
-                                        <outlet property="topLabel" destination="SD9-kC-S8m" id="ZAm-Nf-DgU"/>
                                     </connections>
                                 </view>
                             </tableView>

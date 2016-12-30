@@ -168,19 +168,6 @@ class PhotosTableViewDataSource: NSObject {
     
     // MARK: - Delegate helpers
     
-    func downloadImagesForVisibleCells() {
-        tableView.indexPathsForVisibleRows?.forEach{ [weak self] indexPath in
-            guard let strongSelf = self, !strongSelf.fetchedPhotos.isEmpty else {
-                return
-            }
-            let photo = strongSelf.fetchedPhotos[indexPath.section]
-            guard photo.smallImage == nil else {
-                return
-            }
-            self?.image(forPhoto: photo, atPath: indexPath)
-        }
-    }
-    
     func header(forSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PhotoHeader.reuseIdentifier) as? PhotoHeader, !fetchedPhotos.isEmpty else {
             return .none

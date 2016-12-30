@@ -28,4 +28,4 @@ let PhotoAccessPopup = "Allow Burst to access Photos to save this image"
 // MARK: - Header titles
 
 let NewPhotosTitle = "new"
-let NewPhotosSubtitle = "photos uploaded daily by the Unsplash community"
+let NewPhotosSubtitle = "fresh photos by the Unsplash community"

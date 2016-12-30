@@ -39,6 +39,10 @@ class ContainerViewController: UIViewController {
         burstTitleView = navigationItem.titleView
         setupSearchBar()
         createSegments()
+        initPhotoSavingHelper()
+    }
+    
+    private func initPhotoSavingHelper() {
         let currentController: OnCurrentController = { [unowned self] in
             guard let segment = self.slideMenu?.currentlyVisibleSegment else {
                 return nil
@@ -49,13 +53,15 @@ class ContainerViewController: UIViewController {
         photoSavingHelper = PhotoSavingHelper(currentControllerClosure: currentController)
     }
     
-    func createSegments() {
+    private func createSegments() {
         slideMenu = MJSlideMenu.create(withParentVC: self)
         slideMenu?.menuBackgroundColor = AppAppearance.tableViewBackground
         slideMenu?.contentBackgroundColor = AppAppearance.tableViewBackground
         slideMenu?.menuTextColor = AppAppearance.gray666
         slideMenu?.menuTextColorSelected = AppAppearance.lightGray
-        slideMenu?.indexViewColor = AppAppearance.lightGray
+        slideMenu?.indexViewColor = AppAppearance.malibuBlue
+        slideMenu?.menuTextFont = AppAppearance.regularFont(withSize: .sectionHeaderTitle)
+        slideMenu?.indexViewHeight = 2
         containedControllers.forEach { [unowned self] controllerTuple in
             self.add(containedController: controllerTuple.controller, toSlideMenu: true)
         }

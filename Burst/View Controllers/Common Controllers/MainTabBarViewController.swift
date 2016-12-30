@@ -58,8 +58,8 @@ final class MainTabBarViewController: UITabBarController {
     private func containerTab() -> UINavigationController {
         let newPhotosController = PhotosTableViewController.fromStoryboard()!
         let curatedPhotosController = UIViewController()
-        let newPhotosContainedController: ContainedController = (title: "new", controller: newPhotosController)
-        let curatedPhotosContainedController: ContainedController = (title: "curated", controller: curatedPhotosController)
+        let newPhotosContainedController: ContainedController = (title: "NEW", controller: newPhotosController)
+        let curatedPhotosContainedController: ContainedController = (title: "CURATED", controller: curatedPhotosController)
         let containerController = ContainerViewController(containedControllers: [newPhotosContainedController, curatedPhotosContainedController])
         newPhotosController.delegate = containerController
         let containerNavigationController = NavigationController(rootViewController: containerController)

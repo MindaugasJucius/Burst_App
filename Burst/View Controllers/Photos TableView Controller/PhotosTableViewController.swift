@@ -117,16 +117,5 @@ extension PhotosTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return dataSource.height(forSection: section)
     }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        dataSource.downloadImagesForVisibleCells()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard !decelerate else {
-            return
-        }
-        dataSource.downloadImagesForVisibleCells()
-    }
     
 }
