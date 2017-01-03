@@ -136,7 +136,7 @@ class AppAppearance: NSObject {
         textField.textColor = .white
         let placeholderAttributes = [NSForegroundColorAttributeName: AppAppearance.subtitleColor]
         textField.font = AppAppearance.regularFont(withSize: .systemSize)
-        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: Search, attributes: placeholderAttributes)
+        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: AppConstants.Search, attributes: placeholderAttributes)
         textField.attributedPlaceholder = attributedPlaceholder
     }
 }

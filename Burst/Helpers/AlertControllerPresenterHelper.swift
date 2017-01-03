@@ -8,11 +8,11 @@ class AlertControllerPresenterHelper: NSObject {
     
     func presentErrorAlert(onController controller: UIViewController?, withError error: Error?) {
         let errorAlertController = UIAlertController(
-            title: Error,
-            message: error?.localizedDescription ?? Error,
+            title: AppConstants.Error,
+            message: error?.localizedDescription ?? AppConstants.Error,
             preferredStyle: .alert
         )
-        errorAlertController.addAction(okAction(andTitle: Ok, withHandler: nil))
+        errorAlertController.addAction(okAction(andTitle: AppConstants.Ok, withHandler: nil))
         presentIfPossible(
             presentingController: controller,
             controllerToPresent: errorAlertController
@@ -22,7 +22,7 @@ class AlertControllerPresenterHelper: NSObject {
     func presentAlert(withMessage message: String?,
         andTitle title: String?,
         onController controller: UIViewController?,
-        withOkMessage okMessage: String = Ok,
+        withOkMessage okMessage: String = AppConstants.Ok,
         withOkHandler okHandler: ActionHandlerCallback?,
         withCancelHandler cancelHandler: ActionHandlerCallback?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -32,7 +32,7 @@ class AlertControllerPresenterHelper: NSObject {
     }
     
     fileprivate func cancelAction(withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
-        return UIAlertAction(title: Cancel, style: .cancel, handler: handler)
+        return UIAlertAction(title: AppConstants.Cancel, style: .cancel, handler: handler)
     }
     
     fileprivate func okAction(andTitle title: String, withHandler handler: ActionHandlerCallback?) -> UIAlertAction {

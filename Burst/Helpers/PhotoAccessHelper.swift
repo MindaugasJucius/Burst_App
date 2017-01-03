@@ -15,13 +15,13 @@ private enum AlertState {
         switch self {
         case .settings:
             return AlertProperties(
-                message: PhotoAccessSettings,
-                okButtonTitle: SettingsApp
+                message: AppConstants.PhotoAccessSettings,
+                okButtonTitle: AppConstants.SettingsApp
             )
         case .popup:
             return AlertProperties(
-                message: PhotoAccessPopup,
-                okButtonTitle: Ok
+                message: AppConstants.PhotoAccessPopup,
+                okButtonTitle: AppConstants.Ok
             )
         }
     }
@@ -74,7 +74,7 @@ class PhotoAccessHelper: NSObject {
     fileprivate func presentAlertForPhotoAccess(forState state: AlertState, onController controller: UIViewController?, withOkHandler okHandler: EmptyCallback?, withCancelHandler cancelHandler: EmptyCallback?) {
         AlertControllerPresenterHelper.sharedInstance.presentAlert(
             withMessage: state.alertProperties.message,
-            andTitle: PhotoAccess,
+            andTitle: AppConstants.PhotoAccess,
             onController: controller,
             withOkMessage: state.alertProperties.okButtonTitle,
             withOkHandler: { alertAction in

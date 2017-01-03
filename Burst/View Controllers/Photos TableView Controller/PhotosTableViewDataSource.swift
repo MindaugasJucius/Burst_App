@@ -83,9 +83,12 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     private func retrievePhotos() {
-        UnsplashPhotos.photos(
-            forPage: currentPage,
-            success: { [weak self] photos in
+
+        let params = ["page": String(currentPage)]
+        UnsplashGeneric.unsplashArray(
+            getFromURL: URL(string: UnsplashPhotosAllURL),
+            queryParams: params,
+            success: { [weak self] (photos: [Photo]) in
                 let state: ContainerViewState = photos.isEmpty ? .empty : .normal
                 self?.stateChangeHandler(state: state)
                 self?.updateThumbImages(forPhotos: photos)

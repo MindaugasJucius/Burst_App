@@ -48,7 +48,7 @@ class PhotoSavingHelper: NSObject {
                 self?.createPhoto(fromImage: image)
             },
             andFailure: { [weak self] in
-                self?.presentError(NSError(domain: AlbumCreationFailed, code: 0, userInfo: nil))
+                self?.presentError(NSError(domain: AppConstants.AlbumCreationFailed, code: 0, userInfo: nil))
             }
         )
         
@@ -80,7 +80,7 @@ class PhotoSavingHelper: NSObject {
         let fetchOptions = PHFetchOptions()
         var assetCollectionPlaceholder: PHObjectPlaceholder = PHObjectPlaceholder()
         
-        fetchOptions.predicate = NSPredicate(format: AlbumPredicate, APPName)
+        fetchOptions.predicate = NSPredicate(format: AlbumPredicate, AppConstants.APPName)
         let collection : PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .album,
             subtype: .any,
             options: fetchOptions
@@ -95,7 +95,7 @@ class PhotoSavingHelper: NSObject {
         
         //If not found - Then create a new album
         PHPhotoLibrary.shared().performChanges({
-                let createAlbumRequest : PHAssetCollectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: APPName)
+                let createAlbumRequest : PHAssetCollectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: AppConstants.APPName)
                 assetCollectionPlaceholder = createAlbumRequest.placeholderForCreatedAssetCollection
             },
             completionHandler: { [weak self] success, error in

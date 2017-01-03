@@ -9,7 +9,7 @@ class PhotosTableHeaderView: UIView {
         backgroundColor = AppAppearance.lightBlack
         bottomLabel.textColor = AppAppearance.subtitleColor
         bottomLabel.font = AppAppearance.regularFont(withSize: .sectionHeaderTitle)
-        bottomLabel.text = NewPhotosSubtitle
+        bottomLabel.text = AppConstants.NewPhotosSubtitle
     }
     
     override func layoutSubviews() {

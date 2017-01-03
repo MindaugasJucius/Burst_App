@@ -3,15 +3,20 @@ import Unbox
 
 public typealias SingleEntityCallback<U: Unboxable> = (_ unboxableEntity: U) -> ()
 public typealias EntityArrayCallback<U: Unboxable> = (_ unboxableArray: [U]) -> ()
+public typealias EmptyCallback = () -> ()
 public typealias ParamsDict = [String: Any]
 
 public class UnsplashGeneric: NSObject {
 
-    public static func unsplash<U: Unboxable>(getFromURL url: URL,
+    public static func unsplash<U: Unboxable>(getFromURL url: URL?,
                                 queryParams: ParamsDict? = nil,
                                 success: @escaping SingleEntityCallback<U>,
                                 failure: ErrorCallback?) {
-        Alamofire.request(url, method: .get, parameters: paramsDict(additionalValues: queryParams)).validate().responseJSON { response in
+        guard let queryURL = url else {
+            return
+        }
+        let parameters = paramsDict(additionalValues: queryParams)
+        Alamofire.request(queryURL, method: .get, parameters: parameters).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 guard let responseJSON = value as? NSDictionary else { return }
@@ -29,11 +34,15 @@ public class UnsplashGeneric: NSObject {
         }
     }
     
-    public static func unsplashArray<U: Unboxable>(getFromURL url: URL,
+    public static func unsplashArray<U: Unboxable>(getFromURL url: URL?,
                                      queryParams: [String: Any]? = nil,
                                      success: @escaping EntityArrayCallback<U>,
                                      failure: ErrorCallback?) {
-        Alamofire.request(url, method: .get, parameters: paramsDict(additionalValues: queryParams)).responseJSON { response in
+        guard let queryURL = url else {
+            return
+        }
+        let parameters = paramsDict(additionalValues: queryParams)
+        Alamofire.request(queryURL, method: .get, parameters: parameters).responseJSON { response in
             switch response.result {
             case .success(let value):
                 guard let responseJSON = value as? [NSDictionary] else { return }
@@ -52,7 +61,8 @@ public class UnsplashGeneric: NSObject {
     }
     
     private static func paramsDict(additionalValues: ParamsDict?) -> ParamsDict {
-        var params = [BurstID : AppConstants.appConstDict[BurstID]!] as ParamsDict
+        var params = [QueryParams.burstID.rawValue :
+            QueryParams.appId] as ParamsDict
         guard let additionalDict = additionalValues else {
             return params
         }

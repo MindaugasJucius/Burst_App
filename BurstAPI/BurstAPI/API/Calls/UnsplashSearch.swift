@@ -8,8 +8,7 @@ public class UnsplashSearch: NSObject {
                               resultsPage page: Int,
                               success: @escaping SearchResultsCallback<Photo>,
                               failure: @escaping ErrorCallback) -> DataRequest {
-        let appID = AppConstants.appConstDict[BurstID]!
-        let params = [BurstID : appID, "page": String(page), "query": query] as [String : Any]
+        let params = [QueryParams.burstID.rawValue: QueryParams.appId, "page": String(page), "query": query] as [String : Any]
         let request = Alamofire.request(UnsplashSearchPhotosURL, method: .get, parameters: params).responseJSON { response in
             switch response.result {
             case .success(let value):

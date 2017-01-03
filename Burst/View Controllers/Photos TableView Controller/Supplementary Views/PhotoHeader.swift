@@ -54,7 +54,7 @@ class PhotoHeader: UITableViewHeaderFooterView, ReusableView {
         let iconAttributedString = AppAppearance.faAttributedString(forIcon: icon,
             textSize: .iconSize,
             textColor: AppAppearance.subtitleColor)
-        let fullText = separator ? " \(text)\(Separator)" : " \(text)"
+        let fullText = separator ? " \(text)\(AppConstants.Separator)" : " \(text)"
         let attributedString = AppAppearance.infoTextAttributedString(forValue: fullText,
             textSize: .subtitleCellText,
             textColor: AppAppearance.subtitleColor)

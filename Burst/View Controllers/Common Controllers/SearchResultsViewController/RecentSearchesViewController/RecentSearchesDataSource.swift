@@ -62,7 +62,7 @@ class RecentSearchesDataSource: NSObject {
     fileprivate func clearHistoryCell(forIndexPath indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ClearSearchHistoryCellReuseIdentifier, for: indexPath)
         commonAppearance(forCell: cell)
-        cell.textLabel?.text = ClearSearchHistory
+        cell.textLabel?.text = AppConstants.ClearSearchHistory
         cell.textLabel?.textColor = UIColor.darkGray
         return cell
     }
