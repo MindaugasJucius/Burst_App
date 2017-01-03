@@ -15,7 +15,8 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         mapImageView.isUserInteractionEnabled = false
-        activityIndicator.alpha = 0
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
         activityIndicator.activityIndicatorViewStyle = .white
         mapImageView.backgroundColor = AppAppearance.lightBlack
         contentView.backgroundColor = AppAppearance.lightBlack
@@ -23,7 +24,7 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        activityIndicator.alpha = 0
+        activityIndicator.stopAnimating()
     }
     
     // MARK: Configuration
@@ -37,12 +38,12 @@ class MapTableViewCell: UITableViewCell, ReusableView {
     }
     
     private func snapshot(withSnapshotter snapshotter: MKMapSnapshotter) {
-        showAnimator()
+        activityIndicator.startAnimating()
         snapshotter.start { [weak self] snapshot, error in
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.hideAnimator()
+            strongSelf.activityIndicator.stopAnimating()
             guard let snapshot = snapshot else {
                 return
             }
@@ -74,16 +75,6 @@ class MapTableViewCell: UITableViewCell, ReusableView {
         let bounds = UIScreen.main.bounds
         snapshotOptions.size = CGSize(width: bounds.width, height: bounds.height * 0.25)
         return snapshotOptions
-    }
-    
-    // MARK: - Activity indicator
-    
-    private func showAnimator() {
-        UIView.fadeIn(view: activityIndicator, completion: nil)
-    }
-    
-    private func hideAnimator() {
-        UIView.fadeOut(view: activityIndicator, completion: nil)
     }
     
 }

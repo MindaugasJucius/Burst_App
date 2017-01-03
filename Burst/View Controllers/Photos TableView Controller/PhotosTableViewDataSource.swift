@@ -83,7 +83,6 @@ class PhotosTableViewDataSource: NSObject {
     }
     
     private func retrievePhotos() {
-
         let params = ["page": String(currentPage)]
         UnsplashGeneric.unsplashArray(
             getFromURL: URL(string: UnsplashPhotosAllURL),
