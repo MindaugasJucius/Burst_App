@@ -108,7 +108,7 @@ class PhotoViewController: UIViewController {
             self.scrollToTop()
         }
         dataSource.didTapClosePhotoPreview = { [unowned self] in
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = false
         }
         return dataSource

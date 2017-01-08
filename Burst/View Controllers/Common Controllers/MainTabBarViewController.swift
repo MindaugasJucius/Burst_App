@@ -12,7 +12,7 @@ final class MainTabBarViewController: UITabBarController {
         delegate = self
         
         let launchscreenView = LaunchscreenView(frame: view.frame)
-        view.layer.addSublayer(launchscreenView.layer)
+        //view.layer.addSublayer(launchscreenView.layer)
         self.launchscreenView = launchscreenView
         handlePreparationNotification()
         customTabBar = tabBar as? MainTabBar
@@ -25,7 +25,7 @@ final class MainTabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        launchscreenView.animateGradient()
+        //launchscreenView.animateGradient()
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,12 +56,18 @@ final class MainTabBarViewController: UITabBarController {
     }
     
     private func containerTab() -> UINavigationController {
-        let newPhotosController = PhotosTableViewController.fromStoryboard()!
-        let curatedPhotosController = UIViewController()
-        let newPhotosContainedController: ContainedController = (title: "NEW", controller: newPhotosController)
-        let curatedPhotosContainedController: ContainedController = (title: "CURATED", controller: curatedPhotosController)
-        let containerController = ContainerViewController(containedControllers: [newPhotosContainedController, curatedPhotosContainedController])
-        newPhotosController.delegate = containerController
+        
+        let newPhotosVC = ContentViewController()
+        let newPhotosDS = ContentDataSource()
+        newPhotosDS.objects = ["tam", "dam", "tram"]
+        newPhotosVC.dataSource = newPhotosDS
+        
+        let curatedPhotosVC = ContentViewController()
+        let curatedPhotosDS = ContentDataSource()
+        curatedPhotosDS.objects = ["wah", "bah", "dah"]
+        curatedPhotosVC.dataSource = curatedPhotosDS
+        
+        let containerController = ContainerViewController(containedControllers: [        ContainedController("new", newPhotosVC), ContainedController("curated", curatedPhotosVC)])
         let containerNavigationController = NavigationController(rootViewController: containerController)
         containerNavigationController.tabBarItem = UITabBarItem(
             title: "Photos".uppercased(),
