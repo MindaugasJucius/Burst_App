@@ -56,6 +56,13 @@ extension ContentViewController {
         registerDataSourceItems()
         collectionView.alwaysBounceVertical = true
         collectionView.fillSuperview()
+        collectionView.addInfiniteScroll(
+            handler: { [unowned self] collectionView in
+                self.dataSource.handleInfiniteScroll(forCollectionView: collectionView)
+            }
+        )
+        collectionView.infiniteScrollIndicatorStyle = .white
+        collectionView.infiniteScrollTriggerOffset = collectionView.bounds.height * 2
     }
     
     fileprivate func registerDataSourceItems() {

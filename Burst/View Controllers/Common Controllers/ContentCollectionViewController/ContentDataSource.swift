@@ -31,6 +31,10 @@ class ContentDataSource: NSObject {
         collectionView?.reloadData()
     }
     
+    func handleInfiniteScroll(forCollectionView collectionView: UICollectionView) {
+        collectionView.finishInfiniteScroll()
+    }
+    
 }
 
 // MARK: - Delegate helpers
