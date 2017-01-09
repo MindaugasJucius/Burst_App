@@ -3,8 +3,9 @@ import BurstAPI
 
 class ContentViewController: UIViewController {
 
-    var dataSource: ContentDataSource?
-
+    var dataSource: ContentDataSource!
+    fileprivate var collectionView: UICollectionView!
+    
     var collectionViewLayout: UICollectionViewLayout? {
         didSet {
             guard let layout = collectionViewLayout else {
@@ -14,8 +15,6 @@ class ContentViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    
-    fileprivate var collectionView: UICollectionView!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -29,6 +28,17 @@ class ContentViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
     }
+    
+    func refreshControl() -> UIRefreshControl {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = .white
+        refresher.addTarget(self, action: #selector(handleRefresh(control:)), for: .valueChanged)
+        return refresher
+    }
+    
+    @objc func handleRefresh(control: UIRefreshControl) {
+        dataSource.handleRefresh(control: control)
+    }
 
 }
 
@@ -41,6 +51,8 @@ extension ContentViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = dataSource
+        collectionView.addSubview(refreshControl())
+        dataSource.collectionView = collectionView
         registerDataSourceItems()
         collectionView.alwaysBounceVertical = true
         collectionView.fillSuperview()
@@ -73,15 +85,15 @@ extension ContentViewController {
 extension ContentViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width, height: 50)
+        return dataSource.referenceSize(forItemAtPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.bounds.width, height: 30)
+        return dataSource.referenceSize(forHeaderInSection: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: view.bounds.width, height: 30)
+        return dataSource.referenceSize(forFooterInSection: section)
     }
     
 }

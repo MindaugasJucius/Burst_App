@@ -1,4 +1,4 @@
-class EmptyStateCollectionViewCell: UICollectionViewCell, ReusableView, EmptyStateContainer {
+class EmptyStateCollectionViewCell: ContentCell, ReusableView, EmptyStateContainer {
     
     var substring: String?
     var emptyStateView: EmptyStateView?

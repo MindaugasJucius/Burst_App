@@ -1,11 +1,67 @@
 import UIKit
 
+private let DefaultCellHeight: CGFloat = 50
+private let DefaultCellWidth: CGFloat = UIScreen.main.bounds.width
+
 private typealias KindConfiguration = (item: (Int) -> Any?, classes: [ContentCell.Type]?, defaultType: ContentCell.Type)
 
-class ContentDataSource: NSObject, UICollectionViewDataSource {
+class ContentDataSource: NSObject {
     
-    var objects: [Any]?
+    var objects: [Any] = [] {
+        didSet{
+            collectionView?.reloadData()
+        }
+    }
     
+    weak var collectionView: UICollectionView?
+    
+    fileprivate func configuration(forKind kind: String) -> KindConfiguration? {
+        switch kind {
+        case UICollectionElementKindSectionFooter:
+            return (footerItem, footerClasses(), DefaultFooter.self)
+        case UICollectionElementKindSectionHeader:
+            return (headerItem, headerClasses(), DefaultHeader.self)
+        default:
+            return nil
+        }
+    }
+    
+    func handleRefresh(control: UIRefreshControl) {
+        control.endRefreshing()
+        collectionView?.reloadData()
+    }
+    
+}
+
+// MARK: - Delegate helpers
+
+extension ContentDataSource {
+
+    func referenceSize(forHeaderInSection section: Int) -> CGSize {
+        return CGSize.zero
+    }
+
+    func referenceSize(forFooterInSection section: Int) -> CGSize {
+        return CGSize.zero
+    }
+    
+    func referenceSize(forItemAtPath indexPath: IndexPath) -> CGSize {
+        var itemSize = CGSize(width: DefaultCellWidth, height: DefaultCellHeight)
+        if objects.isEmpty {
+            guard let height = collectionView?.bounds.height else {
+                return itemSize
+            }
+            itemSize.height = height
+            return itemSize
+        } else {
+            return itemSize
+        }
+    }
+    
+}
+
+extension ContentDataSource: UICollectionViewDataSource {
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numberOfSections()
     }
@@ -16,6 +72,13 @@ class ContentDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellType: ContentCell.Type
+        
+        guard !objects.isEmpty else {
+            let emptyStateCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyStateCollectionViewCell.className, for: indexPath) as! EmptyStateCollectionViewCell
+            emptyStateCell.emptyStateViewType = .none
+            return emptyStateCell
+        }
+        
         if let customType = cellClass(indexPath) {
             cellType = customType
         } else if cellClasses().count > indexPath.section {
@@ -56,24 +119,15 @@ class ContentDataSource: NSObject, UICollectionViewDataSource {
         reusableView.dataSourceItem = configurationForKind.item(indexPath.section)
         return reusableView
     }
-    
-    private func configuration(forKind kind: String) -> KindConfiguration? {
-        switch kind {
-        case UICollectionElementKindSectionFooter:
-            return (footerItem, footerClasses(), DefaultFooter.self)
-        case UICollectionElementKindSectionHeader:
-            return (headerItem, headerClasses(), DefaultHeader.self)
-        default:
-            return nil
-        }
-    }
-    
+
 }
+
+// MARK: - Overriding points
 
 extension ContentDataSource {
 
     func cellClasses() -> [ContentCell.Type] {
-        return [DefaultContentCell.self]
+        return [DefaultContentCell.self, EmptyStateCollectionViewCell.self]
     }
     
     ///If you want more fine tuned control per row, override this method to provide the proper cell type that should be rendered
@@ -92,7 +146,7 @@ extension ContentDataSource {
     }
     
     func numberOfItems(_ section: Int) -> Int {
-        return objects?.count ?? 0
+        return objects.isEmpty ? 1 : objects.count
     }
     
     func numberOfSections() -> Int {
@@ -101,7 +155,7 @@ extension ContentDataSource {
     
     ///For each row in your list, override this to provide it with a specific item. Access this in your DatasourceCell by overriding datasourceItem.
     func item(_ indexPath: IndexPath) -> Any? {
-        return objects?[indexPath.item]
+        return objects[indexPath.item]
     }
     
     ///If your headers need a special item, return it here.

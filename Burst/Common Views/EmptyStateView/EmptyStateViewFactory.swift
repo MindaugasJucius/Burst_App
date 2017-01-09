@@ -13,7 +13,7 @@ enum EmptyStateViewType {
         case .photosTable:
             return "No photos. Try again?"
         default:
-            return ""
+            return "No content to show."
         }
     }
 
