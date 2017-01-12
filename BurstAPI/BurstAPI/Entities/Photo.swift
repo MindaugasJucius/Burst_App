@@ -26,7 +26,7 @@ public class Photo: NSObject, Unboxable {
     // Available on every photo returning call
     public let id: String
     public let likes: NSInteger
-    public let donwloadURLs: [PhotoSize: URL]
+    let donwloadURLs: [PhotoSize: URL]
     public let uploader: User
     public let fullSize: CGSize
     public let color: UIColor

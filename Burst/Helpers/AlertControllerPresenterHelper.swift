@@ -6,6 +6,10 @@ class AlertControllerPresenterHelper: NSObject {
     
     static let sharedInstance = AlertControllerPresenterHelper()
     
+    func topController(presentError error: Error?) {
+        presentErrorAlert(onController: UIApplication.topViewController(), withError: error)
+    }
+    
     func presentErrorAlert(onController controller: UIViewController?, withError error: Error?) {
         let errorAlertController = UIAlertController(
             title: AppConstants.Error,
@@ -31,16 +35,16 @@ class AlertControllerPresenterHelper: NSObject {
         presentIfPossible(presentingController: controller, controllerToPresent: alertController)
     }
     
-    fileprivate func cancelAction(withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
+    private func cancelAction(withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
         return UIAlertAction(title: AppConstants.Cancel, style: .cancel, handler: handler)
     }
     
-    fileprivate func okAction(andTitle title: String, withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
+    private func okAction(andTitle title: String, withHandler handler: ActionHandlerCallback?) -> UIAlertAction {
         return UIAlertAction(title: title, style: .default, handler: handler)
     }
     
-    fileprivate func presentIfPossible(presentingController controller: UIViewController?, controllerToPresent: UIViewController) {
-        guard let controller = controller , controller.presentedViewController == nil else {
+    private func presentIfPossible(presentingController controller: UIViewController?, controllerToPresent: UIViewController) {
+        guard let controller = controller, controller.presentedViewController == nil else {
             return
         }
         DispatchQueue.main.async(execute: {

@@ -1,19 +1,23 @@
 import UIKit
 
-private let DefaultCellHeight: CGFloat = 50
-private let DefaultCellWidth: CGFloat = UIScreen.main.bounds.width
+let DefaultCellHeight: CGFloat = 50
+let DefaultCellWidth: CGFloat = UIScreen.main.bounds.width
 
 private typealias KindConfiguration = (item: (Int) -> Any?, classes: [ContentCell.Type]?, defaultType: ContentCell.Type)
 
-class ContentDataSource: NSObject {
+class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
     
-    var objects: [Any] = [] {
+    var objects: [U] = [] {
         didSet{
             collectionView?.reloadData()
         }
     }
     
-    weak var collectionView: UICollectionView?
+    fileprivate weak var collectionView: UICollectionView?
+    
+    func configureDataSource(forCollectionView collectionView: UICollectionView) {
+        self.collectionView = collectionView
+    }
     
     fileprivate func configuration(forKind kind: String) -> KindConfiguration? {
         switch kind {
@@ -35,37 +39,8 @@ class ContentDataSource: NSObject {
         collectionView.finishInfiniteScroll()
     }
     
-}
-
-// MARK: - Delegate helpers
-
-extension ContentDataSource {
-
-    func referenceSize(forHeaderInSection section: Int) -> CGSize {
-        return CGSize.zero
-    }
-
-    func referenceSize(forFooterInSection section: Int) -> CGSize {
-        return CGSize.zero
-    }
+    // BUG - SR-857 https://bugs.swift.org/browse/SR-857
     
-    func referenceSize(forItemAtPath indexPath: IndexPath) -> CGSize {
-        var itemSize = CGSize(width: DefaultCellWidth, height: DefaultCellHeight)
-        if objects.isEmpty {
-            guard let height = collectionView?.bounds.height else {
-                return itemSize
-            }
-            itemSize.height = height
-            return itemSize
-        } else {
-            return itemSize
-        }
-    }
-    
-}
-
-extension ContentDataSource: UICollectionViewDataSource {
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numberOfSections()
     }
@@ -123,13 +98,33 @@ extension ContentDataSource: UICollectionViewDataSource {
         reusableView.dataSourceItem = configurationForKind.item(indexPath.section)
         return reusableView
     }
-
-}
-
-// MARK: - Overriding points
-
-extension ContentDataSource {
-
+    
+    
+    // MARK: - Delegate size helpers
+    
+    func referenceSize(forHeaderInSection section: Int) -> CGSize {
+        return CGSize.zero
+    }
+    
+    func referenceSize(forFooterInSection section: Int) -> CGSize {
+        return CGSize.zero
+    }
+    
+    func referenceSize(forItemAtPath indexPath: IndexPath) -> CGSize {
+        var itemSize = CGSize(width: DefaultCellWidth, height: DefaultCellHeight)
+        if objects.isEmpty {
+            guard let height = collectionView?.bounds.height else {
+                return itemSize
+            }
+            itemSize.height = height
+            return itemSize
+        } else {
+            return itemSize
+        }
+    }
+    
+    // MARK: - Overriding points for data source customization
+    
     func cellClasses() -> [ContentCell.Type] {
         return [DefaultContentCell.self, EmptyStateCollectionViewCell.self]
     }

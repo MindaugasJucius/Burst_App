@@ -1,4 +1,5 @@
 import UIKit
+import BurstAPI
 
 final class MainTabBarViewController: UITabBarController {
 
@@ -57,13 +58,12 @@ final class MainTabBarViewController: UITabBarController {
     
     private func containerTab() -> UINavigationController {
         
-        let newPhotosVC = ContentViewController()
-        let newPhotosDS = ContentDataSource()
-        newPhotosDS.objects = ["tam", "dam", "tram"]
+        let newPhotosVC = ContentViewController<Photo>()
+        let newPhotosDS = PhotosDataSource(photoURL: URL(string: UnsplashPhotosAllURL)!)
         newPhotosVC.dataSource = newPhotosDS
         
-        let curatedPhotosVC = ContentViewController()
-        let curatedPhotosDS = ContentDataSource()
+        let curatedPhotosVC = ContentViewController<Any>()
+        let curatedPhotosDS = ContentDataSource<Any>()
         curatedPhotosDS.objects = ["wah", "bah", "dah"]
         curatedPhotosVC.dataSource = curatedPhotosDS
         

@@ -1,5 +1,7 @@
 import UIKit
 
+typealias OnContentTap = (Any) -> ()
+
 class ContentCell: UICollectionViewCell {
     
     var dataSourceItem: Any?

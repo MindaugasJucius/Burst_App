@@ -1,9 +1,9 @@
 import UIKit
 import BurstAPI
 
-class ContentViewController: UIViewController {
+class ContentViewController<U>: UIViewController, UICollectionViewDelegateFlowLayout {
 
-    var dataSource: ContentDataSource!
+    var dataSource: ContentDataSource<U>!
     fileprivate var collectionView: UICollectionView!
     
     var collectionViewLayout: UICollectionViewLayout? {
@@ -39,6 +39,18 @@ class ContentViewController: UIViewController {
     @objc func handleRefresh(control: UIRefreshControl) {
         dataSource.handleRefresh(control: control)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return dataSource.referenceSize(forItemAtPath: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return dataSource.referenceSize(forHeaderInSection: section)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return dataSource.referenceSize(forFooterInSection: section)
+    }
 
 }
 
@@ -52,7 +64,7 @@ extension ContentViewController {
         collectionView.delegate = self
         collectionView.dataSource = dataSource
         collectionView.addSubview(refreshControl())
-        dataSource.collectionView = collectionView
+        dataSource.configureDataSource(forCollectionView: collectionView)
         registerDataSourceItems()
         collectionView.alwaysBounceVertical = true
         collectionView.fillSuperview()
@@ -84,23 +96,6 @@ extension ContentViewController {
                 self.collectionView.register(headerType, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerType.className)
             }
         }
-        collectionView.reloadData()
-    }
-    
-}
-
-extension ContentViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return dataSource.referenceSize(forItemAtPath: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return dataSource.referenceSize(forHeaderInSection: section)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return dataSource.referenceSize(forFooterInSection: section)
     }
     
 }
