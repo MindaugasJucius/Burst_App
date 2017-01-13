@@ -30,10 +30,10 @@ class PhotoCell: ContentCell {
     
     private func configure(forPhoto photo: Photo) {
         activityIndicator.startAnimating()
+        imageView?.backgroundColor = photo.color
         imageView?.af_setImage(
             withURL: photo.url(forSize: .small),
             imageTransition: .crossDissolve(0.2),
-            runImageTransitionIfCached: true,
             completion: { [unowned self] response in
                 switch response.result {
                 case .success(_):

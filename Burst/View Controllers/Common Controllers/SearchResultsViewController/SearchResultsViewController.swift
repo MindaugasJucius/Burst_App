@@ -214,7 +214,6 @@ class SearchResultsViewController: UIViewController {
                     return
                 }
                 if !pathsToDelete.isEmpty {
-                    //strongSelf.currentItemCount = 0
                     strongSelf.collectionView.deleteItems(at: pathsToDelete)
                 }
                 strongSelf.state = strongSelf.fetchedResults.isEmpty ? .empty : .normal

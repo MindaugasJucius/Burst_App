@@ -1,8 +1,14 @@
 import BurstAPI
 
+fileprivate let InitialPageIndex = 1
+
 class PhotosDataController: NSObject {
 
-    private var currentPage = 1
+    private var currentPage = InitialPageIndex
+    
+    func resetState() {
+        currentPage = InitialPageIndex
+    }
     
     func fetchPhotos(fromURL: URL, success: @escaping EntityArrayCallback<Photo>, error: @escaping ErrorCallback) {
         let params = ["page": String(currentPage)]
@@ -15,10 +21,6 @@ class PhotosDataController: NSObject {
             },
             failure: error
         )
-    }
-    
-    func fetchImages(forPhotos: [Photo]) {
-        
     }
     
 }

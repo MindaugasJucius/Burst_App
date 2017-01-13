@@ -7,19 +7,26 @@ private typealias KindConfiguration = (item: (Int) -> Any?, classes: [ContentCel
 
 class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
     
-    var objects: [U] = [] {
-        didSet{
-            collectionView?.reloadData()
-        }
-    }
+    var objects: [U] = []
     
-    fileprivate weak var collectionView: UICollectionView?
+    weak var collectionView: UICollectionView?
     
     func configureDataSource(forCollectionView collectionView: UICollectionView) {
         self.collectionView = collectionView
     }
     
-    fileprivate func configuration(forKind kind: String) -> KindConfiguration? {
+    func handleRefresh(control: UIRefreshControl) {
+        control.endRefreshing()
+        collectionView?.reloadData()
+    }
+    
+    func handleInfiniteScroll(forCollectionView collectionView: UICollectionView) {
+        collectionView.finishInfiniteScroll()
+    }
+    
+    // MARK: - Helpers
+    
+    private func configuration(forKind kind: String) -> KindConfiguration? {
         switch kind {
         case UICollectionElementKindSectionFooter:
             return (footerItem, footerClasses(), DefaultFooter.self)
@@ -30,13 +37,41 @@ class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
         }
     }
     
-    func handleRefresh(control: UIRefreshControl) {
-        control.endRefreshing()
-        collectionView?.reloadData()
+    func append(photos: [U]) {
+        
+        let allItemsCount = objects.count + photos.count
+        let currentIndexSet = indexSet(
+            startingFrom: objects.count,
+            to: allItemsCount
+        )
+        
+        objects.append(contentsOf: photos)
+        
+        collectionView?.performBatchUpdates(
+            { [unowned self] in
+                self.collectionView?.insertSections(currentIndexSet)
+            },
+            completion: nil
+        )
     }
     
-    func handleInfiniteScroll(forCollectionView collectionView: UICollectionView) {
-        collectionView.finishInfiniteScroll()
+    func insert(photos: [U]) {
+        let sectionCount = objects.isEmpty ? 1 : objects.count
+        let previousIndexSet = indexSet(startingFrom: 0, to: sectionCount)
+        objects = photos
+        let currentIndexSet = indexSet(startingFrom: 0, to: objects.count)
+        collectionView?.performBatchUpdates(
+            { [unowned self] in
+                self.collectionView?.deleteSections(previousIndexSet)
+                self.collectionView?.insertSections(currentIndexSet)
+            },
+            completion: nil
+        )
+    }
+    
+    private func indexSet(startingFrom: Int, to: Int) -> IndexSet {
+        let range = Range(uncheckedBounds: (lower: startingFrom, upper: to))
+        return IndexSet(integersIn: range)
     }
     
     // BUG - SR-857 https://bugs.swift.org/browse/SR-857
@@ -60,8 +95,6 @@ class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
         
         if let customType = cellClass(indexPath) {
             cellType = customType
-        } else if cellClasses().count > indexPath.section {
-            cellType = cellClasses()[indexPath.section]
         } else if let cellClass = cellClasses().first {
             cellType = cellClass
         } else {
@@ -145,16 +178,16 @@ class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
     }
     
     func numberOfItems(_ section: Int) -> Int {
-        return objects.isEmpty ? 1 : objects.count
+        return 1
     }
     
     func numberOfSections() -> Int {
-        return 1
+        return objects.isEmpty ? 1 : objects.count
     }
     
     ///For each row in your list, override this to provide it with a specific item. Access this in your DatasourceCell by overriding datasourceItem.
     func item(_ indexPath: IndexPath) -> Any? {
-        return objects[indexPath.item]
+        return objects[indexPath.section]
     }
     
     ///If your headers need a special item, return it here.
