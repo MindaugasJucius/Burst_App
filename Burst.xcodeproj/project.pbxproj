@@ -15,6 +15,7 @@
 		03001B9B1DD1E8A1004D478C /* Dictionary+Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9A1DD1E8A1004D478C /* Dictionary+Plist.swift */; };
 		03001B9D1DD1EB04004D478C /* RecentSearchesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9C1DD1EB04004D478C /* RecentSearchesDataController.swift */; };
 		03001B9F1DD1EB7E004D478C /* RecentSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03001B9E1DD1EB7E004D478C /* RecentSearch.swift */; };
+		0308340C1E28E50000B61A7C /* PhotoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308340B1E28E50000B61A7C /* PhotoControlView.swift */; };
 		03191C9A1DBA661F00695972 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191C991DBA661F00695972 /* MainTabBar.swift */; };
 		03191C9C1DBA671000695972 /* MainTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03191C9B1DBA671000695972 /* MainTabViewController.storyboard */; };
 		0324A7C11E0561930042A2A2 /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324A7C01E0561930042A2A2 /* SectionItem.swift */; };
@@ -176,6 +177,7 @@
 		03001B9A1DD1E8A1004D478C /* Dictionary+Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Plist.swift"; sourceTree = "<group>"; };
 		03001B9C1DD1EB04004D478C /* RecentSearchesDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesDataController.swift; sourceTree = "<group>"; };
 		03001B9E1DD1EB7E004D478C /* RecentSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearch.swift; sourceTree = "<group>"; };
+		0308340B1E28E50000B61A7C /* PhotoControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoControlView.swift; sourceTree = "<group>"; };
 		030DDDC91D1D7E5800E2B2D4 /* Burst-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Burst-Bridging-Header.h"; sourceTree = "<group>"; };
 		03191C991DBA661F00695972 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		03191C9B1DBA671000695972 /* MainTabViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTabViewController.storyboard; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 				032C58561DBD3153003FFF4B /* CircularProgressView.swift */,
 				03C4E3971DC90488005CECE2 /* LaunchscreenView.swift */,
 				0382B13F1DE31D0200586B5C /* InsetButton.swift */,
+				0308340B1E28E50000B61A7C /* PhotoControlView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -903,6 +906,7 @@
 				03DC3AA41D88782F00D18A48 /* MainTabBarViewController.swift in Sources */,
 				0399BF501E20FEFC009B546A /* ContentDefaultItems.swift in Sources */,
 				032C58571DBD3153003FFF4B /* CircularProgressView.swift in Sources */,
+				0308340C1E28E50000B61A7C /* PhotoControlView.swift in Sources */,
 				03001B941DD09D6F004D478C /* RecentSearchesViewController.swift in Sources */,
 				0382B1001DE1D25800586B5C /* UIView+Border.swift in Sources */,
 				0382B1931DE8732C00586B5C /* AuthorDataController.swift in Sources */,
@@ -1086,6 +1090,7 @@
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1108,6 +1113,7 @@
 				PRODUCT_NAME = Burst;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -8,7 +8,7 @@ class ContentCell: UICollectionViewCell {
 
     let separatorLineView: UIView = {
         let lineView = UIView()
-        lineView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        lineView.backgroundColor = AppAppearance.lightBlack
         lineView.isHidden = true
         return lineView
     }()
@@ -20,8 +20,8 @@ class ContentCell: UICollectionViewCell {
     
     func setupViews() {
         clipsToBounds = true
-        addSubview(separatorLineView)
-        separatorLineView.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, heightConstant: 0.5)
+        contentView.addSubview(separatorLineView)
+        separatorLineView.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, heightConstant: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {

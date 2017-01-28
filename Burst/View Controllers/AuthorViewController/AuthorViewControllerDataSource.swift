@@ -92,7 +92,7 @@ class AuthorViewControllerDataSource: NSObject {
         var imageDTOs = photos.map { photo in
             photo.imageDTO(withSize: .thumb, imageCallback: { image in
                 photo.thumbImage = image
-            }
+                }
             )
         }
         if let totalPhotosCount = user.totalPhotos, totalPhotosCount > MaxUserPhotosToShow, containedInTableView {

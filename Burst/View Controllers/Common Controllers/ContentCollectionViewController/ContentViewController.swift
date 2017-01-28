@@ -59,7 +59,9 @@ class ContentViewController<U>: UIViewController, UICollectionViewDelegateFlowLa
 extension ContentViewController {
 
     fileprivate func setupCollectionView() {
-        collectionView = UICollectionView(frame: view.frame, collectionViewLayout: UICollectionViewFlowLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionHeadersPinToVisibleBounds = true
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = dataSource

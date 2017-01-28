@@ -37,15 +37,15 @@ class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
         }
     }
     
-    func append(photos: [U]) {
+    func append(newObjects: [U]) {
         
-        let allItemsCount = objects.count + photos.count
+        let allItemsCount = objects.count + newObjects.count
         let currentIndexSet = indexSet(
             startingFrom: objects.count,
             to: allItemsCount
         )
         
-        objects.append(contentsOf: photos)
+        objects.append(contentsOf: newObjects)
         
         collectionView?.performBatchUpdates(
             { [unowned self] in
@@ -55,10 +55,10 @@ class ContentDataSource<U>: NSObject, UICollectionViewDataSource {
         )
     }
     
-    func insert(photos: [U]) {
+    func insert(newObjects: [U]) {
         let sectionCount = objects.isEmpty ? 1 : objects.count
         let previousIndexSet = indexSet(startingFrom: 0, to: sectionCount)
-        objects = photos
+        objects = newObjects
         let currentIndexSet = indexSet(startingFrom: 0, to: objects.count)
         collectionView?.performBatchUpdates(
             { [unowned self] in

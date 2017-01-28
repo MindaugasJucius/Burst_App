@@ -21,7 +21,6 @@ class PhotoCell: ContentCell {
         let imageView = UIImageView(frame: bounds)
         addSubview(imageView)
         addSubview(activityIndicator)
-        imageView.backgroundColor = AppAppearance.lightBlack
         imageView.fillSuperview()
         activityIndicator.fillSuperview()
         activityIndicator.hidesWhenStopped = true

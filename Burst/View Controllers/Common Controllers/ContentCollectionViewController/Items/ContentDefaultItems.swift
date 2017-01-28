@@ -1,21 +1,11 @@
 import UIKit
 
-class DefaultHeader: DefaultContentCell {
+class DefaultHeader: ContentCell {
     
-    override func setupViews() {
-        super.setupViews()
-        label.text = "Header Cell"
-        label.textAlignment = .center
-    }
 }
 
-class DefaultFooter: DefaultContentCell {
+class DefaultFooter: ContentCell {
     
-    override func setupViews() {
-        super.setupViews()
-        label.text = "Footer Cell"
-        label.textAlignment = .center
-    }
 }
 
 class DefaultContentCell: ContentCell {

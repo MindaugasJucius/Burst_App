@@ -19,7 +19,7 @@ class PhotosDataSource: ContentDataSource<Photo> {
         dataController.fetchPhotos(
             fromURL: photoURL,
             success: { [unowned self] (photos: [Photo]) in
-                self.insert(photos: photos)
+                self.insert(newObjects: photos)
             },
             error: errorCallback
         )
@@ -30,7 +30,7 @@ class PhotosDataSource: ContentDataSource<Photo> {
         dataController.fetchPhotos(
             fromURL: photoURL,
             success: { [unowned self] (photos: [Photo]) in
-                self.insert(photos: photos)
+                self.insert(newObjects: photos)
                 control.endRefreshing()
             },
             error: { [unowned self] error in
@@ -40,11 +40,17 @@ class PhotosDataSource: ContentDataSource<Photo> {
         )
     }
     
+    override func footerItem(_ section: Int) -> Any? {
+        var config = AllowedControlActions.defaultConfig
+        config.append(.info)
+        return config
+    }
+    
     override func handleInfiniteScroll(forCollectionView collectionView: UICollectionView) {
         dataController.fetchPhotos(
             fromURL: photoURL,
             success: { [unowned self] (photos: [Photo]) in
-                self.append(photos: photos)
+                self.append(newObjects: photos)
                 collectionView.finishInfiniteScroll()
             },
             error: { [unowned self] error in
@@ -58,6 +64,14 @@ class PhotosDataSource: ContentDataSource<Photo> {
         return [PhotoCell.self, EmptyStateCollectionViewCell.self]
     }
     
+    override func footerClasses() -> [ContentCell.Type]? {
+        return [PhotoControlCollectionViewFooter.self]
+    }
+    
+    override func headerClasses() -> [ContentCell.Type]? {
+        return [DefaultHeader.self]
+    }
+    
     override func referenceSize(forItemAtPath indexPath: IndexPath) -> CGSize {
         guard !objects.isEmpty else {
             return super.referenceSize(forItemAtPath: indexPath)
@@ -67,6 +81,14 @@ class PhotosDataSource: ContentDataSource<Photo> {
         let height = photo.fullSize.height * rate
         let size = CGSize(width: DefaultCellWidth, height: height)
         return size
+    }
+    
+    override func referenceSize(forFooterInSection section: Int) -> CGSize {
+        return CGSize(width: DefaultCellWidth, height: PhotoControlHeight)
+    }
+    
+    override func referenceSize(forHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: DefaultCellWidth, height: PhotoControlHeight)
     }
     
 }
